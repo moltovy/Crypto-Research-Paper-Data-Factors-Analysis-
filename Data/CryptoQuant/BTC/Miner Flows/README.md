@@ -29,12 +29,12 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Bitcoin Miner Inflow (Mean) - All Miners - Day.csv` | Bitcoin Miner Inflow (Mean) - All Miners - Day | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `eb3d26b1b071` |
 | `Bitcoin Miner Inflow (Top10) - All Miners - Day.csv` | Bitcoin Miner Inflow (Top10) - All Miners - Day | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `a6922004a0c5` |
 | `Bitcoin Miner Inflow (Total) - All Miners - Day.csv` | Bitcoin Miner Inflow (Total) - All Miners - Day | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `f5e072b847bb` |
-| `Bitcoin Miner Netflow Total - All Miners - Day.csv` | Miner netflow | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `508b95dc4858` |
+| `Bitcoin Miner Netflow Total - All Miners - Day.csv` | Miner netflow | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `202024401814` |
 | `Bitcoin Miner Outflow (Mean) - All Miners - Day.csv` | Bitcoin Miner Outflow (Mean) - All Miners - Day | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `a39d02546a29` |
 | `Bitcoin Miner Outflow (Top10) - All Miners - Day.csv` | Bitcoin Miner Outflow (Top10) - All Miners - Day | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `93926ae3e898` |
 | `Bitcoin Miner Outflow (Total) - All Miners - Day.csv` | Bitcoin Miner Outflow (Total) - All Miners - Day | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `ce9c0a6ee913` |
 | `Bitcoin Miner Reserve - All Miners - Day.csv` | Miner reserve | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `c6675e1ee839` |
-| `Bitcoin Miner Reserve USD - All Miners - Day.csv` | Miner reserve | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `a30518e6d18f` |
+| `Bitcoin Miner Reserve USD - All Miners - Day.csv` | Miner reserve | 2009-01-09 .. 2026-04-11 | 6,302 | daily | 0 | 3 | `1fe54785a851` |
 | `Bitcoin Miner Supply Ratio - All Miners - Day.csv` | Bitcoin Miner Supply Ratio - All Miners - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `3bb9259e9a8f` |
 | `Bitcoin Miner to Exchange Flow (Mean) - All Miners, All Exchanges - Day.csv` | Bitcoin Miner to Exchange Flow (Mean) - All Miners, All Exchanges - Day | 2012-04-25 .. 2026-04-11 | 5,100 | daily | 0 | 3 | `9ddfb7cc8c0d` |
 | `Bitcoin Miner to Exchange Flow (Total) - All Miners, All Exchanges - Day.csv` | Bitcoin Miner to Exchange Flow (Total) - All Miners, All Exchanges - Day | 2012-04-25 .. 2026-04-11 | 5,100 | daily | 0 | 3 | `32adc7df4f28` |

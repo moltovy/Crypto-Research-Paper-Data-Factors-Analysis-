@@ -22,10 +22,10 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Ethereum Funding Rates - All Exchanges - Day.csv` | Funding rates | 2018-08-02 .. 2026-04-11 | 2,810 | daily | 0 | 3 | `d2898e245bdf` |
 | `Ethereum Futures Taker CVD(Cumulative Volume Delta, 90-day) - Day.csv` | Taker CVD | 2019-01-13 .. 2026-04-11 | 2,646 | daily | 0 | 5 | `d0b6dbecf4f5` |
 | `Ethereum Long Liquidations - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-28 .. 2026-04-11 | 2,662 | daily | 0 | 3 | `479206919dba` |
-| `Ethereum Long Liquidations USD - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-28 .. 2026-04-11 | 2,662 | daily | 0 | 3 | `9cc830c98441` |
-| `Ethereum Open Interest - All Exchanges, All Symbol - Day.csv` | Open interest | 2019-03-30 .. 2026-04-11 | 2,570 | daily | 0 | 3 | `cc4e62346b91` |
+| `Ethereum Long Liquidations USD - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-28 .. 2026-04-11 | 2,662 | daily | 0 | 3 | `a1dbc6fa54ac` |
+| `Ethereum Open Interest - All Exchanges, All Symbol - Day.csv` | Open interest | 2019-03-30 .. 2026-04-11 | 2,570 | daily | 0 | 3 | `acbf93db0fbd` |
 | `Ethereum Short Liquidations - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-28 .. 2026-04-11 | 2,662 | daily | 0 | 3 | `5d1d3e76c24e` |
-| `Ethereum Short Liquidations USD - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-28 .. 2026-04-11 | 2,662 | daily | 0 | 3 | `95d3ac36c081` |
+| `Ethereum Short Liquidations USD - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-28 .. 2026-04-11 | 2,662 | daily | 0 | 3 | `c8067710c48f` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 

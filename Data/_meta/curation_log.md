@@ -498,3 +498,106 @@ Wrote `Data/MASTER_DATA.csv`.
 
 ### Curated hash manifest
 - Wrote `Data/_meta/curated_manifest.csv` (504 files).
+
+## Step 08 — consolidate Defi into DefiLlama  _(run 2026-04-17 03:28:02Z)_
+
+### Consolidation moves
+
+- renamed `DefiLlama/CSV/` -> `DefiLlama/TVL/`.
+
+- moved `Defi/all_metrics_2026-04-17 (1) volume.csv` -> `DefiLlama/ChainMetrics/all_metrics_2026-04-17 (1) volume.csv`
+- moved `Defi/all_metrics_2026-04-17.csv` -> `DefiLlama/ChainMetrics/all_metrics_2026-04-17.csv`
+- moved `Defi/cex_net_inflows_by_exchange__daily.csv` -> `DefiLlama/CEX/cex_net_inflows_by_exchange__daily.csv`
+- moved `Defi/dat-institutions.csv` -> `DefiLlama/DATs/dat-institutions.csv`
+- moved `Defi/etf-history.csv` -> `DefiLlama/ETFs/etf-history.csv`
+- moved `Defi/etf-overview.csv` -> `DefiLlama/ETFs/etf-overview.csv`
+- moved `Defi/ethereum_metrics_2026-04-17 (1).csv` -> `DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 (1).csv`
+- moved `Defi/ethereum_metrics_2026-04-17 Fees and revenue.csv` -> `DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 Fees and revenue.csv`
+- moved `Defi/ethereum_metrics_2026-04-17 volume.csv` -> `DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 volume.csv`
+- moved `Defi/rwa-category-chart_combined_2026-04-17.csv` -> `DefiLlama/RWA/rwa-category-chart_combined_2026-04-17.csv`
+- moved `Defi/rwa-time-series-chart-active-mcap-all-2026-04-14.csv` -> `DefiLlama/RWA/rwa-time-series-chart-active-mcap-all-2026-04-14.csv`
+- moved `Defi/rwa-time-series-chart-defi-active-tvl-all-2026-04-14.csv` -> `DefiLlama/RWA/rwa-time-series-chart-defi-active-tvl-all-2026-04-14.csv`
+- moved `Defi/rwa-time-series-chart-onchain-mcap-all-2026-04-14.csv` -> `DefiLlama/RWA/rwa-time-series-chart-onchain-mcap-all-2026-04-14.csv`
+- moved `Defi/solana_metrics_2026-04-17.csv` -> `DefiLlama/ChainMetrics/solana_metrics_2026-04-17.csv`
+- moved `Defi/stablecoin_mcap_by_defillama_id__daily.csv` -> `DefiLlama/Stablecoins/stablecoin_mcap_by_defillama_id__daily.csv`
+- moved `Defi/stablecoin_mcap_id_to_name.csv` -> `DefiLlama/Stablecoins/stablecoin_mcap_id_to_name.csv`
+- moved `Defi/stablecoins-chains.csv` -> `DefiLlama/Stablecoins/stablecoins-chains.csv`
+- moved `Defi/stablecoins.csv` -> `DefiLlama/Stablecoins/stablecoins.csv`
+- moved `Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 1.csv` -> `DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 1.csv`
+- moved `Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 2.csv` -> `DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 2.csv`
+- moved `Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 3.csv` -> `DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 3.csv`
+- moved `Defi/_raw_parts/README.md` -> `DefiLlama/_raw_parts/README.md`
+- moved `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 5.csv` -> `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 5.csv`
+- moved `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 6.csv` -> `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 6.csv`
+- moved `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 7.csv` -> `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 7.csv`
+- moved `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 1.csv` -> `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 1.csv`
+- moved `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 2.csv` -> `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 2.csv`
+- moved `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 3.csv` -> `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 3.csv`
+- moved `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 4.csv` -> `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 4.csv`
+- moved `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17.csv` -> `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17.csv`
+- removing old `Defi/README.md` (will be regenerated)
+- removed empty `Data/Defi/` folder.
+
+## Step 06 — build inventory  _(run 2026-04-17 03:30:18Z)_
+
+Summarized 446 CSV files.
+Wrote 54 per-folder README.md files.
+Wrote `Data/MASTER_DATA.md`.
+Wrote `Data/MASTER_DATA.csv`.
+
+## Step 04 — normalize dates  _(run 2026-04-17 03:30:24Z)_
+
+Per-source counts:
+- **cryptoquant**: 345
+- **artemis**: 47
+- **farside**: 3
+- **defi**: 13
+- **defillama**: 6
+- **tradingview**: 12
+- **skip**: 3
+- **snapshot**: 19
+
+## Step 06 — build inventory  _(run 2026-04-17 03:30:54Z)_
+
+Summarized 445 CSV files.
+Wrote 53 per-folder README.md files.
+Wrote `Data/MASTER_DATA.md`.
+Wrote `Data/MASTER_DATA.csv`.
+
+## Step 07 — validation  _(run 2026-04-17 03:30:56Z)_
+
+### Date-standardization check
+- date normalization: 426 files OK, 0 failed.
+
+### Merged-file sanity checks
+- stablecoin_mcap merge: OUTPUT OR PARTS MISSING
+- cex_net_inflows merge: OUTPUT OR PARTS MISSING
+
+### CryptoQuant spot-checks (5 random files)
+- [PASS] `CryptoQuant/USDT ETH/Exchange Flows/Tether USD(ERC20) Exchange Outflow (Total) - All Exchanges - Day.csv`: rows 3027 -> 3027, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Inter Entity Flows/Bitcoin Miner to Miner Flow (Mean) - All Miners, 1THash - Day.csv`: rows 1903 -> 1903, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Depositing Transactions - All Exchanges - Day.csv`: rows 6310 -> 6310, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Miner Flows/Bitcoin Miner Withdrawing Addresses - All Miners - Day.csv`: rows 6302 -> 6302, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Miner Flows/Bitcoin Miner In-House Flow (Total) - All Miners - Day.csv`: rows 6299 -> 6299, values preserved=True, ascending=True
+
+### Curated hash manifest
+- Wrote `Data/_meta/curated_manifest.csv` (511 files).
+
+## Step 07 — validation  _(run 2026-04-17 03:31:23Z)_
+
+### Date-standardization check
+- date normalization: 426 files OK, 0 failed.
+
+### Merged-file sanity checks
+- stablecoin_mcap merge: cols_union_match=True (merged=200, parts_union=200), dup_dates=0, date_range_match=True (2017-11-29 .. 2026-04-17)
+- cex_net_inflows merge: cols_union_match=True (merged=75, parts_union=75), dup_dates=0, date_range_match=True (2022-11-12 .. 2026-04-17)
+
+### CryptoQuant spot-checks (5 random files)
+- [PASS] `CryptoQuant/USDT ETH/Exchange Flows/Tether USD(ERC20) Exchange Outflow (Total) - All Exchanges - Day.csv`: rows 3027 -> 3027, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Inter Entity Flows/Bitcoin Miner to Miner Flow (Mean) - All Miners, 1THash - Day.csv`: rows 1903 -> 1903, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Depositing Transactions - All Exchanges - Day.csv`: rows 6310 -> 6310, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Miner Flows/Bitcoin Miner Withdrawing Addresses - All Miners - Day.csv`: rows 6302 -> 6302, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Miner Flows/Bitcoin Miner In-House Flow (Total) - All Miners - Day.csv`: rows 6299 -> 6299, values preserved=True, ascending=True
+
+### Curated hash manifest
+- Wrote `Data/_meta/curated_manifest.csv` (511 files).

@@ -22,7 +22,7 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Bitcoin Block Size (Mean) - Day.csv` | Bitcoin Block Size (Mean) - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `23f3552cba5d` |
 | `Bitcoin Blocks Mined - Day.csv` | Bitcoin Blocks Mined - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `0fa0a666788e` |
 | `Bitcoin Difficulty - Day.csv` | Difficulty | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `cd0ce952be7f` |
-| `Bitcoin Hashrate - Day.csv` | Hashrate | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `e555b81c810d` |
+| `Bitcoin Hashrate - Day.csv` | Hashrate | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `80514efd9734` |
 | `Bitcoin UTXO Count - Day.csv` | UTXO metrics | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `be32f1cda924` |
 | `Bitcoin Velocity - Day.csv` | Bitcoin Velocity - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `fc609a68441c` |
 

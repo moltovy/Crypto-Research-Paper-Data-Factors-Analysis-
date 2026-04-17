@@ -33,7 +33,7 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Bitcoin Exchange Outflow (Top10) - All Exchanges - Day.csv` | Exchange outflow | 2009-01-01 .. 2026-04-11 | 6,310 | daily | 0 | 3 | `d596deba5333` |
 | `Bitcoin Exchange Outflow (Total) - All Exchanges - Day.csv` | Exchange outflow | 2009-01-01 .. 2026-04-11 | 6,310 | daily | 0 | 3 | `31c2a46738e4` |
 | `Bitcoin Exchange Reserve - All Exchanges - Day.csv` | Exchange reserve | 2012-04-02 .. 2026-04-11 | 5,123 | daily | 0 | 4 | `6754f1983c46` |
-| `Bitcoin Exchange Reserve USD - All Exchanges - Day.csv` | Exchange reserve | 2012-04-02 .. 2026-04-11 | 5,123 | daily | 0 | 3 | `51126316e7c3` |
+| `Bitcoin Exchange Reserve USD - All Exchanges - Day.csv` | Exchange reserve | 2012-04-02 .. 2026-04-11 | 5,123 | daily | 0 | 3 | `14cddc224af2` |
 | `Bitcoin Exchange Withdrawing Addresses - All Exchanges - Day.csv` | Bitcoin Exchange Withdrawing Addresses - All Exchanges - Day | 2009-01-01 .. 2026-04-11 | 6,310 | daily | 0 | 3 | `4331236c0a36` |
 | `Bitcoin Exchange Withdrawing Transactions - All Exchanges - Day.csv` | Bitcoin Exchange Withdrawing Transactions - All Exchanges - Day | 2009-01-01 .. 2026-04-11 | 6,310 | daily | 0 | 3 | `6e3b1755bca4` |
 

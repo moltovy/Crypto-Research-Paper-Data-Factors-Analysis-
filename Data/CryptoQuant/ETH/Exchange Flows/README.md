@@ -21,14 +21,14 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Ethereum Exchange Depositing Addresses - All Exchanges - Day.csv` | Ethereum Exchange Depositing Addresses - All Exchanges - Day | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `5a59295ade47` |
 | `Ethereum Exchange Depositing Transactions - All Exchanges - Day.csv` | Ethereum Exchange Depositing Transactions - All Exchanges - Day | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `f4eb49f73d90` |
 | `Ethereum Exchange Inflow (Mean) - All Exchanges - Day.csv` | Exchange inflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `a76198b2d922` |
-| `Ethereum Exchange Inflow (Top10) - All Exchanges - Day.csv` | Exchange inflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `2fb852366dd6` |
-| `Ethereum Exchange Inflow (Total) - All Exchanges - Day.csv` | Exchange inflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `f87d88253b17` |
-| `Ethereum Exchange Netflow (Total) - All Exchanges - Day.csv` | Exchange netflow | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `2a0c6ababe11` |
+| `Ethereum Exchange Inflow (Top10) - All Exchanges - Day.csv` | Exchange inflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `f37e801ad69b` |
+| `Ethereum Exchange Inflow (Total) - All Exchanges - Day.csv` | Exchange inflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `95e1b6aeaa1d` |
+| `Ethereum Exchange Netflow (Total) - All Exchanges - Day.csv` | Exchange netflow | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `6c5ea19e9e36` |
 | `Ethereum Exchange Outflow (Mean) - All Exchanges - Day.csv` | Exchange outflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `67beacf180e2` |
-| `Ethereum Exchange Outflow (Top10) - All Exchanges - Day.csv` | Exchange outflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `ed3c3fa3245f` |
-| `Ethereum Exchange Outflow (Total) - All Exchanges - Day.csv` | Exchange outflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `2847f31773db` |
+| `Ethereum Exchange Outflow (Top10) - All Exchanges - Day.csv` | Exchange outflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `7b95fc75d6c8` |
+| `Ethereum Exchange Outflow (Total) - All Exchanges - Day.csv` | Exchange outflow | 2015-08-13 .. 2026-04-11 | 3,895 | daily | 0 | 3 | `dab09853ea4c` |
 | `Ethereum Exchange Reserve - All Exchanges - Day.csv` | Exchange reserve | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `ffba03455608` |
-| `Ethereum Exchange Reserve USD - All Exchanges - Day.csv` | Exchange reserve | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `d270646bc825` |
+| `Ethereum Exchange Reserve USD - All Exchanges - Day.csv` | Exchange reserve | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `ebe3c03101bc` |
 | `Ethereum Exchange Withdrawing Addresses - All Exchanges - Day.csv` | Ethereum Exchange Withdrawing Addresses - All Exchanges - Day | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `2245b63d413e` |
 | `Ethereum Exchange Withdrawing Transactions - All Exchanges - Day.csv` | Ethereum Exchange Withdrawing Transactions - All Exchanges - Day | 2015-08-07 .. 2026-04-11 | 3,901 | daily | 0 | 3 | `50ecfd397f1e` |
 

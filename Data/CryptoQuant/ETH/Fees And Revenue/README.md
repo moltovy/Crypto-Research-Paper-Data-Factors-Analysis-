@@ -18,13 +18,13 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Ethereum Fees (Total) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `71991d4589e4` |
-| `Ethereum Fees Burnt (Total) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `a323434ad43b` |
+| `Ethereum Fees (Total) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `25cf3a66d9d9` |
+| `Ethereum Fees Burnt (Total) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `8964de862210` |
 | `Ethereum Fees Burnt per Transaction (Mean) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `5466aa4a2278` |
 | `Ethereum Fees Burnt per Transaction (Median) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `0bec32485238` |
 | `Ethereum Fees Burnt per Transaction USD (Mean) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `8a05b7e6b9e1` |
 | `Ethereum Fees Burnt per Transaction USD (Median) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `9a1c046ca61c` |
-| `Ethereum Fees Burnt USD (Total) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `57a5a7b18ba1` |
+| `Ethereum Fees Burnt USD (Total) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `a328b80061d6` |
 | `Ethereum Fees per Transaction (Mean) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `69f67ef91caa` |
 | `Ethereum Fees per Transaction USD (Mean) - Day.csv` | Fees | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `6c68c07fdfb7` |
 

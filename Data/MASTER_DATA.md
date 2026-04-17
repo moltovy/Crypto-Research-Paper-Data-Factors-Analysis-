@@ -19,8 +19,7 @@ All time-series CSVs have been normalized to:
 | --- | ---: | ---: | --- | --- |
 | `Artemis/` | 48 | 75,302 | 2010-01-01 .. 2026-04-30 | daily |
 | `CryptoQuant/` | 345 | 1,181,712 | 2006-04-11 .. 2026-04-12 | daily |
-| `Defi/` | 29 | 52,543 | 2016-04-19 .. 2026-04-17 | daily |
-| `DefiLlama/` | 8 | 275,287 | 2017-09-27 .. 2026-04-19 | daily |
+| `DefiLlama/` | 37 | 327,830 | 2016-04-19 .. 2026-04-19 | daily |
 | `Farside ETF Data/` | 3 | 1,032 | 2024-01-11 .. 2026-04-10 | daily |
 | `Tradingview/` | 12 | 16,133 | 2017-12-17 .. 2026-04-16 | daily |
 
@@ -29,8 +28,8 @@ All time-series CSVs have been normalized to:
 | Factor block | Primary sources |
 | --- | --- |
 | Macro / cross-asset | `Tradingview/` (DVOL), and any future FRED/Yahoo pulls |
-| Institutional (ETF / DAT) | `Farside ETF Data/`, `Artemis/` ETF AUMs, `Defi/etf-*`, `Defi/dat-institutions.csv` |
-| Crypto-liquidity | `DefiLlama/`, `Defi/stablecoin_mcap_by_defillama_id__daily.csv`, `Defi/cex_net_inflows_by_exchange__daily.csv`, Artemis chain/DEX/lending metrics |
+| Institutional (ETF / DAT) | `Farside ETF Data/`, `Artemis/` ETF AUMs, `DefiLlama/ETFs/`, `DefiLlama/DATs/` |
+| Crypto-liquidity | `DefiLlama/TVL/`, `DefiLlama/Stablecoins/`, `DefiLlama/CEX/`, `DefiLlama/ChainMetrics/`, Artemis chain/DEX/lending metrics |
 | BTC-native | `CryptoQuant/BTC/` (all subfolders), `Tradingview/` CME BTC futures |
 | ETH-native | `CryptoQuant/ETH/` (all subfolders), `Tradingview/` CME ETH futures, Artemis chain metrics |
 
@@ -443,56 +442,49 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `CryptoQuant/WBTC/Transactions/Wrapped BTC Transaction Count (Total) - Day.csv` | Wrapped BTC Transaction Count (Total) - Day | 2018-11-24 .. 2026-04-11 | 2,696 | daily | 0 | 3 |
 | `CryptoQuant/WBTC/Transactions/Wrapped BTC Transfer Count (Total) - Day.csv` | Wrapped BTC Transfer Count (Total) - Day | 2018-11-24 .. 2026-04-11 | 2,696 | daily | 0 | 3 |
 
-### Defi
-
-Manual chart / dashboard exports from DefiLlama plus curated slices (stablecoins, CEX net inflows, ETFs, RWA categories, chain-level metrics).
-
-| Relative path | Topic | Date range | Rows | Freq | Missing days | Cols |
-| --- | --- | --- | ---: | --- | ---: | ---: |
-| `Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 1.csv` | cex-inflows-chart_combined_2026-04-17 part 1 | 2022-11-12 .. 2026-04-17 | 1,253 | daily | 0 | 26 |
-| `Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 2.csv` | cex-inflows-chart_combined_2026-04-17 part 2 | 2023-06-16 .. 2026-04-17 | 1,037 | daily | 0 | 26 |
-| `Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 3.csv` | cex-inflows-chart_combined_2026-04-17 part 3 | 2022-11-22 .. 2026-04-17 | 1,243 | daily | 0 | 26 |
-| `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 5.csv` | Stablecoin | 2020-11-14 .. 2026-04-17 | 1,981 | daily | 0 | 26 |
-| `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 6.csv` | Stablecoin | 2020-07-16 .. 2026-04-17 | 2,102 | daily | 0 | 26 |
-| `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 7.csv` | Stablecoin | 2020-12-31 .. 2026-04-17 | 1,934 | daily | 0 | 26 |
-| `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 1.csv` | Stablecoin | 2017-11-29 .. 2026-04-17 | 3,062 | daily | 0 | 26 |
-| `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 2.csv` | Stablecoin | 2020-12-02 .. 2026-04-17 | 1,963 | daily | 0 | 26 |
-| `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 3.csv` | Stablecoin | 2020-01-04 .. 2026-04-17 | 2,296 | daily | 0 | 26 |
-| `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 4.csv` | Stablecoin | 2018-09-11 .. 2026-04-17 | 2,776 | daily | 0 | 26 |
-| `Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17.csv` | Stablecoin | 2020-12-03 .. 2026-04-17 | 1,962 | daily | 0 | 26 |
-| `Defi/all_metrics_2026-04-17 (1) volume.csv` | all_metrics_2026-04-17 (1) volume | 2016-04-19 .. 2026-04-17 | 3,644 | daily | 7 | 38 |
-| `Defi/all_metrics_2026-04-17.csv` | all_metrics_2026-04-17 | 2016-04-19 .. 2026-04-17 | 3,644 | daily | 7 | 40 |
-| `Defi/cex_net_inflows_by_exchange__daily.csv` | CEX net inflows | 2022-11-12 .. 2026-04-17 | 1,253 | daily | 0 | 76 |
-| `Defi/dat-institutions.csv` | Public-company digital-asset treasuries | — | 86 | snapshot | — | 11 |
-| `Defi/etf-history.csv` | ETF | 2024-01-11 .. 2026-04-14 | 565 | daily | 260 | 3 |
-| `Defi/etf-overview.csv` | ETF | — | 25 | snapshot | — | 6 |
-| `Defi/ethereum_metrics_2026-04-17 (1).csv` | ethereum_metrics_2026-04-17 (1) | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 |
-| `Defi/ethereum_metrics_2026-04-17 Fees and revenue.csv` | Fees | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 |
-| `Defi/ethereum_metrics_2026-04-17 volume.csv` | ethereum_metrics_2026-04-17 volume | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 |
-| `Defi/rwa-category-chart_combined_2026-04-17.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-17 | 1,687 | daily | 0 | 13 |
-| `Defi/rwa-time-series-chart-active-mcap-all-2026-04-14.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-14 | 1,684 | daily | 0 | 19 |
-| `Defi/rwa-time-series-chart-defi-active-tvl-all-2026-04-14.csv` | TVL | 2021-10-25 .. 2026-04-14 | 1,633 | daily | 0 | 19 |
-| `Defi/rwa-time-series-chart-onchain-mcap-all-2026-04-14.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-14 | 1,684 | daily | 0 | 22 |
-| `Defi/solana_metrics_2026-04-17.csv` | Solana | 2021-03-18 .. 2026-04-17 | 1,857 | daily | 0 | 38 |
-| `Defi/stablecoin_mcap_by_defillama_id__daily.csv` | Stablecoin | 2017-11-29 .. 2026-04-17 | 3,062 | daily | 0 | 201 |
-| `Defi/stablecoin_mcap_id_to_name.csv` | Stablecoin | — | 200 | snapshot | — | 4 |
-| `Defi/stablecoins-chains.csv` | Stablecoin | — | 175 | snapshot | — | 3 |
-| `Defi/stablecoins.csv` | Stablecoin | — | 360 | snapshot | — | 10 |
-
 ### DefiLlama
 
-Programmatically generated TVL panels (all-chain aggregates and per-chain breakdowns), plus point-in-time snapshots of chains and protocols.
+All DefiLlama data — programmatic TVL panels plus manual website exports. Organised into topical subfolders: `TVL/` (all-chain / per-chain TVL daily and weekly panels), `Stablecoins/` (market cap time-series + entity lists), `ETFs/` (flow history + overview snapshot), `RWA/` (real-world-asset market-cap and TVL by category), `ChainMetrics/` (chain-level all-in-one dashboards: fees, revenue, volumes, TVL), `CEX/` (centralized-exchange net inflows by exchange), `DATs/` (public-company digital-asset-treasuries snapshot).
 
 | Relative path | Topic | Date range | Rows | Freq | Missing days | Cols |
 | --- | --- | --- | ---: | --- | ---: | ---: |
-| `DefiLlama/CSV/Daily/tvl_all_chains_daily.csv` | TVL | 2017-09-27 .. 2026-04-14 | 3,122 | daily | 0 | 2 |
-| `DefiLlama/CSV/Daily/tvl_by_chain_long_daily.csv` | TVL | 2017-09-27 .. 2024-09-13 | 200,000 | daily | 0 | 3 |
-| `DefiLlama/CSV/Daily/tvl_by_chain_wide_daily.csv` | TVL | 2017-09-27 .. 2026-04-14 | 3,122 | daily | 0 | 440 |
-| `DefiLlama/CSV/Snapshot/tvl_chains_current.csv` | TVL | — | 440 | snapshot | — | 6 |
-| `DefiLlama/CSV/Snapshot/tvl_protocols_current.csv` | TVL | — | 7,317 | snapshot | — | 56 |
-| `DefiLlama/CSV/Weekly/tvl_all_chains_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 447 | weekly | — | 2 |
-| `DefiLlama/CSV/Weekly/tvl_by_chain_long_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 60,392 | weekly | — | 3 |
-| `DefiLlama/CSV/Weekly/tvl_by_chain_wide_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 447 | weekly | — | 440 |
+| `DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 1.csv` | cex-inflows-chart_combined_2026-04-17 part 1 | 2022-11-12 .. 2026-04-17 | 1,253 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 2.csv` | cex-inflows-chart_combined_2026-04-17 part 2 | 2023-06-16 .. 2026-04-17 | 1,037 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 3.csv` | cex-inflows-chart_combined_2026-04-17 part 3 | 2022-11-22 .. 2026-04-17 | 1,243 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 5.csv` | Stablecoin | 2020-11-14 .. 2026-04-17 | 1,981 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 6.csv` | Stablecoin | 2020-07-16 .. 2026-04-17 | 2,102 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 7.csv` | Stablecoin | 2020-12-31 .. 2026-04-17 | 1,934 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 1.csv` | Stablecoin | 2017-11-29 .. 2026-04-17 | 3,062 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 2.csv` | Stablecoin | 2020-12-02 .. 2026-04-17 | 1,963 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 3.csv` | Stablecoin | 2020-01-04 .. 2026-04-17 | 2,296 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 4.csv` | Stablecoin | 2018-09-11 .. 2026-04-17 | 2,776 | daily | 0 | 26 |
+| `DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17.csv` | Stablecoin | 2020-12-03 .. 2026-04-17 | 1,962 | daily | 0 | 26 |
+| `DefiLlama/CEX/cex_net_inflows_by_exchange__daily.csv` | CEX net inflows | 2022-11-12 .. 2026-04-17 | 1,253 | daily | 0 | 76 |
+| `DefiLlama/ChainMetrics/all_metrics_2026-04-17 (1) volume.csv` | all_metrics_2026-04-17 (1) volume | 2016-04-19 .. 2026-04-17 | 3,644 | daily | 7 | 38 |
+| `DefiLlama/ChainMetrics/all_metrics_2026-04-17.csv` | all_metrics_2026-04-17 | 2016-04-19 .. 2026-04-17 | 3,644 | daily | 7 | 40 |
+| `DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 (1).csv` | ethereum_metrics_2026-04-17 (1) | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 |
+| `DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 Fees and revenue.csv` | Fees | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 |
+| `DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 volume.csv` | ethereum_metrics_2026-04-17 volume | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 |
+| `DefiLlama/ChainMetrics/solana_metrics_2026-04-17.csv` | Solana | 2021-03-18 .. 2026-04-17 | 1,857 | daily | 0 | 38 |
+| `DefiLlama/DATs/dat-institutions.csv` | Public-company digital-asset treasuries | — | 86 | snapshot | — | 11 |
+| `DefiLlama/ETFs/etf-history.csv` | ETF | 2024-01-11 .. 2026-04-14 | 565 | daily | 260 | 3 |
+| `DefiLlama/ETFs/etf-overview.csv` | ETF | — | 25 | snapshot | — | 6 |
+| `DefiLlama/RWA/rwa-category-chart_combined_2026-04-17.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-17 | 1,687 | daily | 0 | 13 |
+| `DefiLlama/RWA/rwa-time-series-chart-active-mcap-all-2026-04-14.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-14 | 1,684 | daily | 0 | 19 |
+| `DefiLlama/RWA/rwa-time-series-chart-defi-active-tvl-all-2026-04-14.csv` | TVL | 2021-10-25 .. 2026-04-14 | 1,633 | daily | 0 | 19 |
+| `DefiLlama/RWA/rwa-time-series-chart-onchain-mcap-all-2026-04-14.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-14 | 1,684 | daily | 0 | 22 |
+| `DefiLlama/Stablecoins/stablecoin_mcap_by_defillama_id__daily.csv` | Stablecoin | 2017-11-29 .. 2026-04-17 | 3,062 | daily | 0 | 201 |
+| `DefiLlama/Stablecoins/stablecoin_mcap_id_to_name.csv` | Stablecoin | — | 200 | snapshot | — | 4 |
+| `DefiLlama/Stablecoins/stablecoins-chains.csv` | Stablecoin | — | 175 | snapshot | — | 3 |
+| `DefiLlama/Stablecoins/stablecoins.csv` | Stablecoin | — | 360 | snapshot | — | 10 |
+| `DefiLlama/TVL/Daily/tvl_all_chains_daily.csv` | TVL | 2017-09-27 .. 2026-04-14 | 3,122 | daily | 0 | 2 |
+| `DefiLlama/TVL/Daily/tvl_by_chain_long_daily.csv` | TVL | 2017-09-27 .. 2024-09-13 | 200,000 | daily | 0 | 3 |
+| `DefiLlama/TVL/Daily/tvl_by_chain_wide_daily.csv` | TVL | 2017-09-27 .. 2026-04-14 | 3,122 | daily | 0 | 440 |
+| `DefiLlama/TVL/Snapshot/tvl_chains_current.csv` | TVL | — | 440 | snapshot | — | 6 |
+| `DefiLlama/TVL/Snapshot/tvl_protocols_current.csv` | TVL | — | 7,317 | snapshot | — | 56 |
+| `DefiLlama/TVL/Weekly/tvl_all_chains_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 447 | weekly | — | 2 |
+| `DefiLlama/TVL/Weekly/tvl_by_chain_long_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 60,392 | weekly | — | 3 |
+| `DefiLlama/TVL/Weekly/tvl_by_chain_wide_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 447 | weekly | — | 440 |
 
 ### Farside ETF Data
 

@@ -57,11 +57,11 @@ CryptoQuant/BTC/Derivatives/Bitcoin Estimated Leverage Ratio - All Exchanges - D
 CryptoQuant/BTC/Derivatives/Bitcoin Funding Rates - All Exchanges - Day.csv,c650423fc324a207e25ceea45dcd2bebd47dbe95eaf9d6c7013b6b8dd67c5346
 "CryptoQuant/BTC/Derivatives/Bitcoin Futures Taker CVD(Cumulative Volume Delta, 90-day) - Day.csv",4e351555c75ccb73b2a7fbc0a50a83b6f75f4c0e3a12f81a6372065e98cae26b
 "CryptoQuant/BTC/Derivatives/Bitcoin Long Liquidations - All Exchanges, All Symbol - Day.csv",f0c62c6b2738d86a878e2ae8f11d36168614a71d36a8a692c3e01baf084f5d46
-"CryptoQuant/BTC/Derivatives/Bitcoin Long Liquidations USD - All Exchanges, All Symbol - Day.csv",124c552669b90c15deef3ca0f353265c6333e76445c434085ed931bfe2c293a7
+"CryptoQuant/BTC/Derivatives/Bitcoin Long Liquidations USD - All Exchanges, All Symbol - Day.csv",06aa152c479edd9dd210bd21dcd2c14b856a15af603ea00274d80665a4f99fb5
 "CryptoQuant/BTC/Derivatives/Bitcoin Open Interest - All Exchanges, All Symbol - Day.csv",f9ec286a6273cba609abd1ff6a49b909cda37e66bcaa3d7b1662309e5fd3a044
 "CryptoQuant/BTC/Derivatives/Bitcoin Short Liquidations - All Exchanges, All Symbol - Day.csv",86439a4560ffbd56fc347deb4c28cd86a9637d76d2b568c12ad388dcf7f3774e
 "CryptoQuant/BTC/Derivatives/Bitcoin Short Liquidations USD - All Exchanges, All Symbol - Day.csv",0198f1a6e6c6245cf578bd5fcbbc28159cf13a04db1652bfc60fcfff3a370c70
-CryptoQuant/BTC/Derivatives/README.md,39e70880fdda78c2e19da706b46776dc71b1d68c0dacdd5d630d6683b03c6937
+CryptoQuant/BTC/Derivatives/README.md,26187082bad37c94e30ff938563b10f90717ca0348f5109ea253e779fb6413ed
 CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Depositing Addresses - All Exchanges - Day.csv,71bc69008de62dd734cf3600dce569a42008229930fdf75cb09afb6ef9f2b6d9
 CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Depositing Transactions - All Exchanges - Day.csv,15a3560c83a31a931fe52684caa150ea233611203b18d7fb47c614720aa5d121
 CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange In-House Flow (Mean) - All Exchanges - Day.csv,ac0d291379e9a42b347dba011d72be755463f1a382e0489a547e6fa0c94af858
@@ -77,10 +77,10 @@ CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Outflow (Mean) - All Exchanges -
 CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Outflow (Top10) - All Exchanges - Day.csv,d596deba5333ae5abfcfe1c1560e4ecf205edb9ade57baa83d1bf3217f1fe2f2
 CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Outflow (Total) - All Exchanges - Day.csv,31c2a46738e4a1da9900fa6665a1585744aae627e0f148a203ec491c29acee2b
 CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Reserve - All Exchanges - Day.csv,6754f1983c46c5fc3e188fb452961f5f2b4ad5f22ca35bb20095944127906e05
-CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Reserve USD - All Exchanges - Day.csv,51126316e7c3ab7e47ef2658936d22edbcd96c1e1ca967afe45ad4e6ade0d33e
+CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Reserve USD - All Exchanges - Day.csv,14cddc224af2f45db46e8459075aa0fe52fc1deff6e51d07df0f0f1f92444f72
 CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Withdrawing Addresses - All Exchanges - Day.csv,4331236c0a36b80bf511194ab557d24ce5e766c59d6604a346eff2ad24f7ac0c
 CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Withdrawing Transactions - All Exchanges - Day.csv,6e3b1755bca4389823a58a09a0511e943fd1c7143bd1c7fe17e23b8246edd48d
-CryptoQuant/BTC/Exchange Flows/README.md,446b87dbb2b3a06df1ccd445314af91a2a9ff48eec14d508598949d68ff4c809
+CryptoQuant/BTC/Exchange Flows/README.md,a18c5661efeb294136800f19105818b5daf8972efee2dfb949f47f8410b0b927
 CryptoQuant/BTC/Fees And Revenue/Bitcoin Block Rewards - Day.csv,6cc3f6f6a45715dc9a8d951c76c263b5efe20741bdcc215e0f539e9fc5b4fb60
 CryptoQuant/BTC/Fees And Revenue/Bitcoin Block Rewards USD - Day.csv,c6ebfc793e5e7ea3391694c782b76d23ce2891306f91753fb4b4db05b0a681ba
 CryptoQuant/BTC/Fees And Revenue/Bitcoin Fees (Total) - Day.csv,96dbd906a249243c6901f74fb5529fd92923c26245d84ceadf437235f263bef9
@@ -116,27 +116,27 @@ CryptoQuant/BTC/Fund Data/README.md,83fe9dea962caec460ae4fb8e5c7dec53c3f5e476132
 "CryptoQuant/BTC/Inter Entity Flows/Bitcoin Miner to Miner Flow (Total) - All Miners, 1THash - Day.csv",ff50f5fe588e3926062fa73a66b74adcbf52a4aacfbdb2af5f80c969b90170b0
 "CryptoQuant/BTC/Inter Entity Flows/Bitcoin Miner to Miner Transactions - All Miners, 1THash - Day.csv",f1bc01c61c290a13a57fc1ff5f191e04ab2edd848f318644702be0ea4d28f94d
 CryptoQuant/BTC/Inter Entity Flows/README.md,12e1ed5586ec9145026cd36c2769fa099349f24c37c8bd851f4c04dbdbf008a1
-CryptoQuant/BTC/Market Data/Bitcoin Average Cap - Day.csv,178ba9df5ac8a37974c857d6a65dffe5861df0f90ca2d09ecdadf3ca061eccec
-CryptoQuant/BTC/Market Data/Bitcoin Delta Cap - Day.csv,5508817bdfe88764fd37325d4d85ba393f91840b7adcd830838b397f29bba0c9
-CryptoQuant/BTC/Market Data/Bitcoin Exchange Supply - Day.csv,f7762c598c15eaf791a9a40e4d15eff2aaf8e747cfc277f5acaeb69ad218de7d
-CryptoQuant/BTC/Market Data/Bitcoin Geographical Supply Distribution by Entities - Day.csv,f80a85faf704ad3e0dc44cc05eb407b427ca54b8d34662f1d36d602a8477980c
-CryptoQuant/BTC/Market Data/Bitcoin Market Cap - Day.csv,416d9a56d361ee39d1db6eff0b73ce391379051c456a6fb629148b74c91e0cda
-"CryptoQuant/BTC/Market Data/Bitcoin Price & Volume - Spot, All Exchanges, BTC-USD - Day.csv",bc5e5e4fee9836b9c90707ba6324a47984dcb507e850df9ea209c1059c5e29ab
+CryptoQuant/BTC/Market Data/Bitcoin Average Cap - Day.csv,8c275eb4a1dfa7e7ec8820dc42dbbc62a16a3b3207d30de4ac5ff5724645891f
+CryptoQuant/BTC/Market Data/Bitcoin Delta Cap - Day.csv,ee4639609df6fd2c2bbd341b55ff73857039e1029b51a934c42a7ff7f8a7074e
+CryptoQuant/BTC/Market Data/Bitcoin Exchange Supply - Day.csv,9367d2ab3499e64a724aac0c283bd9c2da1cfb69d0b02b503a3e3a5cfdd3df49
+CryptoQuant/BTC/Market Data/Bitcoin Geographical Supply Distribution by Entities - Day.csv,cac25aeca01cb2998a04352fd3884e5fc0308d70e5ef3ae6751bd2bcd2298242
+CryptoQuant/BTC/Market Data/Bitcoin Market Cap - Day.csv,307782c569605c40b67911b79d1f639d271bcf7a2ba782dbbdee00aa435991bf
+"CryptoQuant/BTC/Market Data/Bitcoin Price & Volume - Spot, All Exchanges, BTC-USD - Day.csv",addf5c4c1784fea8be016c1bcb542cbe09ca18f03adb6819a85237ee70bdc4d8
 CryptoQuant/BTC/Market Data/Bitcoin Price & Volume KRW - Spot - Day.csv,1f16d6a3182bdf833b1a74f4669b943f3ccf854a4792a9ecbf55999912ef5c4e
-CryptoQuant/BTC/Market Data/Bitcoin Realized Cap - Day.csv,3bc718c49bcddf15e5ba409775734b673b5de7a0ec1a51c41f21fb72b38f5726
+CryptoQuant/BTC/Market Data/Bitcoin Realized Cap - Day.csv,7ba93fecdd76fc0ed23240bfa6eb24782070270238c26113e5d5c9114913c4ee
 CryptoQuant/BTC/Market Data/Bitcoin Realized Cap - UTXO Age Bands (%) - Day.csv,6fe6c4ee5eb9465825d5f0bf72fe5f35f0cacaeb8083e08fe817da9ddac39c8f
-CryptoQuant/BTC/Market Data/Bitcoin Realized Cap - UTXO Age Bands USD - Day.csv,7a1cffd71f43cf8eda91d78647b3ec69d680d169a418b2bcf36ace127c8513fa
+CryptoQuant/BTC/Market Data/Bitcoin Realized Cap - UTXO Age Bands USD - Day.csv,362d2e52dd2982cf58f4488ce0d2b6ab844136590a3b89338002dfab63092e96
 CryptoQuant/BTC/Market Data/Bitcoin Realized Cap - UTXO Value Bands (%) - Day.csv,8fcc013f314c98d4877489e893bfaa0e18f8b9f101f887b11f74019af93cf7bb
-CryptoQuant/BTC/Market Data/Bitcoin Realized Cap - UTXO Value Bands USD - Day.csv,ee0e9ad9244fb57466786928e2a5ab150b1f2d1c58a0d46e64514a628cc8bd91
+CryptoQuant/BTC/Market Data/Bitcoin Realized Cap - UTXO Value Bands USD - Day.csv,adb6fe53368ff07e3aafa3520af267b86c99b57c3992bad15000fa9d2c5b9c23
 CryptoQuant/BTC/Market Data/Bitcoin Taker Buy Ratio - All Exchanges - Day.csv,235501c370bd6fb9d30fe97ebd1f654a054deb256542ac83b2faf1b67842c66e
 CryptoQuant/BTC/Market Data/Bitcoin Taker Buy Sell Ratio - All Exchanges - Day.csv,76c95353e3ef32fd8a98c84ff9ea3d7e64df014bf78db80ad6c2da6c98d38f82
 CryptoQuant/BTC/Market Data/Bitcoin Taker Buy Volume - All Exchanges - Day.csv,e6f50626ef5a61ed0f909d33d1896538d9c6a985fc2048c20e608423841dbb6c
 CryptoQuant/BTC/Market Data/Bitcoin Taker Sell Ratio - All Exchanges - Day.csv,7529134f05d70a080b6e745eb44d226627d4004d173e2f94abec3e30c005bcff
 CryptoQuant/BTC/Market Data/Bitcoin Taker Sell Volume - All Exchanges - Day.csv,ff2389551495c8cc4813da6aeb6118416c94b473d1ff7df76c0d6f68554b59ff
-CryptoQuant/BTC/Market Data/Bitcoin Thermo Cap - Day.csv,e8411e62e15a3479aca33c06e1e755f9e4e964e80df5ccda32ebd4848f95d0b7
-CryptoQuant/BTC/Market Data/Bitcoin Trading Volume (KYC VS. Non-KYC) - Day.csv,10ef7f3df4c542d8a3026d036c2bb191004355a93c20cbe934bb5b09480bc563
-CryptoQuant/BTC/Market Data/Bitcoin Trading Volume (Spot VS. Derivative) - Day.csv,fff50006bb4f83b03b920eac792a2f9b6742ab6519a3457f95fcfdefe157ddf1
-CryptoQuant/BTC/Market Data/README.md,034d9e0fa66bf61f896980669e1b4389dfdc20d5c066ab2cee0a7ebe5d9c86ca
+CryptoQuant/BTC/Market Data/Bitcoin Thermo Cap - Day.csv,b1625c1b2344b3e94f01f437d09abc02bcb719388269698cbc077da8870a220d
+CryptoQuant/BTC/Market Data/Bitcoin Trading Volume (KYC VS. Non-KYC) - Day.csv,e8d6ef58d9ef0d04d90fb849f4380011d2f221da94397206e108fe667aaa9273
+CryptoQuant/BTC/Market Data/Bitcoin Trading Volume (Spot VS. Derivative) - Day.csv,8a64f364c7cc1e936da4ccca7068f9dd03a65bd5c33f7e8f9e7429d08326a0c4
+CryptoQuant/BTC/Market Data/README.md,fedbd4c10787c5146e6622133a05fb7e4c498740eef28c0dcd9c654e287cf4f6
 CryptoQuant/BTC/Market Indicator/Bitcoin Adjusted SOPR (aSOPR) - Day.csv,645f9474f8fe621365294999c53a947cdf9c3ef10e32333e2450a7d351adff3e
 CryptoQuant/BTC/Market Indicator/Bitcoin Average Dormancy - Day.csv,b4807df63ae62190dd1af945fe7ba8fb681c7593d109509b56c682ee403e962a
 CryptoQuant/BTC/Market Indicator/Bitcoin Average Supply-Adjusted CDD - Day.csv,ef28e1e8dd43e3fb35167e0a9437de5933cec65352fbc4cfc162c35de508f896
@@ -158,25 +158,25 @@ CryptoQuant/BTC/Market Indicator/Bitcoin SOPR Ratio (LTH-SOPR_STH-SOPR) - Day.cs
 CryptoQuant/BTC/Market Indicator/Bitcoin Short Term Holder SOPR - Day.csv,050c94fc8abb5919b40c0dd7278a48a485f5ff042b2060038ffaeb3139ac5810
 CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Age Bands (%) - Day.csv,460d618e4a634a509dcba3cadb5c170541aa761c7f057e617dcca8e23ceb8bdb
 CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Age Bands - Day.csv,e8cb43e6ad1289be85e2ef368bb58751a33a53062dde6b0bf7ccaacac086d230
-CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Age Bands USD - Day.csv,898a96a7ae03ca94ef126288ee00ece4781d2368ffcd78e086c59a429fc90093
+CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Age Bands USD - Day.csv,642c6a298b6477252ca2b3d05dd55c0707a95728fb542f62cc0e019324e75139
 CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Profit Ratio (SOPR) - Day.csv,40c9e98659f0d23bf4b81787531f81f2bb7c365da8dc53fbcf1c265609a20813
 CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Value Bands (%) - Day.csv,0a74ee15d13abf449c4aa56d72061178bb931ba1007ac21a11b774f9707a78e6
 CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Value Bands - Day.csv,f9888936873a406cf2d7994334673feffae83b21e10b19acc460a514875f115b
-CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Value Bands USD - Day.csv,65717fe72d4c98f3f3bd9e6577c0e599e4c8eae7f817b99b6c89bea5c6cf72c2
+CryptoQuant/BTC/Market Indicator/Bitcoin Spent Output Value Bands USD - Day.csv,d631cb533de29e0d9656e97530084078827d69c910234c61b95cca2b8cdf9d08
 "CryptoQuant/BTC/Market Indicator/Bitcoin Spot Taker CVD(Cumulative Volume Delta, 90-day) - Day.csv",a54742dc27efbe0fe066ac5bcc2e3e7686bde5cf604931998f39495439261dc7
 CryptoQuant/BTC/Market Indicator/Bitcoin Stock-to-Flow Ratio - Day.csv,8608f3e15405d1975f34bba029806f9c690f7ec309b7e17743948409d2d3391e
 CryptoQuant/BTC/Market Indicator/Bitcoin Stock-to-Flow Reversion - Day.csv,72093cbabd91454fccdfeb7725f139ce1d41f8bd6c3f59c8ac1a90c94105d0a9
 CryptoQuant/BTC/Market Indicator/Bitcoin Sum Coin Age - Day.csv,a5538de61f6d5355d2b4f1ba9289c901ab2f2cea58903f2d0748abdfccc61dd3
 CryptoQuant/BTC/Market Indicator/Bitcoin Sum Coin Age Distribution (%) - Day.csv,2f64acd81af6ce0acb244ef87cb38438a9c5542f16a4b1a9b94d21a3d4636a85
-CryptoQuant/BTC/Market Indicator/Bitcoin Sum Coin Age Distribution - Day.csv,2183c53e5d6530148f1e26ea92d209d2e3c9aa19524b4c060e03f7e599913a80
-CryptoQuant/BTC/Market Indicator/Bitcoin Sum Coin Dollar Age - Day.csv,c7660434d93a4f985e5c67db1ed834b00a5da66fdb64060994b6df05c430298b
+CryptoQuant/BTC/Market Indicator/Bitcoin Sum Coin Age Distribution - Day.csv,7a76fff14e1fe0821ea9e586f3515fb1a2313bd05487f7b5abc0b649b2cd2db1
+CryptoQuant/BTC/Market Indicator/Bitcoin Sum Coin Dollar Age - Day.csv,76538d5ce75065f00b661f8a6c6666e5c0d49968e541048984dba84755e94165
 CryptoQuant/BTC/Market Indicator/Bitcoin Supply Adjusted Dormancy - Day.csv,fd5cc7cb7e364f47fd5b9fbe93edb3acf3bc8539bf6a0499b192c2c2738d9698
 CryptoQuant/BTC/Market Indicator/Bitcoin Supply in Loss (%) - Day.csv,b479b907818858ba79c5ca4007747d4c6c7d9d540ad190205656b054f0003f2d
 CryptoQuant/BTC/Market Indicator/Bitcoin Supply in Loss - Day.csv,472d0bff65ae5372f6f0d706d63381d3500aa0257a9864eef78b54cd809fa92f
 CryptoQuant/BTC/Market Indicator/Bitcoin Supply in Profit (%) - Day.csv,eda5c3c981f4d478d8ed7300d23ffe2b1dcdf14e30071c23476bdbadd7838e7a
 CryptoQuant/BTC/Market Indicator/Bitcoin Supply in Profit - Day.csv,465c9e570584568307c3ff1a2e4e3fbd22e812dd4c8ff6ce54f2f8cbfbc1dbbc
 CryptoQuant/BTC/Market Indicator/Bitcoin Supply-Adjusted CDD - Day.csv,0b237a1af19bd356d1c893e317fbd61f8686a1e7c2ed25337b4e0da79dd632a0
-CryptoQuant/BTC/Market Indicator/README.md,5c9895566c3b85b4ac25c26db9c50d97ca6e9bd48e756d5f0522e1e7eb130273
+CryptoQuant/BTC/Market Indicator/README.md,e6a4cf6f500e65db818d6396448a63ee8ff2b6b66ef6dd9101c072859fb74e22
 "CryptoQuant/BTC/Miner Flows/Bitcoin Exchange to Miner Flow (Mean) - All Exchanges, All Miners - Day.csv",dce227a45b272fea38bad39cfaf9fd06477d14bf27cfa07758f14190673042d9
 "CryptoQuant/BTC/Miner Flows/Bitcoin Exchange to Miner Flow (Total) - All Exchanges, All Miners - Day.csv",3547c219273962c1bf1eb1ac4978925e1eaee106131428543225fec89e53f2c7
 "CryptoQuant/BTC/Miner Flows/Bitcoin Exchange to Miner Transactions - All Exchanges, All Miners - Day.csv",0c58bcfdfc84057409ae99125646e65d30ce4f193d96a8178cdf29a1c2be3d3e
@@ -188,12 +188,12 @@ CryptoQuant/BTC/Miner Flows/Bitcoin Miner In-House Transactions - All Miners - D
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Inflow (Mean) - All Miners - Day.csv,eb3d26b1b07192eb339360cf531fab9cd94f17df395a2d97d538ea558e80b640
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Inflow (Top10) - All Miners - Day.csv,a6922004a0c52db4811fb85bb9a514b98512da95c09cd29c7929422d5ae99c19
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Inflow (Total) - All Miners - Day.csv,f5e072b847bb1e8849873b82a03b1fecaddd9caaf2bf4f18d81ed7fcc311d33c
-CryptoQuant/BTC/Miner Flows/Bitcoin Miner Netflow Total - All Miners - Day.csv,508b95dc48584e9708ac2a2aacbf3da516df50e1e31c9f77cd78470e87536148
+CryptoQuant/BTC/Miner Flows/Bitcoin Miner Netflow Total - All Miners - Day.csv,2020244018142041b17fa65d41403e9bb1f95c2398739a103545ab56bca01f32
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Outflow (Mean) - All Miners - Day.csv,a39d02546a29442abd11db9dac2229928b47aecedf356047fad68767ddb4d1a8
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Outflow (Top10) - All Miners - Day.csv,93926ae3e898b81b69e46470d5d78826b1699f87447ff1307b498cc4f88ee184
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Outflow (Total) - All Miners - Day.csv,ce9c0a6ee91302026ced908f243fba27f32c575cfbb5f9cfd3b42516d9d50608
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Reserve - All Miners - Day.csv,c6675e1ee8390c5831cc5522720ce55cabca9037a49a0d67bb32969c7edb77a2
-CryptoQuant/BTC/Miner Flows/Bitcoin Miner Reserve USD - All Miners - Day.csv,a30518e6d18fb2f111df791c62023d23a5cacc75cbf0b30fd9300f21e667da3c
+CryptoQuant/BTC/Miner Flows/Bitcoin Miner Reserve USD - All Miners - Day.csv,1fe54785a85109354c23298ccbed26695c85c19ff0a3286559622e480b44f9e2
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Supply Ratio - All Miners - Day.csv,3bb9259e9a8f92d39e527ca62edeba3f97f6c1d9d859ac5c1371af1bc6fa39d9
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Withdrawing Addresses - All Miners - Day.csv,748b8afac93af4d0d5bc5775541d1da2ea4fca856d3456d4fa60c91c3af655b0
 CryptoQuant/BTC/Miner Flows/Bitcoin Miner Withdrawing Transactions - All Miners - Day.csv,7942bc262ac0822b733a29422827b5070fe832551ce3ef4867a2df02617ab04d
@@ -201,11 +201,11 @@ CryptoQuant/BTC/Miner Flows/Bitcoin Miner Withdrawing Transactions - All Miners 
 "CryptoQuant/BTC/Miner Flows/Bitcoin Miner to Exchange Flow (Total) - All Miners, All Exchanges - Day.csv",32adc7df4f2833c181ad7f155fbcd5d54725cce9009035fe1c4a0ba42468c6aa
 "CryptoQuant/BTC/Miner Flows/Bitcoin Miner to Exchange Transactions - All Miners, All Exchanges - Day.csv",9d54056297f1459672578afdc15fa04019971dd1e8573275b2bc22d38a6c46b9
 CryptoQuant/BTC/Miner Flows/Bitcoin Miners' Position Index (MPI) - Day.csv,8c123cc407d60a9fc61c66a3a19d1c41bb6a95f51b8042a1d7a22a835239ff98
-CryptoQuant/BTC/Miner Flows/README.md,a2ce08eaaef5e2abde35310ae07e6eeb7a6ccfe2304d2a113c04316ffceb523d
+CryptoQuant/BTC/Miner Flows/README.md,45e2b352ba496204cb910abe0d8b28f48fbee9f64cb5824285cbe6ce8a8fda1e
 CryptoQuant/BTC/Network Indicator/Bitcoin Coin Days Destroyed (CDD) - Day.csv,178fb970499250aa47a6dcb37ecf4458fb10dd92f998db857e96119e06d015fa
 CryptoQuant/BTC/Network Indicator/Bitcoin UTXO Age Bands (%) - Day.csv,59fae5d490fbba25b4ac6e3fed55f009680f39182cd4d05727b325e64bfc987d
 CryptoQuant/BTC/Network Indicator/Bitcoin UTXO Age Bands - Day.csv,a062f50ad7f4ebd4d01c01384f78cfe34f6f0db6f3df0786ca75cdcd9b3234a0
-CryptoQuant/BTC/Network Indicator/Bitcoin UTXO Age Bands USD - Day.csv,eb3c86628d62cd775a06a7340c9ee897936d29b3b1ffd7217bf1a1eec064e58e
+CryptoQuant/BTC/Network Indicator/Bitcoin UTXO Age Bands USD - Day.csv,b1168804893500abe6723eb2032f248ed649e56d1e5664018279ea22832ddd80
 CryptoQuant/BTC/Network Indicator/Bitcoin UTXO Count - Age Bands (%) - Day.csv,efb5b2b51da3148896aba152d8dbfed9760de3f4263ca9de88a13c40b25d803f
 CryptoQuant/BTC/Network Indicator/Bitcoin UTXO Count - Age Bands - Day.csv,d49c56588c525f37021921ce6a4ce65e8583dc5f1d784ce48bd30d520d497320
 CryptoQuant/BTC/Network Indicator/Bitcoin UTXO Count - Value Bands (%) - Day.csv,f3c8d4c5870d8931365446751590ad722a47df73a97a7078fea61ab3d23d99b4
@@ -216,15 +216,15 @@ CryptoQuant/BTC/Network Indicator/Bitcoin UTXOs in Loss (%) - Day.csv,f0c500add9
 CryptoQuant/BTC/Network Indicator/Bitcoin UTXOs in Loss - Day.csv,620da72105e22b2d9c3390b0a2279b32380d266b6ba82eb88fdc6fd74ad2c38a
 CryptoQuant/BTC/Network Indicator/Bitcoin UTXOs in Profit (%) - Day.csv,6e523ecb7a71124e52de308373c87d46adaf7e73d12e900ea2b4df08f4872a01
 CryptoQuant/BTC/Network Indicator/Bitcoin UTXOs in Profit - Day.csv,9a4967f3e7cc1e3dc08dc538ddd71db642380308482bbd85109f7d44e8a52bf5
-CryptoQuant/BTC/Network Indicator/README.md,8df1de4e5dc091a1230da600c904b3b56d7f19f8ddcd5e0c693888866118f227
+CryptoQuant/BTC/Network Indicator/README.md,e213e914e814ffc8f6ae235e4855034a6ff3a034b4c9642f7458989341aa6af9
 CryptoQuant/BTC/Network Stats/Bitcoin Block Interval (Mean) - Day.csv,3470ccd63eba62674264e645df1203ddcea95d19929aebfcb999d812c013a5a7
 CryptoQuant/BTC/Network Stats/Bitcoin Block Size (Mean) - Day.csv,23f3552cba5d8e1348b971bb8c5c0c308b19b3529312a9143a075e554bc68799
 CryptoQuant/BTC/Network Stats/Bitcoin Blocks Mined - Day.csv,0fa0a666788e39fd969c4640d4a6d4a039b8b199a5bfe016f1eec46afdb54ca5
 CryptoQuant/BTC/Network Stats/Bitcoin Difficulty - Day.csv,cd0ce952be7f5f9f6073ae1696562957562222f9a650237c892b0eec2d35dfcb
-CryptoQuant/BTC/Network Stats/Bitcoin Hashrate - Day.csv,e555b81c810d061cf0af57e9c9355d58f7a353e21b9769ed1e4da24098560763
+CryptoQuant/BTC/Network Stats/Bitcoin Hashrate - Day.csv,80514efd973494513caa2f2bc27dcc7eef2bb752a3909bc105e54d97a4757f7b
 CryptoQuant/BTC/Network Stats/Bitcoin UTXO Count - Day.csv,be32f1cda92406bbdc78e1a4e86076a22908ca6fd5eab0113bd954c0ed30a59a
 CryptoQuant/BTC/Network Stats/Bitcoin Velocity - Day.csv,fc609a68441c095419461b543407f2b6703b8f099c8d5ffe16da16c7437ad05f
-CryptoQuant/BTC/Network Stats/README.md,332b4986b7f7ef6310df8848179520e14fb9c97a3e126a710815fae76d71927d
+CryptoQuant/BTC/Network Stats/README.md,daed32e461292799fd4ad7ee6973b169010b3b27a8b1cf9cbd1f17c4dcaf2f65
 CryptoQuant/BTC/Supply/Bitcoin New Supply - Day.csv,7ccb7aed24fe17da860d094e142426562f91e25be75c7c8d6c42089c4667c9fa
 CryptoQuant/BTC/Supply/Bitcoin Total Supply - Day.csv,1439a721c3bbf06cf43e2408b7b723c24287cdc73b5ff8407723c866446253bc
 CryptoQuant/BTC/Supply/README.md,ff79245cc0bf40367f644b8b2add053bd42c7c5661744daaff27c1ae84079941
@@ -245,11 +245,11 @@ CryptoQuant/ETH/Derivatives/Ethereum Estimated Leverage Ratio - All Exchanges - 
 CryptoQuant/ETH/Derivatives/Ethereum Funding Rates - All Exchanges - Day.csv,d2898e245bdf3c5264d00e3bb40f2f31130c314046b3037363fa450d98497379
 "CryptoQuant/ETH/Derivatives/Ethereum Futures Taker CVD(Cumulative Volume Delta, 90-day) - Day.csv",d0b6dbecf4f51199104e6979935a9442e9419eea54fe55c9e0c68fcf6d3c7106
 "CryptoQuant/ETH/Derivatives/Ethereum Long Liquidations - All Exchanges, All Symbol - Day.csv",479206919dba0a99724bd3214d360aca3f965ed9bf00d70ffa7f5f06590988c4
-"CryptoQuant/ETH/Derivatives/Ethereum Long Liquidations USD - All Exchanges, All Symbol - Day.csv",9cc830c98441feacc6bb3dc2cf12ee37cf7866c35553d2dd0c69021ccf6ebbb4
-"CryptoQuant/ETH/Derivatives/Ethereum Open Interest - All Exchanges, All Symbol - Day.csv",cc4e62346b912a85916734bfa94c346b19c11d658a2637da0e39e8da68db7df9
+"CryptoQuant/ETH/Derivatives/Ethereum Long Liquidations USD - All Exchanges, All Symbol - Day.csv",a1dbc6fa54ac7db2954d28e4452d96e4f5e2127fb9c4ba037c9632040a8a164c
+"CryptoQuant/ETH/Derivatives/Ethereum Open Interest - All Exchanges, All Symbol - Day.csv",acbf93db0fbd67f5f728f5d51c7b20d10177f808dd5fc4f0126e0c2f753e34d4
 "CryptoQuant/ETH/Derivatives/Ethereum Short Liquidations - All Exchanges, All Symbol - Day.csv",5d1d3e76c24efcb309f504f3d42ae9d7fce3306e07be94a4ba587e09302e228a
-"CryptoQuant/ETH/Derivatives/Ethereum Short Liquidations USD - All Exchanges, All Symbol - Day.csv",95d3ac36c08129fdf8ee8360a5e53dbb94649e11a0ebd217d32cee424b768c3d
-CryptoQuant/ETH/Derivatives/README.md,5682d5698e041308e933598d48bdbc19f31da193dfcbc502f102bfda085da1a1
+"CryptoQuant/ETH/Derivatives/Ethereum Short Liquidations USD - All Exchanges, All Symbol - Day.csv",c8067710c48f613751c32e87ce48b87b834e90858bc644a4eef2237a5021a133
+CryptoQuant/ETH/Derivatives/README.md,55d915cdc3aa36af7f9908856a3087925d9d804bd1dcd818405e7ae6529d27f3
 CryptoQuant/ETH/ETH 2.0/Ethereum Cumulative TXs to ETH 2.0 Contract - Day.csv,16ae248b1f3a7c7d7daa720130caac1100ac02420b42e5f7748c8c75570acdc9
 CryptoQuant/ETH/ETH 2.0/Ethereum ETH 2.0 Staking Rate (%) - Day.csv,de35e3ce07861c2a0e0972baa1983062e569ef9a6bb474ee8dc23a0f4983ce8b
 CryptoQuant/ETH/ETH 2.0/Ethereum New Depositors - Day.csv,08daf61b888d5db336f715f4c2e21da53ce9302d787f88e265c2bed07b3e5a17
@@ -263,27 +263,27 @@ CryptoQuant/ETH/ETH_Metrics.txt,b3057a53e1f52f9e23c06521510a00c147f1851437aa3b11
 CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Depositing Addresses - All Exchanges - Day.csv,5a59295ade47c4294dedbb4dc5498a1a476dcd71d8a887a66ad7ddcf0ec306d5
 CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Depositing Transactions - All Exchanges - Day.csv,f4eb49f73d901de62fc4a5e8e9373e1d00766a30ce5fc90fe031eda2cd887f6d
 CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Inflow (Mean) - All Exchanges - Day.csv,a76198b2d9225e392a91d0dcc9e2746d2c1738bc8520b6e6a191e18ac6551590
-CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Inflow (Top10) - All Exchanges - Day.csv,2fb852366dd62b7b4746c1c12a087b0c157a829895fa86093672783829611ad3
-CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Inflow (Total) - All Exchanges - Day.csv,f87d88253b17c12abbd3c3075b889114024f9460dc5e8e8d69a44b6fede4a78d
-CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Netflow (Total) - All Exchanges - Day.csv,2a0c6ababe11cafa90e7265e3ebd5361cbd9a40a3dcbd6b2bcc051c0b1994e91
+CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Inflow (Top10) - All Exchanges - Day.csv,f37e801ad69bb00c19821aeca6ff4004b91914b308953ff4ee321b57f40e46a1
+CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Inflow (Total) - All Exchanges - Day.csv,95e1b6aeaa1d50cf423081f7befbffc0d35f02f7cd1329681911ac1e8fe04f55
+CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Netflow (Total) - All Exchanges - Day.csv,6c5ea19e9e36b43d286db83e898ca007b98d6b35863a03b96c3ad6ca779957a7
 CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Outflow (Mean) - All Exchanges - Day.csv,67beacf180e2750eab8a32849dfd7f01de8bf54c04e9c144ea3f1da922fbb3a0
-CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Outflow (Top10) - All Exchanges - Day.csv,ed3c3fa3245f506b00739878a17f67267c1d183768276702ef191042d72f8093
-CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Outflow (Total) - All Exchanges - Day.csv,2847f31773db9a54f53eb790ef04258f5d9db2c8daa64358a603b96b7806914c
+CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Outflow (Top10) - All Exchanges - Day.csv,7b95fc75d6c8fc3c81a64467587043d334106993835c32de1618f8c787869432
+CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Outflow (Total) - All Exchanges - Day.csv,dab09853ea4c60337dae805bce6f1682356c0d8da01d8dcfa9c92e809c40e5ac
 CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Reserve - All Exchanges - Day.csv,ffba03455608265d3dc92e74e7a6c021adccef5f66b38baeb5d01ad8d8ffc4c2
-CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Reserve USD - All Exchanges - Day.csv,d270646bc82505a83253873b4d11a8d1ebf7a79707ede6580e6ee2d59f81e14e
+CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Reserve USD - All Exchanges - Day.csv,ebe3c03101bcb52c8b3088c3f4566deac18557249e0e030a6600768380741fac
 CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Withdrawing Addresses - All Exchanges - Day.csv,2245b63d413ec2841528d3189fe5a9a243a31c549d201f820e101c7a553ef7bb
 CryptoQuant/ETH/Exchange Flows/Ethereum Exchange Withdrawing Transactions - All Exchanges - Day.csv,50ecfd397f1ed41763edfcfa778b17f5d75bd403c58aec882e4bcb589b4c9ef3
-CryptoQuant/ETH/Exchange Flows/README.md,813684167e058ec63649a54f3ce53c5918696de76a5d9538448a9228875c5055
-CryptoQuant/ETH/Fees And Revenue/Ethereum Fees (Total) - Day.csv,71991d4589e49465147ab2c327e2de1f54540eba8aa8491dd2a00123df6bc7ac
-CryptoQuant/ETH/Fees And Revenue/Ethereum Fees Burnt (Total) - Day.csv,a323434ad43b2de2a282dc0bf2f29a108a1818b2148413807d75262e2bf57924
-CryptoQuant/ETH/Fees And Revenue/Ethereum Fees Burnt USD (Total) - Day.csv,57a5a7b18ba19b7822c706346d7c149423cbf06cb9ce812ea4e776c802c504d4
+CryptoQuant/ETH/Exchange Flows/README.md,11bf846dbf5b5a58a97ec359aa9946b536fefdbe86a227ef6f4f91a9ab82d560
+CryptoQuant/ETH/Fees And Revenue/Ethereum Fees (Total) - Day.csv,25cf3a66d9d949f3a5e20f1f0f2daae76478cd8e1d0fc9d129e2231380747f36
+CryptoQuant/ETH/Fees And Revenue/Ethereum Fees Burnt (Total) - Day.csv,8964de8622109fb9d738a9e18dd75bbf564d2443f76eeba48690b2320a491d01
+CryptoQuant/ETH/Fees And Revenue/Ethereum Fees Burnt USD (Total) - Day.csv,a328b80061d61f334320ae13176c18079ec765315b1a6e6a9b8539787affa64b
 CryptoQuant/ETH/Fees And Revenue/Ethereum Fees Burnt per Transaction (Mean) - Day.csv,5466aa4a22785bb68922ad39cb7f7e5b3fefcb2aa05ef64357ac1d665a1ff6c2
 CryptoQuant/ETH/Fees And Revenue/Ethereum Fees Burnt per Transaction (Median) - Day.csv,0bec32485238e30c243a7ef993851716c62345312bb40ed2b9a58b3368601e33
 CryptoQuant/ETH/Fees And Revenue/Ethereum Fees Burnt per Transaction USD (Mean) - Day.csv,8a05b7e6b9e1ed45d096286ffd6bbae7296deea07d8d3955853067604d2f3e81
 CryptoQuant/ETH/Fees And Revenue/Ethereum Fees Burnt per Transaction USD (Median) - Day.csv,9a1c046ca61c79d350da546fed10d05fb98693c11bb9af44e4f80919603f24f3
 CryptoQuant/ETH/Fees And Revenue/Ethereum Fees per Transaction (Mean) - Day.csv,69f67ef91caadd73188b673e144468679c09f34e84868687caad58608725bee8
 CryptoQuant/ETH/Fees And Revenue/Ethereum Fees per Transaction USD (Mean) - Day.csv,6c68c07fdfb7c6b024fae597b2feef49209871d9ca311eedb23792ecaa987cef
-CryptoQuant/ETH/Fees And Revenue/README.md,9e04d000c41a2eaef344c74df8afca6fbccabbbfb1e076ace908cc5a4c4bdced
+CryptoQuant/ETH/Fees And Revenue/README.md,9b097ed5c56a585779802035e648137a21fb2a9addf8d18ebc832bf6989b7b32
 CryptoQuant/ETH/Flow Indicator/Ethereum Exchange Supply Ratio - All Exchanges - Day.csv,90ad1162b284be9268fcf5dda63170561c271854a9b77e4c5f72806f9279b182
 CryptoQuant/ETH/Flow Indicator/README.md,bc583481d1f7b9a2e1df1bc7a5b50b3ee7dcfa962bc79ad9c8949003dbd3d69f
 CryptoQuant/ETH/Fund Data/Ethereum Coinbase Premium Gap - Day.csv,cd8ca1fb2925b5ad95f1ff558975ed54ca10410078cc6a32ff212e7e5ca32c57
@@ -294,15 +294,15 @@ CryptoQuant/ETH/Fund Data/Ethereum Fund Price (USD) - ETHE - Day.csv,80b508e2243
 CryptoQuant/ETH/Fund Data/Ethereum Fund Volume - All Symbol - Day.csv,eca58521c059b301d2473690838eb9f568cb9ab34e4798fc0507555136f1512a
 CryptoQuant/ETH/Fund Data/Ethereum Korea Premium Index - Day.csv,ed07d241b3b6c684eabf99a22ec56187dc54723f6f20a8effff0d97e29b124d1
 CryptoQuant/ETH/Fund Data/README.md,762b9a435601dcc8caa15a3a98a78417dd5b4d376284fc692753326d82370248
-CryptoQuant/ETH/Market Data/Ethereum Market Cap - Day.csv,651df8e5d320e03b9715e0fac98d8b86c9c42c883c5196c0ce1e752cebe01853
-"CryptoQuant/ETH/Market Data/Ethereum Price & Volume - Spot, All Exchanges, ETH-USD - Day.csv",1df2c712c4ede7fd9a3cf4d82cb3c4edd762c0fa181ace1cd8f3227ed98d4b2d
-CryptoQuant/ETH/Market Data/Ethereum Price & Volume KRW - Spot - Day.csv,d5b67421c433be2ff7fc2d6d826608a1829d118645bea6abda86407a88e1ccba
+CryptoQuant/ETH/Market Data/Ethereum Market Cap - Day.csv,482797c71d7cde658109002d8495834bbb7d376652d182f85f7aa6237d81de14
+"CryptoQuant/ETH/Market Data/Ethereum Price & Volume - Spot, All Exchanges, ETH-USD - Day.csv",7b7c1ca837df40d28fd436ee579efd7124d1720b3f26b0c669f96d7e6794a033
+CryptoQuant/ETH/Market Data/Ethereum Price & Volume KRW - Spot - Day.csv,e0a14355f4e9e88e30b8a96f9276237a8696620abc00c2d35ea4441facffb4ee
 CryptoQuant/ETH/Market Data/Ethereum Taker Buy Ratio - All Exchanges - Day.csv,b0139cc16c0005c8018c2b2395388f0bce5a14c2cad45ffdb9685a636de20e4a
 CryptoQuant/ETH/Market Data/Ethereum Taker Buy Sell Ratio - All Exchanges - Day.csv,b06998d5e803dee887023c5de819601d526f9a85dba913c47889a2ae0aa7694f
-CryptoQuant/ETH/Market Data/Ethereum Taker Buy Volume - All Exchanges - Day.csv,8f5b255341943d33da655382d7c5bd178220917a0c26463d4129144dc911cbf8
+CryptoQuant/ETH/Market Data/Ethereum Taker Buy Volume - All Exchanges - Day.csv,fb1934506884415475f67f97bd52f924a2ca87d574ea5c97437245aa7b6fd2fa
 CryptoQuant/ETH/Market Data/Ethereum Taker Sell Ratio - All Exchanges - Day.csv,e1e1888e24c88e78b3a8b098c6cfacb660ba8f01b5eb5e808480c0762b312730
-CryptoQuant/ETH/Market Data/Ethereum Taker Sell Volume - All Exchanges - Day.csv,9b65b1e25dba6006796f4c335506b66942138df049884ea6814e37741d6f83fc
-CryptoQuant/ETH/Market Data/README.md,53e8498e28af474ea32088359dbf57cb356ffa144d2797f50be4549c5fbe8e77
+CryptoQuant/ETH/Market Data/Ethereum Taker Sell Volume - All Exchanges - Day.csv,34d6039a9d6bf26d70b2df404d81b47afcd5e939616b8f4a25f91081b0d0ba24
+CryptoQuant/ETH/Market Data/README.md,beb4bedd1f60f2d317debe81e0c9f540adca42f3c2925e911e90142c3936ab97
 CryptoQuant/ETH/Network Stats/Ethereum Destroyed Contracts - Day.csv,b77fa3bedd008791136b37a47af1f508cb0e2d96fefda2a26a233edd31aab9c2
 CryptoQuant/ETH/Network Stats/Ethereum New Contracts - Day.csv,4af3c8c0ef0b042acdcb58498da11e52f62ecb1066e550fb3b589c146aa6f485
 CryptoQuant/ETH/Network Stats/Ethereum Number of Contracts - Day.csv,97c1a2a2ee3e61fd51cf2157d7d8f13b7e93689717468deef015bddd3add8a73
@@ -321,7 +321,7 @@ CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred Between EOA (Mean) - Da
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred Between EOA (Total) - Day.csv,48fdc8c04a87a85e51a512e356098636bbbbe67e0facae381a3654cb5d0d964d
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred Between EOA USD (Mean) - Day.csv,494a72e540737cd6cd3597283f801a93c7aa933999d7c71c6cc1433a6bae5d86
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred Between EOA USD (Median) - Day.csv,44fcbbb7025204564420e72f4d83adfe6e21fa9c6f36c0123a417301224d7d84
-CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred Between EOA USD (Total) - Day.csv,67c82b121470b2382a153dcda064040d983de79fe19e5034e38f6945a979c1db
+CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred Between EOA USD (Total) - Day.csv,e75372aa7b927425900eee29fc7b0087d7123fb5ffd6467dbf46ac649817d592
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred USD (Mean) - Day.csv,427dc75b3a8360f608be92d76fd7944d3d85b4730f7fafba531052b75476979c
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred USD (Median) - Day.csv,e193ae37f12b61624a7aefdb6c8cd2d94f941a264120b3623a5903fa3600ae0c
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred USD (Total) - Day.csv,ec4bf584be85d8c4244176f69813cec3eed7ee5099a43d4127af63c5ed7628dc
@@ -336,10 +336,10 @@ CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by Contract Calls USD (
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by Contract Calls USD (Total) - Day.csv,65294f072796a5769848b7c4dc2ec92ed0ec74f9af82d793f71da5fb67acc695
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by External Contract Calls (Mean) - Day.csv,3502dfae734da561d084d39175fc2e0ebbca935c89f3daa5d394fa47c5347040
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by External Contract Calls (Median) - Day.csv,9b2ed336550ac220e90d10dfb5e002321a4d5baa70e4f64512f1751b9501b3dd
-CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by External Contract Calls (Total) - Day.csv,ea88313b1c6b2f53be295509fa2730b51f875f784b16ec701193ef6af70c1af5
+CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by External Contract Calls (Total) - Day.csv,f6929453efdbe5d514d89ebea3ce205dd1b84a8ec25d60e90b69569cd3c5ec6d
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by External Contract Calls USD (Mean) - Day.csv,dd3b8ca875bfef3b8656c636972b7160977be61b61f26d68135aa7e263afcbc0
 CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by External Contract Calls USD (Median) - Day.csv,f9413a0b3107f6557021b694f933a7dbda02fc0fc269ab99c9ded5a48b381fb9
-CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by External Contract Calls USD (Total) - Day.csv,5412218408f61c103e04757a90ed6bb1ed077e54670fcb50f468ba2f34988d40
+CryptoQuant/ETH/Transactions/Ethereum Tokens Transferred by External Contract Calls USD (Total) - Day.csv,274fa1428c28914ec85b1d85a6f6f6c939e9b77b170cc5846bf7d2b1f7b87082
 CryptoQuant/ETH/Transactions/Ethereum Transaction Count (Mean) - Day.csv,307b2361fe3bb0537cefad64d7a7e21160e8e7b6e99911fc66e6dd369fcb424a
 CryptoQuant/ETH/Transactions/Ethereum Transaction Count (Total) - Day.csv,585ca930807c02b1c01a7d52beb5023c1b798b4dea3d6eefbf9c564b383c690c
 "CryptoQuant/ETH/Transactions/Ethereum Transaction Count - Internal, External, EOA (Total) - Day.csv",fc07a30ce64a1156dc2dd08b6fc33bc6e113eb23bf5903453fee2efb27e8bd3b
@@ -352,14 +352,14 @@ CryptoQuant/ETH/Transactions/Ethereum Transfers Between EOA (Total) - Day.csv,ab
 CryptoQuant/ETH/Transactions/Ethereum Transfers by Contract Calls (Mean) - Day.csv,114f7adc083dc813c268d65dbeb0ac5ca4c180a3570353ad2ac29e39dc60ab13
 CryptoQuant/ETH/Transactions/Ethereum Transfers by External Contract Calls (Mean) - Day.csv,6c67a236b166577e9ed458aaface09972ca492d344632e6a7c502cd23f6159b1
 CryptoQuant/ETH/Transactions/Ethereum Transfers by External Contract Calls (Total) - Day.csv,cf2c258d4b8c679624674edd3d1c3a8051fc71c531082231c580fcf6490b8881
-CryptoQuant/ETH/Transactions/README.md,7fe07bb5cdac1898a753abec832a03dd9007983871e67f8b993b9732ff20fcfe
+CryptoQuant/ETH/Transactions/README.md,6981f9c0ea016daec0c0da0f77d2afee5cbefdf4786d9bd4d00de2b5228f7e83
 CryptoQuant/USDC/Addresses/README.md,326a03b3f9e7a29098d6fdb56369894d814884956185d23765d076851a461fa6
 CryptoQuant/USDC/Addresses/USD Coin(ERC20) Active Addresses - Day.csv,e59685970a830c8dd26fa4723d8c6641cc279dbddddc0272cc89aee3aca74392
 CryptoQuant/USDC/Addresses/USD Coin(ERC20) Active Receiving Addresses (%) - Day.csv,b712312491b544e12b9fcdc0b0d2597cbc72cf1961c230c6600eea16c19b7cc9
 CryptoQuant/USDC/Addresses/USD Coin(ERC20) Active Receiving Addresses - Day.csv,7c6e52d5913dbd643d354a404fedebb9fce6d7b01ec93c572bbcb7b3cc570914
 CryptoQuant/USDC/Addresses/USD Coin(ERC20) Active Sending Addresses (%) - Day.csv,4613ba401536535c1263da16584c5d6595fdd298757754bb997566dae686b1e7
 CryptoQuant/USDC/Addresses/USD Coin(ERC20) Active Sending Addresses - Day.csv,b591991dfd5a3382c5f02a11d3682a523ec3b32174a86ead05bfea90aad0fc4b
-CryptoQuant/USDC/Exchange Flows/README.md,a2ef82991ad62eed046556d36c60e1ae66e6a39ba90182c364be80ca2ef31f1c
+CryptoQuant/USDC/Exchange Flows/README.md,1ff97602c4edef53e6968c32f296c893b5206af19a423090fd05a0d5f917d235
 CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Depositing Addresses - All Exchanges - Day.csv,4ec998652903af9c60b50c696a043dbfcdcb14865f6d5f243b8592b3c7ad159f
 CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Depositing Transactions - All Exchanges - Day.csv,1930047a90ad883404309842fac6f39149cf20bb22d9db18d0f061f83f1a5665
 CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Inflow (Mean) - All Exchanges - Day.csv,992ec020d1d2db6bd327906948d79de3774dff0bf910dcf0be3383714c7e84cf
@@ -369,7 +369,7 @@ CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Netflow (Total) - All E
 CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Outflow (Mean) - All Exchanges - Day.csv,4cf36cf8a6e69cacd1bbc6913d55598d51c375d81da0e9e7d0008f4d3f6f23e2
 CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Outflow (Top10) - All Exchanges - Day.csv,b61580bbaa99071de7cd17cd0a032d1aabfcfcd5c1393ef1581f00780de91432
 CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Outflow (Total) - All Exchanges - Day.csv,439ebb7eb8464ab92bc9ce0757817e13c6fd8a22f6af52d34602ab9fe3a9d029
-CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Reserve - All Exchanges - Day.csv,5101dac065a9a123f0bb05b6d90794092e3d6695c1bb7e3647d537908e76654f
+CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Reserve - All Exchanges - Day.csv,e225fb3d3290ae2eea101d83d1ed415f1d7554a16cc3d0b570b67edad34d3fbf
 CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Withdrawing Addresses - All Exchanges - Day.csv,b6dfe17c183dbc346dec660b19c65af36342e8a50f48a09ea3bc844f4a3a8044
 CryptoQuant/USDC/Exchange Flows/USD Coin(ERC20) Exchange Withdrawing Transactions - All Exchanges - Day.csv,6486a937500f8ff5f79ccaf7de5aced4be77868124a07081c85e64a0da4b230b
 CryptoQuant/USDC/Flow Indicator/README.md,af3ed0f85ddc1a42bf35c62e9b897e53ad4f088d060cf8d438a43d8a82fdea29
@@ -385,14 +385,14 @@ CryptoQuant/USDT (TRX)/Addresses/Tether USD(TRC20) Active Receiving Addresses (%
 CryptoQuant/USDT (TRX)/Addresses/Tether USD(TRC20) Active Receiving Addresses - Day.csv,674ea342d92ef0f337605ee70d29365e8c6c95def4eaa918572066f9e7afcf15
 CryptoQuant/USDT (TRX)/Addresses/Tether USD(TRC20) Active Sending Addresses (%) - Day.csv,7689103cf2153f533d6086c2c62fd5d7f82401528a5343586ac6af1bacb5d2d9
 CryptoQuant/USDT (TRX)/Addresses/Tether USD(TRC20) Active Sending Addresses - Day.csv,6e647dce5b022955a35abc8d5782774b8f7b1f5357e6d7a70a224f96dcae0659
-CryptoQuant/USDT (TRX)/Exchange Flows/README.md,619be284c6febde92d7c7f048ed14152f033952ab8c92738953f1cb550f2b29b
+CryptoQuant/USDT (TRX)/Exchange Flows/README.md,55e8feeb5f263f5baa7469f20fcf3c4106e569d60f97c88dc1af2f8f74867869
 CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Depositing Transactions - All Exchanges - Day.csv,9fd7952d3e032e3fce3c1ae6b403a11320775dabc4592874eb25397c46f0ede0
 CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Inflow (Mean) - All Exchanges - Day.csv,14aae2b7ec2e7d508b0f3b47d04dcb3534da94fbfa1a6be3c326e8eaba0ecd1e
-CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Inflow (Top10) - All Exchanges - Day.csv,36ecaa5fef48f402e758751cef86d9fd6760e37230324eedf8bf9ff3535b0923
-CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Inflow (Total) - All Exchanges - Day.csv,59775178f61ec49dda29412c68cb85bf05d1983d3cb4ad88c2ebc9e7ad8dbd12
-CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Netflow (Total) - All Exchanges - Day.csv,6d0bfe503cc9b312ba3b2970a09b05b57a62f271383e77b4bee1c0bad54d2b77
+CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Inflow (Top10) - All Exchanges - Day.csv,854a6e4fab11aad6d8d89e409fa072c01c8817c8c9ef562fa130608351052f00
+CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Inflow (Total) - All Exchanges - Day.csv,2ade946a4728db1f1e6239ae8d7b167264dab121f8a852c3b7ec1f92aa1e94e1
+CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Netflow (Total) - All Exchanges - Day.csv,48a074a1b16ebab6be909415974fa283e68bbace2e270b982a50026ee44e10a9
 CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Outflow (Mean) - All Exchanges - Day.csv,14480243570ded5912adb9c5b24be70d401d5bf07ce100cec34e4faba7d26578
-CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Outflow (Top10) - All Exchanges - Day.csv,7b322f4e6342b3a96f70fd50e370925e958160b2e77578978eda463624497e4a
+CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Outflow (Top10) - All Exchanges - Day.csv,2e496af42f7379e910e332ea2223a3a91a20b4a2e372ba94fc900bca8504df8e
 CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Reserve - All Exchanges - Day.csv,a1fcdfa983f0796aa5ee608817ac9379132a3c55cfcd874bb1071e06056da0e5
 CryptoQuant/USDT (TRX)/Exchange Flows/Tether USD(TRC20) Exchange Withdrawing Transactions - All Exchanges - Day.csv,32f88ad58d51dbd0f88d5cf260da9dca67849031c765b0512d6fa27438ce4984
 CryptoQuant/USDT (TRX)/USDT_TRX_Metrics.txt,f2dfda96e9ff90e27a14c3954009b468be17cebd75a8e37ae25fb8bef97f54d5
@@ -437,48 +437,53 @@ CryptoQuant/WBTC/Transactions/Wrapped BTC Transaction Count (Mean) - Day.csv,2e5
 CryptoQuant/WBTC/Transactions/Wrapped BTC Transaction Count (Total) - Day.csv,ad781cea3da5ac0a6fbf75ebbd08d2257237582e095b4a37c500858eefe3dfd0
 CryptoQuant/WBTC/Transactions/Wrapped BTC Transfer Count (Total) - Day.csv,00a1369549c98aa9b4706a4e20015b181cd9fa5bfed1c22d1e7206a843e9799b
 CryptoQuant/WBTC/WBTC_Metrics.txt,9ffad2abf99cd1e9f40b7ddb0ea2f55c409051447b846502a8b0167b99ed363c
-Defi/README.md,6beb576275a1f3ad83380ab668ba4d9fa5567794147b4e493b3fabf6dd5f51de
-Defi/_raw_parts/README.md,a84272b2c8d183dde16f190517603df6f002926c65a13a36c9247bbd8a6bf32f
-Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 1.csv,7b4ea02a0d2f466be1f70b94926b965360059e80c6397b9141939dfdd0a071fe
-Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 2.csv,f1c83ff7a1053fe669864a4fadfc96085b37b3f1993be22b432e2f8c80ff3934
-Defi/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 3.csv,a2dbcaaa058667a4125d7cbd24080a81b1a4ef774d22f12becbbe27c0532d491
-Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 5.csv,e2bab51303a9ea5bcf5a11a6c58007a7a1b2cb14b9911d29f057e6c414d9fa5f
-Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 6.csv,a49eff7522ac71132abb4c5387688e89f814022dac72705113082779d4abb2b1
-Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 7.csv,3a20cf58530e8ea422a873e99d7992101314a3dd8119ea192f3ef4e7e8d7368d
-Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 1.csv,3cbde0ab12b60dc24cefb8a9ed181f15c684d5e9569ac4a5dcac2f71b096afc0
-Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 2.csv,90f59203620da9d8aa1cbba5b38c827a0cc65162796c1d9550be1c1e2c9b404c
-Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 3.csv,929a60c3044fd3e493b1db4a1824d9064c23ad3f719733004ecdc3ee8288dfb3
-Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 4.csv,16d65c589c78db9d5c5281d2c824b1b5adb4031c719057f82752f143dec01186
-Defi/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17.csv,eb60846dc300c7fcd2dd70ecc9c47769090b37b46d951e1f73f3a76e7641e944
-Defi/all_metrics_2026-04-17 (1) volume.csv,c6cd5c47b6b7652360e7f9e8c67b4ff1b1faa32eda9a0363242dc727d897700b
-Defi/all_metrics_2026-04-17.csv,31867e37a76106dd88e4217d7a4c247b6baff000599346a48aa763bed65ffae0
-Defi/cex_net_inflows_by_exchange__daily.csv,f7427a64c43225923bafb2da4ab222af32d26fbe2703c7f0b671c9b9e9206a6f
-Defi/dat-institutions.csv,4743249d89d9de0939afdc79c78299439c053a83a12d74e6cd33b341fcc4ce7d
-Defi/etf-history.csv,540236f084ccf7e1eb70f31e5d703b73f33f492e8bb20e90dcc29cb05c525d40
-Defi/etf-overview.csv,515d406f718406b9094757033048e59d27357ba6c21bad2931687af6f2f1b557
-Defi/ethereum_metrics_2026-04-17 (1).csv,0be6076357d48e5da541fb3dbd12b71d7a19efe594ca6f14a8ffc714ab18f2f9
-Defi/ethereum_metrics_2026-04-17 Fees and revenue.csv,2740d69b83945e19ef2eec8e36d9ab377359637e7a11b32f97a33f8004ae2a62
-Defi/ethereum_metrics_2026-04-17 volume.csv,73234f10b224c43f79d18b50829192a706fcf1b11c95694697bc054268e25cb4
-Defi/rwa-category-chart_combined_2026-04-17.csv,f12c25e5919978a7676435e515ecd090f21b64a8b2f068a36c8cd9bcf64c638f
-Defi/rwa-time-series-chart-active-mcap-all-2026-04-14.csv,9ba4134e36de6130e716e6b97e49493ec4c4887c32caf8a4de596873b82065d9
-Defi/rwa-time-series-chart-defi-active-tvl-all-2026-04-14.csv,27d4bb2df5f1b33efabd3d68ff1025489e621b0161ac90bd036efed3cb24296c
-Defi/rwa-time-series-chart-onchain-mcap-all-2026-04-14.csv,511a75a79f80d44d4f3b6ce1cfbce060d67228c6f80e511cfaaac83451c9c6db
-Defi/solana_metrics_2026-04-17.csv,118d38aace559019036d22d74cfeb22291fc7d35e9cc8cdc42aa96081a50ff6a
-Defi/stablecoin_mcap_by_defillama_id__daily.csv,80c661791efaf635d45a65c96b1efaff183424103e8364f8841f573ea212c02b
-Defi/stablecoin_mcap_id_to_name.csv,832b0277c4557a65e7174d430c191c0c7882385ce7c15f948be33be8445dc7d4
-Defi/stablecoins-chains.csv,c964f70eb32cf5ac964c8beee7fd17b6cf30021d81612831d9d1f3219a8cb107
-Defi/stablecoins.csv,b0be302a115e8c96fd95e2434703b3cffbe27c4d5f3b7998d072480b7ef439f1
-DefiLlama/CSV/Daily/README.md,51c496c82f9013943df9fb5afe3fba264c683a575c3778fb1b4c31f5d2b8beec
-DefiLlama/CSV/Daily/tvl_all_chains_daily.csv,af94d2971c6558399df2aa80c33ee322b87eeeeaba0beed4aad96fe6d0287368
-DefiLlama/CSV/Daily/tvl_by_chain_long_daily.csv,bcdb0331f10c35db988553765b846dbeb9809500a90dd1ab73bf449cf32a732d
-DefiLlama/CSV/Daily/tvl_by_chain_wide_daily.csv,f49692cf767af3615405f136949141e186c18866d295557a22d1c7fac1101114
-DefiLlama/CSV/Snapshot/README.md,8fcb51fd8caccd8b65c4ad171f10d58fe7250fed8cca73db190df9f7ffebd66e
-DefiLlama/CSV/Snapshot/tvl_chains_current.csv,7668362522c5cda8e5b041977f09a4f8d965aa14f43142e8317c4989cb3257ee
-DefiLlama/CSV/Snapshot/tvl_protocols_current.csv,75b1b5a82d59892540a365282c0c57635a24c313a33a0d3402919d9cd76aa2ce
-DefiLlama/CSV/Weekly/README.md,9396d85c60b983aefb3413631f65543a774271910298064bf9ae46b800cc2313
-DefiLlama/CSV/Weekly/tvl_all_chains_weekly.csv,6c58b587f7e8f34fd099e486420f48dce5db6ed0b1d0e59678bb059bb61077fe
-DefiLlama/CSV/Weekly/tvl_by_chain_long_weekly.csv,91c9918609bf539869fbbc2bde5f8be7462d3d1964a3a2f1fe2db395a612674c
-DefiLlama/CSV/Weekly/tvl_by_chain_wide_weekly.csv,12091949b3808ab9c4115b2f6f506c5b9b05ae883b40601b5ced0eb33fc8353d
+DefiLlama/CEX/README.md,6b02b6f77c47eeb7d4fe0463dc200fd6d517b88e6523de18c27ff516af887e82
+DefiLlama/CEX/cex_net_inflows_by_exchange__daily.csv,f7427a64c43225923bafb2da4ab222af32d26fbe2703c7f0b671c9b9e9206a6f
+DefiLlama/ChainMetrics/README.md,1cb44dda5babebb0078ac4074e397aa0e385a5a9b8920b3bcf1154c532f46804
+DefiLlama/ChainMetrics/all_metrics_2026-04-17 (1) volume.csv,c6cd5c47b6b7652360e7f9e8c67b4ff1b1faa32eda9a0363242dc727d897700b
+DefiLlama/ChainMetrics/all_metrics_2026-04-17.csv,31867e37a76106dd88e4217d7a4c247b6baff000599346a48aa763bed65ffae0
+DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 (1).csv,0be6076357d48e5da541fb3dbd12b71d7a19efe594ca6f14a8ffc714ab18f2f9
+DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 Fees and revenue.csv,2740d69b83945e19ef2eec8e36d9ab377359637e7a11b32f97a33f8004ae2a62
+DefiLlama/ChainMetrics/ethereum_metrics_2026-04-17 volume.csv,73234f10b224c43f79d18b50829192a706fcf1b11c95694697bc054268e25cb4
+DefiLlama/ChainMetrics/solana_metrics_2026-04-17.csv,118d38aace559019036d22d74cfeb22291fc7d35e9cc8cdc42aa96081a50ff6a
+DefiLlama/DATs/README.md,8a24f3b919eb347734a413476c00f7e6f020628c7497f6f564f9f0dee5a3a6c5
+DefiLlama/DATs/dat-institutions.csv,4743249d89d9de0939afdc79c78299439c053a83a12d74e6cd33b341fcc4ce7d
+DefiLlama/ETFs/README.md,9fc72dc2dfaa4e147898e25fd8dab40c96a779b07fc13bb350d3206c268fc4ee
+DefiLlama/ETFs/etf-history.csv,540236f084ccf7e1eb70f31e5d703b73f33f492e8bb20e90dcc29cb05c525d40
+DefiLlama/ETFs/etf-overview.csv,515d406f718406b9094757033048e59d27357ba6c21bad2931687af6f2f1b557
+DefiLlama/RWA/README.md,73a0aff49d8ccb10de3668524eacbc9330878614cb5339f1de6246980c8c4980
+DefiLlama/RWA/rwa-category-chart_combined_2026-04-17.csv,f12c25e5919978a7676435e515ecd090f21b64a8b2f068a36c8cd9bcf64c638f
+DefiLlama/RWA/rwa-time-series-chart-active-mcap-all-2026-04-14.csv,9ba4134e36de6130e716e6b97e49493ec4c4887c32caf8a4de596873b82065d9
+DefiLlama/RWA/rwa-time-series-chart-defi-active-tvl-all-2026-04-14.csv,27d4bb2df5f1b33efabd3d68ff1025489e621b0161ac90bd036efed3cb24296c
+DefiLlama/RWA/rwa-time-series-chart-onchain-mcap-all-2026-04-14.csv,511a75a79f80d44d4f3b6ce1cfbce060d67228c6f80e511cfaaac83451c9c6db
+DefiLlama/Stablecoins/README.md,b47bc20533643e552789bddfb3fb63af07daeb69c263e3c504d715512a486438
+DefiLlama/Stablecoins/stablecoin_mcap_by_defillama_id__daily.csv,80c661791efaf635d45a65c96b1efaff183424103e8364f8841f573ea212c02b
+DefiLlama/Stablecoins/stablecoin_mcap_id_to_name.csv,832b0277c4557a65e7174d430c191c0c7882385ce7c15f948be33be8445dc7d4
+DefiLlama/Stablecoins/stablecoins-chains.csv,c964f70eb32cf5ac964c8beee7fd17b6cf30021d81612831d9d1f3219a8cb107
+DefiLlama/Stablecoins/stablecoins.csv,b0be302a115e8c96fd95e2434703b3cffbe27c4d5f3b7998d072480b7ef439f1
+DefiLlama/TVL/Daily/README.md,851358d47e008c8d9071dfafc4dac0b708bdcfa3d2ab26eb4a55f25d7e172133
+DefiLlama/TVL/Daily/tvl_all_chains_daily.csv,af94d2971c6558399df2aa80c33ee322b87eeeeaba0beed4aad96fe6d0287368
+DefiLlama/TVL/Daily/tvl_by_chain_long_daily.csv,9ec573714e9624701cbb3e8308d7da36667fccca81a1072e88bc3933f12cacc8
+DefiLlama/TVL/Daily/tvl_by_chain_wide_daily.csv,f49692cf767af3615405f136949141e186c18866d295557a22d1c7fac1101114
+DefiLlama/TVL/Snapshot/README.md,158b23bdef7201f3d35c28c9bda659ff93abe3aa87b166da12a8b03c3b8784ab
+DefiLlama/TVL/Snapshot/tvl_chains_current.csv,7668362522c5cda8e5b041977f09a4f8d965aa14f43142e8317c4989cb3257ee
+DefiLlama/TVL/Snapshot/tvl_protocols_current.csv,75b1b5a82d59892540a365282c0c57635a24c313a33a0d3402919d9cd76aa2ce
+DefiLlama/TVL/Weekly/README.md,70d9340cb006fe112e07ad6b70f79862c9da5b5bff57f70b55413963c5573f9f
+DefiLlama/TVL/Weekly/tvl_all_chains_weekly.csv,6c58b587f7e8f34fd099e486420f48dce5db6ed0b1d0e59678bb059bb61077fe
+DefiLlama/TVL/Weekly/tvl_by_chain_long_weekly.csv,62a00940d3ca88652597ac2bf1f258651988bccd91605b3f36735496b3aa34d7
+DefiLlama/TVL/Weekly/tvl_by_chain_wide_weekly.csv,12091949b3808ab9c4115b2f6f506c5b9b05ae883b40601b5ced0eb33fc8353d
+DefiLlama/_raw_parts/README.md,aec11e894dfee9d919218c16a2c38ff41b195ee240721cf04d39be279c98c6f1
+DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 1.csv,7b4ea02a0d2f466be1f70b94926b965360059e80c6397b9141939dfdd0a071fe
+DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 2.csv,f1c83ff7a1053fe669864a4fadfc96085b37b3f1993be22b432e2f8c80ff3934
+DefiLlama/_raw_parts/cex_inflows/cex-inflows-chart_combined_2026-04-17 part 3.csv,a2dbcaaa058667a4125d7cbd24080a81b1a4ef774d22f12becbbe27c0532d491
+DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 5.csv,e2bab51303a9ea5bcf5a11a6c58007a7a1b2cb14b9911d29f057e6c414d9fa5f
+DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 6.csv,a49eff7522ac71132abb4c5387688e89f814022dac72705113082779d4abb2b1
+DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 (1) part 7.csv,3a20cf58530e8ea422a873e99d7992101314a3dd8119ea192f3ef4e7e8d7368d
+DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 1.csv,3cbde0ab12b60dc24cefb8a9ed181f15c684d5e9569ac4a5dcac2f71b096afc0
+DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 2.csv,90f59203620da9d8aa1cbba5b38c827a0cc65162796c1d9550be1c1e2c9b404c
+DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 3.csv,929a60c3044fd3e493b1db4a1824d9064c23ad3f719733004ecdc3ee8288dfb3
+DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17 part 4.csv,16d65c589c78db9d5c5281d2c824b1b5adb4031c719057f82752f143dec01186
+DefiLlama/_raw_parts/stablecoin_mcap/stablecoin-mcap-chart_combined_2026-04-17.csv,eb60846dc300c7fcd2dd70ecc9c47769090b37b46d951e1f73f3a76e7641e944
 Farside ETF Data/BTC/README.md,8136c3eab68f32b0a55052deb499c9f4a463a5ca26ae4f9e1b76f189def71606
 Farside ETF Data/BTC/bitcoin_etf_flow_all_data.csv,1f080620fed7a2d74c8838924df37f01f969167116c7825607412c67a44b852d
 Farside ETF Data/ETH/README.md,49a108ac280d5cc694e440c3fb47067d4618c9ac1f40b515cd2ceae702ae9dd9
@@ -486,14 +491,15 @@ Farside ETF Data/ETH/ethereum_etf_flow_all_data.csv,5c43700e3eb206e6a3a8d26b4038
 Farside ETF Data/Farside_ETF_Data_Summary.txt,4726c81b452fd8cd0e5cfe4a7b52da8f190610db80ee9a49b96a911e727f2d8b
 Farside ETF Data/SOL/README.md,a26d14cfee3b9a067e086c578ef73d110197f35dca5e8fbf3f63593d24ae6bd5
 Farside ETF Data/SOL/solana_etf_flow_all_data.csv,6524141f4c1861891563b36d0c28cc8bff6c7963b17608070f451b0b4758562e
-MASTER_DATA.csv,fa83d5c8d8843dec9aa31b4974209401347cf54dc358624e56b8d24ada92df84
-MASTER_DATA.md,ce1951d5c61102b32e5e711a4eddbd132c928faafec8c4a182a433350867a736
-Tradingview/README.md,646e9b5666a498099282e4e33f2c17ad44538915e97ef1b65f5a7ad5b20b2836
+MASTER_DATA.csv,41e9e2cec839840924c6581bafc49ef00d71956a30177bd149b2c08b638b75eb
+MASTER_DATA.md,cd271fdee5095215077a70641ce21d62a29318b237d00dc433b2efabeb2e5e4e
+README.md,03ad2ffe98e42955f5dbb866a12eb262f5ac5d86400210eeec273d2bfb33195e
+Tradingview/README.md,a54226b7ea0d88569aa1cd7e8aebd7ca55df9c3d6907f1ffd0c0f93b1493f4a4
 Tradingview/tradingview__CME_BTC_front_month_futures__daily.csv,07ce06acc033f572d11889d8ae772a0098c84841eadb5cd0b140027384cc893d
-Tradingview/tradingview__CME_BTC_futures_minus_SPOT_BTC_basis__daily.csv,c2bd5b12b9ca0970a5edb4716afe594163ced5e7fe5680f6615012ee17ac1c1e
+Tradingview/tradingview__CME_BTC_futures_minus_SPOT_BTC_basis__daily.csv,867ed3e5d679a435ca4365d5ce3ed7c2a10456859647af62a6d1189c9eefd6d4
 Tradingview/tradingview__CME_BTC_futures_over_SPOT_BTC_ratio__daily.csv,4cdbd7f5e3e4060aa840646697c51685b018df37f8f8a43ce09f57a377ff4b2c
 Tradingview/tradingview__CME_ETH_front_month_futures__daily.csv,387f5cbcda31b0195945729a0a3c8b18feb5911ba8eb1bfb8f0a16e151a9ec40
-Tradingview/tradingview__CME_ETH_futures_minus_SPOT_ETH_basis__daily.csv,4fcfcae34478c5cb44ac5a0afccc7f61df9d0b47f5e84b51923ed005d4872431
+Tradingview/tradingview__CME_ETH_futures_minus_SPOT_ETH_basis__daily.csv,fc9e2ff8bc47c72858dbaa2162487653c3f815dadc6451c8097d51c1ac5e7841
 Tradingview/tradingview__CME_ETH_futures_over_SPOT_ETH_ratio__daily.csv,4971c5b6094bcea0fb703fa4fe4d1fb5e0326aaaf773ce6d45f28b3f348eb138
 Tradingview/tradingview__CME_Micro_Bitcoin_futures__daily.csv,e147bb5787c46222519cb5e9752053172dfd331309796786019a1e366ca52ab5
 Tradingview/tradingview__CME_Micro_Ether_futures__daily.csv,527b185a691402b8f569c1b55389638aefba2c927d48b9109cc3d9da1c9dd1f8
@@ -501,5 +507,6 @@ Tradingview/tradingview__CME_Solana_futures__daily.csv,f6bdbd749a8560a347f1d7ffe
 Tradingview/tradingview__Deribit_BTC_volatility_index_DVOL__daily.csv,05b3fd315404025b65c891b07ceb85fe1fa6c4ce3798ddb86030d9c26f6719ec
 Tradingview/tradingview__ETHA_ETF_over_SPOT_ETH__daily.csv,630c8f2b8ae0a75f11cd3ec22095d0454e8cac7afbe53c0a87e903c4545edec8
 Tradingview/tradingview__IBIT_ETF_over_SPOT_BTC__daily.csv,b6bdde9855b5d42fd30a5813ac991a8c59a00ce7bf12aabdc7b760c4360505e7
-_meta/curation_log.md,cab482dc81096656382c4a832622e7fb370096e5b42755d6dc51f4109b5dd543
+_meta/curated_manifest.csv,11e6831764e899d6b1b3b295bbb6d9cc1af87001da64ea9f723c046c99eb677e
+_meta/curation_log.md,2f2926fabe5a70057c44f111d0c7d48473d902e88e5c6132b0efc5db81275e7c
 _meta/raw_manifest.csv,462b1585cf72bfe8fd6696b89e012b51c9822e1275c2e44b0b74c3fea9bc1a7c

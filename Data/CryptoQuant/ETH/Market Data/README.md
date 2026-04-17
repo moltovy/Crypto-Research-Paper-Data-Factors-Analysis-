@@ -18,14 +18,14 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Ethereum Market Cap - Day.csv` | Market cap | 2015-08-07 .. 2026-04-10 | 3,900 | daily | 0 | 3 | `651df8e5d320` |
-| `Ethereum Price & Volume - Spot, All Exchanges, ETH-USD - Day.csv` | Price & volume | 2015-08-07 .. 2026-04-11 | 3,896 | daily | 5 | 7 | `1df2c712c4ed` |
-| `Ethereum Price & Volume KRW - Spot - Day.csv` | Price & volume | 2016-04-08 .. 2026-04-10 | 3,654 | daily | 1 | 7 | `d5b67421c433` |
+| `Ethereum Market Cap - Day.csv` | Market cap | 2015-08-07 .. 2026-04-10 | 3,900 | daily | 0 | 3 | `482797c71d7c` |
+| `Ethereum Price & Volume - Spot, All Exchanges, ETH-USD - Day.csv` | Price & volume | 2015-08-07 .. 2026-04-11 | 3,896 | daily | 5 | 7 | `7b7c1ca837df` |
+| `Ethereum Price & Volume KRW - Spot - Day.csv` | Price & volume | 2016-04-08 .. 2026-04-10 | 3,654 | daily | 1 | 7 | `e0a14355f4e9` |
 | `Ethereum Taker Buy Ratio - All Exchanges - Day.csv` | Taker buy volume | 2018-09-01 .. 2026-04-11 | 2,780 | daily | 0 | 3 | `b0139cc16c00` |
 | `Ethereum Taker Buy Sell Ratio - All Exchanges - Day.csv` | Taker buy volume | 2018-09-01 .. 2026-04-11 | 2,780 | daily | 0 | 3 | `b06998d5e803` |
-| `Ethereum Taker Buy Volume - All Exchanges - Day.csv` | Taker buy volume | 2018-09-01 .. 2026-04-11 | 2,780 | daily | 0 | 3 | `8f5b25534194` |
+| `Ethereum Taker Buy Volume - All Exchanges - Day.csv` | Taker buy volume | 2018-09-01 .. 2026-04-11 | 2,780 | daily | 0 | 3 | `fb1934506884` |
 | `Ethereum Taker Sell Ratio - All Exchanges - Day.csv` | Taker sell volume | 2018-09-01 .. 2026-04-11 | 2,780 | daily | 0 | 3 | `e1e1888e24c8` |
-| `Ethereum Taker Sell Volume - All Exchanges - Day.csv` | Taker sell volume | 2018-09-01 .. 2026-04-11 | 2,780 | daily | 0 | 3 | `9b65b1e25dba` |
+| `Ethereum Taker Sell Volume - All Exchanges - Day.csv` | Taker sell volume | 2018-09-01 .. 2026-04-11 | 2,780 | daily | 0 | 3 | `34d6039a9d6b` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 

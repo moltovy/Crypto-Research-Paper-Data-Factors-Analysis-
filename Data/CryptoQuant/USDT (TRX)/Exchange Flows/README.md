@@ -20,11 +20,11 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
 | `Tether USD(TRC20) Exchange Depositing Transactions - All Exchanges - Day.csv` | Tether USD(TRC20) Exchange Depositing Transactions - All Exchanges - Day | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `9fd7952d3e03` |
 | `Tether USD(TRC20) Exchange Inflow (Mean) - All Exchanges - Day.csv` | Exchange inflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `14aae2b7ec2e` |
-| `Tether USD(TRC20) Exchange Inflow (Top10) - All Exchanges - Day.csv` | Exchange inflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `36ecaa5fef48` |
-| `Tether USD(TRC20) Exchange Inflow (Total) - All Exchanges - Day.csv` | Exchange inflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `59775178f61e` |
-| `Tether USD(TRC20) Exchange Netflow (Total) - All Exchanges - Day.csv` | Exchange netflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `6d0bfe503cc9` |
+| `Tether USD(TRC20) Exchange Inflow (Top10) - All Exchanges - Day.csv` | Exchange inflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `854a6e4fab11` |
+| `Tether USD(TRC20) Exchange Inflow (Total) - All Exchanges - Day.csv` | Exchange inflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `2ade946a4728` |
+| `Tether USD(TRC20) Exchange Netflow (Total) - All Exchanges - Day.csv` | Exchange netflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `48a074a1b16e` |
 | `Tether USD(TRC20) Exchange Outflow (Mean) - All Exchanges - Day.csv` | Exchange outflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `14480243570d` |
-| `Tether USD(TRC20) Exchange Outflow (Top10) - All Exchanges - Day.csv` | Exchange outflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `7b322f4e6342` |
+| `Tether USD(TRC20) Exchange Outflow (Top10) - All Exchanges - Day.csv` | Exchange outflow | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `2e496af42f73` |
 | `Tether USD(TRC20) Exchange Reserve - All Exchanges - Day.csv` | Exchange reserve | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `a1fcdfa983f0` |
 | `Tether USD(TRC20) Exchange Withdrawing Transactions - All Exchanges - Day.csv` | Tether USD(TRC20) Exchange Withdrawing Transactions - All Exchanges - Day | 2019-07-17 .. 2026-04-09 | 2,459 | daily | 0 | 3 | `32f88ad58d51` |
 

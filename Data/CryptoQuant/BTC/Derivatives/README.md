@@ -22,7 +22,7 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Bitcoin Funding Rates - All Exchanges - Day.csv` | Funding rates | 2016-05-15 .. 2026-04-11 | 3,619 | daily | 0 | 3 | `c650423fc324` |
 | `Bitcoin Futures Taker CVD(Cumulative Volume Delta, 90-day) - Day.csv` | Taker CVD | 2019-01-13 .. 2026-04-11 | 2,646 | daily | 0 | 5 | `4e351555c75c` |
 | `Bitcoin Long Liquidations - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-20 .. 2026-04-11 | 2,670 | daily | 0 | 3 | `f0c62c6b2738` |
-| `Bitcoin Long Liquidations USD - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-20 .. 2026-04-11 | 2,670 | daily | 0 | 3 | `124c552669b9` |
+| `Bitcoin Long Liquidations USD - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-20 .. 2026-04-11 | 2,670 | daily | 0 | 3 | `06aa152c479e` |
 | `Bitcoin Open Interest - All Exchanges, All Symbol - Day.csv` | Open interest | 2019-03-30 .. 2026-04-11 | 2,570 | daily | 0 | 3 | `f9ec286a6273` |
 | `Bitcoin Short Liquidations - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-20 .. 2026-04-11 | 2,670 | daily | 0 | 3 | `86439a4560ff` |
 | `Bitcoin Short Liquidations USD - All Exchanges, All Symbol - Day.csv` | Liquidations | 2018-12-20 .. 2026-04-11 | 2,670 | daily | 0 | 3 | `0198f1a6e6c6` |

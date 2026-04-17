@@ -27,7 +27,7 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `USD Coin(ERC20) Exchange Outflow (Mean) - All Exchanges - Day.csv` | Exchange outflow | 2018-09-12 .. 2026-04-12 | 2,770 | daily | 0 | 3 | `4cf36cf8a6e6` |
 | `USD Coin(ERC20) Exchange Outflow (Top10) - All Exchanges - Day.csv` | Exchange outflow | 2018-09-12 .. 2026-04-12 | 2,770 | daily | 0 | 3 | `b61580bbaa99` |
 | `USD Coin(ERC20) Exchange Outflow (Total) - All Exchanges - Day.csv` | Exchange outflow | 2018-09-12 .. 2026-04-11 | 2,769 | daily | 0 | 3 | `439ebb7eb846` |
-| `USD Coin(ERC20) Exchange Reserve - All Exchanges - Day.csv` | Exchange reserve | 2018-09-12 .. 2026-04-11 | 2,769 | daily | 0 | 3 | `5101dac065a9` |
+| `USD Coin(ERC20) Exchange Reserve - All Exchanges - Day.csv` | Exchange reserve | 2018-09-12 .. 2026-04-11 | 2,769 | daily | 0 | 3 | `e225fb3d3290` |
 | `USD Coin(ERC20) Exchange Withdrawing Addresses - All Exchanges - Day.csv` | USD Coin(ERC20) Exchange Withdrawing Addresses - All Exchanges - Day | 2018-09-12 .. 2026-04-12 | 2,770 | daily | 0 | 3 | `b6dfe17c183d` |
 | `USD Coin(ERC20) Exchange Withdrawing Transactions - All Exchanges - Day.csv` | USD Coin(ERC20) Exchange Withdrawing Transactions - All Exchanges - Day | 2018-09-12 .. 2026-04-12 | 2,770 | daily | 0 | 3 | `6486a937500f` |
 

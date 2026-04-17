@@ -32,7 +32,7 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Ethereum Tokens Transferred Between EOA (Total) - Day.csv` | Ethereum Tokens Transferred Between EOA (Total) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `48fdc8c04a87` |
 | `Ethereum Tokens Transferred Between EOA USD (Mean) - Day.csv` | Ethereum Tokens Transferred Between EOA USD (Mean) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `494a72e54073` |
 | `Ethereum Tokens Transferred Between EOA USD (Median) - Day.csv` | Ethereum Tokens Transferred Between EOA USD (Median) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `44fcbbb70252` |
-| `Ethereum Tokens Transferred Between EOA USD (Total) - Day.csv` | Ethereum Tokens Transferred Between EOA USD (Total) - Day | 2015-07-30 .. 2026-04-10 | 3,908 | daily | 0 | 3 | `67c82b121470` |
+| `Ethereum Tokens Transferred Between EOA USD (Total) - Day.csv` | Ethereum Tokens Transferred Between EOA USD (Total) - Day | 2015-07-30 .. 2026-04-10 | 3,908 | daily | 0 | 3 | `e75372aa7b92` |
 | `Ethereum Tokens Transferred by Contract Calls (Mean) - Day.csv` | Ethereum Tokens Transferred by Contract Calls (Mean) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `c029544cf783` |
 | `Ethereum Tokens Transferred by Contract Calls (Median) - Day.csv` | Ethereum Tokens Transferred by Contract Calls (Median) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `81fff25d94bd` |
 | `Ethereum Tokens Transferred by Contract Calls (Total) - Day.csv` | Ethereum Tokens Transferred by Contract Calls (Total) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `11f5fea8ed14` |
@@ -41,10 +41,10 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Ethereum Tokens Transferred by Contract Calls USD (Total) - Day.csv` | Ethereum Tokens Transferred by Contract Calls USD (Total) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `65294f072796` |
 | `Ethereum Tokens Transferred by External Contract Calls (Mean) - Day.csv` | Ethereum Tokens Transferred by External Contract Calls (Mean) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `3502dfae734d` |
 | `Ethereum Tokens Transferred by External Contract Calls (Median) - Day.csv` | Ethereum Tokens Transferred by External Contract Calls (Median) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `9b2ed336550a` |
-| `Ethereum Tokens Transferred by External Contract Calls (Total) - Day.csv` | Ethereum Tokens Transferred by External Contract Calls (Total) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `ea88313b1c6b` |
+| `Ethereum Tokens Transferred by External Contract Calls (Total) - Day.csv` | Ethereum Tokens Transferred by External Contract Calls (Total) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `f6929453efdb` |
 | `Ethereum Tokens Transferred by External Contract Calls USD (Mean) - Day.csv` | Ethereum Tokens Transferred by External Contract Calls USD (Mean) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `dd3b8ca875bf` |
 | `Ethereum Tokens Transferred by External Contract Calls USD (Median) - Day.csv` | Ethereum Tokens Transferred by External Contract Calls USD (Median) - Day | 2024-09-22 .. 2026-04-10 | 566 | daily | 0 | 3 | `f9413a0b3107` |
-| `Ethereum Tokens Transferred by External Contract Calls USD (Total) - Day.csv` | Ethereum Tokens Transferred by External Contract Calls USD (Total) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `5412218408f6` |
+| `Ethereum Tokens Transferred by External Contract Calls USD (Total) - Day.csv` | Ethereum Tokens Transferred by External Contract Calls USD (Total) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `274fa1428c28` |
 | `Ethereum Tokens Transferred USD (Mean) - Day.csv` | Ethereum Tokens Transferred USD (Mean) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `427dc75b3a83` |
 | `Ethereum Tokens Transferred USD (Median) - Day.csv` | Ethereum Tokens Transferred USD (Median) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `e193ae37f12b` |
 | `Ethereum Tokens Transferred USD (Total) - Day.csv` | Ethereum Tokens Transferred USD (Total) - Day | 2025-04-11 .. 2026-04-10 | 365 | daily | 0 | 3 | `ec4bf584be85` |

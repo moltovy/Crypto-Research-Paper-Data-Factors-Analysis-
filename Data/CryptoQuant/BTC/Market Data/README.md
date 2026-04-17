@@ -18,26 +18,26 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Bitcoin Average Cap - Day.csv` | Bitcoin Average Cap - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `178ba9df5ac8` |
-| `Bitcoin Delta Cap - Day.csv` | Bitcoin Delta Cap - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `5508817bdfe8` |
-| `Bitcoin Exchange Supply - Day.csv` | Bitcoin Exchange Supply - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 8 | `f7762c598c15` |
-| `Bitcoin Geographical Supply Distribution by Entities - Day.csv` | Bitcoin Geographical Supply Distribution by Entities - Day | 2006-04-11 .. 2026-04-10 | 7,305 | daily | 0 | 5 | `f80a85faf704` |
-| `Bitcoin Market Cap - Day.csv` | Market cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `416d9a56d361` |
-| `Bitcoin Price & Volume - Spot, All Exchanges, BTC-USD - Day.csv` | Price & volume | 2009-01-03 .. 2026-04-11 | 6,308 | daily | 0 | 7 | `bc5e5e4fee98` |
+| `Bitcoin Average Cap - Day.csv` | Bitcoin Average Cap - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `8c275eb4a1df` |
+| `Bitcoin Delta Cap - Day.csv` | Bitcoin Delta Cap - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `ee4639609df6` |
+| `Bitcoin Exchange Supply - Day.csv` | Bitcoin Exchange Supply - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 8 | `9367d2ab3499` |
+| `Bitcoin Geographical Supply Distribution by Entities - Day.csv` | Bitcoin Geographical Supply Distribution by Entities - Day | 2006-04-11 .. 2026-04-10 | 7,305 | daily | 0 | 5 | `cac25aeca01c` |
+| `Bitcoin Market Cap - Day.csv` | Market cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `307782c56960` |
+| `Bitcoin Price & Volume - Spot, All Exchanges, BTC-USD - Day.csv` | Price & volume | 2009-01-03 .. 2026-04-11 | 6,308 | daily | 0 | 7 | `addf5c4c1784` |
 | `Bitcoin Price & Volume KRW - Spot - Day.csv` | Price & volume | 2013-09-03 .. 2026-04-10 | 4,594 | daily | 9 | 7 | `1f16d6a3182b` |
-| `Bitcoin Realized Cap - Day.csv` | Realized cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `3bc718c49bcd` |
+| `Bitcoin Realized Cap - Day.csv` | Realized cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `7ba93fecdd76` |
 | `Bitcoin Realized Cap - UTXO Age Bands (%) - Day.csv` | Realized cap | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 15 | `6fe6c4ee5eb9` |
-| `Bitcoin Realized Cap - UTXO Age Bands USD - Day.csv` | Realized cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `7a1cffd71f43` |
+| `Bitcoin Realized Cap - UTXO Age Bands USD - Day.csv` | Realized cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `362d2e52dd29` |
 | `Bitcoin Realized Cap - UTXO Value Bands (%) - Day.csv` | Realized cap | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 10 | `8fcc013f314c` |
-| `Bitcoin Realized Cap - UTXO Value Bands USD - Day.csv` | Realized cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 10 | `ee0e9ad9244f` |
+| `Bitcoin Realized Cap - UTXO Value Bands USD - Day.csv` | Realized cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 10 | `adb6fe53368f` |
 | `Bitcoin Taker Buy Ratio - All Exchanges - Day.csv` | Taker buy volume | 2015-09-26 .. 2026-04-11 | 3,851 | daily | 0 | 3 | `235501c370bd` |
 | `Bitcoin Taker Buy Sell Ratio - All Exchanges - Day.csv` | Taker buy volume | 2015-09-26 .. 2026-04-11 | 3,851 | daily | 0 | 3 | `76c95353e3ef` |
 | `Bitcoin Taker Buy Volume - All Exchanges - Day.csv` | Taker buy volume | 2015-09-26 .. 2026-04-11 | 3,851 | daily | 0 | 3 | `e6f50626ef5a` |
 | `Bitcoin Taker Sell Ratio - All Exchanges - Day.csv` | Taker sell volume | 2015-09-26 .. 2026-04-11 | 3,851 | daily | 0 | 3 | `7529134f05d7` |
 | `Bitcoin Taker Sell Volume - All Exchanges - Day.csv` | Taker sell volume | 2015-09-26 .. 2026-04-11 | 3,851 | daily | 0 | 3 | `ff2389551495` |
-| `Bitcoin Thermo Cap - Day.csv` | Thermo cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `e8411e62e15a` |
-| `Bitcoin Trading Volume (KYC VS. Non-KYC) - Day.csv` | Bitcoin Trading Volume (KYC VS. Non-KYC) - Day | 2013-10-21 .. 2026-04-10 | 4,555 | daily | 0 | 4 | `10ef7f3df4c5` |
-| `Bitcoin Trading Volume (Spot VS. Derivative) - Day.csv` | Bitcoin Trading Volume (Spot VS. Derivative) - Day | 2013-10-21 .. 2026-04-10 | 4,555 | daily | 0 | 4 | `fff50006bb4f` |
+| `Bitcoin Thermo Cap - Day.csv` | Thermo cap | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `b1625c1b2344` |
+| `Bitcoin Trading Volume (KYC VS. Non-KYC) - Day.csv` | Bitcoin Trading Volume (KYC VS. Non-KYC) - Day | 2013-10-21 .. 2026-04-10 | 4,555 | daily | 0 | 4 | `e8d6ef58d9ef` |
+| `Bitcoin Trading Volume (Spot VS. Derivative) - Day.csv` | Bitcoin Trading Volume (Spot VS. Derivative) - Day | 2013-10-21 .. 2026-04-10 | 4,555 | daily | 0 | 4 | `8a64f364c7cc` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 

@@ -19,10 +19,10 @@ Manual chart-to-CSV exports from TradingView for CME futures (BTC, ETH, Micro BT
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
 | `tradingview__CME_BTC_front_month_futures__daily.csv` | CME BTC futures | 2017-12-17 .. 2026-04-15 | 2,096 | daily | 946 | 12 | `07ce06acc033` |
-| `tradingview__CME_BTC_futures_minus_SPOT_BTC_basis__daily.csv` | CME BTC futures | 2017-12-17 .. 2026-04-15 | 2,102 | daily | 940 | 12 | `c2bd5b12b9ca` |
+| `tradingview__CME_BTC_futures_minus_SPOT_BTC_basis__daily.csv` | CME BTC futures | 2017-12-17 .. 2026-04-15 | 2,102 | daily | 940 | 12 | `867ed3e5d679` |
 | `tradingview__CME_BTC_futures_over_SPOT_BTC_ratio__daily.csv` | CME BTC futures | 2017-12-17 .. 2026-04-15 | 2,102 | daily | 940 | 12 | `4cdbd7f5e3e4` |
 | `tradingview__CME_ETH_front_month_futures__daily.csv` | CME ETH futures | 2021-02-04 .. 2026-04-15 | 1,307 | daily | 590 | 12 | `387f5cbcda31` |
-| `tradingview__CME_ETH_futures_minus_SPOT_ETH_basis__daily.csv` | CME ETH futures | 2021-02-04 .. 2026-04-15 | 1,308 | daily | 589 | 12 | `4fcfcae34478` |
+| `tradingview__CME_ETH_futures_minus_SPOT_ETH_basis__daily.csv` | CME ETH futures | 2021-02-04 .. 2026-04-15 | 1,308 | daily | 589 | 12 | `fc9e2ff8bc47` |
 | `tradingview__CME_ETH_futures_over_SPOT_ETH_ratio__daily.csv` | CME ETH futures | 2021-02-04 .. 2026-04-15 | 1,308 | daily | 589 | 12 | `4971c5b6094b` |
 | `tradingview__CME_Micro_Bitcoin_futures__daily.csv` | CME Micro BTC futures | 2018-03-25 .. 2026-04-15 | 1,685 | daily | 1259 | 12 | `e147bb5787c4` |
 | `tradingview__CME_Micro_Ether_futures__daily.csv` | CME Micro ETH futures | 2021-12-01 .. 2026-04-15 | 1,099 | daily | 498 | 12 | `527b185a6914` |

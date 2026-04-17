@@ -21,7 +21,7 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 | `Bitcoin Coin Days Destroyed (CDD) - Day.csv` | Bitcoin Coin Days Destroyed (CDD) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `178fb9704992` |
 | `Bitcoin UTXO Age Bands (%) - Day.csv` | UTXO metrics | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `59fae5d490fb` |
 | `Bitcoin UTXO Age Bands - Day.csv` | UTXO metrics | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `a062f50ad7f4` |
-| `Bitcoin UTXO Age Bands USD - Day.csv` | UTXO metrics | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `eb3c86628d62` |
+| `Bitcoin UTXO Age Bands USD - Day.csv` | UTXO metrics | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `b11688048935` |
 | `Bitcoin UTXO Count - Age Bands (%) - Day.csv` | UTXO metrics | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `efb5b2b51da3` |
 | `Bitcoin UTXO Count - Age Bands - Day.csv` | UTXO metrics | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `d49c56588c52` |
 | `Bitcoin UTXO Count - Value Bands (%) - Day.csv` | UTXO metrics | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 10 | `f3c8d4c5870d` |
