@@ -601,3 +601,10 @@ Wrote `Data/MASTER_DATA.csv`.
 
 ### Curated hash manifest
 - Wrote `Data/_meta/curated_manifest.csv` (511 files).
+
+## Step 06 — build inventory  _(run 2026-04-17 03:33:09Z)_
+
+Summarized 445 CSV files.
+Wrote 53 per-folder README.md files.
+Wrote `Data/MASTER_DATA.md`.
+Wrote `Data/MASTER_DATA.csv`.
