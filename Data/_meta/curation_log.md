@@ -785,3 +785,32 @@ Wrote `Data/MASTER_DATA.csv`.
 
 ### Curated hash manifest
 - Wrote `Data/_meta/curated_manifest.csv` (570 files).
+
+## Step 06 — build inventory  _(run 2026-04-17 22:51:49Z)_
+
+Summarized 484 CSV files.
+Wrote 54 per-folder README.md files.
+Wrote `Data/MASTER_DATA.md`.
+Wrote `Data/MASTER_DATA.csv`.
+
+## Step 07 — validation  _(run 2026-04-17 22:51:52Z)_
+
+### Date-standardization check
+- date normalization: 475 files OK, 0 failed.
+
+### No timestamp_utc column check
+- no-timestamp-utc check: 485 files checked, 0 violations.
+
+### Merged-file sanity checks
+- stablecoin_mcap merge: cols_union_match=True (merged=200, parts_union=200), dup_dates=0, date_range_match=True (2017-11-29 .. 2026-04-17)
+- cex_net_inflows merge: cols_union_match=True (merged=75, parts_union=75), dup_dates=0, date_range_match=True (2022-11-12 .. 2026-04-17)
+
+### CryptoQuant spot-checks (5 random files)
+- [PASS] `CryptoQuant/USDT ETH/Exchange Flows/Tether USD(ERC20) Exchange Outflow (Total) - All Exchanges - Day.csv`: rows 3027 -> 3027, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Inter Entity Flows/Bitcoin Miner to Miner Flow (Mean) - All Miners, 1THash - Day.csv`: rows 1903 -> 1903, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Exchange Flows/Bitcoin Exchange Depositing Transactions - All Exchanges - Day.csv`: rows 6310 -> 6310, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Miner Flows/Bitcoin Miner Withdrawing Addresses - All Miners - Day.csv`: rows 6302 -> 6302, values preserved=True, ascending=True
+- [PASS] `CryptoQuant/BTC/Miner Flows/Bitcoin Miner In-House Flow (Total) - All Miners - Day.csv`: rows 6299 -> 6299, values preserved=True, ascending=True
+
+### Curated hash manifest
+- Wrote `Data/_meta/curated_manifest.csv` (567 files).
