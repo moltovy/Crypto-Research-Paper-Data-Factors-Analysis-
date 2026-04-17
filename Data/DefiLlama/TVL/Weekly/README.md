@@ -19,7 +19,7 @@ All DefiLlama data — programmatic TVL panels plus manual website exports. Orga
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
 | `tvl_all_chains_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 447 | weekly | — | 2 | `6c58b587f7e8` |
-| `tvl_by_chain_long_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 60,392 | weekly | — | 3 | `62a00940d3ca` |
+| `tvl_by_chain_long_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 60,392 | weekly | — | 3 | `124e2a07aa40` |
 | `tvl_by_chain_wide_weekly.csv` | TVL | 2017-10-01 .. 2026-04-19 | 447 | weekly | — | 440 | `12091949b380` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)

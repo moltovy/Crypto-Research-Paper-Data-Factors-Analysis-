@@ -4,7 +4,7 @@
 
 On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, USDC, USDT (ERC20 / TRC20), and WBTC. Source files are per-metric daily CSVs exported from the CryptoQuant web UI.
 
-**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) and keeps the original as `timestamp_utc`.
+**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) as its first column; the original timestamp column has been dropped (everything is daily granularity).
 
 **Units**: Varies per metric; see the existing `<ASSET>_Metrics.txt` inventories.
 
@@ -18,16 +18,16 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Ethereum Exchange Supply Ratio - All Exchanges - Day.csv` | Ethereum Exchange Supply Ratio - All Exchanges - Day | 2015-07-30 .. 2026-04-10 | 3,908 | daily | 0 | 3 | `90ad1162b284` |
+| `Ethereum Exchange Supply Ratio - All Exchanges - Day.csv` | Ethereum Exchange Supply Ratio - All Exchanges - Day | 2015-07-30 .. 2026-04-10 | 3,908 | daily | 0 | 2 | `754f23da4845` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 
 **`Ethereum Exchange Supply Ratio - All Exchanges - Day.csv`**
 
 ```csv
-date,timestamp_utc,Exchange Supply Ratio
-2015-07-30,2015-07-30T00:00:00Z,0.0
-2015-07-31,2015-07-31T00:00:00Z,0.0
+date,Exchange Supply Ratio
+2015-07-30,0.0
+2015-07-31,0.0
 ```
 
 ---

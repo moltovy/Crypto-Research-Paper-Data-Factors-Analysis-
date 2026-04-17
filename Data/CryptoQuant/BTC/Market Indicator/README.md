@@ -4,7 +4,7 @@
 
 On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, USDC, USDT (ERC20 / TRC20), and WBTC. Source files are per-metric daily CSVs exported from the CryptoQuant web UI.
 
-**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) and keeps the original as `timestamp_utc`.
+**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) as its first column; the original timestamp column has been dropped (everything is daily granularity).
 
 **Units**: Varies per metric; see the existing `<ASSET>_Metrics.txt` inventories.
 
@@ -18,142 +18,142 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Bitcoin Adjusted SOPR (aSOPR) - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `645f9474f8fe` |
-| `Bitcoin Average Dormancy - Day.csv` | Bitcoin Average Dormancy - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `b4807df63ae6` |
-| `Bitcoin Average Supply-Adjusted CDD - Day.csv` | Bitcoin Average Supply-Adjusted CDD - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `ef28e1e8dd43` |
-| `Bitcoin Binary CDD - Day.csv` | Bitcoin Binary CDD - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `82372568ed1e` |
-| `Bitcoin Long Term Holder SOPR - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `d53c1a17119f` |
-| `Bitcoin Mean Coin Age - Day.csv` | Bitcoin Mean Coin Age - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `e24f8a322fdb` |
-| `Bitcoin Mean Coin Dollar Age - Day.csv` | Bitcoin Mean Coin Dollar Age - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `2188c4c134ab` |
-| `Bitcoin MVRV Ratio - Day.csv` | MVRV ratio | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `3e9275d78e8d` |
-| `Bitcoin Net Unrealized Loss (NUL) - Day.csv` | Bitcoin Net Unrealized Loss (NUL) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `b5c25cb01f35` |
-| `Bitcoin Net Unrealized Profit (NUP) - Day.csv` | Bitcoin Net Unrealized Profit (NUP) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `efbb97a06d68` |
-| `Bitcoin Net Unrealized Profit_Loss (NUPL) - Day.csv` | NUPL | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `c1df3913c86b` |
-| `Bitcoin NVM Ratio - Day.csv` | Bitcoin NVM Ratio - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `a69a87cf084b` |
-| `Bitcoin NVT Golden Cross - Day.csv` | NVT | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `22599ffb9170` |
-| `Bitcoin NVT Ratio - Day.csv` | NVT | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `814597130856` |
-| `Bitcoin Puell Multiple - Day.csv` | Puell multiple | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `311c02ba47b2` |
-| `Bitcoin Realized Price - Day.csv` | Realized price | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `5df553097577` |
-| `Bitcoin Realized Price - UTXO Age Bands - Day.csv` | Realized price | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `5e27ab0ad43b` |
-| `Bitcoin Short Term Holder SOPR - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `050c94fc8abb` |
-| `Bitcoin SOPR Ratio (LTH-SOPR_STH-SOPR) - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `2d4f39991d76` |
-| `Bitcoin Spent Output Age Bands (%) - Day.csv` | Bitcoin Spent Output Age Bands (%) - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `460d618e4a63` |
-| `Bitcoin Spent Output Age Bands - Day.csv` | Bitcoin Spent Output Age Bands - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 15 | `e8cb43e6ad12` |
-| `Bitcoin Spent Output Age Bands USD - Day.csv` | Bitcoin Spent Output Age Bands USD - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `642c6a298b64` |
-| `Bitcoin Spent Output Profit Ratio (SOPR) - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `40c9e98659f0` |
-| `Bitcoin Spent Output Value Bands (%) - Day.csv` | Bitcoin Spent Output Value Bands (%) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 10 | `0a74ee15d13a` |
-| `Bitcoin Spent Output Value Bands - Day.csv` | Bitcoin Spent Output Value Bands - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 10 | `f9888936873a` |
-| `Bitcoin Spent Output Value Bands USD - Day.csv` | Bitcoin Spent Output Value Bands USD - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 10 | `d631cb533de2` |
-| `Bitcoin Spot Taker CVD(Cumulative Volume Delta, 90-day) - Day.csv` | Taker CVD | 2017-01-01 .. 2026-04-11 | 3,388 | daily | 0 | 5 | `a54742dc27ef` |
-| `Bitcoin Stock-to-Flow Ratio - Day.csv` | Bitcoin Stock-to-Flow Ratio - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `8608f3e15405` |
-| `Bitcoin Stock-to-Flow Reversion - Day.csv` | Bitcoin Stock-to-Flow Reversion - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `72093cbabd91` |
-| `Bitcoin Sum Coin Age - Day.csv` | Bitcoin Sum Coin Age - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `a5538de61f6d` |
-| `Bitcoin Sum Coin Age Distribution (%) - Day.csv` | Bitcoin Sum Coin Age Distribution (%) - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 15 | `2f64acd81af6` |
-| `Bitcoin Sum Coin Age Distribution - Day.csv` | Bitcoin Sum Coin Age Distribution - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 15 | `7a76fff14e1f` |
-| `Bitcoin Sum Coin Dollar Age - Day.csv` | Bitcoin Sum Coin Dollar Age - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `76538d5ce750` |
-| `Bitcoin Supply Adjusted Dormancy - Day.csv` | Bitcoin Supply Adjusted Dormancy - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `fd5cc7cb7e36` |
-| `Bitcoin Supply in Loss (%) - Day.csv` | Bitcoin Supply in Loss (%) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `b479b9078188` |
-| `Bitcoin Supply in Loss - Day.csv` | Bitcoin Supply in Loss - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `472d0bff65ae` |
-| `Bitcoin Supply in Profit (%) - Day.csv` | Bitcoin Supply in Profit (%) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `eda5c3c981f4` |
-| `Bitcoin Supply in Profit - Day.csv` | Bitcoin Supply in Profit - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `465c9e570584` |
-| `Bitcoin Supply-Adjusted CDD - Day.csv` | Bitcoin Supply-Adjusted CDD - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 3 | `0b237a1af19b` |
+| `Bitcoin Adjusted SOPR (aSOPR) - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `76c276649bc2` |
+| `Bitcoin Average Dormancy - Day.csv` | Bitcoin Average Dormancy - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `cf6d85b972a7` |
+| `Bitcoin Average Supply-Adjusted CDD - Day.csv` | Bitcoin Average Supply-Adjusted CDD - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `39b3d31aa16c` |
+| `Bitcoin Binary CDD - Day.csv` | Bitcoin Binary CDD - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `c743bdb390b8` |
+| `Bitcoin Long Term Holder SOPR - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `43e6cd959a27` |
+| `Bitcoin Mean Coin Age - Day.csv` | Bitcoin Mean Coin Age - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `60529c96db22` |
+| `Bitcoin Mean Coin Dollar Age - Day.csv` | Bitcoin Mean Coin Dollar Age - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `269f9278e854` |
+| `Bitcoin MVRV Ratio - Day.csv` | MVRV ratio | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `a1effd437db9` |
+| `Bitcoin Net Unrealized Loss (NUL) - Day.csv` | Bitcoin Net Unrealized Loss (NUL) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `3998a67b4543` |
+| `Bitcoin Net Unrealized Profit (NUP) - Day.csv` | Bitcoin Net Unrealized Profit (NUP) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `efd90da16a9c` |
+| `Bitcoin Net Unrealized Profit_Loss (NUPL) - Day.csv` | NUPL | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `a9866343bfe1` |
+| `Bitcoin NVM Ratio - Day.csv` | Bitcoin NVM Ratio - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `abd925c438ac` |
+| `Bitcoin NVT Golden Cross - Day.csv` | NVT | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `9010c2d5f93d` |
+| `Bitcoin NVT Ratio - Day.csv` | NVT | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `bb76549bcaba` |
+| `Bitcoin Puell Multiple - Day.csv` | Puell multiple | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `fcb3c544e84f` |
+| `Bitcoin Realized Price - Day.csv` | Realized price | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `44af6911db96` |
+| `Bitcoin Realized Price - UTXO Age Bands - Day.csv` | Realized price | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 14 | `f0baa533c4ad` |
+| `Bitcoin Short Term Holder SOPR - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `a323b9577e5e` |
+| `Bitcoin SOPR Ratio (LTH-SOPR_STH-SOPR) - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `0f19c9076fba` |
+| `Bitcoin Spent Output Age Bands (%) - Day.csv` | Bitcoin Spent Output Age Bands (%) - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 14 | `3ec6f1169f1f` |
+| `Bitcoin Spent Output Age Bands - Day.csv` | Bitcoin Spent Output Age Bands - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 14 | `8572f18f8e78` |
+| `Bitcoin Spent Output Age Bands USD - Day.csv` | Bitcoin Spent Output Age Bands USD - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 14 | `a35a3a74fa55` |
+| `Bitcoin Spent Output Profit Ratio (SOPR) - Day.csv` | SOPR | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `55776a99d958` |
+| `Bitcoin Spent Output Value Bands (%) - Day.csv` | Bitcoin Spent Output Value Bands (%) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 9 | `e86048dc8a7f` |
+| `Bitcoin Spent Output Value Bands - Day.csv` | Bitcoin Spent Output Value Bands - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 9 | `5da438878760` |
+| `Bitcoin Spent Output Value Bands USD - Day.csv` | Bitcoin Spent Output Value Bands USD - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 9 | `e62f67bda2a3` |
+| `Bitcoin Spot Taker CVD(Cumulative Volume Delta, 90-day) - Day.csv` | Taker CVD | 2017-01-01 .. 2026-04-11 | 3,388 | daily | 0 | 4 | `77f5fef5dc47` |
+| `Bitcoin Stock-to-Flow Ratio - Day.csv` | Bitcoin Stock-to-Flow Ratio - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `c2a42c5bdfe3` |
+| `Bitcoin Stock-to-Flow Reversion - Day.csv` | Bitcoin Stock-to-Flow Reversion - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `4c3f869f5e9f` |
+| `Bitcoin Sum Coin Age - Day.csv` | Bitcoin Sum Coin Age - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `17f3bc1e11ce` |
+| `Bitcoin Sum Coin Age Distribution (%) - Day.csv` | Bitcoin Sum Coin Age Distribution (%) - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 14 | `bd88490ea836` |
+| `Bitcoin Sum Coin Age Distribution - Day.csv` | Bitcoin Sum Coin Age Distribution - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 14 | `f13a588df6ea` |
+| `Bitcoin Sum Coin Dollar Age - Day.csv` | Bitcoin Sum Coin Dollar Age - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `44db5010f8c9` |
+| `Bitcoin Supply Adjusted Dormancy - Day.csv` | Bitcoin Supply Adjusted Dormancy - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `391c7129c089` |
+| `Bitcoin Supply in Loss (%) - Day.csv` | Bitcoin Supply in Loss (%) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `f87ad9ab46d0` |
+| `Bitcoin Supply in Loss - Day.csv` | Bitcoin Supply in Loss - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `a0bc22aba2c4` |
+| `Bitcoin Supply in Profit (%) - Day.csv` | Bitcoin Supply in Profit (%) - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `ffa459b79431` |
+| `Bitcoin Supply in Profit - Day.csv` | Bitcoin Supply in Profit - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `2aa17572e0e7` |
+| `Bitcoin Supply-Adjusted CDD - Day.csv` | Bitcoin Supply-Adjusted CDD - Day | 2020-12-31 .. 2026-04-10 | 1,927 | daily | 0 | 2 | `b0bdc88bed02` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 
 **`Bitcoin Adjusted SOPR (aSOPR) - Day.csv`**
 
 ```csv
-date,timestamp_utc,Adjusted SOPR (aSOPR)
-2009-01-03,2009-01-03T00:00:00Z,
-2009-01-04,2009-01-04T00:00:00Z,
+date,Adjusted SOPR (aSOPR)
+2009-01-03,
+2009-01-04,
 ```
 
 **`Bitcoin Average Dormancy - Day.csv`**
 
 ```csv
-date,timestamp_utc,Average Dormancy
-2020-12-31,2020-12-31T00:00:00Z,9.82981928
-2021-01-01,2021-01-01T00:00:00Z,15.01804685
+date,Average Dormancy
+2020-12-31,9.82981928
+2021-01-01,15.01804685
 ```
 
 **`Bitcoin Average Supply-Adjusted CDD - Day.csv`**
 
 ```csv
-date,timestamp_utc,Average Supply-Adjusted CDD
-2020-12-31,2020-12-31T00:00:00Z,0.51305219
-2021-01-01,2021-01-01T00:00:00Z,0.51323057
+date,Average Supply-Adjusted CDD
+2020-12-31,0.51305219
+2021-01-01,0.51323057
 ```
 
 **`Bitcoin Binary CDD - Day.csv`**
 
 ```csv
-date,timestamp_utc,Binary CDD
-2009-01-03,2009-01-03T00:00:00Z,0
-2009-01-04,2009-01-04T00:00:00Z,0
+date,Binary CDD
+2009-01-03,0
+2009-01-04,0
 ```
 
 **`Bitcoin Long Term Holder SOPR - Day.csv`**
 
 ```csv
-date,timestamp_utc,Long Term Holder SOPR
-2009-01-03,2009-01-03T00:00:00Z,
-2009-01-04,2009-01-04T00:00:00Z,
+date,Long Term Holder SOPR
+2009-01-03,
+2009-01-04,
 ```
 
 **`Bitcoin Mean Coin Age - Day.csv`**
 
 ```csv
-date,timestamp_utc,Mean Coin Age
-2020-12-31,2020-12-31T00:00:00Z,1118.53347501
-2021-01-01,2021-01-01T00:00:00Z,1118.18331516
+date,Mean Coin Age
+2020-12-31,1118.53347501
+2021-01-01,1118.18331516
 ```
 
 **`Bitcoin Mean Coin Dollar Age - Day.csv`**
 
 ```csv
-date,timestamp_utc,Mean Coin Dollar Age
-2020-12-31,2020-12-31T00:00:00Z,2481022.16670295
-2021-01-01,2021-01-01T00:00:00Z,2479412.61512363
+date,Mean Coin Dollar Age
+2020-12-31,2481022.16670295
+2021-01-01,2479412.61512363
 ```
 
 **`Bitcoin MVRV Ratio - Day.csv`**
 
 ```csv
-date,timestamp_utc,MVRV Ratio
-2009-01-03,2009-01-03T00:00:00Z,
-2009-01-04,2009-01-04T00:00:00Z,
+date,MVRV Ratio
+2009-01-03,
+2009-01-04,
 ```
 
 **`Bitcoin Net Unrealized Loss (NUL) - Day.csv`**
 
 ```csv
-date,timestamp_utc,Net Unrealized Loss (NUL)
-2020-12-31,2020-12-31T00:00:00Z,1.305e-05
-2021-01-01,2021-01-01T00:00:00Z,9.95e-06
+date,Net Unrealized Loss (NUL)
+2020-12-31,1.305e-05
+2021-01-01,9.95e-06
 ```
 
 **`Bitcoin Net Unrealized Profit (NUP) - Day.csv`**
 
 ```csv
-date,timestamp_utc,Net Unrealized Profit (NUP)
-2020-12-31,2020-12-31T00:00:00Z,0.68440472
-2021-01-01,2021-01-01T00:00:00Z,0.68348719
+date,Net Unrealized Profit (NUP)
+2020-12-31,0.68440472
+2021-01-01,0.68348719
 ```
 
 **`Bitcoin Net Unrealized Profit_Loss (NUPL) - Day.csv`**
 
 ```csv
-date,timestamp_utc,Net Unrealized Profit/Loss (NUPL)
-2020-12-31,2020-12-31T00:00:00Z,0.68229199
-2021-01-01,2021-01-01T00:00:00Z,0.68363813
+date,Net Unrealized Profit/Loss (NUPL)
+2020-12-31,0.68229199
+2021-01-01,0.68363813
 ```
 
 **`Bitcoin NVM Ratio - Day.csv`**
 
 ```csv
-date,timestamp_utc,NVM Ratio
-2020-12-31,2020-12-31T00:00:00Z,0.37138593
-2021-01-01,2021-01-01T00:00:00Z,0.55061113
+date,NVM Ratio
+2020-12-31,0.37138593
+2021-01-01,0.55061113
 ```
 
 _(27 more files in this folder — see the table above or the master inventory.)_

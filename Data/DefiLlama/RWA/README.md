@@ -14,34 +14,27 @@ All DefiLlama data — programmatic TVL panels plus manual website exports. Orga
 
 **Licensing**: DefiLlama data is free and public; attribution is appreciated.
 
-## Files (4)
+## Files (5)
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `rwa-category-chart_combined_2026-04-17.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-17 | 1,687 | daily | 0 | 13 | `f12c25e59199` |
-| `rwa-time-series-chart-active-mcap-all-2026-04-14.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-14 | 1,684 | daily | 0 | 19 | `9ba4134e36de` |
-| `rwa-time-series-chart-defi-active-tvl-all-2026-04-14.csv` | TVL | 2021-10-25 .. 2026-04-14 | 1,633 | daily | 0 | 19 | `27d4bb2df5f1` |
-| `rwa-time-series-chart-onchain-mcap-all-2026-04-14.csv` | Real-world assets (RWA) | 2021-09-04 .. 2026-04-14 | 1,684 | daily | 0 | 22 | `511a75a79f80` |
+| `rwa_active_mcap_all__daily.csv` | rwa_active_mcap_all__daily | 2021-09-04 .. 2026-04-17 | 1,687 | daily | 0 | 22 | `955e3b36b4f0` |
+| `rwa_defi_active_tvl_all__daily.csv` | TVL | 2021-10-25 .. 2026-04-14 | 1,633 | daily | 0 | 19 | `27d4bb2df5f1` |
+| `rwa_mcap_by_category__daily.csv` | rwa_mcap_by_category__daily | 2021-09-04 .. 2026-04-17 | 1,687 | daily | 0 | 13 | `f12c25e59199` |
+| `rwa_onchain_mcap_all__daily.csv` | rwa_onchain_mcap_all__daily | 2021-09-04 .. 2026-04-17 | 1,687 | daily | 0 | 24 | `acfff04ac634` |
+| `rwa_onchain_mcap_by_platform__daily.csv` | rwa_onchain_mcap_by_platform__daily | 2021-09-04 .. 2026-04-17 | 1,687 | daily | 0 | 63 | `efffe6e33a92` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 
-**`rwa-category-chart_combined_2026-04-17.csv`**
+**`rwa_active_mcap_all__daily.csv`**
 
 ```csv
-date,all_Carbon & Environment,all_Gold & Commodities,all_Stocks & Equities,all_Real Estate,all_Bond & MMF Funds,all_RWA Wrappers,all_Private Credit,all_Crypto Funds,all_ETFs,... (+3 more)
-2021-09-04,15059399.0,339983760.0,52577555.0,0.0,0.0,0.0,0.0,0.0,0.0
-2021-09-05,14664428.0,338799850.0,43089293.0,0.0,0.0,0.0,0.0,0.0,0.0
+date,Total Active Mcap,Bonds,Precious Metals,Private Credit,Public Equities,Reinsurance,Digital Assets,Private Equity & Venture,Equity Indices,... (+12 more)
+2021-09-04,355043159.0,,339983760.0,,,,,,
+2021-09-05,353464278.0,,338799850.0,,,,,,
 ```
 
-**`rwa-time-series-chart-active-mcap-all-2026-04-14.csv`**
-
-```csv
-date,Bonds,Precious Metals,Private Credit,Public Equities,Reinsurance,Digital Assets,Private Equity & Venture,Equity Indices,Equity ETFs,... (+9 more)
-2021-09-04,,339983760.0,,,,,,,
-2021-09-05,,338799850.0,,,,,,,
-```
-
-**`rwa-time-series-chart-defi-active-tvl-all-2026-04-14.csv`**
+**`rwa_defi_active_tvl_all__daily.csv`**
 
 ```csv
 date,Private Credit,Bonds,Real Estate,Reinsurance,Precious Metals,Digital Assets,Private Equity & Venture,Public Equities,Equity Indices,... (+9 more)
@@ -49,12 +42,28 @@ date,Private Credit,Bonds,Real Estate,Reinsurance,Precious Metals,Digital Assets
 2021-10-26,,,,,,,,,
 ```
 
-**`rwa-time-series-chart-onchain-mcap-all-2026-04-14.csv`**
+**`rwa_mcap_by_category__daily.csv`**
 
 ```csv
-date,Bonds,Precious Metals,Private Credit,Public Equities,Real Estate,Digital Assets,Reinsurance,Private Equity & Venture,Equity Indices,... (+12 more)
-2021-09-04,,339983760.0,,,,,,,
-2021-09-05,,338799850.0,,,,,,,
+date,all_Carbon & Environment,all_Gold & Commodities,all_Stocks & Equities,all_Real Estate,all_Bond & MMF Funds,all_RWA Wrappers,all_Private Credit,all_Crypto Funds,all_ETFs,... (+3 more)
+2021-09-04,15059399.0,339983760.0,52577555.0,0.0,0.0,0.0,0.0,0.0,0.0
+2021-09-05,14664428.0,338799850.0,43089293.0,0.0,0.0,0.0,0.0,0.0,0.0
+```
+
+**`rwa_onchain_mcap_all__daily.csv`**
+
+```csv
+date,Total Onchain Mcap,Bonds,Precious Metals,Private Credit,Public Equities,Real Estate,Reinsurance,Digital Assets,Private Equity & Venture,... (+14 more)
+2021-09-04,407620714.0,,339983760.0,,,,,,52577555.0
+2021-09-05,396553571.0,,338799850.0,,,,,,43089293.0
+```
+
+**`rwa_onchain_mcap_by_platform__daily.csv`**
+
+```csv
+date,Total Onchain Mcap,Securitize,Maple,Tether,Ondo,Circle,Paxos,Centrifuge,Spiko,... (+53 more)
+2021-09-04,407620714.0,,,,,,332696137.0,,
+2021-09-05,396553571.0,,,,,,331519881.0,,
 ```
 
 ---

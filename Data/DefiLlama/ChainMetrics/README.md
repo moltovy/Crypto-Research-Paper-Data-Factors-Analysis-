@@ -14,28 +14,21 @@ All DefiLlama data — programmatic TVL panels plus manual website exports. Orga
 
 **Licensing**: DefiLlama data is free and public; attribution is appreciated.
 
-## Files (6)
+## Files (7)
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `all_metrics_2026-04-17 (1) volume.csv` | all_metrics_2026-04-17 (1) volume | 2016-04-19 .. 2026-04-17 | 3,644 | daily | 7 | 38 | `c6cd5c47b6b7` |
-| `all_metrics_2026-04-17.csv` | all_metrics_2026-04-17 | 2016-04-19 .. 2026-04-17 | 3,644 | daily | 7 | 40 | `31867e37a761` |
-| `ethereum_metrics_2026-04-17 (1).csv` | ethereum_metrics_2026-04-17 (1) | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 | `0be6076357d4` |
-| `ethereum_metrics_2026-04-17 Fees and revenue.csv` | Fees | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 | `2740d69b8394` |
-| `ethereum_metrics_2026-04-17 volume.csv` | ethereum_metrics_2026-04-17 volume | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 | `73234f10b224` |
-| `solana_metrics_2026-04-17.csv` | Solana | 2021-03-18 .. 2026-04-17 | 1,857 | daily | 0 | 38 | `118d38aace55` |
+| `all_chains_metrics__daily.csv` | all_chains_metrics__daily | 2016-04-19 .. 2026-04-17 | 3,644 | daily | 7 | 40 | `31867e37a761` |
+| `all_chains_perp_volume_by_protocol__daily.csv` | all_chains_perp_volume_by_protocol__daily | 2021-02-25 .. 2026-04-17 | 1,878 | daily | 0 | 180 | `b7d5be0abade` |
+| `all_dex_metrics__daily.csv` | all_dex_metrics__daily | 2016-04-19 .. 2026-04-17 | 3,644 | daily | 7 | 5 | `998a1b09201c` |
+| `chain_revenue_combined__daily.csv` | chain_revenue_combined__daily | 2018-08-18 .. 2026-04-17 | 2,793 | daily | 7 | 2 | `99bed5d7e506` |
+| `chain_tvl_dominance__daily.csv` | TVL | 2020-08-04 .. 2026-04-15 | 521 | ~4d | — | 457 | `ff2983d343fe` |
+| `ethereum_metrics__daily.csv` | ethereum_metrics__daily | 2017-09-27 .. 2026-04-17 | 3,125 | daily | 0 | 48 | `73234f10b224` |
+| `solana_metrics__daily.csv` | Solana | 2021-03-18 .. 2026-04-17 | 1,857 | daily | 0 | 38 | `118d38aace55` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 
-**`all_metrics_2026-04-17 (1) volume.csv`**
-
-```csv
-date,tvl_tvl,tvl_staking,tvl_pool2,tvl_borrowed,tvl_doublecounted,tvl_vesting,tvl_liquidstaking,tvl_dcAndLsOverlap,tvl_treasury,... (+28 more)
-2016-04-19,,,,,,,,,
-2016-04-20,,,,,,,,,
-```
-
-**`all_metrics_2026-04-17.csv`**
+**`all_chains_metrics__daily.csv`**
 
 ```csv
 date,tvl_tvl,tvl_staking,tvl_pool2,tvl_borrowed,tvl_doublecounted,tvl_vesting,tvl_liquidstaking,tvl_dcAndLsOverlap,tvl_treasury,... (+30 more)
@@ -43,7 +36,39 @@ date,tvl_tvl,tvl_staking,tvl_pool2,tvl_borrowed,tvl_doublecounted,tvl_vesting,tv
 2016-04-20,,,,,,,,,
 ```
 
-**`ethereum_metrics_2026-04-17 (1).csv`**
+**`all_chains_perp_volume_by_protocol__daily.csv`**
+
+```csv
+date,Hyperliquid,Aster,edgeX,Lighter,Grvt,ApeX Protocol,Variational,Pacifica,StandX,... (+170 more)
+2021-02-25,,,,,,,,,
+2021-02-26,,,,,,,,,
+```
+
+**`all_dex_metrics__daily.csv`**
+
+```csv
+date,TVL,DEXs Volume,Perps Volume,Stablecoins Mcap
+2016-04-19,,607.0,,
+2016-04-20,,1728.0,,
+```
+
+**`chain_revenue_combined__daily.csv`**
+
+```csv
+date,all
+2018-08-18,8
+2018-08-19,26
+```
+
+**`chain_tvl_dominance__daily.csv`**
+
+```csv
+date,Ethereum,Tron,Celo,AB,Tezos,Polygon,BSC,Kava,Terra Classic,... (+447 more)
+2020-08-04,94.74384572891252,0.5048692034696479,4.751285067617815,,,,,,
+2020-08-08,95.25657664996838,0.5003984216260704,4.243024928405544,,,,,,
+```
+
+**`ethereum_metrics__daily.csv`**
 
 ```csv
 date,tvl_tvl,tvl_staking,tvl_pool2,tvl_borrowed,tvl_doublecounted,tvl_vesting,tvl_liquidstaking,tvl_dcAndLsOverlap,tvl_Masterchef,... (+38 more)
@@ -51,23 +76,7 @@ date,tvl_tvl,tvl_staking,tvl_pool2,tvl_borrowed,tvl_doublecounted,tvl_vesting,tv
 2017-09-28,0,,,,,,,,
 ```
 
-**`ethereum_metrics_2026-04-17 Fees and revenue.csv`**
-
-```csv
-date,tvl_tvl,tvl_staking,tvl_pool2,tvl_borrowed,tvl_doublecounted,tvl_vesting,tvl_liquidstaking,tvl_dcAndLsOverlap,tvl_Masterchef,... (+38 more)
-2017-09-27,0,,,,,,,,
-2017-09-28,0,,,,,,,,
-```
-
-**`ethereum_metrics_2026-04-17 volume.csv`**
-
-```csv
-date,tvl_tvl,tvl_staking,tvl_pool2,tvl_borrowed,tvl_doublecounted,tvl_vesting,tvl_liquidstaking,tvl_dcAndLsOverlap,tvl_Masterchef,... (+38 more)
-2017-09-27,0,,,,,,,,
-2017-09-28,0,,,,,,,,
-```
-
-**`solana_metrics_2026-04-17.csv`**
+**`solana_metrics__daily.csv`**
 
 ```csv
 date,tvl_tvl,tvl_doublecounted,tvl_liquidstaking,tvl_dcAndLsOverlap,tvl_staking,tvl_borrowed,tvl_pool2,tvl_vesting,tvl_OwnTokens,... (+28 more)

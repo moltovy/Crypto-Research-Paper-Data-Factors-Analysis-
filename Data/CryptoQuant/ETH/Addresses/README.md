@@ -4,7 +4,7 @@
 
 On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, USDC, USDT (ERC20 / TRC20), and WBTC. Source files are per-metric daily CSVs exported from the CryptoQuant web UI.
 
-**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) and keeps the original as `timestamp_utc`.
+**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) as its first column; the original timestamp column has been dropped (everything is daily granularity).
 
 **Units**: Varies per metric; see the existing `<ASSET>_Metrics.txt` inventories.
 
@@ -18,61 +18,61 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Ethereum Active Addresses - Day.csv` | Active addresses | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `0b7391a1f21e` |
-| `Ethereum Active Addresses - Internal, External, EOA - Day.csv` | Active addresses | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 5 | `170a0bf05af8` |
-| `Ethereum Active Receiving Addresses - Day.csv` | Ethereum Active Receiving Addresses - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `7df97612a5fe` |
-| `Ethereum Active Receiving Addresses - Internal, External, EOA - Day.csv` | Ethereum Active Receiving Addresses - Internal, External, EOA - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 5 | `f75a4de640f8` |
-| `Ethereum Active Sending Addresses - Day.csv` | Ethereum Active Sending Addresses - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `038fc75062fc` |
-| `Ethereum Active Sending Addresses - Internal, External, EOA - Day.csv` | Ethereum Active Sending Addresses - Internal, External, EOA - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 5 | `8a2a89511e7f` |
+| `Ethereum Active Addresses - Day.csv` | Active addresses | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 2 | `4ba4ada463bd` |
+| `Ethereum Active Addresses - Internal, External, EOA - Day.csv` | Active addresses | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 4 | `1319ae9de53f` |
+| `Ethereum Active Receiving Addresses - Day.csv` | Ethereum Active Receiving Addresses - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 2 | `184d935336e2` |
+| `Ethereum Active Receiving Addresses - Internal, External, EOA - Day.csv` | Ethereum Active Receiving Addresses - Internal, External, EOA - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 4 | `e614f044c208` |
+| `Ethereum Active Sending Addresses - Day.csv` | Ethereum Active Sending Addresses - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 2 | `c9688a91d88e` |
+| `Ethereum Active Sending Addresses - Internal, External, EOA - Day.csv` | Ethereum Active Sending Addresses - Internal, External, EOA - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 4 | `c1a837ed61fa` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 
 **`Ethereum Active Addresses - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Addresses
-2020-11-02,2020-11-02T00:00:00Z,316567
-2020-11-03,2020-11-03T00:00:00Z,307180
+date,Active Addresses
+2020-11-02,316567
+2020-11-03,307180
 ```
 
 **`Ethereum Active Addresses - Internal, External, EOA - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Addresses -  Internal, External, EOA
-2020-11-02,2020-11-02T00:00:00Z,473277,,
-2020-11-03,2020-11-03T00:00:00Z,449977,,
+date,Active Addresses -  Internal, External, EOA
+2020-11-02,473277,,
+2020-11-03,449977,,
 ```
 
 **`Ethereum Active Receiving Addresses - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Receiving Addresses
-2020-11-02,2020-11-02T00:00:00Z,228147
-2020-11-03,2020-11-03T00:00:00Z,221136
+date,Active Receiving Addresses
+2020-11-02,228147
+2020-11-03,221136
 ```
 
 **`Ethereum Active Receiving Addresses - Internal, External, EOA - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Receiving Addresses - Internal, External, EOA
-2020-11-02,2020-11-02T00:00:00Z,322570,,
-2020-11-03,2020-11-03T00:00:00Z,298324,,
+date,Active Receiving Addresses - Internal, External, EOA
+2020-11-02,322570,,
+2020-11-03,298324,,
 ```
 
 **`Ethereum Active Sending Addresses - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Sending Addresses
-2020-11-02,2020-11-02T00:00:00Z,180350
-2020-11-03,2020-11-03T00:00:00Z,177858
+date,Active Sending Addresses
+2020-11-02,180350
+2020-11-03,177858
 ```
 
 **`Ethereum Active Sending Addresses - Internal, External, EOA - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Sending Addresses - Internal, External, EOA
-2020-11-02,2020-11-02T00:00:00Z,357277,,
-2020-11-03,2020-11-03T00:00:00Z,350898,,
+date,Active Sending Addresses - Internal, External, EOA
+2020-11-02,357277,,
+2020-11-03,350898,,
 ```
 
 ---

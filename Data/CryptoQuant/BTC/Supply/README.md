@@ -4,7 +4,7 @@
 
 On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, USDC, USDT (ERC20 / TRC20), and WBTC. Source files are per-metric daily CSVs exported from the CryptoQuant web UI.
 
-**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) and keeps the original as `timestamp_utc`.
+**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) as its first column; the original timestamp column has been dropped (everything is daily granularity).
 
 **Units**: Varies per metric; see the existing `<ASSET>_Metrics.txt` inventories.
 
@@ -18,25 +18,25 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Bitcoin New Supply - Day.csv` | Bitcoin New Supply - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `7ccb7aed24fe` |
-| `Bitcoin Total Supply - Day.csv` | Bitcoin Total Supply - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 3 | `1439a721c3bb` |
+| `Bitcoin New Supply - Day.csv` | Bitcoin New Supply - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `da6003327072` |
+| `Bitcoin Total Supply - Day.csv` | Bitcoin Total Supply - Day | 2009-01-03 .. 2026-04-10 | 6,307 | daily | 0 | 2 | `984bf9b02ddc` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 
 **`Bitcoin New Supply - Day.csv`**
 
 ```csv
-date,timestamp_utc,New Supply
-2009-01-03,2009-01-03T00:00:00Z,50.0
-2009-01-04,2009-01-04T00:00:00Z,0.0
+date,New Supply
+2009-01-03,50.0
+2009-01-04,0.0
 ```
 
 **`Bitcoin Total Supply - Day.csv`**
 
 ```csv
-date,timestamp_utc,Total Supply
-2009-01-03,2009-01-03T00:00:00Z,50.0
-2009-01-04,2009-01-04T00:00:00Z,50.0
+date,Total Supply
+2009-01-03,50.0
+2009-01-04,50.0
 ```
 
 ---

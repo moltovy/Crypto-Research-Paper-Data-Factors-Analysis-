@@ -4,7 +4,7 @@
 
 On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, USDC, USDT (ERC20 / TRC20), and WBTC. Source files are per-metric daily CSVs exported from the CryptoQuant web UI.
 
-**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) and keeps the original as `timestamp_utc`.
+**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) as its first column; the original timestamp column has been dropped (everything is daily granularity).
 
 **Units**: Varies per metric; see the existing `<ASSET>_Metrics.txt` inventories.
 
@@ -18,34 +18,34 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Wrapped BTC Active Addresses - Day.csv` | Active addresses | 2018-11-24 .. 2026-04-11 | 2,696 | daily | 0 | 3 | `9f6541ba26fd` |
-| `Wrapped BTC Active Receiving Addresses - Day.csv` | Wrapped BTC Active Receiving Addresses - Day | 2018-11-24 .. 2026-04-11 | 2,696 | daily | 0 | 3 | `4ed62cdf9997` |
-| `Wrapped BTC Active Sending Addresses - Day.csv` | Wrapped BTC Active Sending Addresses - Day | 2018-11-24 .. 2026-04-11 | 2,696 | daily | 0 | 3 | `96375ed584a9` |
+| `Wrapped BTC Active Addresses - Day.csv` | Active addresses | 2018-11-24 .. 2026-04-11 | 2,696 | daily | 0 | 2 | `2f1c362f931d` |
+| `Wrapped BTC Active Receiving Addresses - Day.csv` | Wrapped BTC Active Receiving Addresses - Day | 2018-11-24 .. 2026-04-11 | 2,696 | daily | 0 | 2 | `19ddb96e9dee` |
+| `Wrapped BTC Active Sending Addresses - Day.csv` | Wrapped BTC Active Sending Addresses - Day | 2018-11-24 .. 2026-04-11 | 2,696 | daily | 0 | 2 | `9bf6daa9aeab` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 
 **`Wrapped BTC Active Addresses - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Addresses
-2018-11-24,2018-11-24T00:00:00Z,0
-2018-11-25,2018-11-25T00:00:00Z,0
+date,Active Addresses
+2018-11-24,0
+2018-11-25,0
 ```
 
 **`Wrapped BTC Active Receiving Addresses - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Receiving Addresses
-2018-11-24,2018-11-24T00:00:00Z,0
-2018-11-25,2018-11-25T00:00:00Z,0
+date,Active Receiving Addresses
+2018-11-24,0
+2018-11-25,0
 ```
 
 **`Wrapped BTC Active Sending Addresses - Day.csv`**
 
 ```csv
-date,timestamp_utc,Active Sending Addresses
-2018-11-24,2018-11-24T00:00:00Z,0
-2018-11-25,2018-11-25T00:00:00Z,0
+date,Active Sending Addresses
+2018-11-24,0
+2018-11-25,0
 ```
 
 ---

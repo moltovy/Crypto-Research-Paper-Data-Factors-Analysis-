@@ -4,7 +4,7 @@
 
 On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, USDC, USDT (ERC20 / TRC20), and WBTC. Source files are per-metric daily CSVs exported from the CryptoQuant web UI.
 
-**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) and keeps the original as `timestamp_utc`.
+**Date convention**: Original column was `Datetime` (ISO `YYYY-MM-DDThh:mm:ssZ`, descending). After curation each file has `date` (ISO `YYYY-MM-DD`, ascending) as its first column; the original timestamp column has been dropped (everything is daily granularity).
 
 **Units**: Varies per metric; see the existing `<ASSET>_Metrics.txt` inventories.
 
@@ -18,34 +18,34 @@ On-chain, derivatives, exchange-flow, and market-indicator data for BTC, ETH, US
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
-| `Ethereum Destroyed Contracts - Day.csv` | Ethereum Destroyed Contracts - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `b77fa3bedd00` |
-| `Ethereum New Contracts - Day.csv` | Ethereum New Contracts - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `4af3c8c0ef0b` |
-| `Ethereum Number of Contracts - Day.csv` | Ethereum Number of Contracts - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 3 | `97c1a2a2ee3e` |
+| `Ethereum Destroyed Contracts - Day.csv` | Ethereum Destroyed Contracts - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 2 | `f682a0e45541` |
+| `Ethereum New Contracts - Day.csv` | Ethereum New Contracts - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 2 | `0a152b205aaf` |
+| `Ethereum Number of Contracts - Day.csv` | Ethereum Number of Contracts - Day | 2020-11-02 .. 2026-04-10 | 1,986 | daily | 0 | 2 | `e54dcd434828` |
 
 ## Sample rows (first 2 rows per file — truncated to 10 columns)
 
 **`Ethereum Destroyed Contracts - Day.csv`**
 
 ```csv
-date,timestamp_utc,Destroyed Contracts
-2020-11-02,2020-11-02T00:00:00Z,29662
-2020-11-03,2020-11-03T00:00:00Z,22467
+date,Destroyed Contracts
+2020-11-02,29662
+2020-11-03,22467
 ```
 
 **`Ethereum New Contracts - Day.csv`**
 
 ```csv
-date,timestamp_utc,New Contracts
-2020-11-02,2020-11-02T00:00:00Z,26385
-2020-11-03,2020-11-03T00:00:00Z,63768
+date,New Contracts
+2020-11-02,26385
+2020-11-03,63768
 ```
 
 **`Ethereum Number of Contracts - Day.csv`**
 
 ```csv
-date,timestamp_utc,Number of Contracts
-2020-11-02,2020-11-02T00:00:00Z,19107945
-2020-11-03,2020-11-03T00:00:00Z,19149246
+date,Number of Contracts
+2020-11-02,19107945
+2020-11-03,19149246
 ```
 
 ---
