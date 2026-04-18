@@ -76,4 +76,4 @@ date,Miner to Miner Transactions
 ```
 
 ---
-_Auto-generated on 2026-04-17 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._
+_Auto-generated on 2026-04-18 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._

@@ -134,4 +134,4 @@ date,UTXOs in Loss
 _(2 more files in this folder — see the table above or the master inventory.)_
 
 ---
-_Auto-generated on 2026-04-17 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._
+_Auto-generated on 2026-04-18 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._

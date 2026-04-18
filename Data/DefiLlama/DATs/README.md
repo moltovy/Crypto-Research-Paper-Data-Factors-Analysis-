@@ -31,4 +31,4 @@ BMNR,BitMine Immersion Technologies, Inc.,Stock,21.51000023,1.0808248709694843,5
 ```
 
 ---
-_Auto-generated on 2026-04-17 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._
+_Auto-generated on 2026-04-18 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._

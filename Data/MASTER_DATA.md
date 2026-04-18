@@ -576,4 +576,6 @@ Manual chart-to-CSV exports from TradingView. Organised into two subfolders: `Da
 
 The same information (plus column lists and SHA-256) is in `Data/MASTER_DATA.csv` for programmatic consumption.
 
-_Auto-generated on 2026-04-17 by `tools/data_curation/06_build_inventory.py`._
+For **LLM / chat attachments** (e.g. Perplexity Pro deep research), prefer `Data/MASTER_DATA.txt`: same inventory as this file, UTF-8 plain text with a short usage preamble — avoids PDF/DOCX extraction issues.
+
+_Auto-generated on 2026-04-18 by `tools/data_curation/06_build_inventory.py`._
