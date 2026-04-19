@@ -822,3 +822,29 @@ Wrote 54 per-folder README.md files.
 Wrote `Data/MASTER_DATA.md`.
 Wrote `Data/MASTER_DATA.txt`.
 Wrote `Data/MASTER_DATA.csv`.
+
+## Step 06 — build inventory  _(run 2026-04-19 01:01:17Z)_
+
+Summarized 490 CSV files.
+Wrote 54 per-folder README.md files.
+Wrote `Data/MASTER_DATA.md`.
+Wrote `Data/MASTER_DATA.txt`.
+Wrote `Data/MASTER_DATA.csv`.
+
+## Step 07 — validation  _(run 2026-04-19 01:03:29Z)_
+
+### Date-standardization check
+- date normalization: 481 files OK, 0 failed.
+
+### No timestamp_utc column check
+- no-timestamp-utc check: 491 files checked, 0 violations.
+
+### Merged-file sanity checks
+- stablecoin_mcap merge: cols_union_match=True (merged=200, parts_union=200), dup_dates=0, date_range_match=True (2017-11-29 .. 2026-04-17)
+- cex_net_inflows merge: cols_union_match=True (merged=75, parts_union=75), dup_dates=0, date_range_match=True (2022-11-12 .. 2026-04-17)
+
+### CryptoQuant spot-checks (5 random files)
+- backup dir not configured or missing. Set `validate.backup_dir` in `config/curation_snapshots.yml` to enable CryptoQuant spot-checks. Skipping (non-fatal).
+
+### Curated hash manifest
+- Wrote `Data/_meta/curated_manifest.csv` (574 files).

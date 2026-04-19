@@ -14,7 +14,7 @@ Manual chart-to-CSV exports from TradingView. Organised into two subfolders: `Da
 
 **Licensing**: TradingView chart data is for research use only; redistribution restricted.
 
-## Files (27)
+## Files (30)
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
@@ -30,6 +30,9 @@ Manual chart-to-CSV exports from TradingView. Organised into two subfolders: `Da
 | `CME_Solana_futures__daily.csv` | Solana | 2025-03-16 .. 2026-04-15 | 274 | daily | 122 | 11 | `0b34a29ba9a4` |
 | `COIN_coinbase_stock__daily.csv` | COIN_coinbase_stock__daily | 2021-04-14 .. 2026-04-17 | 1,259 | daily | 571 | 11 | `8d79f5ff8c58` |
 | `CRCL_circle_stock__daily.csv` | CRCL_circle_stock__daily | 2025-06-05 .. 2026-04-17 | 218 | daily | 99 | 11 | `54e615f579d4` |
+| `CRYPTOCAP_BTC_dominance__daily.csv` | CRYPTOCAP_BTC_dominance__daily | 2014-04-01 .. 2026-04-19 | 4,399 | daily | 3 | 11 | `8fb22070e9e2` |
+| `CRYPTOCAP_ETH_dominance__daily.csv` | CRYPTOCAP_ETH_dominance__daily | 2017-07-14 .. 2026-04-19 | 3,202 | daily | 0 | 11 | `18f05749bb6d` |
+| `CRYPTOCAP_TOTAL3__daily.csv` | CRYPTOCAP_TOTAL3__daily | 2017-07-14 .. 2026-04-19 | 3,202 | daily | 0 | 11 | `e0f51da15839` |
 | `Deribit_BTC_volatility_index_DVOL__daily.csv` | Deribit volatility index | 2021-03-24 .. 2026-04-16 | 1,850 | daily | 0 | 5 | `766d13db14a8` |
 | `DXY_us_dollar_index__daily.csv` | DXY_us_dollar_index__daily | 2007-06-13 .. 2026-04-16 | 4,768 | daily | 2115 | 11 | `29f215890669` |
 | `ETHA_ETF_over_SPOT_ETH__daily.csv` | ETF | 2024-07-23 .. 2026-04-16 | 435 | daily | 198 | 11 | `a0eb44df6098` |
@@ -144,7 +147,7 @@ date,open,high,low,close,Volume,Open Interest,Open Interest (Open),Open Interest
 2025-06-06,96.39,123.515,92.95,107.7,60706262,,,,
 ```
 
-_(15 more files in this folder — see the table above or the master inventory.)_
+_(18 more files in this folder — see the table above or the master inventory.)_
 
 ---
-_Auto-generated on 2026-04-18 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._
+_Auto-generated on 2026-04-19 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._

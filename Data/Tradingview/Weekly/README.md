@@ -14,7 +14,7 @@ Manual chart-to-CSV exports from TradingView. Organised into two subfolders: `Da
 
 **Licensing**: TradingView chart data is for research use only; redistribution restricted.
 
-## Files (11)
+## Files (14)
 
 | File | Topic | Date range | Rows | Freq | Missing days | Cols | SHA |
 | --- | --- | --- | ---: | --- | ---: | ---: | --- |
@@ -23,6 +23,9 @@ Manual chart-to-CSV exports from TradingView. Organised into two subfolders: `Da
 | `CME_Micro_Bitcoin_MBT1_continuous__weekly.csv` | CME Micro BTC futures | 2018-03-25 .. 2026-04-12 | 350 | weekly | — | 11 | `e529031639d0` |
 | `CME_Micro_Ether_MET1_continuous__weekly.csv` | CME Micro ETH futures | 2021-11-28 .. 2026-04-12 | 229 | weekly | — | 11 | `1c1396d7b4d9` |
 | `COIN_coinbase_stock__weekly.csv` | COIN_coinbase_stock__weekly | 2021-04-12 .. 2026-04-13 | 262 | weekly | — | 11 | `f030b1ad1181` |
+| `CRYPTOCAP_BTC_dominance__weekly.csv` | CRYPTOCAP_BTC_dominance__weekly | 2014-03-31 .. 2026-04-13 | 629 | weekly | — | 11 | `caae766d9bfb` |
+| `CRYPTOCAP_ETH_dominance__weekly.csv` | CRYPTOCAP_ETH_dominance__weekly | 2017-07-10 .. 2026-04-13 | 458 | weekly | — | 11 | `e5d7b42363aa` |
+| `CRYPTOCAP_TOTAL3__weekly.csv` | CRYPTOCAP_TOTAL3__weekly | 2017-07-10 .. 2026-04-13 | 458 | weekly | — | 11 | `024e34f2c0b0` |
 | `DXY_us_dollar_index__weekly.csv` | DXY_us_dollar_index__weekly | 1967-01-29 .. 2026-04-12 | 2,933 | weekly | — | 11 | `9a620dc85a81` |
 | `MSTR_microstrategy_stock__weekly.csv` | MSTR_microstrategy_stock__weekly | 2011-07-11 .. 2026-04-13 | 771 | weekly | — | 11 | `9aee62acf384` |
 | `QQQ_nasdaq100_etf__weekly.csv` | ETF | 2005-10-17 .. 2026-04-13 | 1,070 | weekly | — | 11 | `3ffdff9bc20c` |
@@ -72,6 +75,30 @@ date,open,high,low,close,Volume,Open Interest,Open Interest (Open),Open Interest
 2021-04-19,337.26,341.01,282.07,291.6,64474796,,,,
 ```
 
+**`CRYPTOCAP_BTC_dominance__weekly.csv`**
+
+```csv
+date,open,high,low,close,Volume,Open Interest,Open Interest (Open),Open Interest (High,Open Interest (Low),... (+1 more)
+2014-03-31,99.38055076465608,99.49469304023364,99.29683246708136,99.42981933029183,,,,,
+2014-04-07,99.41923976527276,99.91255198011166,99.37783711094266,99.43745051576936,,,,,
+```
+
+**`CRYPTOCAP_ETH_dominance__weekly.csv`**
+
+```csv
+date,open,high,low,close,Volume,Open Interest,Open Interest (Open),Open Interest (High,Open Interest (Low),... (+1 more)
+2017-07-10,24.554454587888667,27.51662180302233,24.42516229224181,25.437037322007257,,,,,
+2017-07-17,25.45771384257021,30.805605081828475,24.025049615110014,25.638129222627157,,,,,
+```
+
+**`CRYPTOCAP_TOTAL3__weekly.csv`**
+
+```csv
+date,open,high,low,close,Volume,Open Interest,Open Interest (Open),Open Interest (High,Open Interest (Low),... (+1 more)
+2017-07-10,15058349582.9104,15424501516.147224,10330569098.54361,11817522562.894535,,,,,
+2017-07-17,11839102613.306717,18213940938.833584,11452934241.399082,16800329646.226171,,,,,
+```
+
 **`DXY_us_dollar_index__weekly.csv`**
 
 ```csv
@@ -104,21 +131,7 @@ date,open,high,low,close,Volume,Open Interest,Open Interest (Open),Open Interest
 2003-01-27,936.0,1116.0,816.0,816.0,161,,,,
 ```
 
-**`SPY_sp500_etf__weekly.csv`**
-
-```csv
-date,open,high,low,close,Volume,Open Interest,Open Interest (Open),Open Interest (High,Open Interest (Low),... (+1 more)
-1993-01-25,43.9688,43.96899,43.75,43.938,1003200,,,,
-1993-02-01,43.96875,45.09375,43.96875,44.96875,2234800,,,,
-```
-
-**`XAUUSD_gold_spot__weekly.csv`**
-
-```csv
-date,open,high,low,close,Volume,Open Interest,Open Interest (Open),Open Interest (High,Open Interest (Low),... (+1 more)
-1992-04-19,338.6,343.0,336.7,337.5,0,,,,
-1992-04-26,337.5,339.4,334.9,339.3,0,,,,
-```
+_(2 more files in this folder — see the table above or the master inventory.)_
 
 ---
-_Auto-generated on 2026-04-18 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._
+_Auto-generated on 2026-04-19 by `tools/data_curation/06_build_inventory.py`. Regenerate after any data refresh._

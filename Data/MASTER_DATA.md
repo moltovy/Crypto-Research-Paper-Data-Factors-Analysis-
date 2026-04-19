@@ -24,7 +24,7 @@ All time-series CSVs have been normalized to:
 | `DefiLlama/` | 28 | 306,856 | 2016-04-19 .. 2026-04-19 | daily |
 | `FRED/` | 21 | 166,529 | 1947-01-01 .. 2026-04-17 | daily |
 | `Farside ETF Data/` | 3 | 1,032 | 2024-01-11 .. 2026-04-10 | daily |
-| `Tradingview/` | 38 | 79,809 | 1967-01-29 .. 2026-04-17 | daily |
+| `Tradingview/` | 44 | 92,157 | 1967-01-29 .. 2026-04-19 | daily |
 
 ## Factor-block mapping (for quick teammate orientation)
 
@@ -545,6 +545,9 @@ Manual chart-to-CSV exports from TradingView. Organised into two subfolders: `Da
 | `Tradingview/Daily/CME_Solana_futures__daily.csv` | Solana | 2025-03-16 .. 2026-04-15 | 274 | daily | 122 | 11 |
 | `Tradingview/Daily/COIN_coinbase_stock__daily.csv` | COIN_coinbase_stock__daily | 2021-04-14 .. 2026-04-17 | 1,259 | daily | 571 | 11 |
 | `Tradingview/Daily/CRCL_circle_stock__daily.csv` | CRCL_circle_stock__daily | 2025-06-05 .. 2026-04-17 | 218 | daily | 99 | 11 |
+| `Tradingview/Daily/CRYPTOCAP_BTC_dominance__daily.csv` | CRYPTOCAP_BTC_dominance__daily | 2014-04-01 .. 2026-04-19 | 4,399 | daily | 3 | 11 |
+| `Tradingview/Daily/CRYPTOCAP_ETH_dominance__daily.csv` | CRYPTOCAP_ETH_dominance__daily | 2017-07-14 .. 2026-04-19 | 3,202 | daily | 0 | 11 |
+| `Tradingview/Daily/CRYPTOCAP_TOTAL3__daily.csv` | CRYPTOCAP_TOTAL3__daily | 2017-07-14 .. 2026-04-19 | 3,202 | daily | 0 | 11 |
 | `Tradingview/Daily/Deribit_BTC_volatility_index_DVOL__daily.csv` | Deribit volatility index | 2021-03-24 .. 2026-04-16 | 1,850 | daily | 0 | 5 |
 | `Tradingview/Daily/DXY_us_dollar_index__daily.csv` | DXY_us_dollar_index__daily | 2007-06-13 .. 2026-04-16 | 4,768 | daily | 2115 | 11 |
 | `Tradingview/Daily/ETHA_ETF_over_SPOT_ETH__daily.csv` | ETF | 2024-07-23 .. 2026-04-16 | 435 | daily | 198 | 11 |
@@ -565,6 +568,9 @@ Manual chart-to-CSV exports from TradingView. Organised into two subfolders: `Da
 | `Tradingview/Weekly/CME_Micro_Bitcoin_MBT1_continuous__weekly.csv` | CME Micro BTC futures | 2018-03-25 .. 2026-04-12 | 350 | weekly | — | 11 |
 | `Tradingview/Weekly/CME_Micro_Ether_MET1_continuous__weekly.csv` | CME Micro ETH futures | 2021-11-28 .. 2026-04-12 | 229 | weekly | — | 11 |
 | `Tradingview/Weekly/COIN_coinbase_stock__weekly.csv` | COIN_coinbase_stock__weekly | 2021-04-12 .. 2026-04-13 | 262 | weekly | — | 11 |
+| `Tradingview/Weekly/CRYPTOCAP_BTC_dominance__weekly.csv` | CRYPTOCAP_BTC_dominance__weekly | 2014-03-31 .. 2026-04-13 | 629 | weekly | — | 11 |
+| `Tradingview/Weekly/CRYPTOCAP_ETH_dominance__weekly.csv` | CRYPTOCAP_ETH_dominance__weekly | 2017-07-10 .. 2026-04-13 | 458 | weekly | — | 11 |
+| `Tradingview/Weekly/CRYPTOCAP_TOTAL3__weekly.csv` | CRYPTOCAP_TOTAL3__weekly | 2017-07-10 .. 2026-04-13 | 458 | weekly | — | 11 |
 | `Tradingview/Weekly/DXY_us_dollar_index__weekly.csv` | DXY_us_dollar_index__weekly | 1967-01-29 .. 2026-04-12 | 2,933 | weekly | — | 11 |
 | `Tradingview/Weekly/MSTR_microstrategy_stock__weekly.csv` | MSTR_microstrategy_stock__weekly | 2011-07-11 .. 2026-04-13 | 771 | weekly | — | 11 |
 | `Tradingview/Weekly/QQQ_nasdaq100_etf__weekly.csv` | ETF | 2005-10-17 .. 2026-04-13 | 1,070 | weekly | — | 11 |
@@ -578,4 +584,4 @@ The same information (plus column lists and SHA-256) is in `Data/MASTER_DATA.csv
 
 For **LLM / chat attachments** (e.g. Perplexity Pro deep research), prefer `Data/MASTER_DATA.txt`: same inventory as this file, UTF-8 plain text with a short usage preamble — avoids PDF/DOCX extraction issues.
 
-_Auto-generated on 2026-04-18 by `tools/data_curation/06_build_inventory.py`._
+_Auto-generated on 2026-04-19 by `tools/data_curation/06_build_inventory.py`._
