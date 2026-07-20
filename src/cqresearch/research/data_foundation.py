@@ -1144,6 +1144,7 @@ def _save_figure(fig: plt.Figure, path: Path) -> Path:
             )
             + "\n",
             encoding="utf-8",
+            newline="\n",
         )
         png_temporary.replace(path)
         svg_temporary.replace(svg)

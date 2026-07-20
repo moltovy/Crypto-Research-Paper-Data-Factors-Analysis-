@@ -16,7 +16,7 @@
       "sha256": "ace3f32ac0c6e8ad366188ee8c3fa558b62f0474f56e487ee0a74c9c739e07a3"
     },
     {
-      "bytes": 59610,
+      "bytes": 57697,
       "path": "research/00_data_measurement_foundation/figures/coverage_missingness_by_block.svg",
       "sha256": "26261a3a074d7f0da98d05e9dce0a8501a74c1440e0994c511dfef5d336bef7c"
     },
@@ -36,7 +36,7 @@
       "sha256": "2f137928d05c5841f0c1b61faf3f044658eacb4f2b4faab255143fdf79bdddc4"
     },
     {
-      "bytes": 86649,
+      "bytes": 83985,
       "path": "research/00_data_measurement_foundation/figures/data_governance_inventory.svg",
       "sha256": "094710c7c675de4a28b22314b8ccba241d7ddbb8bb0d1137fd7e65eb1c1359a1"
     },
@@ -86,9 +86,9 @@
       "sha256": "06f16d2ab7553b021e3c9daab2d0155f5eb88238f785b2df745ff6ab9ca3a98b"
     },
     {
-      "bytes": 126804,
+      "bytes": 124835,
       "path": "research/00_data_measurement_foundation/tables/coverage_missingness.csv",
-      "sha256": "f626fb56467de59e455b1fa33a84cc001f84aac445f2c949aab5774caf9204ae"
+      "sha256": "736f71673a8a2431f36e5680c5f80b0370e530433b9b7324be1a3c0fdc25efdd"
     },
     {
       "bytes": 12975,

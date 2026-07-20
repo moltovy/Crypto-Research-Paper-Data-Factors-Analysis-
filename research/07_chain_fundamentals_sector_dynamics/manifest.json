@@ -11,12 +11,12 @@
       "sha256": "b934354ea9146b323616cabd3cf068e59cf58f06fdebe57114f053967d592cca"
     },
     {
-      "bytes": 24424,
+      "bytes": 22797,
       "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.source.csv",
-      "sha256": "46dd7db49837408975dd0819739a5f84867d9a49d1f218f14149cdd11f629327"
+      "sha256": "08f6330c4c6c58d9c92a78741861c0d9d6dacfd7ce4b4aefb114559706867a1d"
     },
     {
-      "bytes": 64731,
+      "bytes": 62636,
       "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.svg",
       "sha256": "d8d0ba5bf318de5b1d530ee04fd475cdb9362ac62da9f570b11a967b8285135a"
     },
@@ -51,9 +51,9 @@
       "sha256": "2e08401f89ebccba967cd4964fdde6b359dfbcff4ceb266d078018bbf5ceafae"
     },
     {
-      "bytes": 582,
+      "bytes": 545,
       "path": "research/07_chain_fundamentals_sector_dynamics/tables/chain_panel.csv",
-      "sha256": "245a6dc2da3ea2ee14f5afedef8ba6332a81c8b29a8ac0f4b39a108b9a2c9d1d"
+      "sha256": "ed8964f236fb2224e0f05e36997b8ab4c88e8348cd37f65ab11f84e7b5d4e3c7"
     },
     {
       "bytes": 631,
@@ -66,19 +66,19 @@
       "sha256": "48d657b48c59e24eb0618f2c2c6141b7d4367b5910ed6aa2eacb8302fe4c94dc"
     },
     {
-      "bytes": 14825,
+      "bytes": 13435,
       "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_concentration.csv",
-      "sha256": "235555c7038f6040ad4cd66272f6acaa90f8382fabfaf2806b33e277567f5518"
+      "sha256": "3e4fe76244f35d0a8b2cffc1e2b3bc5e399ca71c3248762c1d51fe9f265a2f3f"
     },
     {
-      "bytes": 11195,
+      "bytes": 9839,
       "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_concentration_decomposition.csv",
-      "sha256": "dee3e8a3eb65ff5dc0122fbf4cfece1a4ca7af59b0ad5188cd2ce39b226e0101"
+      "sha256": "d8ffd2a761f1d22645dfbebdd1b98b2ceb75388464d95645517f2698b94347c8"
     },
     {
-      "bytes": 4092,
+      "bytes": 3855,
       "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_membership_transitions.csv",
-      "sha256": "e42513372d894ab5222125b77997cc6afecb3a105bbb7ad990d94bd6d33ee160"
+      "sha256": "b9eb919b708537feec7617de280029c0c21d45ac0fd153b818fc6e6efa72b823"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",

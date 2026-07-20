@@ -11,12 +11,12 @@
       "sha256": "2ba86f3ef324beb05bf8d0f4524a290658add8134eba1b9c18528e2fca91b950"
     },
     {
-      "bytes": 98315,
+      "bytes": 90311,
       "path": "research/02_macro_tradfi_integration/figures/02_dynamic_tradfi_integration.source.csv",
-      "sha256": "9da30a6777910239aa192deb29e14c52b3be0ea35772e8bbe7f19c9f41c897e5"
+      "sha256": "a1a2b8a1586a7bcffdd0b3aa5d44a0e9835e35741dcd2d8b5fc28343155dbc9f"
     },
     {
-      "bytes": 75137,
+      "bytes": 72557,
       "path": "research/02_macro_tradfi_integration/figures/02_dynamic_tradfi_integration.svg",
       "sha256": "e9019ea0d18cfba9101dcb91b1f58cdb968d10317ea24a89ddd168548e33066e"
     },
@@ -51,9 +51,9 @@
       "sha256": "a7fd2b8459cae1fc8bc81bac6122085b84b0aa6faa38afc35732ef11ab8c31b9"
     },
     {
-      "bytes": 2476,
+      "bytes": 2294,
       "path": "research/02_macro_tradfi_integration/tables/break_tests.csv",
-      "sha256": "9246ae849d2875ac1f80bce448506b5928ddfc1aa8ffcf1b501c7890378e4a08"
+      "sha256": "81784eb65d5f73fa556cdd7188f67583cb1b4a6b56a0d4d867ce36fb5f445e50"
     },
     {
       "bytes": 1841,
@@ -61,14 +61,14 @@
       "sha256": "b12cca117907e60ab9810f81137e5e5a610b617983b1eb4aefffaa840c0d1c9f"
     },
     {
-      "bytes": 391520,
+      "bytes": 351466,
       "path": "research/02_macro_tradfi_integration/tables/dynamic_tradfi_exposures.csv",
-      "sha256": "6b0d6976db358732357834ab3b8bb7bffc62cee8a39f1ef08a110dddcd642f6f"
+      "sha256": "e8d09d7742bbea7d5a52b35f5bb7f6e96279901867da5687d216a614349ca96f"
     },
     {
-      "bytes": 168,
+      "bytes": 162,
       "path": "research/02_macro_tradfi_integration/tables/tradfi_diagnostics.csv",
-      "sha256": "a7e2d56ee1fcd08f1e25a0fcc64f71aecef0bfb8e594200c610c77745d107932"
+      "sha256": "e556cebadffd5a593de94a1cba7d50a28c7b8f1e6c91d96dece183cbdf21a3a0"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",

@@ -11,12 +11,12 @@
       "sha256": "6271e04db76b52051f6c120e5595ce3aa7952a287f71866269b24dfcaead45ef"
     },
     {
-      "bytes": 478725,
+      "bytes": 434040,
       "path": "research/05_stablecoin_defi_liquidity/figures/05_liquidity_measurement_diagnostics.source.csv",
-      "sha256": "961d03c660f4830ad0ddf9f737c7ac540e5bb70dfe3713a5d082124a74045199"
+      "sha256": "d380556fd174dc3e79a9fbb8f3d07660cd19e84223f7c490e03d4d2e58692994"
     },
     {
-      "bytes": 121966,
+      "bytes": 117803,
       "path": "research/05_stablecoin_defi_liquidity/figures/05_liquidity_measurement_diagnostics.svg",
       "sha256": "38a67295480d2f5742d2672b8fb76adc640cfc2959d88a4fa12ea224597d5fee"
     },
@@ -56,24 +56,24 @@
       "sha256": "72027676fa2be22978a2f068fd649a843a4e9eb1b4f25e16cab9a9020b35e1f5"
     },
     {
-      "bytes": 384257,
+      "bytes": 329636,
       "path": "research/05_stablecoin_defi_liquidity/tables/liquidity_state.csv",
-      "sha256": "6f24db221aeac126caef375adf63cd2e3560a2632d08c25c96a9ad3b059bcb69"
+      "sha256": "4a5a42c22c40c10328f0f513958a0f3a7f27ffa07b4d105608e530e970eefdf1"
     },
     {
-      "bytes": 1021,
+      "bytes": 944,
       "path": "research/05_stablecoin_defi_liquidity/tables/liquidity_state_coefficients.csv",
-      "sha256": "7b528087ff1a43c19ba0a8872521b64f67b5bc18d7ef0004ab6f22a0e49c48a1"
+      "sha256": "7f7761b01b34b1f2830becde38d2c26dc48585715f06e7ab1d63b6f792392c49"
     },
     {
-      "bytes": 531,
+      "bytes": 487,
       "path": "research/05_stablecoin_defi_liquidity/tables/liquidity_state_summary.csv",
-      "sha256": "e071a8bef507a35127ef4d949da372a8afa745c0dffdc1b1a1205db3a1cf8d04"
+      "sha256": "b32dce6dea1d5a58891f5a0329eb399c2325dda723d60677e076313206a99491"
     },
     {
-      "bytes": 876,
+      "bytes": 861,
       "path": "research/05_stablecoin_defi_liquidity/tables/measurement_mechanics.csv",
-      "sha256": "ab785848a6483e6feecfeae6e664e6b79b2411440f2b631330a9b20e617c3b1e"
+      "sha256": "4d378e67c970a6da5530ad1a294090817d2c7a776ec5cad1a1c2b141587d50f2"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",

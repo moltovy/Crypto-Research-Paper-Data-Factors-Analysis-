@@ -11,12 +11,12 @@
       "sha256": "51024a915a37d26c665df44e0533508eee431c3396d8324f7e9cee63c762adaf"
     },
     {
-      "bytes": 3492,
+      "bytes": 3356,
       "path": "research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.source.csv",
-      "sha256": "f43d84bf5db74e001ea0928a3341ae23960b123e2d0f4df4d4efe3b6f2e3631c"
+      "sha256": "1830d90556c348b5f77eb486edc42fd63d7dad803a4fdafc5dc1de4eccebfc87"
     },
     {
-      "bytes": 70638,
+      "bytes": 68780,
       "path": "research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.svg",
       "sha256": "473025094d47d8a55bbc343f1babf21673257aa40b2c0c7b8b901f55f1311d20"
     },
@@ -61,9 +61,9 @@
       "sha256": "f96b280e0b8a45f0ce20abba81d0e3f426e13ece568f4d1f8fc5813a1a482390"
     },
     {
-      "bytes": 8032,
+      "bytes": 7609,
       "path": "research/09_event_stress_cross_module_synthesis/tables/event_response_matrix.csv",
-      "sha256": "767e708bed9545a382073d0f9a797bcbb80db04ce4144e487415b59dc5760965"
+      "sha256": "8911d5efa69d7cd337f60849513547363d4747888b0cbcf088da40c6db90822e"
     },
     {
       "bytes": 10649,

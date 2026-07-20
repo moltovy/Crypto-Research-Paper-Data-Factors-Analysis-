@@ -1,3 +1,3 @@
 asset,diagnostic,value,threshold,status,n
-BTC,full_sample_condition_number,2.72205295014303,30,pass,1577
-ETH,full_sample_condition_number,2.72205295014303,30,pass,1577
+BTC,full_sample_condition_number,2.72205295014,30,pass,1577
+ETH,full_sample_condition_number,2.72205295014,30,pass,1577

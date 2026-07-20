@@ -1,57 +1,57 @@
 criterion_id,mandatory,name,status,evidence,reason,verified_at
-A01,True,worktree_safety,pending,,,
-A02,True,documented_environment,pending,,,
-A03,True,deterministic_central_build,pending,,,
-A04,True,clean_rebuild_evidence,pending,,,
-A05,True,seeds_versions_and_cutoff,pending,,,
-B01,True,correct_inventory_object_counts,pending,,,
-B02,True,declared_time_schema,pending,,,
-B03,True,schedule_aware_coverage,pending,,,
-B04,True,calendar_safe_returns,pending,,,
-B05,True,point_in_time_identity,pending,,,
-B06,True,valid_economic_starts,pending,,,
-B07,True,external_source_eligibility,pending,,,
-B08,True,immutable_raw_lineage,pending,,,
-B09,True,proprietary_data_safety,pending,,,
-B10,True,feature_contracts,pending,,,
-C01,True,analytical_sample_counts,pending,,,
-C02,True,universe_transparency,pending,,,
-C03,True,no_late_listing_core_bind,pending,,,
-C04,True,claim_lineage,pending,,,
-C05,True,cross_output_reconciliation,pending,,,
-C06,True,evidence_hierarchy,pending,,,
-C07,True,provisional_anchor_reset,pending,,,
-D01,True,estimand_registry,pending,,,
-D02,True,dependent_data_inference,pending,,,
-D03,True,multiplicity_control,pending,,,
-D04,True,factor_integrity,pending,,,
-D05,True,dynamic_integration_inference,pending,,,
-D06,True,tail_interpretation,pending,,,
-D07,True,etf_timing_and_inference,pending,,,
-D08,True,leverage_temporality,pending,,,
-D09,True,model_diagnostics,pending,,,
-D10,True,connectedness_integrity,pending,,,
-D11,False,chain_panel_integrity,pending,,,
-D12,True,calibrated_claims,pending,,,
-E01,True,central_visual_system,pending,,,
-E02,True,unique_plot_keys,pending,,,
-E03,True,figure_context,pending,,,
-E04,True,figure_artifact_set,pending,,,
-E05,True,full_size_visual_inspection,pending,,,
-E06,True,thumbnail_visual_inspection,pending,,,
-E07,True,visual_accessibility,pending,,,
-E08,True,contact_sheet_coherence,pending,,,
-F01,True,readme,pending,,,
-F02,True,long_form_report,pending,,,
-F03,True,report_pdf,pending,,,
-F04,True,pdf_page_inspection,pending,,,
-F05,True,reproducible_notebook,pending,,,
-F06,True,canonical_tables,pending,,,
-F07,True,authoritative_references,pending,,,
-G01,True,test_suite,pending,,,
-G02,True,static_quality,pending,,,
-G03,True,ci_truthfulness,pending,,,
-G04,True,modular_implementation,pending,,,
-G05,True,prohibited_analysis_absent,pending,,,
-G06,True,public_language_policy,pending,,,
-G07,True,security_and_remote_state,pending,,,
+A01,True,worktree_safety,pass,git status/history recorded; unrelated data_inventory.md preserved; git remote unchanged and unpushed,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+A02,True,documented_environment,pass,uv.lock; README.md Reproduce; uv sync --all-extras succeeded in detached worktree,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+A03,True,deterministic_central_build,pass,scripts/run_all.py --mode local; two full runs; 175 artifacts compared with zero hash differences,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+A04,True,clean_rebuild_evidence,pass,detached worktree 724ac93 build succeeded using external CMD_DATA_ROOT; 77 tests and 632 surface checks passed,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+A05,True,seeds_versions_and_cutoff,pass,research/build_provenance.json records seed 20260713 cutoff 2026-06-30 and build fingerprint,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B01,True,correct_inventory_object_counts,pass,research/raw_objects.csv research/logical_series.csv research/feature_registry.csv separate 1518 objects 11 logical series 31 features,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B02,True,declared_time_schema,pass,config/data_contracts.yml and research/source_contracts.csv declare observation availability timezone and calendar semantics,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B03,True,schedule_aware_coverage,pass,research/00_data_measurement_foundation/tables/coverage_missingness.csv uses native schedules,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B04,True,calendar_safe_returns,pass,tests/unit/test_calendars.py and test_data_contracts.py; XNYS returns computed before crypto joins,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B05,True,point_in_time_identity,pass,research/sample_membership.csv and corporate_exposure_eras.csv use effective dates,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B06,True,valid_economic_starts,pass,config/sample_definitions.yml and sample removal accounting enforce valid starts and coverage,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B07,True,external_source_eligibility,pass,research/source_decisions.csv records eight official anonymous probes with 4 pass and 4 fail fallbacks,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B08,True,immutable_raw_lineage,pass,research/raw_objects.csv contains portable paths and SHA256; detached build left all 1518 raw hashes unchanged,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B09,True,proprietary_data_safety,pass,git ls-files and public scans found no data_local provider exports credentials or absolute paths,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+B10,True,feature_contracts,pass,research/feature_registry.csv contains formulas units timing lags eligibility evidence class and risks,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+C01,True,analytical_sample_counts,pass,research/sample_manifest.csv and result tables report estimation n with entity/date support,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+C02,True,universe_transparency,pass,research/sample_manifest.csv and sample_membership.csv publish S1-S5 rules and members,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+C03,True,no_late_listing_core_bind,pass,S2 starts 2021-01-02 and excludes HYPE; config/sample_definitions.yml,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+C04,True,claim_lineage,pass,nine claims reconcile to canonical tables figures samples methods uncertainty and limitations,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+C05,True,cross_output_reconciliation,pass,quantitative red-team claim/table/figure reconciliation passed; notebook report and README use canonical tables,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+C06,True,evidence_hierarchy,pass,research/estimand_registry.csv and claim tables tag primary robustness diagnostic context and excluded evidence,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+C07,True,provisional_anchor_reset,pass,all retained modules rebuilt from local raw inputs; inherited headline tables and stale modules removed,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D01,True,estimand_registry,pass,research/estimand_registry.csv covers RQ1-RQ4 questions estimands samples inference diagnostics and rules,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D02,True,dependent_data_inference,pass,HAC moving-block bootstrap Driscoll-Kraay and dependent-tail inference stored in canonical tables,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D03,True,multiplicity_control,pass,ETF max-t simultaneous bands and BH-adjusted break inference recorded in result tables,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D04,True,factor_integrity,pass,common_factor_results.csv uses leave-one-out PCA and records self_included=False,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D05,True,dynamic_integration_inference,pass,break_tests.csv reports formal era interactions; QQQ changes are weak after BH adjustment,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D06,True,tail_interpretation,pass,tail_dependence.csv reports joint conditional excess probabilities intervals and four thresholds,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D07,True,etf_timing_and_inference,pass,etf_distributed_lags.csv and timing sensitivity retain pre-inception/non-reporting missingness and simultaneity caveat,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D08,True,leverage_temporality,pass,leverage_tail_model.csv uses lagged states and defined next-day outcomes; five-day sensitivity retained,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D09,True,model_diagnostics,pass,RQ diagnostic and robustness tables cover support collinearity residual dependence stability and calibration,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D10,True,connectedness_integrity,pass,connectedness.csv passes stable VAR FEVD row sums and variable-order invariance; window/horizon sensitivity retained,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D11,False,chain_panel_integrity,pass,chain_panel.csv uses 4 chains over 59 periods with two-way FE and Driscoll-Kraay covariance,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+D12,True,calibrated_claims,pass,claim registry and language scans retain weak/null results and prohibit causal predictive and trading language,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+E01,True,central_visual_system,pass,src/cqresearch/viz/design_system.py governs palette typography spacing and exports for all figures,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+E02,True,unique_plot_keys,pass,3173 figure plot keys are globally unique; duplicate-key tests pass,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+E03,True,figure_context,pass,all figure metadata and captions declare period sample units method uncertainty and limitations as applicable,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+E04,True,figure_artifact_set,pass,9 public figures each have PNG SVG source CSV and metadata JSON,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+E05,True,full_size_visual_inspection,pass,all 9 PNGs and rendered SVGs inspected at full size on 2026-07-19; no clipping overlap or duplicate marks,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+E06,True,thumbnail_visual_inspection,pass,all 9 figures inspected at 640px README width on 2026-07-19; five strongest retained at root,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+E07,True,visual_accessibility,pass,visual review confirmed non-color encodings legible text contrast and accessible palette,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+E08,True,contact_sheet_coherence,pass,final contact sheet inspected on 2026-07-19; coherent style and no redundant root figures,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+F01,True,readme,pass,README.md begins Project Overview and contains four-question evidence map five figures claims methods limitations and reproduce instructions,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+F02,True,long_form_report,pass,reports/crypto_market_dynamics_research_report.md and HTML contain full narrative methods results robustness nulls limitations references appendices,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+F03,True,report_pdf,pass,reports/crypto_market_dynamics_research_report.pdf built through headless Edge with eight readable pages,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+F04,True,pdf_page_inspection,pass,all 8 rasterized PDF pages inspected on 2026-07-19 after final layout rebuild,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+F05,True,reproducible_notebook,pass,executed notebook contains 5 executed code cells zero errors and clean unexecuted source notebook,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+F06,True,canonical_tables,pass,module tables and presentation prose derive from canonical model tables and reconcile through claim lineage,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+F07,True,authoritative_references,pass,REFERENCES.md and event_registry.csv use authoritative direct URLs and provenance metadata,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+G01,True,test_suite,pass,uv run pytest -q: 77 passed; fixture artifact and clean-room integration modes passed,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+G02,True,static_quality,pass,Ruff check/format and mypy pass for src/cqresearch scripts tests,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+G03,True,ci_truthfulness,pass,.github workflows run fixture/artifact validation and README distinguishes full local rebuild,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+G04,True,modular_implementation,pass,contracts models RQ builders reporting and visualization are separated into testable modules,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+G05,True,prohibited_analysis_absent,pass,public scans and surface guards find no forecasts strategies signals or portfolio recommendations,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+G06,True,public_language_policy,pass,public scans find no recruiting resume interview or self-promotional language,criterion satisfied by executed command or inspected canonical artifact,2026-07-19
+G07,True,security_and_remote_state,pass,secret/private-path/provider-data scans pass; no remote mutation account creation or destructive external operation occurred,criterion satisfied by executed command or inspected canonical artifact,2026-07-19

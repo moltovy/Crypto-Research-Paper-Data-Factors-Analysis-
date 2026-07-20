@@ -20,7 +20,7 @@ def write_csv(path: Path, frame: pd.DataFrame) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = _temporary_path(path)
     try:
-        frame.to_csv(temporary, index=False, lineterminator="\n", float_format="%.15g")
+        frame.to_csv(temporary, index=False, lineterminator="\n", float_format="%.12g")
         temporary.replace(path)
     except Exception:
         temporary.unlink(missing_ok=True)

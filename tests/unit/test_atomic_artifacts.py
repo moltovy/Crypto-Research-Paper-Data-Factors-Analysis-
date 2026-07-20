@@ -24,3 +24,12 @@ def test_failed_csv_write_preserves_existing_target(
 
     assert target.read_text(encoding="utf-8") == "stable\n"
     assert not list(tmp_path.glob(".*.tmp"))
+
+
+def test_csv_serialization_removes_sub_reporting_precision_noise(tmp_path: Path) -> None:
+    first = tmp_path / "first.csv"
+    second = tmp_path / "second.csv"
+    write_csv(first, pd.DataFrame({"value": [0.0094997270842301]}))
+    write_csv(second, pd.DataFrame({"value": [0.00949972708423019]}))
+    assert first.read_bytes() == second.read_bytes()
+    assert b"\r\n" not in first.read_bytes()

@@ -11,12 +11,12 @@
       "sha256": "0204b9c39913750250b43e3863545a6a44e0cb981f21d4639fc05e6bfa859b4a"
     },
     {
-      "bytes": 7325,
+      "bytes": 6854,
       "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.source.csv",
-      "sha256": "0ef38c50bc7f2c3e795eaf152db345efd06e55a689d50e992449106f942fbb1e"
+      "sha256": "a4e8c4792c8bae7c5b73e61526f0a264998f960b3d3bc05d90d9a8ec6a135239"
     },
     {
-      "bytes": 87800,
+      "bytes": 84999,
       "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.svg",
       "sha256": "c4bab2fc72eaea26c5d96574e7ee47b1de5a529008a7333cd03e12cccc05f26a"
     },
@@ -51,9 +51,9 @@
       "sha256": "54452febe752af9800b59d629755b18faa9878f42e3defccdaecff4782e46a25"
     },
     {
-      "bytes": 1219,
+      "bytes": 1177,
       "path": "research/01_cross_asset_dependence_regimes/tables/asset_return_coverage.csv",
-      "sha256": "b71b6234fe7e9ebe12826082896ab080fc488339ff8cbffc3bd4c278bdaa6126"
+      "sha256": "0871f7db1859a3c0d9ef16253f176037d150bf84fc96374e9e627d143b204271"
     },
     {
       "bytes": 1944,
@@ -61,24 +61,24 @@
       "sha256": "cb59d4e6430fecc3fb0c3294ec1e92b3a0aa7441698a4c97b4d5cb20ce2b1f92"
     },
     {
-      "bytes": 2318,
+      "bytes": 2238,
       "path": "research/01_cross_asset_dependence_regimes/tables/common_factor_overview.csv",
-      "sha256": "054b78b1d0a4ef6b385f8e9aaab763786550d93bcb3a121c4e57478cdfbb2920"
+      "sha256": "6cbf6dcfb7ca68b2a9169bd4320fd1433f440b6065c11e68cb343d56defe4dfc"
     },
     {
-      "bytes": 3985,
+      "bytes": 3686,
       "path": "research/01_cross_asset_dependence_regimes/tables/common_factor_results.csv",
-      "sha256": "11c38585e6432733bcbae40f77c376ddcaa8aea3ed99f0dd83b5584873ec89b6"
+      "sha256": "830a6616ec64521377a6ec813b1568dab41be959e212ef77a02c1db3cad17ae4"
     },
     {
-      "bytes": 1838,
+      "bytes": 1717,
       "path": "research/01_cross_asset_dependence_regimes/tables/relative_risk_diagnostics.csv",
-      "sha256": "0cfbcce179a41314570bd4e1d7b6c534fdabb0f926d04c74ebbfa4cd6982826a"
+      "sha256": "51eb12d65daf9896ec2e832a4ba4c64dca3c27c0998d37fff2803d1ccbe93e28"
     },
     {
-      "bytes": 84525,
+      "bytes": 76332,
       "path": "research/01_cross_asset_dependence_regimes/tables/tail_dependence.csv",
-      "sha256": "6fb4ee87a3fd84b9e09ce4158d8471501ef6a4048ae606630bbd99ab54f331e3"
+      "sha256": "0427d13a4f7209153b21fb0e4e1294b8af1641ea9dc8d8c95eb024f004ffc43a"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",

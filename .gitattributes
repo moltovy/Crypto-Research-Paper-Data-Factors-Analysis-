@@ -1,8 +1,15 @@
-# Generated research text artifacts are written with LF on every platform.
-research/**/*.csv text eol=lf
-research/**/*.json text eol=lf
-research/**/*.md text eol=lf
-research/**/*.svg text eol=lf
-research/**/*.yml text eol=lf
-research/**/.gitkeep text eol=lf
-research/**/*.png binary
+# Text artifacts and source files use the same bytes on every platform.
+*.csv text eol=lf
+*.html text eol=lf
+*.ipynb text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.svg text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.png binary
+*.pdf binary
+*.parquet binary

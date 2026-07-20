@@ -854,6 +854,7 @@ def _figure_leverage(curve: pd.DataFrame, connectedness: pd.DataFrame, path: Pat
         "Lagged-state spline with HAC band; rolling generalized FEVD uses 252 observations and a 10-step horizon.",
     )
     fig.tight_layout(rect=(0, 0, 1, 0.86), w_pad=3)
+    axes[0].xaxis.set_label_coords(0.5, -0.09)
     source = pd.concat(
         [
             curve.assign(
@@ -1131,6 +1132,7 @@ def _save_figure(
                 )
                 + "\n",
                 encoding="utf-8",
+                newline="\n",
             )
         png_temporary.replace(path)
         svg_temporary.replace(svg)

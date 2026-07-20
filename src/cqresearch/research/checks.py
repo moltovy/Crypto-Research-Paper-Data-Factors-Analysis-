@@ -571,6 +571,16 @@ def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
     samples = pd.read_csv(research / "sample_manifest.csv")
     estimands = pd.read_csv(research / "estimand_registry.csv")
     decisions = pd.read_csv(research / "source_decisions.csv")
+    acceptance = pd.read_csv(research / "acceptance_ledger.csv")
+    mandatory = acceptance["mandatory"].astype(str).str.lower().eq("true")
+    mandatory_incomplete = acceptance.loc[
+        mandatory & ~acceptance["status"].astype(str).eq("pass"), "criterion_id"
+    ].tolist()
+    missing_evidence = acceptance.loc[
+        acceptance["status"].astype(str).eq("pass")
+        & acceptance["evidence"].fillna("").astype(str).str.strip().eq(""),
+        "criterion_id",
+    ].tolist()
     rows.extend(
         [
             _row(
@@ -614,6 +624,18 @@ def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
                 "source_probes_resolved",
                 not decisions["gate_status"].astype(str).eq("pending_probe").any(),
                 decisions[["source_id", "gate_status"]].to_string(index=False),
+            ),
+            _row(
+                "research",
+                "mandatory_acceptance_criteria_pass",
+                not mandatory_incomplete,
+                ",".join(mandatory_incomplete) if mandatory_incomplete else "all mandatory pass",
+            ),
+            _row(
+                "research",
+                "passed_acceptance_criteria_have_evidence",
+                not missing_evidence,
+                ",".join(missing_evidence) if missing_evidence else "all pass rows have evidence",
             ),
         ]
     )

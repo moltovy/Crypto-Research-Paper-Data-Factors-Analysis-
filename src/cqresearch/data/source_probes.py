@@ -12,6 +12,8 @@ from typing import Any
 import pandas as pd
 import requests
 
+from cqresearch.core.artifacts import write_csv, write_text
+
 USER_AGENT = (
     "moltovy Crypto Market Dynamics research https://github.com/moltovy/crypto-market-dynamics"
 )
@@ -62,9 +64,9 @@ def run_source_probes(root: Path) -> pd.DataFrame:
     frame = pd.DataFrame(asdict(result) for result in results).sort_values("source_id")
     metadata = root / "data_local" / "metadata" / "source_probes.json"
     metadata.parent.mkdir(parents=True, exist_ok=True)
-    metadata.write_text(frame.to_json(orient="records", indent=2), encoding="utf-8")
+    write_text(metadata, frame.to_json(orient="records", indent=2))
     public = frame.drop(columns=["checked_at"])
-    public.to_csv(root / "research" / "source_decisions.csv", index=False)
+    write_csv(root / "research" / "source_decisions.csv", public)
     return frame
 
 
