@@ -1,0 +1,21 @@
+{
+  "data_cutoff": "2026-06-30",
+  "date_range": "Source-specific valid starts through 2026-06-30",
+  "figure_id": "coverage_missingness_by_block",
+  "limitation": "Missingness is evaluated against each source contract rather than a universal daily calendar.",
+  "method": "Contract-calendar non-missing coverage summarized by registered research block",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
+  "png": "coverage_missingness_by_block.png",
+  "research_question": "How do valid daily observations and missingness differ across registered data blocks?",
+  "rows": 7,
+  "sample": "Contract-valid source coverage frozen at 2026-06-30",
+  "source_csv": "coverage_missingness_by_block.source.csv",
+  "source_tables": [
+    "tables/coverage_missingness.csv"
+  ],
+  "svg": "coverage_missingness_by_block.svg",
+  "uncertainty": "Deterministic coverage audit; no sampling interval applies",
+  "units": "observation counts and missing share",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
+}

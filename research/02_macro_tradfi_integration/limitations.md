@@ -1,3 +1,3 @@
 # Limitations
 
-Business-date alignment, period splits, and rolling windows are descriptive. Same-day models cannot establish lead-lag direction.
+Close-to-close alignment is contemporaneous and cannot identify transmission. Latest-vintage macro data and finite rolling windows add timing and revision risk.

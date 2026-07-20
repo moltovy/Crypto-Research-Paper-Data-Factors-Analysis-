@@ -1,3 +1,4 @@
 # Findings
 
-- Leverage-state tail stress: Q5 high bottom-5% day rate=7.7% (Leverage states are stress diagnostics.)
+- Lagged leverage state and tail stress: fitted tail probability range 3.2%-7.4% (The fitted association is nonlinear and should not be read as a directional rule.)
+- Stable-core volatility connectedness: primary generalized-FEVD range 44.0%-67.1% (Absolute-return connectedness varies materially over time.)

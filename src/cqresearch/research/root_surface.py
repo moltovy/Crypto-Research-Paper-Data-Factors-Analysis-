@@ -44,12 +44,14 @@ def build_root_research_surface(root: Path = PROJECT_ROOT) -> list[Path]:
     figure_specs = _figure_specs(root)
     selection = _root_figure_selection(figure_specs)
     usage_counts = _usage_counts(root)
+    claims = _claim_registry(root)
 
     research_readme = _research_index(module_rows, figure_specs, usage_counts)
-    root_readme = _root_readme(module_rows, figure_specs, selection, usage_counts)
+    root_readme = _root_readme(root, module_rows, figure_specs, selection, usage_counts)
     artifacts: list[Path] = [
         write_csv(research_dir / "figure_specs.csv", figure_specs),
         write_csv(research_dir / "root_figure_selection.csv", selection),
+        write_csv(research_dir / "claim_registry.csv", claims),
         write_text(research_dir / "README.md", research_readme),
         write_text(root / "README.md", root_readme),
     ]
@@ -57,6 +59,41 @@ def build_root_research_surface(root: Path = PROJECT_ROOT) -> list[Path]:
         _write_root_manifest(root, module_rows, figure_specs, selection, usage_counts, artifacts)
     )
     return artifacts
+
+
+def _claim_registry(root: Path) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    for module in MODULES:
+        path = root / "research" / module.module_id / "tables" / "claims.csv"
+        if not path.exists():
+            continue
+        claims = pd.read_csv(path)
+        for row in claims.to_dict("records"):
+            row["module_id"] = module.module_id
+            row["source_table"] = _root_relative_claim_paths(
+                module.module_id, row.get("source_table", "")
+            )
+            row["source_figure"] = _root_relative_claim_paths(
+                module.module_id, row.get("source_figure", "")
+            )
+            rows.append(row)
+    frame = pd.DataFrame(rows)
+    if frame.empty:
+        return frame
+    if frame["claim_id"].duplicated().any():
+        duplicates = frame.loc[frame["claim_id"].duplicated(False), "claim_id"].tolist()
+        raise ValueError(f"duplicate public claim IDs: {duplicates}")
+    return frame.sort_values(["module_id", "claim_id"]).reset_index(drop=True)
+
+
+def _root_relative_claim_paths(module_id: str, value: Any) -> str:
+    paths = []
+    for item in str(value).replace(",", ";").split(";"):
+        item = item.strip()
+        if not item or item.lower() == "nan":
+            continue
+        paths.append(item if item.startswith("research/") else f"research/{module_id}/{item}")
+    return "; ".join(paths)
 
 
 def _module_rows(root: Path) -> pd.DataFrame:
@@ -111,7 +148,7 @@ def _figure_specs(root: Path) -> pd.DataFrame:
                 "x": registered.get("x", "see source table"),
                 "y": registered.get("y", "see source table"),
                 "interval": registered.get(
-                    "interval", "shown where source model reports uncertainty"
+                    "uncertainty", "shown where source model reports uncertainty"
                 ),
                 "sample": registered.get("sample", "see source table"),
                 "figure_path": relpath,
@@ -124,9 +161,12 @@ def _figure_specs(root: Path) -> pd.DataFrame:
                 "limitation": registered.get("caveat", "See module limitations."),
                 "root_readme": registered.get("status") == "public",
                 "visual_qa_status": registered.get("visual_qa_status", "manual_review_required"),
+                "root_order": int(registered.get("root_order", 999)),
             }
         )
-    return pd.DataFrame(rows)
+    return (
+        pd.DataFrame(rows).sort_values(["root_order", "module", "figure_id"]).reset_index(drop=True)
+    )
 
 
 def _figure_registry(root: Path) -> dict[str, dict[str, Any]]:
@@ -157,8 +197,6 @@ def _root_figure_selection(figure_specs: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame(columns=ROOT_FIGURE_SELECTION_COLUMNS)
     excluded_terms = {
         "mvrv": "measurement warning belongs in methodology/appendix, not default root slot",
-        "concentration": "raw concentration/rank persistence is excluded from root figures",
-        "market_concentration": "raw concentration/rank persistence is excluded from root figures",
         "selected_major_asset_risk": "basic volatility/drawdown scatter is excluded",
         "cumulative": "ETF cumulative-flow root figure is excluded",
     }
@@ -257,7 +295,20 @@ def _usage_counts(root: Path) -> dict[str, int]:
     return {str(key): int(value) for key, value in usage["usage_status"].value_counts().items()}
 
 
+def _usage_status_label(status: str) -> str:
+    return {
+        "diagnostic_only": "diagnostic only",
+        "excluded_ambiguous_definition_or_unit": "excluded for ambiguous definition or unit",
+        "excluded_duplicate": "excluded duplicate",
+        "excluded_insufficient_coverage": "excluded for insufficient coverage",
+        "excluded_release_risk": "excluded for release risk",
+        "primary_analysis": "primary analysis",
+        "robustness_or_sensitivity": "robustness or sensitivity",
+    }.get(status, status.replace("_", " "))
+
+
 def _root_readme(
+    root: Path,
     module_rows: pd.DataFrame,
     figure_specs: pd.DataFrame,
     selection: pd.DataFrame,
@@ -268,55 +319,58 @@ def _root_readme(
     figure_sections = []
     for item in selected.itertuples(index=False):
         spec = fig_map.get(item.figure_id, {})
+        source = str(spec.get("source_tables", "")).split(";")[0].strip()
         figure_sections.append(
-            f"### {item.finding}\n\n"
+            f"### {spec.get('title', item.finding)}\n\n"
             f"![{item.finding}]({spec.get('figure_path', '')})\n\n"
-            f"Sample and method: {spec.get('sample', 'see source table')}; {spec.get('chart_type', 'analytical result')} from `{spec.get('source_tables', '')}`.\n\n"
-            f"Interpretation: {spec.get('interpretation', item.finding)} Boundary: {spec.get('limitation', '')} "
-            f"Selection score: {item.weighted_score:.2f} ([selection table](research/root_figure_selection.csv))."
+            f"**Sample:** {spec.get('sample', 'see source table')}. "
+            f"**Method:** {str(spec.get('chart_type', 'analytical result')).replace('_', ' ').replace('fevd', 'FEVD')}.\n\n"
+            f"**Result:** {spec.get('interpretation', item.finding)} "
+            f"**Boundary:** {spec.get('limitation', '')} [Source table]({source})."
         )
     figure_text = "\n\n".join(figure_sections)
     module_map = "\n".join(
-        f"| [{row.module_id}]({row.path}/README.md) | {row.title} | {row.question} |"
+        f"| [{str(row.module_id).split('_', 1)[0]}]({row.path}/README.md) | {row.title} | {row.question} |"
         for row in module_rows.itertuples(index=False)
     )
-    headline = _headline_findings(module_rows)
+    findings = _headline_findings(root, module_rows)
     methods = "\n".join(
         [
             "| Method family | Used for | Key boundary |",
             "|---|---|---|",
-            "| Correlation, partial correlation, clustered heatmaps | dependence/regime diagnostics | association, not causation |",
-            "| PCA/common-factor decomposition | selected-major and cross-asset structure | descriptive factor structure only |",
-            "| HAC OLS, block/partial R-squared, FDR, VIF, ridge | macro/TradFi exposure | contemporaneous co-movement |",
-            "| Quantile/tail, logit-style state tables, event/placebo windows | derivatives and event stress | stress diagnostics |",
-            "| Lag-response and block bootstrap | ETF flow plumbing | timing/simultaneity caveats |",
-            "| Coverage, unit, timing, and measurement-risk audits | data governance | release risk and semantics before claims |",
+            "| Leave-one-out PCA and moving-block tail inference | common variation and co-exceedance | realized dependence only |",
+            "| Multivariate HAC exposure and era interactions | TradFi integration | contemporaneous period comparison |",
+            "| Distributed lags with max-t bands | ETF market plumbing | timing and simultaneity remain unresolved |",
+            "| Spline logit, quantile/ES, generalized FEVD | leverage and tail stress | descriptive state association |",
+            "| PIT concentration, turnover, and exact decomposition | monthly market structure | no daily constituent-performance inference |",
         ]
     )
-    status_list = ", ".join(f"`{key}`={value}" for key, value in sorted(usage_counts.items()))
+    status_list = ", ".join(
+        f"{_usage_status_label(key)}: {value}" for key, value in sorted(usage_counts.items())
+    )
+    ontology = _ontology_counts(root)
     return f"""# Crypto Market Dynamics
 
 ## Project Overview
 
-Crypto Market Dynamics is an empirical research and experimentation repository that uses the full available crypto, market, macro, derivatives, ETF, stablecoin/DeFi, on-chain, chain-fundamental, and point-in-time data universe to investigate price behavior, cross-asset relationships, liquidity, leverage, market-microstructure proxies, risk transmission, and the evolution of the broader crypto market and relevant assets and sectors.
+Crypto Market Dynamics is a reproducible empirical study of how crypto dependence, financial integration, institutional plumbing, leverage stress, liquidity state, and market structure evolved through the frozen 2026-06-30 acquisition cutoff.
 
-The repository is descriptive and associational. Forecasting and trading-strategy claims are outside scope.
+The evidence is descriptive and associational. It does not forecast prices, propose trading rules, or identify causal effects.
 
-## What This Repository Analyzes
+## Evidence Map
 
-- Cross-asset crypto and TradFi dependence, common-factor structure, and lower-tail co-exceedance.
-- Macro/TradFi integration through synchronized exposure models and rolling co-movement diagnostics.
-- Derivatives leverage, funding, open-interest scaling, and liquidation stress states.
-- ETF flow timing, lag-response, absorption, and flow-shock/placebo diagnostics.
-- Stablecoin/DeFi balance-sheet state proxies and valuation-contamination checks.
-- On-chain valuation/holder behavior with same-day MVRV treated as measurement mechanics.
-- Chain fundamentals, monthly point-in-time sector/state variables, relative selected-asset risk, and event stress synthesis.
+| Question | Primary evidence | Sample boundary | Main limitation |
+|---|---|---|---|
+| How broad are common crypto variation, lower-tail dependence, and TradFi integration? | [Common-factor and tail tables](research/01_cross_asset_dependence_regimes/README.md); [dynamic TradFi exposures](research/02_macro_tradfi_integration/README.md) | S2 fixed stable core from 2021; XNYS-matched BTC/ETH from 2020 | Dependence and period comparisons are not causal or predictive. |
+| How do institutional flows and positioning line up with market outcomes? | [ETF distributed lags and CFTC positioning](research/04_etf_institutional_flows/README.md) | Actual reporting lives; no pre-inception or holiday zero fill | Reporting time and simultaneity prevent price-impact interpretation. |
+| Where do leverage states coincide with tails and connectedness? | [Leverage, expected shortfall, systemic-tail, and FEVD tables](research/03_derivatives_leverage_liquidations/README.md) | BTC state panel from 2020; S2 connectedness from 2021 | State associations are not forecasts, signals, or liquidation-cause estimates. |
+| How did endogenous liquidity state and monthly market structure change? | [TVL residual and MVRV mechanics](research/05_stablecoin_defi_liquidity/README.md); [PIT structure and turnover](research/07_chain_fundamentals_sector_dynamics/README.md) | Daily liquidity panel; complete monthly PIT snapshots through May 2026 | USD TVL is valuation-sensitive; PIT data cannot recover daily constituent performance. |
 
 ## Data Universe and Asset Coverage
 
-The data-foundation module inventories provider files, processed panels, feature semantics, asset identity, timing, units, and release risk. Current data-usage counts are {status_list or "available in the data-foundation module"}.
+The [data-foundation module](research/00_data_measurement_foundation/README.md) indexes {ontology["raw_objects"]:,} local raw objects, {ontology["physical_columns"]:,} object-column records, {ontology["logical_series"]} contracted logical series, and {ontology["features"]} engineered features as distinct ontology layers. Raw file counts are never presented as series counts. Feature dispositions are: {status_list or "available in the data-foundation module"}.
 
-The selected crypto universe audits BTC, ETH, BNB, SOL, XRP, DOGE, TRX, TON, ADA, HYPE, and any locally covered current-cohort assets. TradFi/macro coverage includes SPY, QQQ, IWM, DXY, gold, VIX, nominal and real yield changes where local panels support matched samples.
+S2 fixes PIT-eligible, identity-resolved assets using the January 2021 top-20 snapshot and requires at least 95% daily coverage. S4 uses monthly top-100 point-in-time snapshots only. S5 begins each institutional series at its actual reporting inception.
 
 ## Research Modules
 
@@ -324,11 +378,11 @@ The selected crypto universe audits BTC, ETH, BNB, SOL, XRP, DOGE, TRX, TON, ADA
 |---|---|---|
 {module_map}
 
-## Headline Findings
+## Qualified Findings
 
-{headline}
+{findings}
 
-## Selected Analytical Results
+## Evidence Figures
 
 {figure_text}
 
@@ -338,7 +392,7 @@ The selected crypto universe audits BTC, ETH, BNB, SOL, XRP, DOGE, TRX, TON, ADA
 
 ## Important Limitations
 
-- Current-cohort daily selected-major analysis is survivorship-biased and cannot establish historical altseason behavior.
+- S2 is fixed from a January 2021 PIT snapshot; S3 current-cohort daily analysis remains survivorship-biased and cannot establish historical altseason behavior.
 - ETF flows are market-plumbing associations with timing and simultaneity concerns.
 - Stablecoin supply, DeFi TVL, and related balance-sheet measures are endogenous state proxies; raw USD TVL is valuation-sensitive.
 - Same-day MVRV is a mechanically price-linked valuation-state diagnostic and is excluded from primary BTC/ETH models.
@@ -352,7 +406,7 @@ uv run ruff check src/cqresearch scripts tests
 uv run ruff format --check src/cqresearch scripts tests
 uv run mypy src/cqresearch
 uv run pytest -q
-uv run python scripts/run_research.py --module all
+uv run python scripts/run_all.py --mode local
 uv run python scripts/build_research_figures.py --module all
 uv run python scripts/check_research_surface.py --module all
 ```
@@ -360,17 +414,32 @@ uv run python scripts/check_research_surface.py --module all
 ## Repository Structure
 
 - [`research/`](research/README.md): canonical public research surface.
-- [`src/cqresearch/`](src/cqresearch): pipeline, research, and visualization code.
+- [`src/cqresearch/`](src/cqresearch): contracts, samples, estimators, reporting, and visualization code.
 - [`scripts/`](scripts): thin command-line entry points.
-- [`config/`](config): feature, figure, module, and event registries.
-- `data_local/`: local raw and processed provider data; intentionally untracked.
+- [`config/`](config): data, sample, source, figure, and module registries.
+- `data_local/`: local raw data, normalized panels, caches, and private QA evidence; intentionally untracked.
 
 ## Data Policy and Citation
 
-Raw/provider data stays local under `data_local/` and outside Git. Public tables and figures are derived semantic outputs designed for review and reproducibility without redistributing restricted exports.
+Raw/provider data stays local under `data_local/` and outside Git. Public tables and figures are derived semantic outputs designed for review without redistributing provider exports.
 
-This repository is independent research infrastructure and is not affiliated with any provider. Cite the repository, commit hash, module, table, figure, sample definition, and limitations when referencing a result.
+This repository is independent research and is not affiliated with any data provider. See [`REFERENCES.md`](REFERENCES.md) for source and method attribution. Cite the commit, module, table, figure, sample definition, uncertainty statement, and limitation when referencing a result.
 """
+
+
+def _ontology_counts(root: Path) -> dict[str, int]:
+    research = root / "research"
+
+    def count(name: str) -> int:
+        path = research / name
+        return len(pd.read_csv(path)) if path.exists() else 0
+
+    return {
+        "raw_objects": count("raw_objects.csv"),
+        "physical_columns": count("physical_columns.csv"),
+        "logical_series": count("logical_series.csv"),
+        "features": count("feature_registry.csv"),
+    }
 
 
 def _research_index(
@@ -378,7 +447,7 @@ def _research_index(
 ) -> str:
     module_map = "\n".join(
         "| [{module_id}]({relpath}/README.md) | {title} | {tables} | {figures} |".format(
-            module_id=row.module_id,
+            module_id=str(row.module_id).split("_", 1)[0],
             relpath=Path(row.path).relative_to("research").as_posix(),
             title=row.title,
             tables=row.table_count,
@@ -396,7 +465,9 @@ def _research_index(
         )
         for row in root_figures.itertuples(index=False)
     )
-    status_list = "\n".join(f"- `{key}`: {value}" for key, value in sorted(usage_counts.items()))
+    status_list = "\n".join(
+        f"- {_usage_status_label(key)}: {value}" for key, value in sorted(usage_counts.items())
+    )
     return f"""# Research Surface
 
 This directory is the canonical public research surface for Crypto Market Dynamics. It contains generated modules, tables, figures, manifests, and the root figure-selection audit.
@@ -432,10 +503,20 @@ uv run python scripts/check_research_surface.py --module all
 """
 
 
-def _headline_findings(module_rows: pd.DataFrame) -> str:
+def _headline_findings(root: Path, module_rows: pd.DataFrame) -> str:
     rows = []
-    for module in module_rows["module_id"]:
-        claims_path = Path("research") / str(module) / "tables" / "claims.csv"
+    selected_modules = {
+        "01_cross_asset_dependence_regimes",
+        "02_macro_tradfi_integration",
+        "03_derivatives_leverage_liquidations",
+        "04_etf_institutional_flows",
+        "07_chain_fundamentals_sector_dynamics",
+    }
+    for module_row in module_rows.itertuples(index=False):
+        module = str(module_row.module_id)
+        if module not in selected_modules:
+            continue
+        claims_path = root / "research" / str(module) / "tables" / "claims.csv"
         if not claims_path.exists():
             continue
         claims = pd.read_csv(claims_path)
@@ -444,7 +525,7 @@ def _headline_findings(module_rows: pd.DataFrame) -> str:
         claim = claims.iloc[0]
         rows.append(
             "| {module} | {finding} | {grade} | [{table}]({table}) | {limitation} |".format(
-                module=module,
+                module=str(module_row.title),
                 finding=str(claim.get("claim_text", "")),
                 grade=str(claim.get("evidence_grade", "")),
                 table=str(claim.get("source_table", ""))
@@ -454,7 +535,7 @@ def _headline_findings(module_rows: pd.DataFrame) -> str:
             )
         )
     header = "| Module | Finding | Grade | Source | Limitation |\n|---|---|---|---|---|"
-    return header + "\n" + "\n".join(rows[:10])
+    return header + "\n" + "\n".join(rows[:5])
 
 
 def _write_root_manifest(
@@ -472,6 +553,13 @@ def _write_root_manifest(
         for row in module_payload
         if (root / str(row["manifest_path"])).exists()
     ]
+    registry_paths = sorted((root / "research").glob("*.csv"))
+    provenance_path = root / "research" / "build_provenance.json"
+    if provenance_path.exists():
+        registry_paths.append(provenance_path)
+    registry_records = [artifact_record(path, root) for path in registry_paths]
+    artifact_records = root_records + module_manifest_records + registry_records
+    deduplicated_records = {str(record["path"]): record for record in artifact_records}
     payload = {
         "schema_version": 1,
         "canonical_surface": "research",
@@ -486,7 +574,7 @@ def _write_root_manifest(
         if not selection.empty
         else [],
         "data_usage_status_counts": usage_counts,
-        "artifacts": root_records + module_manifest_records,
+        "artifacts": [deduplicated_records[path] for path in sorted(deduplicated_records)],
     }
     return write_json(root / "research" / "manifest.json", payload)
 

@@ -1,3 +1,3 @@
 # Interpretation
 
-ETF flows are market-plumbing associations with timing and simultaneity concerns, not causal return estimates.
+Supported coefficients are timing-sensitive market-plumbing associations. Simultaneity prevents price-impact language.

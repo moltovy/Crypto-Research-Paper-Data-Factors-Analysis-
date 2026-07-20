@@ -1,6 +1,8 @@
 provider_id,provider,file_count,csv_count,total_bytes,first_date,last_date,disposition,release_recommendation,license_note
 alternativeme,AlternativeMe,2,1,71121,2018-02-01,2026-04-17,derived-only recommended,Public Fear and Greed source; publish derived outputs with attribution.,Public Fear and Greed index data; cite provider.
 artemis,Artemis,49,48,6898444,2010-01-01,2026-04-30,uncertain/restricted,Provider/export data; do not newly redistribute raw files without explicit permission.,Provider/export data; redistribution rights may be restricted.
+binance,Binance Vision,924,0,1733966,2021-01-01,2026-06-30,derived-only recommended,Repository-local or mixed-source data; verify provenance before raw redistribution.,Repository-local metadata or generated inventory.
+cftc,CFTC,10,0,4788590,2017-01-03,2026-07-14,public/re-distributable,Official public regulatory archive; cite the CFTC and preserve release semantics.,Official public regulatory archive; cite the CFTC.
 cryptoquant,CryptoQuant,389,345,43255960,2006-04-11,2026-04-12,uncertain/restricted,Provider export; do not newly redistribute raw files without explicit permission.,Provider export; redistribution rights may be restricted.
 defillama,DefiLlama,54,44,40289431,2016-04-19,2026-04-19,derived-only recommended,Public API/web source; publish derived outputs and verify terms before raw redistribution.,Public API and curated files; cite DefiLlama and respect terms.
 farside,Farside ETF Data,5,3,70347,2024-01-11,2026-04-10,derived-only recommended,Public web source; publish derived outputs and verify reuse terms.,Public web data; cite Farside Investors and verify reuse terms.

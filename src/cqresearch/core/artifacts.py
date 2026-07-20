@@ -4,19 +4,40 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import tempfile
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
-TEXT_ARTIFACT_SUFFIXES = {".csv", ".json", ".md", ".svg", ".txt", ".yaml", ".yml"}
+TEXT_ARTIFACT_SUFFIXES = {
+    ".csv",
+    ".html",
+    ".ipynb",
+    ".json",
+    ".lock",
+    ".md",
+    ".py",
+    ".svg",
+    ".toml",
+    ".txt",
+    ".yaml",
+    ".yml",
+}
 
 
 def write_csv(path: Path, frame: pd.DataFrame) -> Path:
     """Write a CSV artifact with stable row order supplied by the caller."""
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    frame.to_csv(path, index=False, lineterminator="\n", float_format="%.15g")
+    temporary = _temporary_path(path)
+    try:
+        frame.to_csv(temporary, index=False, lineterminator="\n", float_format="%.12g")
+        temporary.replace(path)
+    except Exception:
+        temporary.unlink(missing_ok=True)
+        raise
     return path
 
 
@@ -24,20 +45,40 @@ def write_text(path: Path, text: str) -> Path:
     """Write markdown/text with one trailing newline."""
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text.strip() + "\n", encoding="utf-8", newline="\n")
+    temporary = _temporary_path(path)
+    try:
+        temporary.write_text(text.strip() + "\n", encoding="utf-8", newline="\n")
+        temporary.replace(path)
+    except Exception:
+        temporary.unlink(missing_ok=True)
+        raise
     return path
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> Path:
     """Write JSON deterministically."""
 
+    return write_text(path, json.dumps(payload, indent=2, sort_keys=True))
+
+
+def write_parquet(path: Path, frame: pd.DataFrame, *, index: bool = True) -> Path:
+    """Write parquet in the destination directory and atomically replace it."""
+
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(payload, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-        newline="\n",
-    )
+    temporary = _temporary_path(path)
+    try:
+        frame.to_parquet(temporary, index=index)
+        temporary.replace(path)
+    except Exception:
+        temporary.unlink(missing_ok=True)
+        raise
     return path
+
+
+def _temporary_path(path: Path) -> Path:
+    descriptor, name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    os.close(descriptor)
+    return Path(name)
 
 
 def sha256_file(path: Path) -> str:

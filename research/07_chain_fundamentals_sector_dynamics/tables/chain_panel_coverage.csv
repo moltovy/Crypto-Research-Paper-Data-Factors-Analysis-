@@ -1,0 +1,13 @@
+chain,metric,months,first_month,last_month,gate_status
+Ethereum,market_cap,129,2015-08-31,2026-04-30,pass
+Solana,market_cap,73,2020-04-30,2026-04-30,pass
+Avalanche C-Chain,market_cap,68,2020-09-30,2026-04-30,pass
+Near,market_cap,67,2020-10-31,2026-04-30,pass
+Ethereum,fees,129,2015-08-31,2026-04-30,pass
+Solana,fees,60,2021-05-31,2026-04-30,pass
+Avalanche C-Chain,fees,68,2020-09-30,2026-04-30,pass
+Near,fees,67,2020-10-31,2026-04-30,pass
+Ethereum,revenue,130,2015-07-31,2026-04-30,pass
+Solana,revenue,60,2021-05-31,2026-04-30,pass
+Avalanche C-Chain,revenue,68,2020-09-30,2026-04-30,pass
+Near,revenue,70,2020-07-31,2026-04-30,pass

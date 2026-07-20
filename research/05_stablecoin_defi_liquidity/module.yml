@@ -3,46 +3,42 @@ title: Stablecoin and DeFi Liquidity State
 research_question: What do stablecoin supply and DeFi TVL proxies say about liquidity-state
   associations after unit and valuation audits?
 research_questions:
-- Which stablecoin/DeFi state variables have usable weekly coverage?
-- How much raw USD TVL behavior is plausibly valuation-sensitive?
+- What remains in USD TVL growth after contemporaneous crypto-market return controls?
+- How mechanically does same-day MVRV inherit BTC price variation?
 outcomes:
-- weekly liquidity state
-- valuation contamination
-- state correlations
+- TVL residual state
+- stablecoin growth
+- MVRV identity residual
 features:
+- USD TVL growth
 - stablecoin supply
-- DeFi TVL
-- DEX/lending activity
+- BTC/ETH/TOTAL3 returns
+- MVRV
 frequencies:
-- weekly
+- crypto daily
 methods:
-- Weekly state analysis
-- Valuation contamination
+- Liquidity residual
+- Stablecoin state
+- MVRV mechanics
 sensitivity_dimensions:
-- raw versus lagged
-- TVL price content
-- weekly calendar
-- state bins
+- market controls
+- HAC lag
+- z-score window
+- identity residual
 status: built
 canonical_surface: research/05_stablecoin_defi_liquidity
 tables:
 - claims.csv
-- defi_activity_features.csv
-- liquidity_associations.csv
-- liquidity_regime_summary.csv
-- stablecoin_defi_liquidity_summary.csv
-- stablecoin_liquidity_features.csv
-- valuation_contamination_audit.csv
+- liquidity_state.csv
+- liquidity_state_coefficients.csv
+- liquidity_state_summary.csv
+- measurement_mechanics.csv
 figures:
-- 05_liquidity_state_regimes.png
-- 05_valuation_contamination_audit.png
-- liquidity_state_correlations.png
+- 05_liquidity_measurement_diagnostics.png
 code:
-- src/cqresearch/research/analytical_modules.py
+- src/cqresearch/research/evidence_modules.py
+- src/cqresearch/modeling/market_structure.py
 tests:
-- tests/unit/test_feature_strength_outputs.py
-- tests/unit/test_visual_outputs.py
+- tests/unit/test_market_structure_models.py
 root_readme_candidate_figures:
-- figures/05_liquidity_state_regimes.png
-- figures/05_valuation_contamination_audit.png
-- figures/liquidity_state_correlations.png
+- figures/05_liquidity_measurement_diagnostics.png

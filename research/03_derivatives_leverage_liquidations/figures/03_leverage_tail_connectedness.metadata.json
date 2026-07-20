@@ -1,0 +1,22 @@
+{
+  "data_cutoff": "2026-06-30",
+  "date_range": "2020-02-01 through 2026-06-30, model-specific support",
+  "figure_id": "leverage_tail_connectedness",
+  "limitation": "These are stress-state associations, not forecasts, trading signals, or liquidation-cause estimates.",
+  "method": "Lagged-state spline logistic marginal associations plus rolling generalized FEVD connectedness",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
+  "png": "03_leverage_tail_connectedness.png",
+  "research_question": "How do lagged leverage states coincide with conditional tail stress and cross-asset connectedness?",
+  "rows": 103,
+  "sample": "BTC state model, 2020-02-01 through 2026-04-12; S2 connectedness from 2021",
+  "source_csv": "03_leverage_tail_connectedness.source.csv",
+  "source_tables": [
+    "tables/leverage_tail_model.csv",
+    "tables/connectedness.csv"
+  ],
+  "svg": "03_leverage_tail_connectedness.svg",
+  "uncertainty": "Bootstrap intervals for state associations; FEVD stability and row-sum diagnostics",
+  "units": "conditional probability and connectedness percent",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
+}

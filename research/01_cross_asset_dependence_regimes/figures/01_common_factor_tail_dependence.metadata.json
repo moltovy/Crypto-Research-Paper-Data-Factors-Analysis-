@@ -1,0 +1,22 @@
+{
+  "data_cutoff": "2026-06-30",
+  "date_range": "2021-01-02 through 2026-06-30",
+  "figure_id": "common_factor_tail_dependence",
+  "limitation": "Fixed PIT-eligible membership supports within-sample dependence statements, not forecasts, causal transmission, or investability claims.",
+  "method": "Leave-one-out PCA plus moving-block bootstrap tail co-exceedance inference at predeclared quantiles",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
+  "png": "01_common_factor_tail_dependence.png",
+  "research_question": "How broad are common variation and lower-tail co-exceedance within the fixed S2 crypto core?",
+  "rows": 27,
+  "sample": "S2 fixed stable core, 2021-01-02 through 2026-06-30, n=2006 matched returns",
+  "source_csv": "01_common_factor_tail_dependence.source.csv",
+  "source_tables": [
+    "tables/common_factor_results.csv",
+    "tables/tail_dependence.csv"
+  ],
+  "svg": "01_common_factor_tail_dependence.svg",
+  "uncertainty": "2,000-replication moving-block bootstrap intervals with block-length sensitivity",
+  "units": "variance share and excess joint probability",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
+}

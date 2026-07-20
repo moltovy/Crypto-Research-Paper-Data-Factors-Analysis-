@@ -1,5 +1,5 @@
 # Methodology
 
-Event windows: fixed +1 through +10 windows are compared with empirical placebo blocks.
+Event atlas: sum +1, +5, and +10 post-event returns with event day excluded and compare them with non-overlapping placebo windows.
 
-Evidence synthesis: claim rows are graded by source depth, uncertainty, measurement risk, and limitations.
+Evidence synthesis: consolidate module claim rows without changing estimates or upgrading weak evidence.

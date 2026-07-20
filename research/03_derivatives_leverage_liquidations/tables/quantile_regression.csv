@@ -1,0 +1,5 @@
+quantile,feature,coefficient,standard_error,ci_low,ci_high,n,sample_start,sample_end,method
+0.05,leverage,-0.0116217364934,0.0123882666197,-0.0359153034327,0.012671830446,2263,2020-02-01,2026-04-12,quantile regression on lagged leverage and volatility states
+0.05,volatility,-0.0401738604402,0.00822881524423,-0.0563106841059,-0.0240370367744,2263,2020-02-01,2026-04-12,quantile regression on lagged leverage and volatility states
+0.1,leverage,0.00090696335818,0.00574879253269,-0.010366500517,0.0121804272333,2263,2020-02-01,2026-04-12,quantile regression on lagged leverage and volatility states
+0.1,volatility,-0.0307265184943,0.00419933464305,-0.0389614734225,-0.0224915635661,2263,2020-02-01,2026-04-12,quantile regression on lagged leverage and volatility states

@@ -3,56 +3,42 @@ title: Event Stress and Cross-Module Synthesis
 research_question: Which event-window, stress-state, and cross-module findings remain
   strongest after comparing sample, method, uncertainty, measurement risk, and limitations?
 research_questions:
-- How do registered event windows compare with empirical placebo windows?
-- Which findings remain strongest after sample, uncertainty, measurement-risk, and
-  limitation review?
+- How do fixed post-event BTC/ETH windows compare with non-event placebo windows?
+- Which upstream claims retain complete sample, method, uncertainty, provenance, grade,
+  and limitation fields?
 outcomes:
-- event response
+- event-window return
 - placebo percentile
-- evidence grade
-- measurement-risk ledger
+- claim evidence grade
 features:
-- event registry
+- registered event dates
+- BTC/ETH returns
 - module claims
-- FDR diagnostics
-- robustness summaries
 frequencies:
-- event windows
-- daily
+- event horizon
 - cross-module
 methods:
-- Event windows
+- Event atlas
 - Evidence synthesis
 sensitivity_dimensions:
 - window length
+- event-day exclusion
 - placebo eligibility
-- FDR
-- measurement risk
-- claim grade
+- claim completeness
 status: built
 canonical_surface: research/09_event_stress_cross_module_synthesis
 tables:
-- claim_inventory.csv
 - claims.csv
-- event_atlas.csv
-- event_inference.csv
+- event_registry.csv
 - event_response_matrix.csv
 - evidence_ledger.csv
-- evidence_map.csv
-- fdr_adjusted_inference.csv
-- local_window_correlation_distribution.csv
-- provider_data_disposition.csv
 - robustness_summary.csv
 figures:
-- 09_evidence_grade_risk_map.png
-- appendix_event_response_matrix.png
-- synthesis_claim_source_depth.png
+- 09_event_atlas_appendix.png
 code:
-- src/cqresearch/research/analytical_modules.py
+- src/cqresearch/research/evidence_modules.py
 tests:
+- tests/unit/test_reporting.py
 - tests/unit/test_feature_strength_outputs.py
-- tests/unit/test_visual_outputs.py
 root_readme_candidate_figures:
-- figures/09_evidence_grade_risk_map.png
-- figures/appendix_event_response_matrix.png
-- figures/synthesis_claim_source_depth.png
+- figures/09_event_atlas_appendix.png

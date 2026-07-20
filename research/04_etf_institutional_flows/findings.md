@@ -1,3 +1,3 @@
 # Findings
 
-- ETF lag-response grid: BTC lag 0 corr=0.379 [0.313, 0.453] (Flow intensity is market plumbing with timing and simultaneity concerns.)
+- ETF return lag coefficients: Across 12 asset-lag return coefficients, 2 have 95% moving-block simultaneous intervals excluding zero under the reported-date convention. (Weak coefficients remain weak rather than being rescued by lag selection.)

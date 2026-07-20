@@ -1,0 +1,17 @@
+{
+  "daily_rows": 2373,
+  "data_cutoff": "2026-06-30",
+  "executed_notebook": "reports/crypto_market_dynamics_reproducibility.executed.ipynb",
+  "fingerprint": "2f097205bf78be80892fd0ffdf7ec90f0654fd204d0880d7e71028555782e2eb",
+  "mode": "local",
+  "monthly_rows": 15600,
+  "report_artifacts": 10,
+  "research_artifacts": 165,
+  "schema_version": 1,
+  "seed": 20260713,
+  "status": "complete",
+  "timestamps_excluded_from_determinism": [
+    "reports/crypto_market_dynamics_research_report.pdf"
+  ],
+  "weekly_rows": 340
+}

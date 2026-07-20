@@ -3,49 +3,53 @@ title: Derivatives, Leverage, and Liquidations
 research_question: Where do leverage, funding, open-interest scaling, and liquidation
   stress appear in volatility and tail outcomes?
 research_questions:
-- Where do lagged leverage states coincide with volatility and bottom-tail outcomes?
-- How do liquidation event windows compare with stress-state summaries?
+- How does conditional next-day BTC tail probability vary over observed lagged leverage
+  support?
+- How do quantile, expected-shortfall, systemic-tail, and generalized-FEVD diagnostics
+  change across specifications?
 outcomes:
-- tail-day rate
-- realized volatility
-- liquidation event response
+- tail probability
+- quantile return
+- expected shortfall
+- connectedness
 features:
+- lagged OI/market cap
 - funding
-- open interest
 - liquidations
-- leverage percentile
+- realized volatility
+- S2 returns
 frequencies:
-- daily
-- event windows
+- crypto daily
+- rolling daily
 methods:
-- State bins
-- Tail diagnostics
-- Event/placebo
+- Tail-state model
+- Tail severity
+- Connectedness
 sensitivity_dimensions:
-- state bins
-- lags
-- tail threshold
-- denominator scaling
-- event windows
+- outcome horizon
+- quantile
+- VAR window
+- FEVD horizon
+- variable order
 status: built
 canonical_surface: research/03_derivatives_leverage_liquidations
 tables:
 - claims.csv
-- leverage_feature_registry.csv
-- leverage_state_summary.csv
-- leverage_tail_risk_summary.csv
-- liquidation_event_responses.csv
-- tail_risk_models.csv
+- connectedness.csv
+- expected_shortfall.csv
+- leverage_tail_diagnostics.csv
+- leverage_tail_horizon_sensitivity.csv
+- leverage_tail_model.csv
+- quantile_es.csv
+- quantile_regression.csv
+- systemic_tail_association.csv
 figures:
-- 03_leverage_state_surface.png
-- 03_leverage_tail_stress.png
-- 03_liquidation_event_placebo.png
+- 03_leverage_tail_connectedness.png
 code:
-- src/cqresearch/research/analytical_modules.py
+- src/cqresearch/research/evidence_modules.py
+- src/cqresearch/modeling/leverage_tail.py
 tests:
-- tests/unit/test_feature_strength_outputs.py
-- tests/unit/test_visual_outputs.py
+- tests/unit/test_leverage_tail.py
+- tests/unit/test_fevd_sensitivity.py
 root_readme_candidate_figures:
-- figures/03_leverage_state_surface.png
-- figures/03_leverage_tail_stress.png
-- figures/03_liquidation_event_placebo.png
+- figures/03_leverage_tail_connectedness.png

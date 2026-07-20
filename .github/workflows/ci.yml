@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies with uv
         run: uv sync --all-extras
 
+      - name: Scientific fixture smoke without provider data
+        run: uv run python scripts/run_all.py --mode fixture
+
       - name: Ruff
         run: uv run ruff check src/cqresearch scripts tests
 
@@ -37,14 +40,12 @@ jobs:
       - name: Public smoke tests against committed semantic outputs
         run: uv run pytest -q
 
-      - name: Public surface guardrails
-        run: uv run python scripts/check_research_surface.py --module all
+      - name: Validate committed semantic outputs and reports
+        run: uv run python scripts/run_all.py --mode artifact
 
       - name: Canonical offline build when local provider data is available
         if: ${{ hashFiles('data_local/raw/**') != '' }}
-        run: |
-          uv run python scripts/run_research.py --module all
-          uv run python scripts/build_research_figures.py --module all
+        run: uv run python scripts/run_all.py --mode local
 
       - name: Pytest against freshly generated outputs when local provider data is available
         if: ${{ hashFiles('data_local/raw/**') != '' }}
@@ -64,7 +65,7 @@ jobs:
           import json
 
           root = Path(".")
-          excluded = set()
+          excluded = {Path("reports/crypto_market_dynamics_research_report.pdf")}
 
           def digest() -> dict[str, str]:
               result = {}
@@ -79,7 +80,7 @@ jobs:
 
           Path("/tmp/cmd_digest_before.json").write_text(json.dumps(digest(), sort_keys=True))
           PY
-          uv run python scripts/run_research.py --module all
+          uv run python scripts/run_all.py --mode local
           uv run python scripts/build_research_figures.py --module all
           python - <<'PY'
           from pathlib import Path
@@ -88,7 +89,7 @@ jobs:
           import sys
 
           root = Path(".")
-          excluded = set()
+          excluded = {Path("reports/crypto_market_dynamics_research_report.pdf")}
 
           def digest() -> dict[str, str]:
               result = {}
@@ -117,7 +118,7 @@ jobs:
           import subprocess
           import sys
 
-          allowed_prefixes = ("research/",)
+          allowed_prefixes = ("research/", "reports/")
 
           result = subprocess.run(["git", "status", "--short"], capture_output=True, text=True, check=True)
           unexpected = []

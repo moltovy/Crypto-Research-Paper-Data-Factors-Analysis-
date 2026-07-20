@@ -6,9 +6,9 @@ import math
 import shutil
 from collections.abc import Callable
 from contextlib import suppress
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -26,7 +26,9 @@ from cqresearch.core.artifacts import (
     write_json,
     write_text,
 )
+from cqresearch.data.contracts import assert_unique_plot_keys, result_sample_summary
 from cqresearch.pipelines.final_research import SELECTED_ASSETS, provider_root
+from cqresearch.research.evidence_modules import EVIDENCE_BUILDERS, build_evidence_figures
 from cqresearch.research.registry import MODULES, ResearchModule, module_by_id
 from cqresearch.viz.theme import (
     PALETTE,
@@ -37,7 +39,16 @@ from cqresearch.viz.theme import (
     style_axis,
 )
 
-Builder = Callable[[Path, Path], "ModuleBuild"]
+
+class ModuleBuildLike(Protocol):
+    tables: dict[str, pd.DataFrame]
+    figures: list[Path]
+    key_results: list[dict[str, Any]]
+    claims: list[dict[str, Any]]
+    figure_notes: dict[str, str]
+
+
+Builder = Callable[[Path, Path], ModuleBuildLike]
 
 
 @dataclass(frozen=True)
@@ -65,6 +76,62 @@ class ModuleBuild:
     figure_notes: dict[str, str]
 
 
+MODULE_CODE_PATHS = {
+    "01_cross_asset_dependence_regimes": [
+        "src/cqresearch/research/evidence_modules.py",
+        "src/cqresearch/modeling/dependence.py",
+        "src/cqresearch/research/samples.py",
+    ],
+    "02_macro_tradfi_integration": [
+        "src/cqresearch/research/evidence_modules.py",
+        "src/cqresearch/modeling/dependence.py",
+        "src/cqresearch/data/calendars.py",
+    ],
+    "03_derivatives_leverage_liquidations": [
+        "src/cqresearch/research/evidence_modules.py",
+        "src/cqresearch/modeling/leverage_tail.py",
+    ],
+    "04_etf_institutional_flows": [
+        "src/cqresearch/research/evidence_modules.py",
+        "src/cqresearch/modeling/etf_plumbing.py",
+    ],
+    "05_stablecoin_defi_liquidity": [
+        "src/cqresearch/research/evidence_modules.py",
+        "src/cqresearch/modeling/market_structure.py",
+    ],
+    "07_chain_fundamentals_sector_dynamics": [
+        "src/cqresearch/research/evidence_modules.py",
+        "src/cqresearch/modeling/market_structure.py",
+    ],
+    "09_event_stress_cross_module_synthesis": [
+        "src/cqresearch/research/evidence_modules.py",
+    ],
+}
+
+MODULE_TEST_PATHS = {
+    "01_cross_asset_dependence_regimes": ["tests/unit/test_dependence_models.py"],
+    "02_macro_tradfi_integration": [
+        "tests/unit/test_dependence_models.py",
+        "tests/unit/test_calendars.py",
+    ],
+    "03_derivatives_leverage_liquidations": [
+        "tests/unit/test_leverage_tail.py",
+        "tests/unit/test_fevd_sensitivity.py",
+    ],
+    "04_etf_institutional_flows": [
+        "tests/unit/test_etf_models.py",
+        "tests/unit/test_etf_semantics.py",
+        "tests/unit/test_cftc_positioning.py",
+    ],
+    "05_stablecoin_defi_liquidity": ["tests/unit/test_market_structure_models.py"],
+    "07_chain_fundamentals_sector_dynamics": ["tests/unit/test_market_structure_models.py"],
+    "09_event_stress_cross_module_synthesis": [
+        "tests/unit/test_reporting.py",
+        "tests/unit/test_feature_strength_outputs.py",
+    ],
+}
+
+
 def build_analytical_module(module_id: str, root: Path = PROJECT_ROOT) -> list[Path]:
     spec = MODULE_SPECS[module_id]
     module = module_by_id(module_id)
@@ -82,8 +149,10 @@ def build_analytical_module(module_id: str, root: Path = PROJECT_ROOT) -> list[P
     artifacts.append(write_csv(tables_dir / "claims.csv", claims))
     for figure in build.figures:
         artifacts.append(figure)
-        if figure.with_suffix(".svg").exists():
-            artifacts.append(figure.with_suffix(".svg"))
+        for suffix in [".svg", ".source.csv", ".metadata.json"]:
+            sidecar = figure.with_suffix(suffix)
+            if sidecar.exists():
+                artifacts.append(sidecar)
     artifacts.extend(_write_module_docs(root, module_dir, module, spec, build))
     _remove_unexpected_module_files(module_dir, artifacts)
     artifacts.append(_write_manifest(root, module_dir, artifacts))
@@ -102,8 +171,13 @@ def build_research_only_figures(module_id: str, root: Path = PROJECT_ROOT) -> li
     artifacts: list[Path] = []
     for item in module_ids:
         module_dir = root / "research" / item
-        build = MODULE_SPECS[item].builder(root, module_dir)
-        artifacts.extend(build.figures)
+        artifacts.extend(build_evidence_figures(item, root))
+        module_artifacts = sorted(
+            path
+            for path in module_dir.rglob("*")
+            if path.is_file() and path.name != "manifest.json"
+        )
+        artifacts.append(_write_manifest(root, module_dir, module_artifacts))
     return artifacts
 
 
@@ -112,7 +186,7 @@ def _write_module_docs(
     module_dir: Path,
     module: ResearchModule,
     spec: ModuleSpec,
-    build: ModuleBuild,
+    build: ModuleBuildLike,
 ) -> list[Path]:
     tables = sorted([*build.tables.keys(), "claims.csv"])
     figures = sorted(path.name for path in build.figures if path.suffix.lower() == ".png")
@@ -143,6 +217,14 @@ def _write_module_docs(
         for name in figures
     )
     table_links = "\n".join(f"- [`{name}`](tables/{name})" for name in tables)
+    code_links = "\n".join(
+        f"- [Code: `{Path(path).name}`](../../{path})"
+        for path in MODULE_CODE_PATHS[module.module_id]
+    )
+    test_links = "\n".join(
+        f"- [Test: `{Path(path).name}`](../../{path})"
+        for path in MODULE_TEST_PATHS[module.module_id]
+    )
     question_list = "\n".join(f"- {question}" for question in spec.questions)
     formula_list = "\n\n".join(spec.formulas)
     readme = f"""# {module.module_id}: {module.title}
@@ -203,7 +285,8 @@ uv run python scripts/check_research_surface.py --module {module.module_id}
 - [Findings](findings.md)
 - [Interpretation](interpretation.md)
 - [Limitations](limitations.md)
-- Code: `src/cqresearch/research/analytical_modules.py`
+{code_links}
+{test_links}
 """
     docs = [
         write_text(module_dir / "README.md", readme),
@@ -230,11 +313,8 @@ uv run python scripts/check_research_surface.py --module {module.module_id}
                     "canonical_surface": module_dir.relative_to(root).as_posix(),
                     "tables": tables,
                     "figures": figures,
-                    "code": ["src/cqresearch/research/analytical_modules.py"],
-                    "tests": [
-                        "tests/unit/test_feature_strength_outputs.py",
-                        "tests/unit/test_visual_outputs.py",
-                    ],
+                    "code": MODULE_CODE_PATHS[module.module_id],
+                    "tests": MODULE_TEST_PATHS[module.module_id],
                     "root_readme_candidate_figures": [f"figures/{name}" for name in figures],
                 },
                 sort_keys=False,
@@ -1147,7 +1227,9 @@ def _etf_lag_tables(root: Path) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFram
                     "asset": asset,
                     "lag_days": lag,
                     "return_corr": corr,
-                    "abs_return_corr": abs(corr) if pd.notna(corr) else np.nan,
+                    "abs_return_corr": float(df["return"].abs().corr(df["flow_intensity"]))
+                    if len(df) >= 20
+                    else np.nan,
                     "ci_low": lo,
                     "ci_high": hi,
                     "n": int(len(df)),
@@ -1403,7 +1485,12 @@ def _fig_tradfi_exposure_shift(frame: pd.DataFrame, path: Path) -> Path:
             & frame["block"].eq("equity_beta")
             & frame["regime"].isin(["pre_btc_etf", "btc_etf_era"])
         ].copy()
+        if "model_family" in plot:
+            preferred = "full_ex_mvrv"
+            if preferred in set(plot["model_family"].dropna().astype(str)):
+                plot = plot[plot["model_family"].eq(preferred)]
         if not plot.empty:
+            assert_unique_plot_keys(plot, ["asset", "frequency", "regime", "block"])
             plot["period"] = plot["regime"].map(
                 {"pre_btc_etf": "Pre-BTC ETF", "btc_etf_era": "BTC ETF era"}
             )
@@ -2181,18 +2268,40 @@ def _copy_png_svg(src: Path, dst: Path) -> None:
 
 def _save_figure(fig: plt.Figure, path: Path) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(path, dpi=190, bbox_inches="tight", facecolor=TOKENS["background"])
     svg = path.with_suffix(".svg")
-    fig.savefig(
-        svg, dpi=190, bbox_inches="tight", facecolor=TOKENS["background"], metadata={"Date": None}
-    )
-    with suppress(OSError):
-        svg.write_text(
-            "\n".join(line.rstrip() for line in svg.read_text(encoding="utf-8").splitlines())
-            + "\n",
-            encoding="utf-8",
+    png_temporary = path.with_suffix(".png.tmp")
+    svg_temporary = path.with_suffix(".svg.tmp")
+    try:
+        fig.savefig(
+            png_temporary,
+            format="png",
+            dpi=190,
+            bbox_inches="tight",
+            facecolor=TOKENS["background"],
         )
-    plt.close(fig)
+        fig.savefig(
+            svg_temporary,
+            format="svg",
+            dpi=190,
+            bbox_inches="tight",
+            facecolor=TOKENS["background"],
+            metadata={"Date": None},
+        )
+        with suppress(OSError):
+            svg_temporary.write_text(
+                "\n".join(
+                    line.rstrip() for line in svg_temporary.read_text(encoding="utf-8").splitlines()
+                )
+                + "\n",
+                encoding="utf-8",
+                newline="\n",
+            )
+        png_temporary.replace(path)
+        svg_temporary.replace(svg)
+    finally:
+        png_temporary.unlink(missing_ok=True)
+        svg_temporary.unlink(missing_ok=True)
+        plt.close(fig)
     return path
 
 
@@ -2204,39 +2313,63 @@ def _sample_table(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
         rows.append(
             {
                 "artifact": f"tables/{name}",
-                "rows": len(frame),
-                "sample": _sample_from_table(frame),
+                "result_rows": len(frame),
+                "analytical_sample": _sample_from_table(frame, name),
                 "coverage rule": _coverage_rule_from_name(name),
             }
         )
     return pd.DataFrame(rows[:14])
 
 
-def _sample_from_table(frame: pd.DataFrame) -> str:
-    if frame.empty:
-        return "no rows"
-    date_cols = [
-        col
-        for col in frame.columns
-        if col in {"date", "sample_start", "first_date", "first_valid_date", "snapshot_date"}
-    ]
-    end_cols = [
-        col for col in frame.columns if col in {"sample_end", "last_date", "last_valid_date"}
-    ]
-    if "sample_start" in frame and "sample_end" in frame:
-        starts = pd.to_datetime(frame["sample_start"], errors="coerce").dropna()
-        ends = pd.to_datetime(frame["sample_end"], errors="coerce").dropna()
-        if not starts.empty and not ends.empty:
-            return f"{starts.min().date()} to {ends.max().date()}, n={len(frame)}"
-    if date_cols:
-        dates = pd.to_datetime(frame[date_cols[0]], errors="coerce").dropna()
-        if not dates.empty:
-            return f"{dates.min().date()} to {dates.max().date()}, rows={len(frame)}"
-    if end_cols:
-        ends = pd.to_datetime(frame[end_cols[0]], errors="coerce").dropna()
-        if not ends.empty:
-            return f"through {ends.max().date()}, rows={len(frame)}"
-    return f"rows={len(frame)}"
+def _sample_from_table(frame: pd.DataFrame, name: str = "") -> str:
+    summary = result_sample_summary(frame)
+    if "analytical sample metadata unavailable" not in summary:
+        return summary
+    if name == "asset_return_coverage.csv" and "observations" in frame:
+        counts = pd.to_numeric(frame["observations"], errors="coerce").dropna().astype(int)
+        return (
+            f"{len(frame)} S2 assets; matched n={counts.min()}-{counts.max()} per asset; "
+            f"{frame['first_date'].min()} to {frame['last_date'].max()}"
+        )
+    if name == "corporate_exposure_eras.csv":
+        return "source eligibility gate failed; no analytical sample or exposure-era claim"
+    if name == "etf_flow_concentration.csv":
+        counts = pd.to_numeric(frame["report_dates"], errors="coerce").dropna().astype(int)
+        return (
+            f"BTC/ETH actual report dates, n={counts.min()}-{counts.max()} by asset; "
+            f"{frame['sample_start'].min()} to {frame['sample_end'].max()}"
+        )
+    if name == "institutional_positioning_points.csv":
+        return (
+            f"{len(frame)} weekly CFTC contract-report observations; "
+            f"{_date_range_text(frame, 'report_date')}"
+        )
+    if name == "liquidity_state.csv":
+        return f"{len(frame):,} daily state observations; {_date_range_text(frame, 'date')}"
+    if name == "chain_panel_coverage.csv":
+        return "4 chains x 3 metrics = 12 coverage records; model support is 59 common months"
+    if name == "pit_concentration.csv":
+        return "77 complete monthly snapshots x top 100 = 7,700 asset-months"
+    if name in {"pit_membership_transitions.csv", "pit_concentration_decomposition.csv"}:
+        return "76 adjacent-month transitions derived from 77 complete top-100 snapshots"
+    if name == "event_registry.csv":
+        return f"{len(frame)} registered events; {_date_range_text(frame, 'date')}"
+    if name == "event_response_matrix.csv":
+        return (
+            f"{frame['event_id'].nunique()} events x {frame['asset'].nunique()} assets x "
+            f"{frame['window_days'].nunique()} horizons = {len(frame)} estimates; placebo n="
+            f"{frame['placebo_windows'].min()}-{frame['placebo_windows'].max()}"
+        )
+    if name == "evidence_ledger.csv":
+        return f"{len(frame)} upstream claims; each row retains its own analytical sample"
+    if name == "robustness_summary.csv":
+        return f"{len(frame)} upstream modules; summary rows are not model observations"
+    return summary
+
+
+def _date_range_text(frame: pd.DataFrame, column: str) -> str:
+    dates = pd.to_datetime(frame[column], errors="coerce").dropna()
+    return f"{dates.min().date()} to {dates.max().date()}"
 
 
 def _coverage_rule_from_name(name: str) -> str:
@@ -2245,8 +2378,8 @@ def _coverage_rule_from_name(name: str) -> str:
         return "ETF source rows only; no pre-inception zero fill"
     if "pit" in lower:
         return "monthly point-in-time state variables only"
-    if "selected" in lower or "factor" in lower:
-        return "matched current-cohort selected-major window"
+    if "selected" in lower or "factor" in lower or "asset_return" in lower:
+        return "fixed PIT-eligible S2 matched daily support"
     if "mvrv" in lower:
         return "measurement mechanics and lagged-state diagnostics"
     return "module-specific matched sample"
@@ -2555,4 +2688,209 @@ MODULE_SPECS: dict[str, ModuleSpec] = {
         ("event windows", "daily", "cross-module"),
         ("window length", "placebo eligibility", "FDR", "measurement risk", "claim grade"),
     ),
+}
+
+CURRENT_PUBLIC_SPECS: dict[str, dict[str, Any]] = {
+    "01_cross_asset_dependence_regimes": {
+        "purpose": "This module estimates broad common variation, lower-tail co-exceedance, and relative-risk diagnostics on the fixed S2 stable core. The former relative-major module is absorbed here.",
+        "questions": (
+            "How much of each S2 asset's matched return variation is shared with a leave-one-out crypto factor?",
+            "How far does lower-tail co-exceedance depart from its independence benchmark across predeclared thresholds?",
+        ),
+        "methods": (
+            "Leave-one-out PCA: standardize matched S2 returns, exclude the target asset, estimate PC1, and report target common-variance share and loading.",
+            "Tail dependence: estimate joint, conditional, and excess co-exceedance at 1%, 2.5%, 5%, and 10% thresholds.",
+            "Moving-block inference: use 2,000 replications, block length 10 primary, and lengths 5 and 20 as sensitivity.",
+            "Relative-risk diagnostics: report annualized volatility, 5% expected shortfall, and BTC-tail downside beta on the same matched support.",
+        ),
+        "formulas": (
+            "$f_{-i,t}=PC1(r_{-i,t})$ and $R_i^2=1-\\operatorname{Var}(r_i-\\hat r_i)/\\operatorname{Var}(r_i)$.",
+            "$\\lambda_{ij}(q)=P(r_i\\le Q_i(q),r_j\\le Q_j(q))-q^2$; $q\\in\\{0.01,0.025,0.05,0.10\\}$.",
+            "$ES_i(5\\%)=E[r_i\\mid r_i\\le Q_i(0.05)]$.",
+        ),
+        "interpretation": "Common-factor and tail estimates describe realized within-sample dependence. Evidence above an independence benchmark is not a forecast, diversification claim, or causal transmission estimate.",
+        "limitations": "S2 is fixed from the 2021-01-31 PIT top 20 and requires matched Binance history. S3 is supplementary and survivorship-sensitive. Results depend on membership, threshold, and block-length choices.",
+        "outcomes": ("common variance share", "tail co-exceedance", "expected shortfall"),
+        "features": ("S2 matched returns", "leave-one-out PC1", "BTC tail indicator"),
+        "frequencies": ("crypto daily",),
+        "sensitivity_dimensions": ("tail threshold", "block length", "factor composition"),
+    },
+    "02_macro_tradfi_integration": {
+        "purpose": "This module measures time-varying conditional BTC/ETH exposure to contract-valid TradFi returns and changes after computing each instrument's return on its native calendar.",
+        "questions": (
+            "How do 252-session multivariate HAC crypto-equity exposures vary through time?",
+            "Do predeclared era interactions support a discrete change after accounting for uncertainty and multiple tests?",
+        ),
+        "methods": (
+            "Calendar construction: compute TradFi returns on native sessions, preserve exchange holidays as missing, then join to crypto dates.",
+            "Dynamic exposure: estimate 252-session multivariate HAC models with at least 126 matched sessions.",
+            "Break evidence: estimate formal era interactions and structural-break diagnostics on same-support samples.",
+        ),
+        "formulas": (
+            "$r_{crypto,t}=\\alpha+\\beta'X_t+u_t$ with HAC covariance.",
+            "$r_t=\\alpha+\\beta X_t+\\gamma D_t+\\delta(X_tD_t)+u_t$; $\\delta$ is the predeclared era interaction.",
+        ),
+        "interpretation": "Conditional equity exposure varies over time, while formal period differences are reported as weak when adjusted evidence does not reject the null.",
+        "limitations": "Close-to-close alignment is contemporaneous and cannot identify transmission. Latest-vintage macro data and finite rolling windows add timing and revision risk.",
+        "outcomes": ("BTC return", "ETH return", "rolling conditional beta", "era interaction"),
+        "features": ("QQQ", "SPY", "IWM", "DXY", "GLD", "VIX", "Treasury yields"),
+        "frequencies": ("XNYS-aligned session",),
+        "sensitivity_dimensions": ("window support", "era boundary", "control set", "HAC lag"),
+    },
+    "03_derivatives_leverage_liquidations": {
+        "purpose": "This module estimates how lagged leverage states coincide with next-day tail stress and how stable-core return connectedness evolves.",
+        "questions": (
+            "How does conditional next-day BTC tail probability vary over observed lagged leverage support?",
+            "How do quantile, expected-shortfall, systemic-tail, and generalized-FEVD diagnostics change across specifications?",
+        ),
+        "methods": (
+            "Tail-state model: fit a spline logistic model using lagged OI-to-market-cap, funding, liquidation, and volatility states.",
+            "Tail severity: estimate 5% and 10% quantile associations, expected shortfall, CoVaR, delta-CoVaR, and MES.",
+            "Connectedness: estimate rolling generalized FEVD on S2 using 252 observations, BIC lag at most five, and horizon 10.",
+        ),
+        "formulas": (
+            "$P(I[r_{t+1}\\le Q_{0.05}]=1\\mid X_t)=\\operatorname{logit}^{-1}(\\alpha+s(X_t))$.",
+            "$Q_\\tau(r_{t+1}\\mid X_t)=\\alpha_\\tau+\\beta_\\tau'X_t$.",
+            "$TCI_t=100N^{-1}\\sum_{i\\ne j}\\tilde\\theta_{ij,t}^{(H)}$.",
+        ),
+        "interpretation": "Differences over observed state support are conditional associations, not forecasts, signals, or liquidation-cause estimates.",
+        "limitations": "Leverage measures are endogenous and USD-valued fields can contain price content. Tail samples are small, and rolling VAR windows require stability and row-sum diagnostics.",
+        "outcomes": ("tail probability", "quantile return", "expected shortfall", "connectedness"),
+        "features": (
+            "lagged OI/market cap",
+            "funding",
+            "liquidations",
+            "realized volatility",
+            "S2 returns",
+        ),
+        "frequencies": ("crypto daily", "rolling daily"),
+        "sensitivity_dimensions": (
+            "outcome horizon",
+            "quantile",
+            "VAR window",
+            "FEVD horizon",
+            "variable order",
+        ),
+    },
+    "04_etf_institutional_flows": {
+        "purpose": "This module evaluates ETF flow-intensity lag associations and regulated-futures positioning over actual reporting lives without pre-inception or holiday zero fills.",
+        "questions": (
+            "Which lag-0 through lag-5 ETF flow-intensity coefficients remain supported under simultaneous uncertainty?",
+            "How concentrated and persistent are reported flows, and how does CFTC positioning provide separate weekly context?",
+        ),
+        "methods": (
+            "Flow scaling: divide reported BTC/ETH net flow by lagged market capitalization on actual report dates.",
+            "Distributed lags: estimate HAC return, absolute-return, and volatility associations for lags 0 through 5.",
+            "Simultaneous inference: use a 2,000-replication moving-block max-t bootstrap and timing-shift sensitivity.",
+            "Institutional context: report issuer concentration where available and standard-contract CFTC positioning without combining micro contracts.",
+        ),
+        "formulas": (
+            "$FI_t=Flow_t/MCap_{t-1}$.",
+            "$y_t=\\alpha+\\sum_{k=0}^{5}\\beta_k FI_{t-k}+\\Gamma'Z_t+u_t$.",
+            "$HHI_t=\\sum_i (Flow_{i,t}/\\sum_j |Flow_{j,t}|)^2$.",
+        ),
+        "interpretation": "Supported coefficients are timing-sensitive market-plumbing associations. Simultaneity prevents price-impact language.",
+        "limitations": "Reported dates do not resolve intraday availability, issuer archives are incomplete, and ETF samples begin at instrument-specific inception.",
+        "outcomes": ("return", "absolute return", "realized volatility", "positioning share"),
+        "features": ("ETF flow intensity", "issuer composition", "CFTC positioning"),
+        "frequencies": ("reported ETF session", "weekly CFTC"),
+        "sensitivity_dimensions": (
+            "lag",
+            "timing shift",
+            "flow sign",
+            "volatility state",
+            "contract scope",
+        ),
+    },
+    "05_stablecoin_defi_liquidity": {
+        "purpose": "This module constructs an endogenous liquidity-state diagnostic after price-adjusting USD TVL growth and retains same-day MVRV only as a measurement-mechanics appendix.",
+        "questions": (
+            "What remains in USD TVL growth after contemporaneous crypto-market return controls?",
+            "How mechanically does same-day MVRV inherit BTC price variation?",
+        ),
+        "methods": (
+            "Liquidity residual: regress daily USD TVL growth on BTC, ETH, and broad-market controls with HAC covariance, then standardize the residual state.",
+            "Stablecoin state: report supply growth as an endogenous balance-sheet proxy with source-coverage guards.",
+            "MVRV mechanics: compare log-MVRV changes with BTC return and audit the market-cap/realized-cap identity residual.",
+        ),
+        "formulas": (
+            "$\\Delta\\log(TVL_t)=\\alpha+\\beta'R_t+u_t$; the liquidity state is a rolling z-score of $u_t$.",
+            "$MVRV_t=MCap_t/RealizedCap_t$.",
+        ),
+        "interpretation": "The residual state is still endogenous and co-moves with market conditions. MVRV is a price-linked valuation diagnostic, not an independent factor.",
+        "limitations": "Raw USD TVL is valuation-sensitive, source revisions are possible, and residualization does not create an exogenous liquidity shock.",
+        "outcomes": ("TVL residual state", "stablecoin growth", "MVRV identity residual"),
+        "features": ("USD TVL growth", "stablecoin supply", "BTC/ETH/TOTAL3 returns", "MVRV"),
+        "frequencies": ("crypto daily",),
+        "sensitivity_dimensions": (
+            "market controls",
+            "HAC lag",
+            "z-score window",
+            "identity residual",
+        ),
+    },
+    "07_chain_fundamentals_sector_dynamics": {
+        "purpose": "This module measures concentration, breadth, and membership change from complete monthly point-in-time top-100 snapshots and runs the chain panel only after its support gate passes.",
+        "questions": (
+            "How did PIT concentration, entropy-implied breadth, turnover, entry, exit, and survival change across complete months?",
+            "Can each concentration change be reconciled exactly to incumbent, entry, and exit components, and is the optional chain panel eligible?",
+        ),
+        "methods": (
+            "PIT census: compute HHI, entropy, effective asset count, top shares, turnover, entry, exit, and survival for each complete monthly snapshot.",
+            "Concentration decomposition: reconcile each HHI change to incumbent-share changes, entries, exits, and a numerical residual.",
+            "Optional chain panel: require at least four valid chains and 36 common months before two-way fixed-effects estimation with panel-appropriate uncertainty.",
+        ),
+        "formulas": (
+            "$HHI_t=\\sum_i s_{i,t}^2$; $N_{eff,t}=\\exp(-\\sum_i s_{i,t}\\log s_{i,t})$.",
+            "$Turnover_t=(Entries_t+Exits_t)/|U_t\\cup U_{t-1}|$.",
+            "$\\Delta HHI_t=Incumbent_t+Entry_t+Exit_t+Residual_t$.",
+        ),
+        "interpretation": "The monthly census supports composition, concentration, category-share, and turnover statements only.",
+        "limitations": "PIT snapshots cannot recover daily constituent performance or historical altseason returns. June 2026 partial data is context-only and excluded from primary estimates.",
+        "outcomes": ("HHI", "effective asset count", "turnover", "chain-panel association"),
+        "features": ("monthly PIT membership", "market-cap share", "chain activity"),
+        "frequencies": ("monthly point-in-time",),
+        "sensitivity_dimensions": (
+            "concentration measure",
+            "turnover component",
+            "partial-month rule",
+            "chain support",
+        ),
+    },
+    "09_event_stress_cross_module_synthesis": {
+        "purpose": "This module retains the registered event atlas as appendix sensitivity evidence and consolidates qualified upstream claims for final review.",
+        "questions": (
+            "How do fixed post-event BTC/ETH windows compare with non-event placebo windows?",
+            "Which upstream claims retain complete sample, method, uncertainty, provenance, grade, and limitation fields?",
+        ),
+        "methods": (
+            "Event atlas: sum +1, +5, and +10 post-event returns with event day excluded and compare them with non-overlapping placebo windows.",
+            "Evidence synthesis: consolidate module claim rows without changing estimates or upgrading weak evidence.",
+        ),
+        "formulas": (
+            "$R_{e,h}=\\sum_{j=1}^{h}r_{t_e+j}$ for $h\\in\\{1,5,10\\}$.",
+            "$p_e=2\\min(\\hat F_{placebo}(R_e),1-\\hat F_{placebo}(R_e))$.",
+        ),
+        "interpretation": "Event windows are descriptive stress diagnostics. The synthesis preserves upstream uncertainty and does not turn associations into causal event effects.",
+        "limitations": "Event selection, overlapping developments, and non-random timing preclude identification. Synthesis quality is bounded by upstream data and models.",
+        "outcomes": ("event-window return", "placebo percentile", "claim evidence grade"),
+        "features": ("registered event dates", "BTC/ETH returns", "module claims"),
+        "frequencies": ("event horizon", "cross-module"),
+        "sensitivity_dimensions": (
+            "window length",
+            "event-day exclusion",
+            "placebo eligibility",
+            "claim completeness",
+        ),
+    },
+}
+
+MODULE_SPECS = {
+    module_id: replace(
+        spec,
+        builder=EVIDENCE_BUILDERS[module_id],
+        **CURRENT_PUBLIC_SPECS[module_id],
+    )
+    for module_id, spec in MODULE_SPECS.items()
+    if module_id in EVIDENCE_BUILDERS
 }

@@ -1,0 +1,11 @@
+source_family,observation_column,alternate_observation_columns,period_column,availability_rule,native_calendar,timezone
+alternativeme,date,,,observed UTC date; daily value is descriptive only,crypto_7,UTC
+artemis,date,,,provider observation date; no release-time claim,crypto_7,UTC
+binance,open_time,,,UTC daily kline close; checksum-verified official monthly archive,crypto_7,UTC
+cftc,report_date,Report_Date_as_YYYY-MM-DD|As_of_Date_In_Form_YYMMDD,,Tuesday positions; Friday availability proxy retained separately,weekly_report,America/New_York
+cryptoquant,date,,,provider daily close; use lagged states for forward outcomes,crypto_7,UTC
+defillama,date,,,provider observation date; revisions and valuation content disclosed,crypto_7,UTC
+farside,date,,,reported ETF trading date; contemporaneous timing is unresolved,XNYS,America/New_York
+fred,date,,,latest-vintage export; release availability is series-specific,XNYS,America/New_York
+market_structure,snapshot_date,date,month,month-end point-in-time snapshot; partial months are context only,month_end,UTC
+tradingview,date,,,native market close; returns are computed before cross-calendar joins,source_exchange,exchange_local

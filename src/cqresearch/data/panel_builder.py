@@ -16,6 +16,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from cqresearch.core.artifacts import write_csv, write_json, write_parquet
 from cqresearch.data import loaders
 from cqresearch.data.calendars import (
     DEFAULT_END,
@@ -35,7 +36,7 @@ class PanelBuildReport:
 
 
 # --- kind assignments per variable ------------------------------------------
-# 'stock' forward-fills weekends; 'flow' zero-fills weekends; 'rate' ffills.
+# 'stock' and 'rate' may be carried for display joins; 'flow' preserves missing dates.
 KINDS: dict[str, SeriesKind] = {
     # Prices (stock levels — carry across the weekend for equities/FX)
     "btc_close": "stock",
@@ -184,24 +185,19 @@ def write_panel(
 ) -> tuple[Path, Path, Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     parquet = out_dir / "master_daily.parquet"
-    panel.to_parquet(parquet)
+    write_parquet(parquet, panel)
     coverage = out_dir / "master_daily_coverage.csv"
-    report.coverage_by_col.to_csv(coverage, index=False)
+    write_csv(coverage, report.coverage_by_col)
     meta = out_dir / "master_daily_meta.json"
-    import json
-
-    meta.write_text(
-        json.dumps(
-            {
-                "start": report.master_start.date().isoformat(),
-                "end": report.master_end.date().isoformat(),
-                "n_rows": report.n_rows,
-                "n_cols": int(panel.shape[1]),
-                "columns": list(panel.columns),
-            },
-            indent=2,
-        ),
-        encoding="utf-8",
+    write_json(
+        meta,
+        {
+            "start": report.master_start.date().isoformat(),
+            "end": report.master_end.date().isoformat(),
+            "n_rows": report.n_rows,
+            "n_cols": int(panel.shape[1]),
+            "columns": list(panel.columns),
+        },
     )
     return parquet, coverage, meta
 

@@ -1,3 +1,3 @@
 # Interpretation
 
-Dependence results describe realized co-movement and common-factor structure. They do not imply investability, forecasts, or causal transmission.
+Common-factor and tail estimates describe realized within-sample dependence. Evidence above an independence benchmark is not a forecast, diversification claim, or causal transmission estimate.

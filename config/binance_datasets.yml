@@ -1,13 +1,17 @@
-source: binance
-raw_cache: data_local/raw/market_structure/binance/cache
-curated_root: data_local/raw/market_structure/binance
+source: binance_vision
+raw_cache: data_local/raw/binance/spot/monthly/klines
+curated_root: data_local/processed/binance_spot_daily.parquet
 policy:
   auth: public endpoints require no key.
   storage: raw responses and wide pulls stay in data_local and out of Git; public outputs use derived summaries only.
   market_cap: Binance does not provide historical market-cap rankings; liquidity ranks must be labeled exchange-liquidity rank.
 defaults:
   quote_assets: [USDT, USDC, FDUSD, BUSD]
-  core_symbols: [BTCUSDT, ETHUSDT]
+  stable_core_candidates:
+    [BTCUSDT, ETHUSDT, XRPUSDT, DOTUSDT, ADAUSDT, LINKUSDT, LTCUSDT,
+     BCHUSDT, XLMUSDT, BNBUSDT, UNIUSDT, AAVEUSDT, DOGEUSDT, SNXUSDT]
+  start_month: '2021-01'
+  end_month: '2026-06'
   kline_interval: 1d
   liquidity_window_days: 30
   liquidity_top_n: 100
@@ -16,7 +20,7 @@ datasets:
     endpoint: https://api.binance.com/api/v3/exchangeInfo
     frequency: snapshot
   - id: spot_daily_klines
-    endpoint: https://api.binance.com/api/v3/klines
+    endpoint: https://data.binance.vision/data/spot/monthly/klines
     frequency: daily
   - id: spot_24h_tickers
     endpoint: https://api.binance.com/api/v3/ticker/24hr

@@ -1,0 +1,6 @@
+metric,value,n,sample_start,sample_end,interpretation
+correlation__btc_ret__d_log_mvrv,0.996600085637,2294,2020-01-02,2026-04-13,measurement-mechanics diagnostic; excluded from primary BTC/ETH models
+correlation__d_log_mvrv__d_log_market_cap,0.996624601995,2294,2020-01-02,2026-04-13,measurement-mechanics diagnostic; excluded from primary BTC/ETH models
+correlation__d_log_mvrv__d_log_realized_cap,0.17112982981,2291,2020-01-02,2026-04-10,measurement-mechanics diagnostic; excluded from primary BTC/ETH models
+correlation__btc_ret__identity_residual,-0.0224172478711,2291,2020-01-02,2026-04-10,measurement-mechanics diagnostic; excluded from primary BTC/ETH models
+identity_residual_absolute_median,1.62666136116e-09,2291,2020-01-02,2026-04-10,measurement-mechanics residual from source timing and conventions in dlog(MVRV)=dlog(market cap)-dlog(realized cap)

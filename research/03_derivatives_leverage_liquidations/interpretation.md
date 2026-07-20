@@ -1,3 +1,3 @@
 # Interpretation
 
-Derivatives variables are stress-state diagnostics. They are not trading rules and do not establish directional liquidation attribution.
+Differences over observed state support are conditional associations, not forecasts, signals, or liquidation-cause estimates.

@@ -1,0 +1,12 @@
+series_id,provider,raw_field,unit,frequency,observation_time,availability_time,valid_start,missing_policy
+binance_stable_core_spot,Binance Vision,daily OHLCV for the fixed PIT-eligible symbol allowlist,USDT quote per base asset,daily,UTC kline open date,after UTC daily close,2021-01-01,preserve missing; require at least 95 percent coverage for S2
+btc_etf_net_flow,Farside Investors,total,USD millions per reported trading date,reported ETF trading date,reported date,post-close/report publication; exact timing unresolved,2024-01-11,"non-reporting and pre-inception dates are missing, not zero"
+btc_spot_close,CryptoQuant,close,USD per BTC,daily,UTC provider day,after provider daily close,2010-07-18,preserve missing; never zero-fill
+cftc_crypto_financial_futures,CFTC Traders in Financial Futures,contract-level open interest and trader-category positions,contracts and share of contract open interest,weekly,Tuesday report date,Friday availability proxy; exact publication timestamp not retained,2017-12-19,preserve missing contracts and weeks; do not aggregate standard and micro contracts
+defi_tvl,DefiLlama,TVL,USD,daily,UTC date,provider observation date,2020-01-01,preserve missing; raw USD measure is valuation-sensitive
+eth_etf_net_flow,Farside Investors,total,USD millions per reported trading date,reported ETF trading date,reported date,post-close/report publication; exact timing unresolved,2024-07-23,"non-reporting and pre-inception dates are missing, not zero"
+eth_spot_close,CryptoQuant,close,USD per ETH,daily,UTC provider day,after provider daily close,2015-08-07,preserve missing; never zero-fill
+fred_macro_panel,FRED,series value,series-specific,source-specific business observation,FRED observation date,release-specific; latest vintage,2020-01-01,preserve missing and disclose vintage risk
+market_structure_pit,DefiLlama monthly universe,"asset identity, market capitalization, rank",USD and rank,monthly point-in-time,snapshot_date,snapshot retrieval date,2020-01-31,retain unbalanced membership; partial months excluded from primary analysis
+stablecoin_supply,DefiLlama,circulating market capitalization by stablecoin id,USD,daily,UTC date,provider observation date,2020-01-01,sum known constituents with minimum-count guard; preserve absent source rows
+tradfi_close_panel,TradingView,close,instrument-native price/index level,exchange session,native market close,same session after close,2020-01-01,preserve missing sessions; compute returns before joins

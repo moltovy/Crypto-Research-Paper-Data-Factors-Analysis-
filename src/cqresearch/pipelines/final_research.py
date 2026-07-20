@@ -25,6 +25,14 @@ import statsmodels.api as sm
 import yaml
 from config.paths import DATA_LOCAL_PROCESSED_DIR, PROJECT_ROOT
 
+from cqresearch.core.artifacts import write_csv as write_csv_atomic
+from cqresearch.core.artifacts import write_parquet, write_text
+from cqresearch.data.calendars import business_day_mask
+from cqresearch.data.contracts import (
+    native_log_return,
+    resolve_raw_data_root,
+)
+from cqresearch.data.inventory import source_file_inventory
 from cqresearch.data.panel_builder import build_master_panel as build_source_master_panel
 from cqresearch.data.panel_builder import write_panel as write_source_panel
 from cqresearch.reporting.public_surface import PUBLIC_FIGURES
@@ -278,16 +286,8 @@ LOCAL_PROVIDER_DIRS = {
     "fred": "fred",
     "alternativeme": "alternativeme",
     "market_structure": "market_structure",
-}
-PROVIDER_DISPLAY_NAMES = {
-    "cryptoquant": "CryptoQuant",
-    "artemis": "Artemis",
-    "tradingview": "Tradingview",
-    "defillama": "DefiLlama",
-    "farside": "Farside ETF Data",
-    "fred": "FRED",
-    "alternativeme": "AlternativeMe",
-    "market_structure": "MarketStructure",
+    "binance": "binance",
+    "cftc": "cftc",
 }
 
 
@@ -305,7 +305,7 @@ class BuildPaths:
 
 
 def paths(root: Path = PROJECT_ROOT) -> BuildPaths:
-    out = root / "outputs"
+    out = root / "data_local" / "cache" / "legacy_surface"
     local_processed = root / "data_local" / "processed"
     return BuildPaths(
         root=root,
@@ -321,7 +321,7 @@ def paths(root: Path = PROJECT_ROOT) -> BuildPaths:
 
 
 def raw_data_root(root: Path = PROJECT_ROOT) -> Path:
-    return root / "data_local" / "raw"
+    return resolve_raw_data_root(root)
 
 
 def local_metadata_root(root: Path = PROJECT_ROOT) -> Path:
@@ -332,7 +332,7 @@ def provider_root(root: Path, provider: str) -> Path:
     key = provider.lower()
     if key not in LOCAL_PROVIDER_DIRS:
         raise KeyError(f"Unknown provider: {provider}")
-    return root / "data_local" / "raw" / LOCAL_PROVIDER_DIRS[key]
+    return raw_data_root(root) / LOCAL_PROVIDER_DIRS[key]
 
 
 def ensure_output_dirs(p: BuildPaths) -> None:
@@ -416,24 +416,21 @@ def utc_stamp() -> str:
 
 
 def write_csv(path: Path, frame: pd.DataFrame) -> Path:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    frame.to_csv(path, index=False)
-    return path
+    return write_csv_atomic(path, frame)
 
 
 def write_md(path: Path, text: str) -> Path:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text.strip() + "\n", encoding="utf-8")
-    return path
+    return write_text(path, text)
 
 
 def read_date_csv(path: Path, date_col: str = "date") -> pd.DataFrame:
     frame = pd.read_csv(path)
-    if date_col in frame.columns:
-        frame[date_col] = pd.to_datetime(frame[date_col], errors="coerce")
-        frame = frame.dropna(subset=[date_col]).sort_values(date_col)
-        frame = frame.set_index(date_col)
-        frame.index.name = "date"
+    if date_col not in frame.columns:
+        raise ValueError(f"{path}: missing declared observation column {date_col!r}")
+    frame[date_col] = pd.to_datetime(frame[date_col], errors="coerce")
+    frame = frame.dropna(subset=[date_col]).sort_values(date_col)
+    frame = frame.set_index(date_col)
+    frame.index.name = "date"
     for column in frame.columns:
         if column != date_col:
             converted = pd.to_numeric(frame[column], errors="coerce")
@@ -535,61 +532,6 @@ def clean_label(value: str) -> str:
     return labels.get(value, value.replace("_", " ").title())
 
 
-def source_file_inventory(root: Path = PROJECT_ROOT) -> pd.DataFrame:
-    rows: list[dict[str, Any]] = []
-    columns = [
-        "relpath",
-        "source_group",
-        "size_bytes",
-        "suffix",
-        "rows",
-        "columns",
-        "start_date",
-        "end_date",
-        "status",
-    ]
-    raw_root = raw_data_root(root)
-    if not raw_root.exists():
-        return pd.DataFrame(columns=columns)
-    for path in sorted(raw_root.rglob("*")):
-        if not path.is_file():
-            continue
-        data_rel = path.relative_to(raw_root).as_posix()
-        if data_rel in {"MASTER_DATA.csv", "MASTER_DATA.md", "MASTER_DATA.txt"}:
-            continue
-        source_group_raw = path.relative_to(raw_root).parts[0]
-        source_group = PROVIDER_DISPLAY_NAMES.get(source_group_raw.lower(), source_group_raw)
-        rel = path.relative_to(root).as_posix()
-        row: dict[str, Any] = {
-            "relpath": rel,
-            "source_group": source_group,
-            "size_bytes": path.stat().st_size,
-            "suffix": path.suffix.lower(),
-            "rows": "",
-            "columns": "",
-            "start_date": "",
-            "end_date": "",
-            "status": "indexed",
-        }
-        if path.suffix.lower() == ".csv":
-            try:
-                frame = pd.read_csv(path, low_memory=False)
-                row["rows"] = int(len(frame))
-                row["columns"] = int(len(frame.columns))
-                date_columns = [
-                    c for c in frame.columns if str(c).lower() in {"date", "snapshot_date", "month"}
-                ]
-                if date_columns:
-                    dates = pd.to_datetime(frame[date_columns[0]], errors="coerce").dropna()
-                    if not dates.empty:
-                        row["start_date"] = dates.min().date().isoformat()
-                        row["end_date"] = dates.max().date().isoformat()
-            except Exception as exc:
-                row["status"] = f"read_error:{type(exc).__name__}"
-        rows.append(row)
-    return pd.DataFrame(rows, columns=columns)
-
-
 def build_data_inventory(root: Path = PROJECT_ROOT) -> pd.DataFrame:
     p = paths(root)
     ensure_output_dirs(p)
@@ -676,6 +618,10 @@ def provider_data_disposition(coverage: pd.DataFrame) -> pd.DataFrame:
             "derived-only recommended",
             "Curated local data assembled from public/optional sources; prefer derived summaries.",
         ),
+        "CFTC": (
+            "public/re-distributable",
+            "Official public regulatory archive; cite the CFTC and preserve release semantics.",
+        ),
     }
     rows = []
     for _, row in coverage.iterrows():
@@ -710,6 +656,7 @@ def license_note(source_group: str) -> str:
         "Tradingview": "Chart/export data; redistribution rights may be restricted.",
         "AlternativeMe": "Public Fear and Greed index data; cite provider.",
         "MarketStructure": "Curated local summaries from public/optional sources.",
+        "CFTC": "Official public regulatory archive; cite the CFTC.",
     }
     return notes.get(source_group, "Repository-local metadata or generated inventory.")
 
@@ -727,7 +674,7 @@ def write_config_files(root: Path = PROJECT_ROOT) -> None:
         public_rows.append(
             {
                 "figure_id": figure.figure_id,
-                "filename": f"outputs/figures/public/{figure.filename}",
+                "filename": f"research/figures/public/{figure.filename}",
                 "status": "public",
                 "research_question": figure.research_question,
                 "source_tables": figure.source_tables,
@@ -1219,9 +1166,9 @@ def feature_registry_rows() -> list[dict[str, Any]]:
     return rows
 
 
-def load_master_panel(root: Path = PROJECT_ROOT) -> pd.DataFrame:
+def load_master_panel(root: Path = PROJECT_ROOT, *, rebuild: bool = False) -> pd.DataFrame:
     panel_path = paths(root).panels / "master_daily.parquet"
-    if not panel_path.exists():
+    if rebuild or not panel_path.exists():
         panel, report = build_source_master_panel()
         write_source_panel(panel, report, panel_path.parent)
     panel = pd.read_parquet(panel_path)
@@ -1370,10 +1317,12 @@ def load_close(path: Path, output: str) -> pd.Series:
 
 def build_feature_store(
     root: Path = PROJECT_ROOT,
+    *,
+    rebuild_master: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     p = paths(root)
     ensure_output_dirs(p)
-    panel = add_extra_series(load_master_panel(root), root)
+    panel = add_extra_series(load_master_panel(root, rebuild=rebuild_master), root)
     daily = pd.DataFrame(index=panel.index)
     daily["btc_close"] = panel["btc_close"]
     daily["eth_close"] = panel["eth_close"]
@@ -1516,6 +1465,7 @@ def build_feature_store(
         panel.get("btc_exchange_netflow") / daily["btc_mcap_lag1"]
     )
     daily["btc_exchange_netflow_scaled_lag1"] = daily["btc_exchange_netflow_scaled"].shift(1)
+    daily = daily.copy()
     daily["eth_oi"] = panel.get("eth_oi")
     daily["eth_oi_growth"] = log_return(daily["eth_oi"])
     daily["eth_oi_growth_lag1"] = daily["eth_oi_growth"].shift(1)
@@ -1577,14 +1527,14 @@ def build_feature_store(
     etf_weekly = tradfi_friday_weekly_features(daily, calendar_name="etf_friday_weekly")
     monthly = build_market_structure_monthly(root)
 
-    daily.to_parquet(p.panels / "feature_store_daily.parquet")
-    weekly.to_parquet(p.panels / "feature_store_weekly.parquet")
-    weekly.to_parquet(p.panels / "feature_store_crypto_weekly.parquet")
-    tradfi_daily.to_parquet(p.panels / "feature_store_tradfi_daily.parquet")
-    tradfi_weekly.to_parquet(p.panels / "feature_store_tradfi_weekly.parquet")
-    etf_daily.to_parquet(p.panels / "feature_store_etf_trading_daily.parquet")
-    etf_weekly.to_parquet(p.panels / "feature_store_etf_trading_weekly.parquet")
-    monthly.to_parquet(p.panels / "market_structure_monthly.parquet")
+    write_parquet(p.panels / "feature_store_daily.parquet", daily)
+    write_parquet(p.panels / "feature_store_weekly.parquet", weekly)
+    write_parquet(p.panels / "feature_store_crypto_weekly.parquet", weekly)
+    write_parquet(p.panels / "feature_store_tradfi_daily.parquet", tradfi_daily)
+    write_parquet(p.panels / "feature_store_tradfi_weekly.parquet", tradfi_weekly)
+    write_parquet(p.panels / "feature_store_etf_trading_daily.parquet", etf_daily)
+    write_parquet(p.panels / "feature_store_etf_trading_weekly.parquet", etf_weekly)
+    write_parquet(p.panels / "market_structure_monthly.parquet", monthly)
 
     feature_registry = pd.DataFrame(feature_registry_rows())
     for frame_col, which in [("first_valid_date", "first"), ("last_valid_date", "last")]:
@@ -1784,7 +1734,7 @@ def recompute_tradfi_features_on_index(frame: pd.DataFrame) -> pd.DataFrame:
     for asset in ["btc", "eth"]:
         close_col = f"{asset}_close"
         if close_col in out:
-            out[f"{asset}_ret"] = log_return(out[close_col])
+            out[f"{asset}_ret"] = native_log_return(out[close_col], pd.DatetimeIndex(out.index))
     close_return_pairs = {
         "spy_close": "spy_ret",
         "qqq_close": "qqq_ret",
@@ -1794,7 +1744,7 @@ def recompute_tradfi_features_on_index(frame: pd.DataFrame) -> pd.DataFrame:
     }
     for close_col, ret_col in close_return_pairs.items():
         if close_col in out:
-            out[ret_col] = log_return(out[close_col])
+            out[ret_col] = native_log_return(out[close_col], pd.DatetimeIndex(out.index))
     level_change_pairs = {
         "vix_level": "vix_d1",
         "real_yield_level": "real_yield_d1",
@@ -1818,7 +1768,12 @@ def tradfi_business_daily_features(daily: pd.DataFrame) -> pd.DataFrame:
         "nominal_10y_level",
     ]
     present = [col for col in level_cols if col in daily.columns]
-    mask = daily[present].notna().any(axis=1) if present else pd.Series(False, index=daily.index)
+    market_mask = business_day_mask(pd.DatetimeIndex(daily.index))
+    mask = (
+        daily[present].notna().any(axis=1) & market_mask
+        if present
+        else pd.Series(False, index=daily.index)
+    )
     panel = recompute_tradfi_features_on_index(daily.loc[mask].copy())
     panel = recompute_lagged_state_features(panel)
     return annotate_calendar(panel, "tradfi_business_daily")
@@ -1903,7 +1858,12 @@ def tradfi_friday_weekly_features(
 def etf_trading_daily_features(daily: pd.DataFrame) -> pd.DataFrame:
     flow_cols = ["btc_etf_net_flow_usd", "eth_etf_net_flow_usd"]
     present = [col for col in flow_cols if col in daily.columns]
-    mask = daily[present].notna().any(axis=1) if present else pd.Series(False, index=daily.index)
+    market_mask = business_day_mask(pd.DatetimeIndex(daily.index))
+    mask = (
+        daily[present].notna().any(axis=1) & market_mask
+        if present
+        else pd.Series(False, index=daily.index)
+    )
     panel = recompute_tradfi_features_on_index(daily.loc[mask].copy())
     panel["btc_mcap_lag1"] = panel["btc_market_cap_usd"].shift(1)
     panel["eth_mcap_lag1"] = panel["eth_market_cap_usd"].shift(1)
@@ -3679,6 +3639,8 @@ def load_events(root: Path) -> pd.DataFrame:
                 "category": "primary",
                 "description": item.get("description", ""),
                 "source": item.get("source", ""),
+                "source_url": item.get("source_url", ""),
+                "source_retrieved_at": item.get("source_retrieved_at", ""),
                 "confidence": "pre_registered",
             }
         )
@@ -3690,6 +3652,8 @@ def load_events(root: Path) -> pd.DataFrame:
                 "category": "secondary",
                 "description": item.get("description", ""),
                 "source": item.get("source", ""),
+                "source_url": item.get("source_url", ""),
+                "source_retrieved_at": item.get("source_retrieved_at", ""),
                 "confidence": "exploratory",
             }
         )
@@ -4315,37 +4279,37 @@ def evidence_and_map(p: BuildPaths) -> tuple[pd.DataFrame, pd.DataFrame]:
         [
             {
                 "Finding": "MVRV overlap is a measurement warning",
-                "Evidence": f"{mvrv_headline_stat(p.tables / 'mvrv_mechanical_link_audit.csv')} ([table](outputs/tables/mvrv_mechanical_link_audit.csv), grade B)",
+                "Evidence": f"{mvrv_headline_stat(p.tables / 'mvrv_mechanical_link_audit.csv')} ([table](research/tables/mvrv_mechanical_link_audit.csv), grade B)",
                 "Interpretation": "Same-day MVRV is mechanically price-linked; primary BTC/ETH models stay ex-MVRV.",
                 "Boundary": "Use lagged valuation state as context, not an independent same-day factor.",
             },
             {
                 "Finding": "Later-sample equity co-movement is higher",
-                "Evidence": f"{tradfi_period_headline_stat(p.tables / 'block_delta_r2.csv')} ([table](outputs/tables/block_delta_r2.csv), grade B)",
+                "Evidence": f"{tradfi_period_headline_stat(p.tables / 'block_delta_r2.csv')} ([table](research/tables/block_delta_r2.csv), grade B)",
                 "Interpretation": "A period comparison shows stronger contemporaneous equity-block contribution.",
                 "Boundary": "Not an ETF-effect estimate; rolling windows overlap and exposures are collinear.",
             },
             {
                 "Finding": "Lagged-state mean-return fit is weak",
-                "Evidence": f"{lagged_state_headline_stat(p.tables / 'frequency_robustness.csv')} ([table](outputs/tables/frequency_robustness.csv), grade B)",
+                "Evidence": f"{lagged_state_headline_stat(p.tables / 'frequency_robustness.csv')} ([table](research/tables/frequency_robustness.csv), grade B)",
                 "Interpretation": "Crypto-native state variables add little average daily return explanation.",
                 "Boundary": "Treat as a negative result, not a signal-ranking exercise.",
             },
             {
                 "Finding": "ETF flow associations are mostly lag 0",
-                "Evidence": f"{etf_flow_headline_stat(p.tables / 'etf_flow_associations.csv')} ([table](outputs/tables/etf_flow_associations.csv), grade B)",
+                "Evidence": f"{etf_flow_headline_stat(p.tables / 'etf_flow_associations.csv')} ([table](research/tables/etf_flow_associations.csv), grade B)",
                 "Interpretation": "Reported-flow-day associations dominate lag-1 associations.",
                 "Boundary": "Timing and simultaneity prevent causal flow-return claims.",
             },
             {
                 "Finding": "Leverage states behave more like stress diagnostics",
-                "Evidence": f"{leverage_headline_stat(p.tables / 'leverage_tail_risk_summary.csv')} ([table](outputs/tables/leverage_tail_risk_summary.csv), grade B)",
+                "Evidence": f"{leverage_headline_stat(p.tables / 'leverage_tail_risk_summary.csv')} ([table](research/tables/leverage_tail_risk_summary.csv), grade B)",
                 "Interpretation": "Tail stress is U-shaped across lagged leverage states.",
                 "Boundary": "No liquidation initiation-cause claim; USD/notional denominators can embed price content.",
             },
             {
                 "Finding": "PIT structure remains concentrated",
-                "Evidence": f"{pit_headline_stat(p.tables / 'pit_market_structure_summary.csv')} ([table](outputs/tables/pit_market_structure_summary.csv), grade A)",
+                "Evidence": f"{pit_headline_stat(p.tables / 'pit_market_structure_summary.csv')} ([table](research/tables/pit_market_structure_summary.csv), grade A)",
                 "Interpretation": "Monthly snapshots support composition, concentration, and turnover evidence.",
                 "Boundary": "No daily PIT constituent performance or historical altseason backtest.",
             },
@@ -4828,7 +4792,7 @@ Legacy portfolio and versioned release workflows are not part of the maintained 
 def data_governance_text() -> str:
     return """# Data Governance
 
-Raw and curated provider exports are local-only under `data_local/raw/` and are ignored by Git. Generated feature stores live under `data_local/processed/`; public-safe semantic tables, reports, metadata, and figures live under `outputs/`.
+Raw and curated provider exports are local-only under `data_local/raw/` and are ignored by Git. Generated feature stores live under `data_local/processed/`; public-safe semantic tables, metadata, and figures live under the canonical `research/` surface.
 
 Asset joins use canonical IDs where available. Selected major assets are defined in `config/assets.yml`; Toncoin is explicitly separated from Tokamak Network, and wrapped/productized assets are separated from governance/infrastructure risk assets.
 
@@ -4867,7 +4831,7 @@ conventional partial R-squared.
 ## Conventional Partial R-Squared
 
 For readers who need the conventional formula, the separate
-`outputs/tables/conventional_partial_r2.csv` table reports
+The module-level `conventional_partial_r2.csv` table reports
 `(SSE_reduced - SSE_full) / SSE_reduced`.
 
 ## Interpretation
@@ -4922,8 +4886,8 @@ Pass, pending reviewer approval and merge.
 ## Scope completed
 
 - Maintained canonical build path: `scripts/run_all.py`.
-- Semantic table and report surface under `outputs/`.
-- Public figure surface limited to six README figures under `outputs/figures/public/`.
+- Canonical semantic table and report surface under `research/`.
+- Public figure selection is controlled by `config/public_figures.yml`.
 - MVRV same-day features removed from primary BTC/ETH exposure models.
 - Contemporaneous TradFi exposure, lagged-state association, and ETF-era augmented model families are separated.
 - ETF flows framed as market-plumbing associations, not causal return drivers.
@@ -4965,7 +4929,7 @@ uv run python scripts/check_public_surface.py
 
 ## Data contract
 
-The local reproducible build reads provider exports from `data_local/raw/` and writes generated feature stores to `data_local/processed/`. Both locations are ignored by Git. Public-safe semantic tables remain under `outputs/tables/`, and source inventories are written to `data_local/metadata/`.
+The local reproducible build reads provider exports from `data_local/raw/` and writes generated feature stores to `data_local/processed/`. Both locations are ignored by Git. Public-safe semantic tables remain under module-level `research/*/tables/` directories, and source inventories are written to `data_local/metadata/`.
 
 ## Determinism
 
@@ -4988,7 +4952,7 @@ def public_readiness_text() -> str:
 - Drop-block delta R-squared is not labeled conventional partial R-squared.
 - MVRV is described as a valuation-state diagnostic with mechanical price-state content.
 - ETF, liquidation, stablecoin, and DeFi variables are descriptive and timing-sensitive.
-- Evidence grades and claim dispositions live in `outputs/tables/evidence_ledger.csv` and `outputs/tables/claim_inventory.csv`.
+- Evidence grades and claim dispositions live in module-level claim and evidence tables under `research/`.
 """
 
 
@@ -5055,7 +5019,7 @@ This project is not affiliated with, endorsed by, or published on behalf of Cryp
 - CryptoQuant, Artemis, and TradingView exports may carry provider-specific or licensed redistribution restrictions. The public repository keeps those raw inputs local-only.
 - Local caches, raw exports, interim panels, and generated feature stores stay under ignored `data_local/`.
 
-Public users can run smoke validation against committed semantic outputs without provider data. A full local rebuild requires legally obtained provider inputs placed under `data_local/raw/`. See `outputs/report/provider_data_disposition.md` for provider-group disposition and release recommendations.
+Public users can run smoke validation against committed semantic outputs without provider data. A full local rebuild requires legally obtained provider inputs placed under `data_local/raw/`. See `research/source_decisions.csv` for source eligibility and fallback decisions.
 """
     write_md(root / "DATA_LICENSE.md", data_license)
     contributing = """# Contributing
@@ -5150,7 +5114,7 @@ The main synthesis is deliberately restrained: same-day MVRV is mostly a mechani
 
 | Domain | Core measures | Frequency/coverage | Public-data posture |
 |---|---|---|---|
-| BTC/ETH and TradFi | returns, equity, dollar, rates, volatility, gold | daily business-date and Friday weekly panels | derived outputs only; source coverage in [data_source_coverage.csv](outputs/tables/data_source_coverage.csv) |
+| BTC/ETH and TradFi | returns, equity, dollar, rates, volatility, gold | daily business-date and Friday weekly panels | derived tables only; source coverage in the data-foundation module |
 | ETF access | BTC/ETH ETF flows, AUM, flow-to-lagged-market-cap | ETF trading dates and ETF-era weekly rows | derived market-plumbing summaries |
 | Leverage/liquidity | funding, OI, leverage, liquidations, stablecoin supply, TVL | daily and Sunday-ended weekly panels | local provider inputs; public semantic summaries |
 | Market structure | PIT top-100/top-200 composition, concentration, turnover | monthly snapshots through the latest partial month | structure-only evidence |
@@ -5169,45 +5133,45 @@ The main synthesis is deliberately restrained: same-day MVRV is mostly a mechani
 
 ## Measurement Integrity
 
-MVRV is a valuation-state diagnostic, not an independent same-day factor. [MVRV mechanics](outputs/figures/gallery/measurement_mvrv_mechanics.png) stays in the gallery because its main role is methodological: same-day `d_log_mvrv` overlaps almost one-for-one with BTC returns. Primary BTC/ETH models exclude same-day MVRV; lagged MVRV state is retained only as conditioning context. Source: [mvrv_mechanical_link_audit.csv](outputs/tables/mvrv_mechanical_link_audit.csv).
+MVRV is a valuation-state diagnostic, not an independent same-day factor. Its mechanics remain appendix material because same-day `d_log_mvrv` overlaps almost one-for-one with BTC returns. Primary BTC/ETH models exclude same-day MVRV; lagged MVRV state is retained only as conditioning context.
 
 ## Macro Integration And Institutional Access
 
 Later-sample equity-block contribution is higher for both BTC and ETH on synchronized business-date models.
 
-![TradFi exposure shift](outputs/figures/public/01_tradfi_exposure_shift.png)
+TradFi exposure figures are generated in the macro/TradFi research module.
 
-This is a period comparison of contemporaneous co-movement, not an ETF attribution design. Source: [block_delta_r2.csv](outputs/tables/block_delta_r2.csv), [rolling_tradfi_exposures.csv](outputs/tables/rolling_tradfi_exposures.csv).
+This is a period comparison of contemporaneous co-movement, not an ETF attribution design.
 
 ETF flow associations are much larger at lag 0 than lag 1, making reporting-day timing central.
 
-![ETF market plumbing](outputs/figures/public/02_etf_market_plumbing.png)
+ETF market-plumbing figures are generated in the institutional-flow research module.
 
-The flow measures are scaled by lagged market cap and interpreted as access/plumbing variables. Source: [etf_flow_associations.csv](outputs/tables/etf_flow_associations.csv), [etf_absorption_metrics.csv](outputs/tables/etf_absorption_metrics.csv).
+The flow measures are scaled by lagged market cap and interpreted as access/plumbing variables.
 
 ## Leverage And Liquidity State
 
 Lagged leverage states show a U-shaped tail-stress pattern and higher realized volatility in the low/high state regions.
 
-![Leverage and tail stress](outputs/figures/public/03_leverage_tail_stress.png)
+Leverage and tail-stress figures are generated in the derivatives research module.
 
-Stablecoin supply and DeFi TVL are treated as endogenous balance-sheet proxies; raw USD TVL is explicitly valuation-sensitive. Source: [leverage_tail_risk_summary.csv](outputs/tables/leverage_tail_risk_summary.csv), [valuation_contamination_audit.csv](outputs/tables/valuation_contamination_audit.csv), [stablecoin_defi_liquidity_summary.csv](outputs/tables/stablecoin_defi_liquidity_summary.csv).
+Stablecoin supply and DeFi TVL are treated as endogenous balance-sheet proxies; raw USD TVL is explicitly valuation-sensitive.
 
 ## Market Structure And Selected-Major Risk
 
 Monthly PIT snapshots show a still-concentrated top-100 market and preserve the latest partial-snapshot flag.
 
-![Point-in-time market structure](outputs/figures/public/04_point_in_time_market_structure.png)
+Point-in-time market-structure figures are generated in the chain and market-structure module.
 
-This supports composition, concentration, and turnover evidence only. Source: [pit_market_structure_summary.csv](outputs/tables/pit_market_structure_summary.csv), [pit_turnover.csv](outputs/tables/pit_turnover.csv).
+This supports composition, concentration, and turnover evidence only.
 
 Current-top50 daily cohort outputs, where present, are deferred from public claims and treated as exploratory and survivorship-biased.
 
 Selected majors differ sharply in volatility and drawdown, but coverage is part of the result rather than a footnote.
 
-![Selected major asset risk](outputs/figures/public/05_selected_major_asset_risk.png)
+Selected-major risk outputs are retained within the cross-asset module.
 
-HYPE is marked as short-history, and comparable-window metrics are separated from maximum-coverage views. Source: [selected_major_risk_metrics.csv](outputs/tables/selected_major_risk_metrics.csv), [selected_major_comparable_window_metrics.csv](outputs/tables/selected_major_comparable_window_metrics.csv).
+Short-history assets are excluded from the fixed stable core, and comparable-window metrics remain separate from maximum-coverage views.
 
 ## What We Can And Cannot Claim
 
@@ -5219,7 +5183,7 @@ HYPE is marked as short-history, and comparable-window metrics are separated fro
 | PIT concentration and composition | daily historical altseason performance |
 | MVRV as valuation-state context | same-day MVRV as an independent factor |
 
-Event windows remain appendix context in [the gallery](outputs/figures/gallery/appendix_event_response_matrix.png), not treatment evidence.
+Event windows remain appendix context, not treatment evidence.
 
 ## Reproduce
 
@@ -5262,14 +5226,14 @@ uv run python scripts/check_public_surface.py
 - `config/` asset, event, feature, and figure configuration.
 - `src/cqresearch/` maintained data, feature, modeling, analysis, reporting, visualization, and pipeline code.
 - `scripts/` thin CLI entry points.
-- `outputs/` generated public tables, figures, reports, and model cards.
+- `research/` canonical generated tables, figures, module documentation, and manifests.
 - `docs/` methodology, data, architecture, and decisions.
 
 ## Data Policy, License, And Citation
 
-Raw/provider data is local-only under `data_local/raw` and ignored by Git. The repository ships code, docs, figures, model cards, and derived semantic outputs; it does not redistribute restricted provider exports. This project is not affiliated with CryptoQuant, Artemis, TradingView, DefiLlama, Farside, AlternativeMe, FRED, or other data providers. See [DATA_LICENSE.md](DATA_LICENSE.md), [provider_data_disposition.csv](outputs/tables/provider_data_disposition.csv), and [docs/data](docs/data).
+Raw/provider data is local-only under `data_local/raw` and ignored by Git. The repository ships code, docs, figures, and derived semantic tables; it does not redistribute restricted provider exports. This project is not affiliated with CryptoQuant, Artemis, TradingView, DefiLlama, Farside, AlternativeMe, FRED, or other data providers. See [DATA_LICENSE.md](DATA_LICENSE.md) and `research/source_decisions.csv`.
 
-Public claims map to [evidence_ledger.csv](outputs/tables/evidence_ledger.csv) and [claim_inventory.csv](outputs/tables/claim_inventory.csv). Code is MIT licensed; data-source terms remain separate.
+Public claims map to module-level `claims.csv` tables and the synthesis evidence ledger. Code is MIT licensed; data-source terms remain separate.
 """
     write_md(root / "README.md", text)
 

@@ -1,0 +1,32 @@
+units:
+  btc_ret: log return
+  eth_ret: log return
+  btc_realized_vol_30d: annualized standard deviation
+  qqq_ret: log return
+  spy_ret: log return
+  iwm_ret: log return
+  vix_d1: index-point change
+  dxy_ret: log return
+  real_yield_d1: percentage-point change
+  nominal_10y_d1: percentage-point change
+  gold_ret: log return
+  btc_etf_flow_intensity_lag0: basis points of lagged market capitalization
+  btc_etf_flow_intensity_lag1: basis points of lagged market capitalization
+  eth_etf_flow_intensity_lag0: basis points of lagged market capitalization
+  eth_etf_flow_intensity_lag1: basis points of lagged market capitalization
+  btc_oi_growth_lag1: log change
+  btc_oi_to_mcap_growth_lag1: log change in ratio
+  eth_oi_to_mcap_growth_lag1: log change in ratio
+  btc_funding_z_lag1: rolling z-score
+  btc_total_liq_to_lag_oi_pct: percent of lagged open interest
+  btc_total_liq_to_lag_mcap_bps: basis points of lagged market capitalization
+  stablecoin_supply_growth: log change
+  stablecoin_supply_growth_lag1: log change
+  valuation_sensitive_defi_tvl_growth: log change
+  valuation_sensitive_defi_tvl_growth_lag1: log change
+  btc_mvrv_lag1: ratio
+  d_log_mvrv: log change
+  d_log_market_cap: log change
+  d_log_realized_cap: log change
+  identity_residual: log-change identity residual
+  pit_hhi: unitless concentration index

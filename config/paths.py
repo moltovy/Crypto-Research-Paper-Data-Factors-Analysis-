@@ -8,6 +8,7 @@ of 2026-04-18.
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 # --- Anchor: this file lives at <root>/config/paths.py
@@ -15,7 +16,9 @@ PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent
 
 # --- Top-level folders (all relative to PROJECT_ROOT)
 DATA_LOCAL_DIR: Path = PROJECT_ROOT / "data_local"
-DATA_LOCAL_RAW_DIR: Path = DATA_LOCAL_DIR / "raw"
+DATA_LOCAL_RAW_DIR: Path = Path(
+    os.environ.get("CMD_DATA_ROOT", DATA_LOCAL_DIR)
+).expanduser().resolve() / "raw"
 DATA_LOCAL_INTERIM_DIR: Path = DATA_LOCAL_DIR / "interim"
 DATA_LOCAL_PROCESSED_DIR: Path = DATA_LOCAL_DIR / "processed"
 DATA_LOCAL_CURATED_DIR: Path = DATA_LOCAL_DIR / "curated"
@@ -63,6 +66,8 @@ def provider_data_dir(provider: str) -> Path:
         "fred": "fred",
         "alternativeme": "alternativeme",
         "market_structure": "market_structure",
+        "binance": "binance",
+        "cftc": "cftc",
     }
     key = provider.lower()
     if key not in local_map:

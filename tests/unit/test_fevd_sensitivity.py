@@ -7,6 +7,7 @@ from cqresearch.modeling.fevd_sensitivity import (
     run_fevd_order_sensitivity,
     summarize_fevd_sensitivity,
 )
+from cqresearch.modeling.var_fevd import fit_var_fevd
 
 
 def test_fevd_order_sensitivity_records_successes_and_failures() -> None:
@@ -32,3 +33,14 @@ def test_fevd_order_sensitivity_records_successes_and_failures() -> None:
     assert "fewer_than_3_available_columns" in set(out["error"].dropna())
     assert not summary.empty
     assert {"from", "to", "range"}.issubset(summary.columns)
+
+
+def test_generalized_fevd_is_row_normalized_and_order_invariant() -> None:
+    rng = np.random.default_rng(19)
+    frame = pd.DataFrame(rng.normal(size=(400, 4)), columns=list("ABCD"))
+    first = fit_var_fevd(frame, horizon=5, maxlags=2)
+    reversed_result = fit_var_fevd(frame[list(reversed(frame.columns))], horizon=5, maxlags=2)
+    aligned = reversed_result.table.reindex(index=frame.columns, columns=frame.columns)
+    assert first.row_sum_max_error < 1e-10
+    assert np.allclose(first.table, aligned, atol=1e-8)
+    assert first.method == "Pesaran-Shin generalized FEVD"

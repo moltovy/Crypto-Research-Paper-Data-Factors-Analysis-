@@ -1,0 +1,22 @@
+{
+  "data_cutoff": "2026-06-30",
+  "date_range": "2024-01-11 through 2026-06-30, instrument-specific support",
+  "figure_id": "institutional_market_plumbing",
+  "limitation": "Reporting-time uncertainty and simultaneity prevent a price-impact interpretation.",
+  "method": "Distributed-lag HAC regression with moving-block max-t bands plus descriptive CFTC positioning eras",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
+  "png": "04_institutional_market_plumbing.png",
+  "research_question": "How do ETF flow-intensity lag associations and regulated-futures positioning line up with market outcomes?",
+  "rows": 16,
+  "sample": "Actual BTC/ETH ETF report dates through 2026-04-10 and CFTC standard contracts through 2026-06-30",
+  "source_csv": "04_institutional_market_plumbing.source.csv",
+  "source_tables": [
+    "tables/etf_distributed_lags.csv",
+    "tables/institutional_positioning_eras.csv"
+  ],
+  "svg": "04_institutional_market_plumbing.svg",
+  "uncertainty": "2,000-replication moving-block simultaneous max-t intervals for ETF lags",
+  "units": "return coefficient per flow-intensity basis point and net share of open interest",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
+}

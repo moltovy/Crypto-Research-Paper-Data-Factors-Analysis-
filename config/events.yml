@@ -1,66 +1,68 @@
-# Pre-registered event dates and stress episodes.
-# Used by src/cqresearch/modeling/structural_breaks.py (Chow tests) and
-# src/cqresearch/modeling/event_study.py (CARs).
-#
-# Convention: all dates ISO YYYY-MM-DD, UTC. When a price is US-trading-day
-# anchored (CME, SPX, DXY), the event studies shift to the nearest trading day
-# via the NYSE calendar.
-
+# Pre-registered event dates and stress episodes. Dates are UTC.
 primary_breaks:
   - id: btc_spot_etf_launch
     date: 2024-01-11
-    description: US BTC spot-ETF trading begins (IBIT, FBTC, BITB, ARKB, ...).
+    description: US BTC spot-ETF trading begins.
     source: SEC approval 2024-01-10; first trading day 2024-01-11.
+    source_url: https://www.sec.gov/newsroom/speeches-statements/gensler-statement-spot-bitcoin-011023
+    source_retrieved_at: 2026-07-19
   - id: eth_spot_etf_launch
     date: 2024-07-23
     description: US ETH spot-ETF trading begins.
     source: SEC final approval 2024-05-23; first trading day 2024-07-23.
+    source_url: https://www.sec.gov/files/rules/sro/nysearca/2024/34-100224.pdf
+    source_retrieved_at: 2026-07-19
   - id: bitcoin_halving_2024
     date: 2024-04-20
-    description: Fourth Bitcoin halving (block 840000).
+    description: Fourth Bitcoin halving at block 840000.
     source: On-chain block timestamp.
+    source_url: https://www.blockchain.com/en/explorer/blocks/btc/840000
+    source_retrieved_at: 2026-07-19
 
 secondary_candidates:
   - id: dencun_upgrade
     date: 2024-03-13
-    description: Ethereum Dencun upgrade (EIP-4844 blobs) — lowers L2 cost; possible ETH-L1/L2 break.
+    description: Ethereum Dencun upgrade (EIP-4844 blobs); possible ETH-L1/L2 break.
+    source: Ethereum Foundation mainnet announcement.
+    source_url: https://blog.ethereum.org/2024/02/27/dencun-mainnet-announcement
+    source_retrieved_at: 2026-07-19
   - id: luna_collapse_2022
     date: 2022-05-09
     description: Terra/Luna collapse; reference stress episode.
+    source: SEC case summary records the May 2022 UST depeg and collapse.
+    source_url: https://www.sec.gov/newsroom/press-releases/2023-32
+    source_retrieved_at: 2026-07-19
   - id: ftx_collapse_2022
     date: 2022-11-08
-    description: FTX bankruptcy; reference stress episode.
+    description: FTX collapse; reference stress episode.
+    source: SEC case summary for the FTX collapse.
+    source_url: https://www.sec.gov/newsroom/press-releases/2022-219
+    source_retrieved_at: 2026-07-19
   - id: svb_crisis_2023
     date: 2023-03-10
     description: SVB failure and stablecoin-depeg episode.
+    source: FDIC closure and receivership record.
+    source_url: https://www.fdic.gov/news/press-releases/2023/pr23019.html
+    source_retrieved_at: 2026-07-19
   - id: yen_carry_unwind_2024
     date: 2024-08-05
-    description: Yen-carry unwind; global vol spike.
-  - id: sec_generic_etp_listing_standards_2025
-    date: 2025-09-17
-    description: SEC approves generic listing standards for commodity-based trust shares, including crypto asset commodity ETP context.
-    source: SEC press release 2025-121, published 2025-09-17.
-  - id: crypto_liquidation_tariff_shock_2025
-    date: 2025-10-10
-    description: Reported crypto liquidation shock around US-China tariff escalation; reference stress episode.
-    source: Market reports around 2025-10-10 tariff/liquidation shock.
+    description: Yen-carry unwind and global volatility spike.
+    source: BIS review of the August 2024 market turbulence and carry unwind.
+    source_url: https://www.bis.org/publ/qtrpdf/r_qt2409a.htm
+    source_retrieved_at: 2026-07-19
 
-# Halvings (for Sample B BTC long-history)
 halvings:
   - { date: 2012-11-28, block: 210000 }
   - { date: 2016-07-09, block: 420000 }
   - { date: 2020-05-11, block: 630000 }
   - { date: 2024-04-20, block: 840000 }
 
-# Placebo dates for Red-Team validation (randomly chosen; any rolling-estimate
-# claim that also triggers at a placebo date is suspect).
 placebos:
   - 2022-09-15
   - 2023-06-22
   - 2025-02-11
 
-# Event-window conventions
 windows:
-  short: 5   # ±5 trading days
-  medium: 20 # ±20 trading days
-  long: 60   # ±60 trading days
+  short: 5   # +/-5 trading days
+  medium: 20 # +/-20 trading days
+  long: 60   # +/-60 trading days

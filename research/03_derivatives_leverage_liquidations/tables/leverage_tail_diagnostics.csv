@@ -1,0 +1,2 @@
+model,n,tail_events,tail_rate,deviance,pearson_chi2,converged,design_condition_number,brier_score,calibration_intercept,calibration_slope,maximum_cooks_distance,leverage_support_q05,leverage_support_q95,sample_start,sample_end
+btc_next_session_tail_logit,2263,114,0.0503756076005,868.499797286,2284.44012495,True,59.7588320006,0.0468747175665,-2.30225560838e-13,1,0.18677867226,0.305507992229,0.995631375656,2020-02-01,2026-04-12

@@ -1,0 +1,15 @@
+component,variance_share,cumulative_variance_share,n,assets,sample_start,sample_end,method
+PC1,0.659800491589,0.659800491589,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC2,0.0537856083402,0.713586099929,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC3,0.0495889140814,0.763175014011,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC4,0.0402762018504,0.803451215861,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC5,0.0305856604307,0.834036876292,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC6,0.0257218982441,0.859758774536,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC7,0.0242827361112,0.884041510647,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC8,0.0219485146304,0.905990025278,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC9,0.0192608141717,0.925250839449,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC10,0.0181872619056,0.943438101355,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC11,0.0162757670811,0.959713868436,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC12,0.0155230116993,0.975236880135,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC13,0.0144840884888,0.989720968624,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA
+PC14,0.0102790313758,1,2006,14,2021-01-02,2026-06-30,full-system PCA for aggregate variance share; target-specific rows use leave-one-out PCA

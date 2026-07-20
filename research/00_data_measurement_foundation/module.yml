@@ -31,7 +31,7 @@ canonical_surface: research/00_data_measurement_foundation
 tables:
 - provider_inventory.csv
 - raw_file_inventory.csv
-- raw_series_inventory.csv
+- logical_series_inventory.csv
 - feature_inventory.csv
 - feature_usage_matrix.csv
 - asset_universe_audit.csv
@@ -45,6 +45,9 @@ figures:
 - coverage_missingness_by_block.png
 code:
 - src/cqresearch/research/data_foundation.py
+- src/cqresearch/data/inventory.py
+- src/cqresearch/research/registries.py
 tests:
+- tests/unit/test_semantic_registries.py
 - tests/unit/test_feature_strength_outputs.py
 root_readme_candidate_figures: []

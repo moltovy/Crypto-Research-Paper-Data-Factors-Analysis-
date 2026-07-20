@@ -1,0 +1,37 @@
+data_cutoff: '2026-06-30'
+samples:
+  - sample_id: S1
+    name: BTC and ETH daily anchor
+    frequency: crypto daily
+    start_rule: max of 2020-01-01 and each series valid start
+    end_rule: latest common valid observation on or before data cutoff
+    inclusion_rule: BTC and ETH with positive close and identity-resolved source
+    exclusion_rule: earlier history is a separately labelled diagnostic
+  - sample_id: S2
+    name: Stable-core crypto assets
+    frequency: crypto daily
+    start_rule: 2021-01-01
+    end_rule: latest common valid observation on or before data cutoff
+    inclusion_rule: non-stable, non-wrapped PIT top-20 member at 2021-01-31; valid by 2021-01-01; at least 95 percent coverage; identity resolved
+    exclusion_rule: HYPE and assets with unresolved discontinuities
+  - sample_id: S3
+    name: Broad unbalanced crypto assets
+    frequency: crypto daily
+    start_rule: asset-specific valid start
+    end_rule: data cutoff
+    inclusion_rule: PIT risk asset with at least 365 observations and at least 90 percent coverage since valid start
+    exclusion_rule: stable-like, wrapped/productized, or identity-ambiguous assets
+  - sample_id: S4
+    name: Monthly point-in-time market structure
+    frequency: monthly point-in-time
+    start_rule: 2020-01-31
+    end_rule: last complete month on or before data cutoff
+    inclusion_rule: full-market top 100 at each snapshot
+    exclusion_rule: partial months and any daily constituent-performance inference
+  - sample_id: S5
+    name: Institutional instruments
+    frequency: reported or exchange trading session
+    start_rule: BTC ETF 2024-01-11; ETH ETF 2024-07-23; other instruments at actual launch
+    end_rule: latest valid report on or before data cutoff
+    inclusion_rule: actual report/trading dates only
+    exclusion_rule: pre-inception and non-reporting dates remain missing

@@ -1,0 +1,12 @@
+logical_series_id,provider_id,provider,relpath,rows,columns,start_date,end_date,read_status,release_disposition,series_granularity
+binance_stable_core_spot,binance,Binance Vision,contract:config/data_contracts.yml,,daily OHLCV for the fixed PIT-eligible symbol allowlist,2021-01-01,,contract_declared,derived-only until provider-specific rights review,daily
+cftc_crypto_financial_futures,cftc_traders_in_financial_futures,CFTC Traders in Financial Futures,contract:config/data_contracts.yml,,contract-level open interest and trader-category positions,2017-12-19,,contract_declared,derived-only until provider-specific rights review,weekly
+btc_spot_close,cryptoquant,CryptoQuant,contract:config/data_contracts.yml,,close,2010-07-18,,contract_declared,derived-only until provider-specific rights review,daily
+eth_spot_close,cryptoquant,CryptoQuant,contract:config/data_contracts.yml,,close,2015-08-07,,contract_declared,derived-only until provider-specific rights review,daily
+defi_tvl,defillama,DefiLlama,contract:config/data_contracts.yml,,TVL,2020-01-01,,contract_declared,derived-only until provider-specific rights review,daily
+stablecoin_supply,defillama,DefiLlama,contract:config/data_contracts.yml,,circulating market capitalization by stablecoin id,2020-01-01,,contract_declared,derived-only until provider-specific rights review,daily
+market_structure_pit,defillama_monthly_universe,DefiLlama monthly universe,contract:config/data_contracts.yml,,"asset identity, market capitalization, rank",2020-01-31,,contract_declared,derived-only until provider-specific rights review,monthly point-in-time
+btc_etf_net_flow,farside_investors,Farside Investors,contract:config/data_contracts.yml,,total,2024-01-11,,contract_declared,derived-only until provider-specific rights review,reported ETF trading date
+eth_etf_net_flow,farside_investors,Farside Investors,contract:config/data_contracts.yml,,total,2024-07-23,,contract_declared,derived-only until provider-specific rights review,reported ETF trading date
+fred_macro_panel,fred,FRED,contract:config/data_contracts.yml,,series value,2020-01-01,,contract_declared,derived-only until provider-specific rights review,source-specific business observation
+tradfi_close_panel,tradingview,TradingView,contract:config/data_contracts.yml,,close,2020-01-01,,contract_declared,derived-only until provider-specific rights review,exchange session

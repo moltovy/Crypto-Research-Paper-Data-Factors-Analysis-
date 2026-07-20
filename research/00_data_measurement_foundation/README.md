@@ -13,19 +13,19 @@ This module is the repository's data-governance and measurement-control layer. I
 
 ## Data, Assets, and Sample
 
-| surface             |   observations | sample                            | coverage rule                                     |
-|:--------------------|---------------:|:----------------------------------|:--------------------------------------------------|
-| Raw provider files  |            584 | 1947-01-01 to 2026-06-18          | local files under data_local/raw; never committed |
-| Registered features |             31 | config/feature_registry.yml       | feature must receive exactly one usage status     |
-| Selected assets     |             10 | canonical selected-major universe | current-cohort daily is survivorship-biased       |
+| surface                   |   observations | sample                            | coverage rule                                               |
+|:--------------------------|---------------:|:----------------------------------|:------------------------------------------------------------|
+| Contracted logical series |             11 | 2010-07-18 to                     | explicit logical-series contracts; raw objects remain local |
+| Registered features       |             31 | config/feature_registry.yml       | feature must receive exactly one usage status               |
+| Selected assets           |             10 | canonical selected-major universe | current-cohort daily is survivorship-biased                 |
 
 ## Methodologies and Calculations
 
-| method                 | calculation                                                                     | output                                           |
-|:-----------------------|:--------------------------------------------------------------------------------|:-------------------------------------------------|
-| File inventory         | scan local raw files and infer provider/date coverage                           | raw_file_inventory.csv; raw_series_inventory.csv |
-| Usage disposition      | assign one allowed status from registration, coverage, unit, and release risk   | feature_usage_matrix.csv                         |
-| Measurement-risk audit | flag release, mechanical-link, valuation, endogeneity, and asset-coverage risks | measurement_risk_audit.csv                       |
+| method                 | calculation                                                                                | output                                               |
+|:-----------------------|:-------------------------------------------------------------------------------------------|:-----------------------------------------------------|
+| File inventory         | scan raw objects using declared source-family dates and enumerate logical-series contracts | raw_file_inventory.csv; logical_series_inventory.csv |
+| Usage disposition      | assign one allowed status from registration, coverage, unit, and release risk              | feature_usage_matrix.csv                             |
+| Measurement-risk audit | flag release, mechanical-link, valuation, endogeneity, and asset-coverage risks            | measurement_risk_audit.csv                           |
 
 ## Formulas
 
@@ -37,9 +37,9 @@ Feature usage is a deterministic one-status assignment over the union of registe
 
 | result                 | estimate                                              | interval                                    |   N/sample | interpretation                                                        | sensitivity                                      |
 |:-----------------------|:------------------------------------------------------|:--------------------------------------------|-----------:|:----------------------------------------------------------------------|:-------------------------------------------------|
-| Provider groups        | 8                                                     | deterministic file inventory                |        584 | 7 provider groups require derived-only or restricted handling.        | rerun after adding/removing local provider files |
-| Feature usage status   | 25 primary, 2 robustness, 65 diagnostic, 107 excluded | rule-based status taxonomy                  |        199 | Every registered or discovered processed feature has one disposition. | registration and coverage thresholds             |
-| Measurement-risk flags | 145                                                   | automated audit plus manual review required |         31 | Flags constrain public language and model eligibility.                | provider license review and feature metadata     |
+| Provider groups        | 10                                                    | deterministic file inventory                |         11 | 8 provider groups require derived-only or restricted handling.        | rerun after adding/removing local provider files |
+| Feature usage status   | 25 primary, 2 robustness, 68 diagnostic, 131 excluded | rule-based status taxonomy                  |        226 | Every registered or discovered processed feature has one disposition. | registration and coverage thresholds             |
+| Measurement-risk flags | 180                                                   | automated audit plus manual review required |         31 | Flags constrain public language and model eligibility.                | provider license review and feature metadata     |
 
 ## Analytical Results and Visualizations
 
@@ -74,7 +74,7 @@ uv run python scripts/check_research_surface.py --module 00_data_measurement_fou
 
 - [`provider_inventory.csv`](tables/provider_inventory.csv)
 - [`raw_file_inventory.csv`](tables/raw_file_inventory.csv)
-- [`raw_series_inventory.csv`](tables/raw_series_inventory.csv)
+- [`logical_series_inventory.csv`](tables/logical_series_inventory.csv)
 - [`feature_inventory.csv`](tables/feature_inventory.csv)
 - [`feature_usage_matrix.csv`](tables/feature_usage_matrix.csv)
 - [`asset_universe_audit.csv`](tables/asset_universe_audit.csv)
@@ -88,4 +88,7 @@ uv run python scripts/check_research_surface.py --module 00_data_measurement_fou
 - [Findings](findings.md)
 - [Interpretation](interpretation.md)
 - [Limitations](limitations.md)
-- Code: `src/cqresearch/research/data_foundation.py`
+- [Code: `data_foundation.py`](../../src/cqresearch/research/data_foundation.py)
+- [Code: `inventory.py`](../../src/cqresearch/data/inventory.py)
+- [Code: `registries.py`](../../src/cqresearch/research/registries.py)
+- [Test: `test_semantic_registries.py`](../../tests/unit/test_semantic_registries.py)

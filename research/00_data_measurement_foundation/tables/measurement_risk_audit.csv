@@ -1,11 +1,22 @@
 risk_id,risk_type,severity,subject,evidence,required_handling
 release_alternativeme,release_risk,high,AlternativeMe,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
 release_artemis,release_risk,high,Artemis,uncertain/restricted,publish derived semantic artifacts only unless rights are separately verified
+release_binance,release_risk,high,Binance Vision,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
 release_cryptoquant,release_risk,high,CryptoQuant,uncertain/restricted,publish derived semantic artifacts only unless rights are separately verified
 release_defillama,release_risk,high,DefiLlama,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
 release_farside,release_risk,high,Farside ETF Data,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
 release_market_structure,release_risk,high,MarketStructure,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
 release_tradingview,release_risk,high,Tradingview,uncertain/restricted,publish derived semantic artifacts only unless rights are separately verified
+asset_coverage_ada,asset_coverage,medium,ADA,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_bnb,asset_coverage,medium,BNB,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_btc,asset_coverage,medium,BTC,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_doge,asset_coverage,medium,DOGE,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_eth,asset_coverage,medium,ETH,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_hype,asset_coverage,medium,HYPE,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_sol,asset_coverage,medium,SOL,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_ton,asset_coverage,medium,TON,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_trx,asset_coverage,medium,TRX,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
+asset_coverage_xrp,asset_coverage,medium,XRP,insufficient_or_missing_daily_coverage,current-cohort daily returns are survivorship-biased; monthly PIT data supports structure/state analysis only
 measurement_btc_etf_flow_intensity_lag0,measurement_or_endogeneity,medium,btc_etf_flow_intensity_lag0,low none_identified medium price forecasting; causal claims; same-day mvrv as primary btc-return factor,"state timing, denominator, and prohibited language before use"
 measurement_btc_etf_flow_intensity_lag1,measurement_or_endogeneity,medium,btc_etf_flow_intensity_lag1,low none_identified medium price forecasting; causal claims; same-day mvrv as primary btc-return factor,"state timing, denominator, and prohibited language before use"
 measurement_btc_funding_z_lag1,measurement_or_endogeneity,medium,btc_funding_z_lag1,low none_identified low price forecasting; causal claims; same-day mvrv as primary btc-return factor,"state timing, denominator, and prohibited language before use"
@@ -50,9 +61,14 @@ usage_SOFR,feature_exclusion,medium,SOFR,excluded_ambiguous_definition_or_unit,U
 usage_T10Y2Y,feature_exclusion,medium,T10Y2Y,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_USEPUINDXD,feature_exclusion,medium,USEPUINDXD,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_VIXCLS,feature_exclusion,medium,VIXCLS,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_asset,feature_exclusion,medium,asset,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_asset_class_final,feature_exclusion,medium,asset_class_final,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_asset_key,feature_exclusion,medium,asset_key,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_asset_manager_long,feature_exclusion,medium,asset_manager_long,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_asset_manager_net,feature_exclusion,medium,asset_manager_net,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_asset_manager_short,feature_exclusion,medium,asset_manager_short,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_asset_name,feature_exclusion,medium,asset_name,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_available_date,feature_exclusion,medium,available_date,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_btc_basis_z,feature_exclusion,medium,btc_basis_z,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_btc_bottom5,feature_exclusion,medium,btc_bottom5,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_btc_drawdown,feature_exclusion,medium,btc_drawdown,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
@@ -99,8 +115,15 @@ usage_btc_vol_spike,feature_exclusion,medium,btc_vol_spike,excluded_ambiguous_de
 usage_btc_volume,feature_exclusion,medium,btc_volume,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_calendar,feature_exclusion,medium,calendar,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_calendar_assumption,feature_exclusion,medium,calendar_assumption,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_close,feature_exclusion,medium,close,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_close_time_assumption,feature_exclusion,medium,close_time_assumption,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_coingecko_id,feature_exclusion,medium,coingecko_id,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_contract_code,feature_exclusion,medium,contract_code,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_contract_name,feature_exclusion,medium,contract_name,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_date,feature_exclusion,medium,date,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_dealer_long,feature_exclusion,medium,dealer_long,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_dealer_net,feature_exclusion,medium,dealer_net,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_dealer_short,feature_exclusion,medium,dealer_short,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_defi_tvl_growth,feature_exclusion,medium,defi_tvl_growth,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_defi_tvl_growth_lag1,feature_exclusion,medium,defi_tvl_growth_lag1,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_eth_bottom5,feature_exclusion,medium,eth_bottom5,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
@@ -128,13 +151,23 @@ usage_fear_greed_altme_lag1,feature_exclusion,medium,fear_greed_altme_lag1,exclu
 usage_fear_greed_change,feature_exclusion,medium,fear_greed_change,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_fear_greed_change_lag1,feature_exclusion,medium,fear_greed_change_lag1,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_fng_value,feature_exclusion,medium,fng_value,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_high,feature_exclusion,medium,high,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_hy_oas_d1,feature_exclusion,medium,hy_oas_d1,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_in_full_top100,feature_exclusion,medium,in_full_top100,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_is_micro,feature_exclusion,medium,is_micro,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_is_partial_month,feature_exclusion,medium,is_partial_month,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_leveraged_money_long,feature_exclusion,medium,leveraged_money_long,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_leveraged_money_net,feature_exclusion,medium,leveraged_money_net,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_leveraged_money_short,feature_exclusion,medium,leveraged_money_short,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_low,feature_exclusion,medium,low,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_month,feature_exclusion,medium,month,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_oil_ret,feature_exclusion,medium,oil_ret,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_open,feature_exclusion,medium,open,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_open_interest,feature_exclusion,medium,open_interest,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_policy_uncertainty_d1,feature_exclusion,medium,policy_uncertainty_d1,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_quote_asset_volume,feature_exclusion,medium,quote_asset_volume,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_rank_full_market,feature_exclusion,medium,rank_full_market,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_report_date,feature_exclusion,medium,report_date,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_snapshot_date,feature_exclusion,medium,snapshot_date,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_source,feature_exclusion,medium,source,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_source_rank_full_market,feature_exclusion,medium,source_rank_full_market,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
@@ -144,3 +177,5 @@ usage_symbol,feature_exclusion,medium,symbol,excluded_ambiguous_definition_or_un
 usage_term_spread_d1,feature_exclusion,medium,term_spread_d1,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_token_id,feature_exclusion,medium,token_id,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
 usage_total3_ret,feature_exclusion,medium,total3_ret,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_trade_count,feature_exclusion,medium,trade_count,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.
+usage_volume,feature_exclusion,medium,volume,excluded_ambiguous_definition_or_unit,Unregistered panel column requires definition and unit review.

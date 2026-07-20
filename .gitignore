@@ -44,14 +44,14 @@ desktop.ini
 
 # --- Project outputs that should NOT be tracked
 # Local provider data and regenerable panels stay on disk but out of git.
-Data/
-data_local/
-data_cache/
-reports/panels/
+/Data/
+/data_local/
+/data_cache/
+/reports/panels/
 *.parquet
 
 # Ad-hoc exports
-tmp/
+/tmp/
 *.tmp
 
 # --- Never commit secrets or API-key material

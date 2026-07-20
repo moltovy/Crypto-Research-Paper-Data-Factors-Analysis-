@@ -1,0 +1,22 @@
+{
+  "data_cutoff": "2026-06-30",
+  "date_range": "2020-01-31 through 2026-05-31",
+  "figure_id": "pit_concentration_turnover",
+  "limitation": "Monthly PIT evidence supports market-structure statements only, not daily historical constituent performance.",
+  "method": "Complete monthly PIT top-100 census with entropy breadth, turnover, and exact HHI decomposition",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
+  "png": "07_pit_concentration_turnover.png",
+  "research_question": "How did point-in-time effective breadth and top-100 membership turnover change?",
+  "rows": 153,
+  "sample": "Complete monthly PIT top-100 snapshots, January 2020 through May 2026",
+  "source_csv": "07_pit_concentration_turnover.source.csv",
+  "source_tables": [
+    "tables/pit_concentration.csv",
+    "tables/pit_membership_transitions.csv"
+  ],
+  "svg": "07_pit_concentration_turnover.svg",
+  "uncertainty": "Descriptive monthly census; exact decomposition residual is reported as a diagnostic",
+  "units": "entropy-implied asset count and monthly turnover rate",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
+}

@@ -34,7 +34,7 @@ SeriesKind = Literal["stock", "flow", "rate"]
 
 # Default sample window for v0.1 analyses.
 DEFAULT_START: pd.Timestamp = pd.Timestamp("2020-01-01")
-DEFAULT_END: pd.Timestamp = pd.Timestamp("2026-04-11")
+DEFAULT_END: pd.Timestamp = pd.Timestamp("2026-06-30")
 
 
 @dataclass(frozen=True)
@@ -72,7 +72,14 @@ def business_day_mask(index: pd.DatetimeIndex) -> pd.Series:
     plug in ``pandas_market_calendars`` or an exchange calendar in a later revision.
     """
 
-    return pd.Series(index.weekday < 5, index=index, name="is_business_day")
+    import exchange_calendars as xcals
+
+    normalized = pd.DatetimeIndex(index).tz_localize(None).normalize()
+    if normalized.empty:
+        return pd.Series(dtype=bool, index=index, name="is_business_day")
+    calendar = xcals.get_calendar("XNYS")
+    sessions = calendar.sessions_in_range(normalized.min(), normalized.max())
+    return pd.Series(normalized.isin(sessions), index=index, name="is_business_day")
 
 
 def crypto_index(
@@ -145,10 +152,8 @@ def align_to_master(
         return s  # all-NaN
 
     if kind == "flow":
-        # Only pad with 0 *within* the series' natural window, never before
-        # the first observation (don't fabricate pre-history).
-        mask = (s.index >= first_valid) & (s.index <= last_valid)
-        s.loc[mask] = s.loc[mask].fillna(0.0)
+        # Non-reporting, holiday, and pre-inception dates are missing, not zero.
+        s.loc[(s.index < first_valid) | (s.index > last_valid)] = np.nan
     elif kind in ("stock", "rate"):
         s = s.ffill(limit=ffill_limit_days)
         # Kill any ffill leakage before the first actual observation.
