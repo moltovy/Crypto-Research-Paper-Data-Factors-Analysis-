@@ -6,9 +6,9 @@ import math
 import shutil
 from collections.abc import Callable
 from contextlib import suppress
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import Any
+from typing import Any, Protocol
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -26,7 +26,9 @@ from cqresearch.core.artifacts import (
     write_json,
     write_text,
 )
+from cqresearch.data.contracts import assert_unique_plot_keys, result_sample_summary
 from cqresearch.pipelines.final_research import SELECTED_ASSETS, provider_root
+from cqresearch.research.evidence_modules import EVIDENCE_BUILDERS, build_evidence_figures
 from cqresearch.research.registry import MODULES, ResearchModule, module_by_id
 from cqresearch.viz.theme import (
     PALETTE,
@@ -37,7 +39,16 @@ from cqresearch.viz.theme import (
     style_axis,
 )
 
-Builder = Callable[[Path, Path], "ModuleBuild"]
+
+class ModuleBuildLike(Protocol):
+    tables: dict[str, pd.DataFrame]
+    figures: list[Path]
+    key_results: list[dict[str, Any]]
+    claims: list[dict[str, Any]]
+    figure_notes: dict[str, str]
+
+
+Builder = Callable[[Path, Path], ModuleBuildLike]
 
 
 @dataclass(frozen=True)
@@ -82,8 +93,10 @@ def build_analytical_module(module_id: str, root: Path = PROJECT_ROOT) -> list[P
     artifacts.append(write_csv(tables_dir / "claims.csv", claims))
     for figure in build.figures:
         artifacts.append(figure)
-        if figure.with_suffix(".svg").exists():
-            artifacts.append(figure.with_suffix(".svg"))
+        for suffix in [".svg", ".source.csv", ".metadata.json"]:
+            sidecar = figure.with_suffix(suffix)
+            if sidecar.exists():
+                artifacts.append(sidecar)
     artifacts.extend(_write_module_docs(root, module_dir, module, spec, build))
     _remove_unexpected_module_files(module_dir, artifacts)
     artifacts.append(_write_manifest(root, module_dir, artifacts))
@@ -102,8 +115,13 @@ def build_research_only_figures(module_id: str, root: Path = PROJECT_ROOT) -> li
     artifacts: list[Path] = []
     for item in module_ids:
         module_dir = root / "research" / item
-        build = MODULE_SPECS[item].builder(root, module_dir)
-        artifacts.extend(build.figures)
+        artifacts.extend(build_evidence_figures(item, root))
+        module_artifacts = sorted(
+            path
+            for path in module_dir.rglob("*")
+            if path.is_file() and path.name != "manifest.json"
+        )
+        artifacts.append(_write_manifest(root, module_dir, module_artifacts))
     return artifacts
 
 
@@ -112,7 +130,7 @@ def _write_module_docs(
     module_dir: Path,
     module: ResearchModule,
     spec: ModuleSpec,
-    build: ModuleBuild,
+    build: ModuleBuildLike,
 ) -> list[Path]:
     tables = sorted([*build.tables.keys(), "claims.csv"])
     figures = sorted(path.name for path in build.figures if path.suffix.lower() == ".png")
@@ -1147,7 +1165,9 @@ def _etf_lag_tables(root: Path) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFram
                     "asset": asset,
                     "lag_days": lag,
                     "return_corr": corr,
-                    "abs_return_corr": abs(corr) if pd.notna(corr) else np.nan,
+                    "abs_return_corr": float(df["return"].abs().corr(df["flow_intensity"]))
+                    if len(df) >= 20
+                    else np.nan,
                     "ci_low": lo,
                     "ci_high": hi,
                     "n": int(len(df)),
@@ -1403,7 +1423,12 @@ def _fig_tradfi_exposure_shift(frame: pd.DataFrame, path: Path) -> Path:
             & frame["block"].eq("equity_beta")
             & frame["regime"].isin(["pre_btc_etf", "btc_etf_era"])
         ].copy()
+        if "model_family" in plot:
+            preferred = "full_ex_mvrv"
+            if preferred in set(plot["model_family"].dropna().astype(str)):
+                plot = plot[plot["model_family"].eq(preferred)]
         if not plot.empty:
+            assert_unique_plot_keys(plot, ["asset", "frequency", "regime", "block"])
             plot["period"] = plot["regime"].map(
                 {"pre_btc_etf": "Pre-BTC ETF", "btc_etf_era": "BTC ETF era"}
             )
@@ -2181,18 +2206,39 @@ def _copy_png_svg(src: Path, dst: Path) -> None:
 
 def _save_figure(fig: plt.Figure, path: Path) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(path, dpi=190, bbox_inches="tight", facecolor=TOKENS["background"])
     svg = path.with_suffix(".svg")
-    fig.savefig(
-        svg, dpi=190, bbox_inches="tight", facecolor=TOKENS["background"], metadata={"Date": None}
-    )
-    with suppress(OSError):
-        svg.write_text(
-            "\n".join(line.rstrip() for line in svg.read_text(encoding="utf-8").splitlines())
-            + "\n",
-            encoding="utf-8",
+    png_temporary = path.with_suffix(".png.tmp")
+    svg_temporary = path.with_suffix(".svg.tmp")
+    try:
+        fig.savefig(
+            png_temporary,
+            format="png",
+            dpi=190,
+            bbox_inches="tight",
+            facecolor=TOKENS["background"],
         )
-    plt.close(fig)
+        fig.savefig(
+            svg_temporary,
+            format="svg",
+            dpi=190,
+            bbox_inches="tight",
+            facecolor=TOKENS["background"],
+            metadata={"Date": None},
+        )
+        with suppress(OSError):
+            svg_temporary.write_text(
+                "\n".join(
+                    line.rstrip() for line in svg_temporary.read_text(encoding="utf-8").splitlines()
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+        png_temporary.replace(path)
+        svg_temporary.replace(svg)
+    finally:
+        png_temporary.unlink(missing_ok=True)
+        svg_temporary.unlink(missing_ok=True)
+        plt.close(fig)
     return path
 
 
@@ -2213,30 +2259,7 @@ def _sample_table(tables: dict[str, pd.DataFrame]) -> pd.DataFrame:
 
 
 def _sample_from_table(frame: pd.DataFrame) -> str:
-    if frame.empty:
-        return "no rows"
-    date_cols = [
-        col
-        for col in frame.columns
-        if col in {"date", "sample_start", "first_date", "first_valid_date", "snapshot_date"}
-    ]
-    end_cols = [
-        col for col in frame.columns if col in {"sample_end", "last_date", "last_valid_date"}
-    ]
-    if "sample_start" in frame and "sample_end" in frame:
-        starts = pd.to_datetime(frame["sample_start"], errors="coerce").dropna()
-        ends = pd.to_datetime(frame["sample_end"], errors="coerce").dropna()
-        if not starts.empty and not ends.empty:
-            return f"{starts.min().date()} to {ends.max().date()}, n={len(frame)}"
-    if date_cols:
-        dates = pd.to_datetime(frame[date_cols[0]], errors="coerce").dropna()
-        if not dates.empty:
-            return f"{dates.min().date()} to {dates.max().date()}, rows={len(frame)}"
-    if end_cols:
-        ends = pd.to_datetime(frame[end_cols[0]], errors="coerce").dropna()
-        if not ends.empty:
-            return f"through {ends.max().date()}, rows={len(frame)}"
-    return f"rows={len(frame)}"
+    return result_sample_summary(frame)
 
 
 def _coverage_rule_from_name(name: str) -> str:
@@ -2555,4 +2578,10 @@ MODULE_SPECS: dict[str, ModuleSpec] = {
         ("event windows", "daily", "cross-module"),
         ("window length", "placebo eligibility", "FDR", "measurement risk", "claim grade"),
     ),
+}
+
+MODULE_SPECS = {
+    module_id: replace(spec, builder=EVIDENCE_BUILDERS[module_id])
+    for module_id, spec in MODULE_SPECS.items()
+    if module_id in EVIDENCE_BUILDERS
 }

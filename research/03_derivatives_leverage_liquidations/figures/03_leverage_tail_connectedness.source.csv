@@ -1,0 +1,104 @@
+leverage,volatility,predicted_tail_probability,ci_low,ci_high,observed_leverage_min,observed_leverage_max,fixed_volatility,tail_threshold,n,sample_start,sample_end,method,plot_key,panel,date,window,step,horizon,connectedness_pct,lag_order,stable,row_sum_max_error,error,specification,variables
+0.305507992229304,0.531102568578479,0.0543743510844359,0.0338630802130935,0.0862010509384217,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.305508,tail_curve,,,,,,,,,,,
+0.343848180197461,0.531102568578479,0.0516776799214681,0.0336115350009556,0.0786639125945305,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.343848,tail_curve,,,,,,,,,,,
+0.382188368165618,0.531102568578479,0.0493912970381505,0.033257417796453,0.0727629640895259,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.382188,tail_curve,,,,,,,,,,,
+0.420528556133776,0.531102568578479,0.0474205292503186,0.0327423684368477,0.0682147458162636,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.420529,tail_curve,,,,,,,,,,,
+0.458868744101933,0.531102568578479,0.0456850265163879,0.0319833876024311,0.0648631180067975,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.458869,tail_curve,,,,,,,,,,,
+0.49720893207009,0.531102568578479,0.0441154278863119,0.03095263781134,0.0625146649771388,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.497209,tail_curve,,,,,,,,,,,
+0.535549120038248,0.531102568578479,0.0426510429104046,0.0297196602769796,0.0608561248825074,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.535549,tail_curve,,,,,,,,,,,
+0.573889308006405,0.531102568578479,0.0412383547050632,0.0284235066772591,0.0594771369550483,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.573889,tail_curve,,,,,,,,,,,
+0.612229495974562,0.531102568578479,0.0398301981043852,0.0272071769208563,0.0579608412402701,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.612229,tail_curve,,,,,,,,,,,
+0.65056968394272,0.531102568578479,0.0383854941475533,0.026162921501917,0.0559898119539186,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.65057,tail_curve,,,,,,,,,,,
+0.688909871910877,0.531102568578479,0.0368694338288754,0.0252901072019605,0.0534596884506008,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.68891,tail_curve,,,,,,,,,,,
+0.727250059879034,0.531102568578479,0.0352540027025792,0.0244289818916696,0.0506269005827324,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.72725,tail_curve,,,,,,,,,,,
+0.765590247847192,0.531102568578479,0.0335298176632844,0.0231649035419504,0.0483030866289942,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.76559,tail_curve,,,,,,,,,,,
+0.803930435815349,0.531102568578479,0.0320886869130715,0.0213417472425599,0.0479820698191278,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.80393,tail_curve,,,,,,,,,,,
+0.842270623783506,0.531102568578479,0.0317606197178449,0.0199057986649532,0.0503131037644877,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.842271,tail_curve,,,,,,,,,,,
+0.880610811751664,0.531102568578479,0.0334494219344594,0.0201726638229219,0.0549740937172127,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.880611,tail_curve,,,,,,,,,,,
+0.918950999719821,0.531102568578479,0.0385452111226789,0.0237123632033844,0.0620666162006197,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.918951,tail_curve,,,,,,,,,,,
+0.957291187687978,0.531102568578479,0.0498955626883157,0.0331628160867913,0.0744211728887406,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.957291,tail_curve,,,,,,,,,,,
+0.995631375656136,0.531102568578479,0.0741645948949655,0.0483620047954061,0.112111828588637,0,1,0.531102568578479,-0.048599430930199,2263,2020-02-01,2026-04-12,binomial GLM with cubic splines and HAC covariance; descriptive lagged-state association,curve__0.995631,tail_curve,,,,,,,,,,,
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2021-09-10,connectedness,2021-09-10,252,21,10,46.9074473068828,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2021-10-01,connectedness,2021-10-01,252,21,10,50.6179559404816,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2021-10-22,connectedness,2021-10-22,252,21,10,56.9401722950308,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2021-11-12,connectedness,2021-11-12,252,21,10,58.0315819293898,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2021-12-03,connectedness,2021-12-03,252,21,10,59.7704129544228,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2021-12-24,connectedness,2021-12-24,252,21,10,62.8881228820801,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-01-14,connectedness,2022-01-14,252,21,10,64.1698391688677,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-02-04,connectedness,2022-02-04,252,21,10,55.74369840204,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-02-25,connectedness,2022-02-25,252,21,10,56.3406138786408,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-03-18,connectedness,2022-03-18,252,21,10,53.1912982633944,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-04-08,connectedness,2022-04-08,252,21,10,53.6016683886992,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-04-29,connectedness,2022-04-29,252,21,10,57.3507148016921,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-05-20,connectedness,2022-05-20,252,21,10,60.9351687877278,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-06-10,connectedness,2022-06-10,252,21,10,59.7200350978567,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-07-01,connectedness,2022-07-01,252,21,10,61.0200388443729,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-07-22,connectedness,2022-07-22,252,21,10,61.7927057269312,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-08-12,connectedness,2022-08-12,252,21,10,61.8895011961135,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-09-02,connectedness,2022-09-02,252,21,10,63.7446571072889,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-09-23,connectedness,2022-09-23,252,21,10,62.6371859984016,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-10-14,connectedness,2022-10-14,252,21,10,62.0779450434683,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-11-04,connectedness,2022-11-04,252,21,10,63.4206837192477,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-11-25,connectedness,2022-11-25,252,21,10,65.9776393947429,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2022-12-16,connectedness,2022-12-16,252,21,10,66.570115892276,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-01-06,connectedness,2023-01-06,252,21,10,66.6703722152186,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-01-27,connectedness,2023-01-27,252,21,10,64.6871188207261,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-02-17,connectedness,2023-02-17,252,21,10,64.960155281097,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-03-10,connectedness,2023-03-10,252,21,10,64.8103469458733,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-03-31,connectedness,2023-03-31,252,21,10,63.4318702677542,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-04-21,connectedness,2023-04-21,252,21,10,63.3169534013144,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-05-12,connectedness,2023-05-12,252,21,10,62.2678927687971,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-06-02,connectedness,2023-06-02,252,21,10,63.0637290065556,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-06-23,connectedness,2023-06-23,252,21,10,62.5717093133547,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-07-14,connectedness,2023-07-14,252,21,10,60.3197139819288,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-08-04,connectedness,2023-08-04,252,21,10,53.8094228636286,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-08-25,connectedness,2023-08-25,252,21,10,55.0730988939972,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-09-15,connectedness,2023-09-15,252,21,10,55.2405139442463,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-10-06,connectedness,2023-10-06,252,21,10,56.4755537064233,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-10-27,connectedness,2023-10-27,252,21,10,56.7217834174283,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-11-17,connectedness,2023-11-17,252,21,10,54.4287681355972,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-12-08,connectedness,2023-12-08,252,21,10,52.3030490667746,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2023-12-29,connectedness,2023-12-29,252,21,10,47.634697947249,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-01-19,connectedness,2024-01-19,252,21,10,49.6692000628884,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-02-09,connectedness,2024-02-09,252,21,10,49.4565343013159,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-03-01,connectedness,2024-03-01,252,21,10,48.0793530366579,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-03-22,connectedness,2024-03-22,252,21,10,53.5280194645117,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-04-12,connectedness,2024-04-12,252,21,10,55.5935031315196,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-05-03,connectedness,2024-05-03,252,21,10,54.9708623856812,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-05-24,connectedness,2024-05-24,252,21,10,54.6720823893946,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-06-14,connectedness,2024-06-14,252,21,10,54.5094258986027,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-07-05,connectedness,2024-07-05,252,21,10,54.6488937090414,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-07-26,connectedness,2024-07-26,252,21,10,53.7588048712188,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-08-16,connectedness,2024-08-16,252,21,10,54.7525582553514,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-09-06,connectedness,2024-09-06,252,21,10,57.3211822449829,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-09-27,connectedness,2024-09-27,252,21,10,55.675607053368,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-10-18,connectedness,2024-10-18,252,21,10,55.3400662071979,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-11-08,connectedness,2024-11-08,252,21,10,56.13247931107,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-11-29,connectedness,2024-11-29,252,21,10,46.8289242633233,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2024-12-20,connectedness,2024-12-20,252,21,10,44.5658250290055,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-01-10,connectedness,2025-01-10,252,21,10,45.2081161901324,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-01-31,connectedness,2025-01-31,252,21,10,44.7434454947993,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-02-21,connectedness,2025-02-21,252,21,10,43.9868681518838,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-03-14,connectedness,2025-03-14,252,21,10,50.4049967561555,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-04-04,connectedness,2025-04-04,252,21,10,51.7081918241834,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-04-25,connectedness,2025-04-25,252,21,10,54.178392625175,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-05-16,connectedness,2025-05-16,252,21,10,54.5263566445893,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-06-06,connectedness,2025-06-06,252,21,10,55.3916492142187,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-06-27,connectedness,2025-06-27,252,21,10,55.4854242309762,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-07-18,connectedness,2025-07-18,252,21,10,56.0185937526654,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-08-08,connectedness,2025-08-08,252,21,10,61.4912354639999,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-08-29,connectedness,2025-08-29,252,21,10,62.4902699805385,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-09-19,connectedness,2025-09-19,252,21,10,63.3740710809717,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-10-10,connectedness,2025-10-10,252,21,10,65.3987053856141,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-10-31,connectedness,2025-10-31,252,21,10,65.9098403522924,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-11-21,connectedness,2025-11-21,252,21,10,64.7529723198402,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2025-12-12,connectedness,2025-12-12,252,21,10,64.7417521116577,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-01-02,connectedness,2026-01-02,252,21,10,63.0340825804992,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-01-23,connectedness,2026-01-23,252,21,10,63.4058637149067,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-02-13,connectedness,2026-02-13,252,21,10,66.0052459835491,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-03-06,connectedness,2026-03-06,252,21,10,65.3125217907044,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-03-27,connectedness,2026-03-27,252,21,10,65.9681855862818,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-04-17,connectedness,2026-04-17,252,21,10,66.5889946922944,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-05-08,connectedness,2026-05-08,252,21,10,66.7621622988688,1,True,0,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-05-29,connectedness,2026-05-29,252,21,10,67.1254074224342,1,True,2.22044604925031e-16,,primary,BTC|ETH|XRP|DOT|ADA
+,,,,,,,,,252,,,Pesaran-Shin generalized FEVD,connectedness__2026-06-19,connectedness,2026-06-19,252,21,10,65.0640140633146,1,True,1.11022302462516e-16,,primary,BTC|ETH|XRP|DOT|ADA

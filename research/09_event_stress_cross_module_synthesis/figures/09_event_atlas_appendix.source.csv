@@ -1,0 +1,17 @@
+event_id,event_date,category,asset,window_days,post_event_log_return,placebo_percentile,two_sided_placebo_pvalue,placebo_windows,sample_start,sample_end,timing,plot_key,panel
+btc_spot_etf_launch,2024-01-11,primary,BTC,10,-0.108727266732517,0.080188679245283,0.160377358490566,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__btc_spot_etf_launch__BTC,event_atlas
+btc_spot_etf_launch,2024-01-11,primary,ETH,10,-0.0635792878304002,0.216981132075472,0.433962264150943,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__btc_spot_etf_launch__ETH,event_atlas
+eth_spot_etf_launch,2024-07-23,primary,BTC,10,-0.070710044572122,0.122641509433962,0.245283018867925,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__eth_spot_etf_launch__BTC,event_atlas
+eth_spot_etf_launch,2024-07-23,primary,ETH,10,-0.152821175026634,0.0754716981132075,0.150943396226415,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__eth_spot_etf_launch__ETH,event_atlas
+bitcoin_halving_2024,2024-04-20,primary,BTC,10,-0.0685206022575002,0.132075471698113,0.264150943396226,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__bitcoin_halving_2024__BTC,event_atlas
+bitcoin_halving_2024,2024-04-20,primary,ETH,10,-0.0460371304969556,0.264150943396226,0.528301886792453,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__bitcoin_halving_2024__ETH,event_atlas
+dencun_upgrade,2024-03-13,secondary,BTC,10,-0.133003915084879,0.0424528301886792,0.0849056603773585,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__dencun_upgrade__BTC,event_atlas
+dencun_upgrade,2024-03-13,secondary,ETH,10,-0.184746421476831,0.0424528301886792,0.0849056603773585,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__dencun_upgrade__ETH,event_atlas
+luna_collapse_2022,2022-05-09,secondary,BTC,10,0.0071076918496189,0.481132075471698,0.962264150943396,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__luna_collapse_2022__BTC,event_atlas
+luna_collapse_2022,2022-05-09,secondary,ETH,10,-0.0992830409695635,0.150943396226415,0.30188679245283,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__luna_collapse_2022__ETH,event_atlas
+ftx_collapse_2022,2022-11-08,secondary,BTC,10,-0.104873324952981,0.089622641509434,0.179245283018868,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__ftx_collapse_2022__BTC,event_atlas
+ftx_collapse_2022,2022-11-08,secondary,ETH,10,-0.09656375704723,0.160377358490566,0.320754716981132,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__ftx_collapse_2022__ETH,event_atlas
+svb_crisis_2023,2023-03-10,secondary,BTC,10,0.319427466802535,0.995283018867924,0.009433962264151,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__svb_crisis_2023__BTC,event_atlas
+svb_crisis_2023,2023-03-10,secondary,ETH,10,0.195227504464837,0.929245283018868,0.141509433962264,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__svb_crisis_2023__ETH,event_atlas
+yen_carry_unwind_2024,2024-08-05,secondary,BTC,10,0.0632852342732289,0.721698113207547,0.556603773584906,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__yen_carry_unwind_2024__BTC,event_atlas
+yen_carry_unwind_2024,2024-08-05,secondary,ETH,10,0.0602620987911022,0.641509433962264,0.716981132075472,212,2020-01-02,2026-04-14,"+1 through +10, event day excluded",event__yen_carry_unwind_2024__ETH,event_atlas

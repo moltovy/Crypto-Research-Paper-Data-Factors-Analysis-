@@ -1,0 +1,9 @@
+{
+  "figure_id": "institutional_market_plumbing",
+  "plot_key": "plot_key",
+  "png": "04_institutional_market_plumbing.png",
+  "rows": 16,
+  "source_csv": "04_institutional_market_plumbing.source.csv",
+  "source_tables": "tables/etf_distributed_lags.csv; tables/institutional_positioning_eras.csv",
+  "svg": "04_institutional_market_plumbing.svg"
+}

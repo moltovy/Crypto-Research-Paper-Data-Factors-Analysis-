@@ -1,0 +1,9 @@
+{
+  "figure_id": "liquidity_measurement_diagnostics",
+  "plot_key": "plot_key",
+  "png": "05_liquidity_measurement_diagnostics.png",
+  "rows": 2299,
+  "source_csv": "05_liquidity_measurement_diagnostics.source.csv",
+  "source_tables": "tables/liquidity_state.csv; tables/measurement_mechanics.csv",
+  "svg": "05_liquidity_measurement_diagnostics.svg"
+}

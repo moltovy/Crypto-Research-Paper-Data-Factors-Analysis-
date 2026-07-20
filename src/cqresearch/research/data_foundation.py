@@ -18,6 +18,7 @@ from cqresearch.core.artifacts import (
     write_json,
     write_text,
 )
+from cqresearch.data.contracts import logical_series_registry
 from cqresearch.pipelines.final_research import (
     PROVIDER_DISPLAY_NAMES,
     SELECTED_ASSETS,
@@ -57,7 +58,7 @@ def build_data_foundation(root: Path = PROJECT_ROOT) -> list[Path]:
 
     raw_files = _raw_file_inventory(root)
     providers = _provider_inventory(raw_files)
-    raw_series = _raw_series_inventory(raw_files, providers)
+    raw_series = _raw_series_inventory(root, providers)
     feature_inventory = _feature_inventory(root)
     panel_inventory = _panel_inventory(root)
     usage = _feature_usage_matrix(feature_inventory, panel_inventory)
@@ -100,6 +101,24 @@ def build_data_foundation(root: Path = PROJECT_ROOT) -> list[Path]:
         )
     )
     artifacts.append(_write_manifest(root, module_dir, artifacts))
+    return artifacts
+
+
+def build_data_foundation_figures(root: Path = PROJECT_ROOT) -> list[Path]:
+    """Regenerate data-foundation figures from canonical tables only."""
+
+    module_dir = root / "research" / MODULE_ID
+    tables_dir = module_dir / "tables"
+    artifacts = _write_figures(
+        module_dir / "figures",
+        pd.read_csv(tables_dir / "provider_inventory.csv"),
+        pd.read_csv(tables_dir / "feature_usage_matrix.csv"),
+        pd.read_csv(tables_dir / "coverage_missingness.csv"),
+    )
+    module_artifacts = sorted(
+        path for path in module_dir.rglob("*") if path.is_file() and path.name != "manifest.json"
+    )
+    artifacts.append(_write_manifest(root, module_dir, module_artifacts))
     return artifacts
 
 
@@ -198,7 +217,7 @@ def _provider_inventory(raw_files: pd.DataFrame) -> pd.DataFrame:
     return merged[columns].sort_values("provider_id").reset_index(drop=True)
 
 
-def _raw_series_inventory(raw_files: pd.DataFrame, providers: pd.DataFrame) -> pd.DataFrame:
+def _raw_series_inventory(root: Path, providers: pd.DataFrame) -> pd.DataFrame:
     columns = [
         "raw_series_id",
         "provider_id",
@@ -212,13 +231,25 @@ def _raw_series_inventory(raw_files: pd.DataFrame, providers: pd.DataFrame) -> p
         "release_disposition",
         "series_granularity",
     ]
-    if raw_files.empty:
+    logical = logical_series_registry(root)
+    if logical.empty:
         return pd.DataFrame(columns=columns)
     provider_ids = providers.set_index("provider")["provider_id"].to_dict()
-    frame = raw_files.copy()
-    frame["raw_series_id"] = frame["raw_file_id"]
+    frame = pd.DataFrame(
+        {
+            "raw_series_id": logical["series_id"],
+            "provider": logical["provider"],
+            "relpath": "contract:config/data_contracts.yml",
+            "rows": "",
+            "columns": logical["raw_field"],
+            "start_date": logical["valid_start"],
+            "end_date": "",
+            "read_status": "contract_declared",
+            "release_disposition": "derived-only until provider-specific rights review",
+            "series_granularity": logical["frequency"],
+        }
+    )
     frame["provider_id"] = frame["provider"].map(provider_ids).fillna(frame["provider"].map(_slug))
-    frame["series_granularity"] = frame["relpath"].map(_series_granularity)
     return frame[columns].sort_values(["provider_id", "relpath"]).reset_index(drop=True)
 
 
@@ -616,8 +647,9 @@ def _write_figures(
     style_axis(ax)
     if not providers.empty:
         plot = providers.sort_values("file_count", ascending=False).head(10)
+        provider_labels = plot["provider"].replace({"cftc": "CFTC"})
         ax.barh(
-            plot["provider"],
+            provider_labels,
             plot["file_count"],
             color=PALETTE["eth"],
             edgecolor=PALETTE["eth_dark"],
@@ -630,12 +662,60 @@ def _write_figures(
     ax = axes[1]
     style_axis(ax)
     counts = usage["usage_status"].value_counts().reindex(sorted(ALLOWED_USAGE_STATUSES)).fillna(0)
-    ax.barh(counts.index, counts.values, color=PALETTE["btc"], edgecolor=PALETTE["btc_dark"])
+    usage_labels = pd.Index(counts.index).map(
+        {
+            "diagnostic_only": "Diagnostic only",
+            "excluded_ambiguous_definition_or_unit": "Excluded: ambiguous definition/unit",
+            "excluded_duplicate": "Excluded: duplicate",
+            "excluded_insufficient_coverage": "Excluded: insufficient coverage",
+            "excluded_release_risk": "Excluded: release risk",
+            "primary_analysis": "Primary analysis",
+            "robustness_or_sensitivity": "Robustness/sensitivity",
+        }
+    )
+    ax.barh(usage_labels, counts.values, color=PALETTE["btc"], edgecolor=PALETTE["btc_dark"])
     ax.invert_yaxis()
     ax.set_xlabel("Feature count")
     ax.set_ylabel("")
     ax.set_title("B. Usage disposition", loc="left", fontsize=13, fontweight="semibold")
-    artifacts.append(_save_figure(fig, figures_dir / "data_governance_inventory.png"))
+    governance_path = figures_dir / "data_governance_inventory.png"
+    artifacts.append(_save_figure(fig, governance_path))
+    governance_source = pd.concat(
+        [
+            providers.sort_values("file_count", ascending=False)
+            .head(10)[["provider", "file_count"]]
+            .rename(columns={"provider": "category", "file_count": "value"})
+            .assign(panel="provider_inventory", unit="raw files"),
+            counts.rename("value")
+            .rename_axis("category")
+            .reset_index()
+            .assign(panel="usage_disposition", unit="features"),
+        ],
+        ignore_index=True,
+    )
+    governance_source["plot_key"] = (
+        governance_source["panel"].astype(str)
+        + "__"
+        + governance_source["category"].fillna("unregistered").astype(str)
+    )
+    artifacts.extend(
+        [
+            write_csv(governance_path.with_suffix(".source.csv"), governance_source),
+            write_json(
+                governance_path.with_suffix(".metadata.json"),
+                {
+                    "plot_key": "data_governance_inventory",
+                    "rows": len(governance_source),
+                    "source_tables": [
+                        "tables/provider_inventory.csv",
+                        "tables/feature_usage_matrix.csv",
+                    ],
+                    "sample": "local raw-object inventory and canonical feature registry",
+                    "units": "raw files and features",
+                },
+            ),
+        ]
+    )
 
     fig, ax = plt.subplots(figsize=(12, 6.75))
     fig.subplots_adjust(left=0.09, right=0.97, bottom=0.18, top=0.80)
@@ -652,12 +732,52 @@ def _write_figures(
             .sort_values(ascending=False)
             .head(12)
         )
-        labels = pd.Index(plot.index).fillna("unregistered").astype(str)
+        labels = (
+            pd.Index(plot.index)
+            .fillna("unregistered")
+            .map(
+                {
+                    "unregistered": "Unregistered/discovered",
+                    "onchain_state": "On-chain state",
+                    "macro_risk": "Macro and TradFi",
+                    "liquidity": "Liquidity",
+                    "target": "BTC/ETH targets",
+                    "leverage": "Leverage/derivatives",
+                    "etf_institutional": "ETF/institutional",
+                    "market_structure": "Market structure (monthly)",
+                }
+            )
+        )
         ax.barh(labels, plot.values, color=PALETTE["stable"], edgecolor=PALETTE["stable_dark"])
         ax.invert_yaxis()
     ax.set_xlabel("Median non-missing observations")
     ax.set_ylabel("")
-    artifacts.append(_save_figure(fig, figures_dir / "coverage_missingness_by_block.png"))
+    coverage_path = figures_dir / "coverage_missingness_by_block.png"
+    artifacts.append(_save_figure(fig, coverage_path))
+    coverage_source = (
+        coverage.groupby("research_block", dropna=False)["observations"]
+        .median()
+        .rename("median_non_missing_observations")
+        .reset_index()
+    )
+    coverage_source["plot_key"] = "coverage__" + coverage_source["research_block"].fillna(
+        "unregistered"
+    ).astype(str)
+    artifacts.extend(
+        [
+            write_csv(coverage_path.with_suffix(".source.csv"), coverage_source),
+            write_json(
+                coverage_path.with_suffix(".metadata.json"),
+                {
+                    "plot_key": "coverage_missingness_by_block",
+                    "rows": len(coverage_source),
+                    "source_tables": ["tables/coverage_missingness.csv"],
+                    "sample": "processed panels available at the frozen acquisition cutoff",
+                    "units": "median non-missing observations",
+                },
+            ),
+        ]
+    )
     return artifacts
 
 
@@ -685,10 +805,10 @@ def _write_docs(
     sample_table = pd.DataFrame(
         [
             {
-                "surface": "Raw provider files",
+                "surface": "Contracted logical series",
                 "observations": len(raw_series),
                 "sample": _sample_range(raw_series),
-                "coverage rule": "local files under data_local/raw; never committed",
+                "coverage rule": "explicit logical-series contracts; raw objects remain local",
             },
             {
                 "surface": "Registered features",
@@ -708,7 +828,7 @@ def _write_docs(
         [
             {
                 "method": "File inventory",
-                "calculation": "scan local raw files and infer provider/date coverage",
+                "calculation": "scan raw objects using declared source-family dates and enumerate logical-series contracts",
                 "output": "raw_file_inventory.csv; raw_series_inventory.csv",
             },
             {
@@ -839,7 +959,7 @@ Provider disposition governs what can be published. Local provider inputs may su
             module_dir / "findings.md",
             f"""# Findings
 
-- Local inventory covers {len(raw_series)} raw series across {len(providers)} provider groups.
+- Local inventory distinguishes raw objects from {len(raw_series)} contracted logical series across {len(providers)} provider groups.
 - {restricted} provider groups are not marked `public/re-distributable`.
 - The feature surface has {primary} primary-analysis features, {robust} robustness/sensitivity features, {diagnostic} diagnostic-only features, and {excluded} excluded features.
 - The selected-asset universe audit covers {len(assets)} canonical assets and explicitly labels current-cohort daily survivorship bias.
@@ -858,7 +978,7 @@ Data availability is not the same as claim strength. This module defines the all
             """# Limitations
 
 - Provider rights and licensing still require human review.
-- Source date detection is heuristic for heterogeneous CSV files.
+- Source dates use declared family-level observation fields; files without the declared field are flagged rather than guessed.
 - Current-cohort daily constituent data cannot establish historical altseason behavior.
 - Unit and denominator risks remain module-specific when raw USD levels are used.
 """,
@@ -918,7 +1038,7 @@ def _claims(
         [
             _claim(
                 "data_measurement_inventory_01",
-                f"The local inventory covers {len(raw_series)} raw series across {len(providers)} provider groups and {len(feature_inventory)} registered features.",
+                f"The local inventory distinguishes raw objects from {len(raw_series)} contracted logical series across {len(providers)} provider groups and {len(feature_inventory)} registered features.",
                 "Files currently present under data_local/raw plus config/feature_registry.yml.",
                 "Filesystem inventory, feature-registry parse, and processed-panel coverage audit.",
                 "License status is release-risk classification, not legal permission.",
@@ -999,16 +1119,38 @@ def _write_manifest(root: Path, module_dir: Path, artifacts: list[Path]) -> Path
 
 def _save_figure(fig: plt.Figure, path: Path) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(path, dpi=190, bbox_inches="tight", facecolor=TOKENS["background"])
     svg = path.with_suffix(".svg")
-    fig.savefig(
-        svg, dpi=190, bbox_inches="tight", facecolor=TOKENS["background"], metadata={"Date": None}
-    )
-    svg.write_text(
-        "\n".join(line.rstrip() for line in svg.read_text(encoding="utf-8").splitlines()) + "\n",
-        encoding="utf-8",
-    )
-    plt.close(fig)
+    png_temporary = path.with_suffix(".png.tmp")
+    svg_temporary = path.with_suffix(".svg.tmp")
+    try:
+        fig.savefig(
+            png_temporary,
+            format="png",
+            dpi=190,
+            bbox_inches="tight",
+            facecolor=TOKENS["background"],
+        )
+        fig.savefig(
+            svg_temporary,
+            format="svg",
+            dpi=190,
+            bbox_inches="tight",
+            facecolor=TOKENS["background"],
+            metadata={"Date": None},
+        )
+        svg_temporary.write_text(
+            "\n".join(
+                line.rstrip() for line in svg_temporary.read_text(encoding="utf-8").splitlines()
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        png_temporary.replace(path)
+        svg_temporary.replace(svg)
+    finally:
+        png_temporary.unlink(missing_ok=True)
+        svg_temporary.unlink(missing_ok=True)
+        plt.close(fig)
     return path
 
 

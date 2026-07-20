@@ -11,20 +11,11 @@ This module estimates BTC/ETH co-movement with equities, volatility, rates, the 
 
 ## Data, Assets, and Sample
 
-| artifact                                         |   rows | sample                              | coverage rule                                      |
-|:-------------------------------------------------|-------:|:------------------------------------|:---------------------------------------------------|
-| tables/block_delta_r2.csv                        |     54 | 2020-01-03 to 2026-04-12, n=54      | module-specific matched sample                     |
-| tables/btc_ex_mvrv_feature_strength.csv          |     95 | 2020-01-03 to 2026-04-12, n=95      | measurement mechanics and lagged-state diagnostics |
-| tables/conventional_partial_r2.csv               |     54 | 2020-01-03 to 2026-04-12, n=54      | module-specific matched sample                     |
-| tables/eth_feature_strength.csv                  |     91 | 2020-01-03 to 2026-04-12, n=91      | module-specific matched sample                     |
-| tables/exposure_regime_comparison.csv            |      6 | rows=6                              | module-specific matched sample                     |
-| tables/fdr_adjusted_inference.csv                |    186 | 2020-01-03 to 2026-04-12, n=186     | module-specific matched sample                     |
-| tables/frequency_robustness.csv                  |     20 | 2020-01-03 to 2026-04-12, n=20      | module-specific matched sample                     |
-| tables/local_window_correlation_distribution.csv |      4 | rows=4                              | module-specific matched sample                     |
-| tables/multicollinearity_diagnostics.csv         |    186 | rows=186                            | module-specific matched sample                     |
-| tables/ridge_stability.csv                       |    744 | rows=744                            | module-specific matched sample                     |
-| tables/rolling_exposure_summary.csv              |     30 | rows=30                             | module-specific matched sample                     |
-| tables/rolling_tradfi_exposures.csv              |   4048 | 2020-06-30 to 2026-04-03, rows=4048 | module-specific matched sample                     |
+| artifact                            |   rows | sample                           | coverage rule                  |
+|:------------------------------------|-------:|:---------------------------------|:-------------------------------|
+| tables/break_tests.csv              |     10 | 2020-01-03 to 2026-04-14, n=1577 | module-specific matched sample |
+| tables/dynamic_tradfi_exposures.csv |   2660 | 2020-01-03 to 2026-04-14, n=252  | module-specific matched sample |
+| tables/tradfi_diagnostics.csv       |      2 | n=1577                           | module-specific matched sample |
 
 ## Methodologies and Calculations
 
@@ -42,23 +33,15 @@ $R^2_{partial}=(SSE_{reduced}-SSE_{full})/SSE_{reduced}$.
 
 ## Summary of Results
 
-| finding                                      | estimate                                                                                                                           | interval                                     | N/sample                       | interpretation                                                                   | sensitivity                                 |
-|:---------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------|:-------------------------------|:---------------------------------------------------------------------------------|:--------------------------------------------|
-| Equity block exposure changes across periods | BTC pre_btc_etf delta R2=0.0249; BTC btc_etf_era delta R2=0.0884; ETH pre_btc_etf delta R2=0.0193; ETH btc_etf_era delta R2=0.1076 | HAC model rows and same-support block deltas | 2020-01-03 to 2026-04-12, n=54 | Period comparison of contemporaneous co-movement, not an ETF attribution design. | daily/weekly, FDR, VIF, ridge, rolling beta |
+| finding                                                    | estimate                                                             | interval                                       | N/sample                         | interpretation                                                 | sensitivity                                                                |
+|:-----------------------------------------------------------|:---------------------------------------------------------------------|:-----------------------------------------------|:---------------------------------|:---------------------------------------------------------------|:---------------------------------------------------------------------------|
+| Conditional QQQ exposure around the registered BTC ETF era | BTC 1.03 to 0.93 (change p=0.611); ETH 1.33 to 1.51 (change p=0.520) | HAC 95% intervals and era-interaction p-values | 2020-01-03 to 2026-04-14, n=1577 | Conditional equity co-movement changes are period comparisons. | 252-session rolling windows; multivariate controls; predeclared break date |
 
 ## Analytical Results and Visualizations
 
-![02 Macro Block Delta Heatmap](figures/02_macro_block_delta_heatmap.png)
+![02 Dynamic Tradfi Integration](figures/02_dynamic_tradfi_integration.png)
 
-The heatmap compares block-level contributions across assets, frequencies, regimes, and model families.
-
-![02 Rolling Tradfi Beta](figures/02_rolling_tradfi_beta.png)
-
-Rolling beta summaries show how QQQ/SPY exposure estimates vary through time; they are contemporaneous co-movement diagnostics.
-
-![02 Tradfi Exposure Shift](figures/02_tradfi_exposure_shift.png)
-
-Grouped bars show same-support equity-block delta R-squared for BTC and ETH across pre-BTC-ETF and BTC-ETF-era windows.
+Rolling QQQ coefficients condition on VIX, DXY, real-yield changes, and gold; the forest reports formal predeclared era interactions.
 
 ## Robustness and Sensitivity
 
@@ -82,19 +65,10 @@ uv run python scripts/check_research_surface.py --module 02_macro_tradfi_integra
 
 ## Files and Code
 
-- [`block_delta_r2.csv`](tables/block_delta_r2.csv)
-- [`btc_ex_mvrv_feature_strength.csv`](tables/btc_ex_mvrv_feature_strength.csv)
+- [`break_tests.csv`](tables/break_tests.csv)
 - [`claims.csv`](tables/claims.csv)
-- [`conventional_partial_r2.csv`](tables/conventional_partial_r2.csv)
-- [`eth_feature_strength.csv`](tables/eth_feature_strength.csv)
-- [`exposure_regime_comparison.csv`](tables/exposure_regime_comparison.csv)
-- [`fdr_adjusted_inference.csv`](tables/fdr_adjusted_inference.csv)
-- [`frequency_robustness.csv`](tables/frequency_robustness.csv)
-- [`local_window_correlation_distribution.csv`](tables/local_window_correlation_distribution.csv)
-- [`multicollinearity_diagnostics.csv`](tables/multicollinearity_diagnostics.csv)
-- [`ridge_stability.csv`](tables/ridge_stability.csv)
-- [`rolling_exposure_summary.csv`](tables/rolling_exposure_summary.csv)
-- [`rolling_tradfi_exposures.csv`](tables/rolling_tradfi_exposures.csv)
+- [`dynamic_tradfi_exposures.csv`](tables/dynamic_tradfi_exposures.csv)
+- [`tradfi_diagnostics.csv`](tables/tradfi_diagnostics.csv)
 
 - [Methodology](methodology.md)
 - [Findings](findings.md)

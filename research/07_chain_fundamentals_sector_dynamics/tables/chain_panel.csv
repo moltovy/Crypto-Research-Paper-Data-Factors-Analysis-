@@ -1,0 +1,3 @@
+feature,coefficient,standard_error_driscoll_kraay,ci_low,ci_high,pvalue,within_r_squared,entities,periods,n,sample_start,sample_end,method
+log_fees_lag1,-0.00283895913380808,0.00185647637013589,-0.00650321898079129,0.000825300713175125,0.128036528919417,0.00464734653492649,4,59,236,2021-06-30,2026-04-30,two-way fixed effects with Driscoll-Kraay covariance
+log_revenue_lag1,-8.88949213237162e-05,0.00155812455785824,-0.00316427651292486,0.00298648667027743,0.954569205039044,-9.07276058059736e-07,4,59,236,2021-06-30,2026-04-30,two-way fixed effects with Driscoll-Kraay covariance

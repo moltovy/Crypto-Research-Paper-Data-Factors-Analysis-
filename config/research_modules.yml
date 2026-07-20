@@ -23,17 +23,9 @@ modules:
   title: Stablecoin and DeFi Liquidity State
   research_question: What do stablecoin supply and DeFi TVL proxies say about liquidity-state associations after unit and valuation audits?
   status: required
-- module_id: 06_onchain_valuation_holder_behavior
-  title: On-Chain Valuation and Holder Behavior
-  research_question: Which on-chain valuation and holder-state measures are diagnostics versus admissible lagged state variables?
-  status: required
 - module_id: 07_chain_fundamentals_sector_dynamics
   title: Chain Fundamentals and Sector Dynamics
   research_question: Which chain-level activity, sector, and point-in-time state measures have enough coverage and definition clarity for descriptive panel analysis?
-  status: required
-- module_id: 08_relative_asset_risk_factor_structure
-  title: Relative Asset Risk and Factor Structure
-  research_question: How do selected crypto assets compare on matched-window risk, downside beta, expected shortfall, and common-versus-idiosyncratic factor structure?
   status: required
 - module_id: 09_event_stress_cross_module_synthesis
   title: Event Stress and Cross-Module Synthesis

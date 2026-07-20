@@ -1,0 +1,9 @@
+{
+  "figure_id": "pit_concentration_turnover",
+  "plot_key": "plot_key",
+  "png": "07_pit_concentration_turnover.png",
+  "rows": 153,
+  "source_csv": "07_pit_concentration_turnover.source.csv",
+  "source_tables": "tables/pit_concentration.csv; tables/pit_membership_transitions.csv",
+  "svg": "07_pit_concentration_turnover.svg"
+}

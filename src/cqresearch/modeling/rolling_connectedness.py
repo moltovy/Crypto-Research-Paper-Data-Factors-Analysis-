@@ -12,15 +12,16 @@ def rolling_fevd_connectedness(
     window: int = 252,
     step: int = 30,
     horizon: int = 10,
+    maxlags: int = 5,
 ) -> pd.DataFrame:
     """Compute rolling Diebold-Yilmaz-style connectedness with stepped windows."""
 
     clean = df.dropna()
     rows: list[dict[str, object]] = []
     for end in range(window - 1, len(clean), step):
-        chunk = clean.iloc[end - window + 1 : end + 1]
+        chunk = clean.iloc[end - window + 1 : end + 1].reset_index(drop=True)
         try:
-            fevd = fit_var_fevd(chunk, horizon=horizon, maxlags=10)
+            fevd = fit_var_fevd(chunk, horizon=horizon, maxlags=maxlags)
             rows.append(
                 {
                     "date": clean.index[end],
@@ -30,6 +31,9 @@ def rolling_fevd_connectedness(
                     "connectedness_pct": connectedness_index(fevd),
                     "lag_order": fevd.lag_order,
                     "n": fevd.n,
+                    "stable": fevd.stable,
+                    "row_sum_max_error": fevd.row_sum_max_error,
+                    "method": fevd.method,
                     "error": "",
                 }
             )
@@ -43,6 +47,9 @@ def rolling_fevd_connectedness(
                     "connectedness_pct": float("nan"),
                     "lag_order": float("nan"),
                     "n": len(chunk),
+                    "stable": False,
+                    "row_sum_max_error": float("nan"),
+                    "method": "Pesaran-Shin generalized FEVD",
                     "error": str(exc),
                 }
             )

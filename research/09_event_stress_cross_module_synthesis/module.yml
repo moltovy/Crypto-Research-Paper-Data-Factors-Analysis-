@@ -32,27 +32,17 @@ sensitivity_dimensions:
 status: built
 canonical_surface: research/09_event_stress_cross_module_synthesis
 tables:
-- claim_inventory.csv
 - claims.csv
-- event_atlas.csv
-- event_inference.csv
+- event_registry.csv
 - event_response_matrix.csv
 - evidence_ledger.csv
-- evidence_map.csv
-- fdr_adjusted_inference.csv
-- local_window_correlation_distribution.csv
-- provider_data_disposition.csv
 - robustness_summary.csv
 figures:
-- 09_evidence_grade_risk_map.png
-- appendix_event_response_matrix.png
-- synthesis_claim_source_depth.png
+- 09_event_atlas_appendix.png
 code:
 - src/cqresearch/research/analytical_modules.py
 tests:
 - tests/unit/test_feature_strength_outputs.py
 - tests/unit/test_visual_outputs.py
 root_readme_candidate_figures:
-- figures/09_evidence_grade_risk_map.png
-- figures/appendix_event_response_matrix.png
-- figures/synthesis_claim_source_depth.png
+- figures/09_event_atlas_appendix.png

@@ -56,19 +56,9 @@ MODULES: tuple[ResearchModule, ...] = (
         "What do stablecoin supply and DeFi TVL proxies say about liquidity-state associations after unit and valuation audits?",
     ),
     ResearchModule(
-        "06_onchain_valuation_holder_behavior",
-        "On-Chain Valuation and Holder Behavior",
-        "Which on-chain valuation and holder-state measures are diagnostics versus admissible lagged state variables?",
-    ),
-    ResearchModule(
         "07_chain_fundamentals_sector_dynamics",
         "Chain Fundamentals and Sector Dynamics",
         "Which chain-level activity, sector, and point-in-time state measures have enough coverage and definition clarity for descriptive panel analysis?",
-    ),
-    ResearchModule(
-        "08_relative_asset_risk_factor_structure",
-        "Relative Asset Risk and Factor Structure",
-        "How do selected crypto assets compare on matched-window risk, downside beta, expected shortfall, and common-versus-idiosyncratic factor structure?",
     ),
     ResearchModule(
         "09_event_stress_cross_module_synthesis",

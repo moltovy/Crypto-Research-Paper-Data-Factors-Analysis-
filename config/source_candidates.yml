@@ -1,0 +1,44 @@
+gate_requirements:
+  - no_account
+  - no_login
+  - no_api_key
+  - no_payment
+  - official_or_first_party
+  - full_history_for_estimand
+  - documented_time_unit_definition
+  - reproducible_access
+  - compatible_terms
+failure_action: reject, record, and narrow or omit the dependent analysis
+candidates:
+  - source_id: binance_vision
+    official_url: https://data.binance.vision/
+    proposed_use: spot and derivatives venue cross-checks
+    fallback: existing local anchor data; omit venue robustness
+  - source_id: cftc_cot_historical
+    official_url: https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm
+    proposed_use: regulated BTC and ETH futures positioning
+    fallback: omit positioning analysis
+  - source_id: sec_edgar
+    official_url: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
+    proposed_use: filing dates and corporate exposure metadata
+    fallback: versioned official filing metadata only or omit exposure-era analysis
+  - source_id: defillama
+    official_url: https://api-docs.defillama.com/
+    proposed_use: chain, stablecoin, and DeFi history
+    fallback: freeze existing local snapshot and narrow claims
+  - source_id: fred_direct_download
+    official_url: https://fred.stlouisfed.org/
+    proposed_use: macro-factor refresh and provenance comparison
+    fallback: freeze existing export and label latest-vintage revision risk
+  - source_id: deribit_public_volatility
+    official_url: https://docs.deribit.com/api-reference/market-data/public-get_volatility_index_data
+    proposed_use: BTC and ETH implied-volatility context
+    fallback: omit implied-volatility and variance-risk-premium work
+  - source_id: coinbase_exchange_candles
+    official_url: https://docs.cdp.coinbase.com/api-reference/exchange-api/rest-api/products/get-product-candles
+    proposed_use: BTC and ETH spot-price cross-check
+    fallback: omit venue cross-check
+  - source_id: official_issuer_downloads
+    official_url: issuer-specific
+    proposed_use: launch-to-cutoff ETF holdings, shares, and AUM
+    fallback: Farside flows only; no AUM or holdings claim

@@ -11,19 +11,13 @@ This module replaces the former BTC/ETH returns-regime scaffold with a multi-ass
 
 ## Data, Assets, and Sample
 
-| artifact                                   |   rows | sample                             | coverage rule                                |
-|:-------------------------------------------|-------:|:-----------------------------------|:---------------------------------------------|
-| tables/asset_return_coverage.csv           |     18 | 2020-01-03 to 2026-06-16, n=18     | module-specific matched sample               |
-| tables/lower_tail_coexceedance_matrix.csv  |     10 | rows=10                            | module-specific matched sample               |
-| tables/multi_asset_descriptive_stats.csv   |     10 | 2023-01-01 to 2026-06-16, n=10     | module-specific matched sample               |
-| tables/partial_correlation_btc_control.csv |     36 | rows=36                            | module-specific matched sample               |
-| tables/pca_common_factor_loadings.csv      |     10 | rows=10                            | matched current-cohort selected-major window |
-| tables/pca_scores.csv                      |    563 | 2024-11-30 to 2026-06-16, rows=563 | module-specific matched sample               |
-| tables/pca_variance_share.csv              |     10 | 2024-11-30 to 2026-06-16, n=10     | module-specific matched sample               |
-| tables/pearson_correlation_matrix.csv      |     18 | rows=18                            | module-specific matched sample               |
-| tables/regime_correlation_difference.csv   |     10 | rows=10                            | module-specific matched sample               |
-| tables/rolling_dependence_summary.csv      |      9 | 2025-05-28 to 2026-06-16, n=9      | module-specific matched sample               |
-| tables/spearman_correlation_matrix.csv     |     18 | rows=18                            | module-specific matched sample               |
+| artifact                             |   rows | sample                                   | coverage rule                                |
+|:-------------------------------------|-------:|:-----------------------------------------|:---------------------------------------------|
+| tables/asset_return_coverage.csv     |     14 | 2021-01-02 to 2026-06-30, result rows=14 | module-specific matched sample               |
+| tables/common_factor_overview.csv    |     14 | 2021-01-02 to 2026-06-30, n=2006         | matched current-cohort selected-major window |
+| tables/common_factor_results.csv     |     14 | 2021-01-02 to 2026-06-30, n=2006         | matched current-cohort selected-major window |
+| tables/relative_risk_diagnostics.csv |     14 | 2021-01-02 to 2026-06-30, n=2006         | module-specific matched sample               |
+| tables/tail_dependence.csv           |    546 | 2021-01-02 to 2026-06-30, n=2006         | module-specific matched sample               |
 
 ## Methodologies and Calculations
 
@@ -43,24 +37,15 @@ $\text{co-exceed}_{ij}=N^{-1}\sum_t 1[r_{i,t}\le q_i(0.05), r_{j,t}\le q_j(0.05)
 
 ## Summary of Results
 
-| finding                             | estimate                       | interval                                | N/sample                        | interpretation                                                                | sensitivity                                                                   |
-|:------------------------------------|:-------------------------------|:----------------------------------------|:--------------------------------|:------------------------------------------------------------------------------|:------------------------------------------------------------------------------|
-| Matched selected-major crypto panel | 10 assets; PC1 explains 65.1%  | descriptive PCA, no confidence interval | 2024-11-30 to 2026-06-16, n=563 | A common crypto factor dominates matched-window variation.                    | Pearson, Spearman, BTC-control partial correlations, lower-tail co-exceedance |
-| Lower-tail dependence               | median pair co-exceedance 2.6% | empirical bottom-5% thresholds          | 2024-11-30 to 2026-06-16, n=563 | Tail co-movement is reported as joint stress frequency, not a causal channel. | threshold can be varied in source table construction                          |
+| finding                                    | estimate                           | interval                                                                    | N/sample                         | interpretation                                       | sensitivity                                                |
+|:-------------------------------------------|:-----------------------------------|:----------------------------------------------------------------------------|:---------------------------------|:-----------------------------------------------------|:-----------------------------------------------------------|
+| Common variation and lower-tail dependence | PC1=66.0%; median q=5% excess=2.8% | HAC factor-beta intervals and 2,000-replication moving-block tail intervals | 2021-01-02 to 2026-06-30, n=2006 | Dependence is broad but heterogeneous across assets. | Tail thresholds 1%, 2.5%, 5%, 10%; block lengths 5, 10, 20 |
 
 ## Analytical Results and Visualizations
 
-![01 Common Factor Pca Loadings](figures/01_common_factor_pca_loadings.png)
+![01 Common Factor Tail Dependence](figures/01_common_factor_tail_dependence.png)
 
-PC1 loadings summarize the common crypto factor; signs are normalized for readability and have no standalone economic direction.
-
-![01 Cross Asset Clustered Correlation](figures/01_cross_asset_clustered_correlation.png)
-
-The heatmap uses matched daily returns/changes and clusters assets by correlation distance. It is a dependence map, not a forecast or allocation rule.
-
-![01 Regime Correlation Difference](figures/01_regime_correlation_difference.png)
-
-The regime-difference heatmap compares the BTC-ETF era with the earlier sample on the same selected-major assets where coverage overlaps.
+Panel A excludes each target from its own factor. Panel B compares BTC pair co-exceedance with the q-squared independence benchmark using moving-block intervals.
 
 ## Robustness and Sensitivity
 
@@ -86,16 +71,10 @@ uv run python scripts/check_research_surface.py --module 01_cross_asset_dependen
 
 - [`asset_return_coverage.csv`](tables/asset_return_coverage.csv)
 - [`claims.csv`](tables/claims.csv)
-- [`lower_tail_coexceedance_matrix.csv`](tables/lower_tail_coexceedance_matrix.csv)
-- [`multi_asset_descriptive_stats.csv`](tables/multi_asset_descriptive_stats.csv)
-- [`partial_correlation_btc_control.csv`](tables/partial_correlation_btc_control.csv)
-- [`pca_common_factor_loadings.csv`](tables/pca_common_factor_loadings.csv)
-- [`pca_scores.csv`](tables/pca_scores.csv)
-- [`pca_variance_share.csv`](tables/pca_variance_share.csv)
-- [`pearson_correlation_matrix.csv`](tables/pearson_correlation_matrix.csv)
-- [`regime_correlation_difference.csv`](tables/regime_correlation_difference.csv)
-- [`rolling_dependence_summary.csv`](tables/rolling_dependence_summary.csv)
-- [`spearman_correlation_matrix.csv`](tables/spearman_correlation_matrix.csv)
+- [`common_factor_overview.csv`](tables/common_factor_overview.csv)
+- [`common_factor_results.csv`](tables/common_factor_results.csv)
+- [`relative_risk_diagnostics.csv`](tables/relative_risk_diagnostics.csv)
+- [`tail_dependence.csv`](tables/tail_dependence.csv)
 
 - [Methodology](methodology.md)
 - [Findings](findings.md)

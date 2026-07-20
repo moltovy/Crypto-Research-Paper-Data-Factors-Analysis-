@@ -1,0 +1,155 @@
+data_cutoff: '2026-06-30'
+source_families:
+  binance:
+    observation_column: open_time
+    availability_rule: UTC daily kline close; checksum-verified official monthly archive
+    native_calendar: crypto_7
+    timezone: UTC
+  alternativeme:
+    observation_column: date
+    availability_rule: observed UTC date; daily value is descriptive only
+    native_calendar: crypto_7
+    timezone: UTC
+  artemis:
+    observation_column: date
+    availability_rule: provider observation date; no release-time claim
+    native_calendar: crypto_7
+    timezone: UTC
+  cryptoquant:
+    observation_column: date
+    availability_rule: provider daily close; use lagged states for forward outcomes
+    native_calendar: crypto_7
+    timezone: UTC
+  cftc:
+    observation_column: report_date
+    availability_rule: Tuesday positions; Friday availability proxy retained separately
+    native_calendar: weekly_report
+    timezone: America/New_York
+  defillama:
+    observation_column: date
+    availability_rule: provider observation date; revisions and valuation content disclosed
+    native_calendar: crypto_7
+    timezone: UTC
+  farside:
+    observation_column: date
+    availability_rule: reported ETF trading date; contemporaneous timing is unresolved
+    native_calendar: XNYS
+    timezone: America/New_York
+  fred:
+    observation_column: date
+    availability_rule: latest-vintage export; release availability is series-specific
+    native_calendar: XNYS
+    timezone: America/New_York
+  market_structure:
+    observation_column: snapshot_date
+    alternate_observation_columns: [date]
+    period_column: month
+    availability_rule: month-end point-in-time snapshot; partial months are context only
+    native_calendar: month_end
+    timezone: UTC
+  tradingview:
+    observation_column: date
+    availability_rule: native market close; returns are computed before cross-calendar joins
+    native_calendar: source_exchange
+    timezone: exchange_local
+
+logical_series:
+  - series_id: binance_stable_core_spot
+    provider: Binance Vision
+    raw_field: daily OHLCV for the fixed PIT-eligible symbol allowlist
+    unit: USDT quote per base asset
+    frequency: daily
+    observation_time: UTC kline open date
+    availability_time: after UTC daily close
+    valid_start: '2021-01-01'
+    missing_policy: preserve missing; require at least 95 percent coverage for S2
+  - series_id: btc_spot_close
+    provider: CryptoQuant
+    raw_field: close
+    unit: USD per BTC
+    frequency: daily
+    observation_time: UTC provider day
+    availability_time: after provider daily close
+    valid_start: '2010-07-18'
+    missing_policy: preserve missing; never zero-fill
+  - series_id: cftc_crypto_financial_futures
+    provider: CFTC Traders in Financial Futures
+    raw_field: contract-level open interest and trader-category positions
+    unit: contracts and share of contract open interest
+    frequency: weekly
+    observation_time: Tuesday report date
+    availability_time: Friday availability proxy; exact publication timestamp not retained
+    valid_start: '2017-12-19'
+    missing_policy: preserve missing contracts and weeks; do not aggregate standard and micro contracts
+  - series_id: eth_spot_close
+    provider: CryptoQuant
+    raw_field: close
+    unit: USD per ETH
+    frequency: daily
+    observation_time: UTC provider day
+    availability_time: after provider daily close
+    valid_start: '2015-08-07'
+    missing_policy: preserve missing; never zero-fill
+  - series_id: tradfi_close_panel
+    provider: TradingView
+    raw_field: close
+    unit: instrument-native price/index level
+    frequency: exchange session
+    observation_time: native market close
+    availability_time: same session after close
+    valid_start: '2020-01-01'
+    missing_policy: preserve missing sessions; compute returns before joins
+  - series_id: fred_macro_panel
+    provider: FRED
+    raw_field: series value
+    unit: series-specific
+    frequency: source-specific business observation
+    observation_time: FRED observation date
+    availability_time: release-specific; latest vintage
+    valid_start: '2020-01-01'
+    missing_policy: preserve missing and disclose vintage risk
+  - series_id: btc_etf_net_flow
+    provider: Farside Investors
+    raw_field: total
+    unit: USD millions per reported trading date
+    frequency: reported ETF trading date
+    observation_time: reported date
+    availability_time: post-close/report publication; exact timing unresolved
+    valid_start: '2024-01-11'
+    missing_policy: non-reporting and pre-inception dates are missing, not zero
+  - series_id: eth_etf_net_flow
+    provider: Farside Investors
+    raw_field: total
+    unit: USD millions per reported trading date
+    frequency: reported ETF trading date
+    observation_time: reported date
+    availability_time: post-close/report publication; exact timing unresolved
+    valid_start: '2024-07-23'
+    missing_policy: non-reporting and pre-inception dates are missing, not zero
+  - series_id: stablecoin_supply
+    provider: DefiLlama
+    raw_field: circulating market capitalization by stablecoin id
+    unit: USD
+    frequency: daily
+    observation_time: UTC date
+    availability_time: provider observation date
+    valid_start: '2020-01-01'
+    missing_policy: sum known constituents with minimum-count guard; preserve absent source rows
+  - series_id: defi_tvl
+    provider: DefiLlama
+    raw_field: TVL
+    unit: USD
+    frequency: daily
+    observation_time: UTC date
+    availability_time: provider observation date
+    valid_start: '2020-01-01'
+    missing_policy: preserve missing; raw USD measure is valuation-sensitive
+  - series_id: market_structure_pit
+    provider: DefiLlama monthly universe
+    raw_field: asset identity, market capitalization, rank
+    unit: USD and rank
+    frequency: monthly point-in-time
+    observation_time: snapshot_date
+    availability_time: snapshot retrieval date
+    valid_start: '2020-01-31'
+    missing_policy: retain unbalanced membership; partial months excluded from primary analysis

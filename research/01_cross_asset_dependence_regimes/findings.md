@@ -1,4 +1,3 @@
 # Findings
 
-- Matched selected-major crypto panel: 10 assets; PC1 explains 65.1% (A common crypto factor dominates matched-window variation.)
-- Lower-tail dependence: median pair co-exceedance 2.6% (Tail co-movement is reported as joint stress frequency, not a causal channel.)
+- Common variation and lower-tail dependence: PC1=66.0%; median q=5% excess=2.8% (Dependence is broad but heterogeneous across assets.)

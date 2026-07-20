@@ -1,39 +1,29 @@
 {
   "artifacts": [
     {
-      "bytes": 78528,
-      "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_chain_metric_coverage.png",
-      "sha256": "99f31333917a5bc7abceeb360c2f6a5d4d320c1cb99862b51c222bc17b100f25"
+      "bytes": 331,
+      "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.metadata.json",
+      "sha256": "41d6dea682561a21a013bd5bc523e0cd02c7b188209ac9406a9e36e41ac8d30a"
     },
     {
-      "bytes": 51053,
-      "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_chain_metric_coverage.svg",
-      "sha256": "9d5f81c2fbaa7da3cd5ce6ff497d32dbc9d95bbb753a42c48fc7f98abcde351b"
+      "bytes": 269026,
+      "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.png",
+      "sha256": "b934354ea9146b323616cabd3cf068e59cf58f06fdebe57114f053967d592cca"
     },
     {
-      "bytes": 100972,
-      "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_state_coefficients.png",
-      "sha256": "64038e52418c9778d12efaf4ede8f847c469b8811f04134c6d6f6bec6469ee9a"
+      "bytes": 24424,
+      "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.source.csv",
+      "sha256": "46dd7db49837408975dd0819739a5f84867d9a49d1f218f14149cdd11f629327"
     },
     {
-      "bytes": 64573,
-      "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_state_coefficients.svg",
-      "sha256": "9756be3c8a16a3aaf7015911dae126613b66c5ea9281ac6a2509665d13387b46"
+      "bytes": 64731,
+      "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.svg",
+      "sha256": "d8d0ba5bf318de5b1d530ee04fd475cdb9362ac62da9f570b11a967b8285135a"
     },
     {
-      "bytes": 78528,
-      "path": "research/07_chain_fundamentals_sector_dynamics/figures/chain_panel_coverage.png",
-      "sha256": "99f31333917a5bc7abceeb360c2f6a5d4d320c1cb99862b51c222bc17b100f25"
-    },
-    {
-      "bytes": 51053,
-      "path": "research/07_chain_fundamentals_sector_dynamics/figures/chain_panel_coverage.svg",
-      "sha256": "9d5f81c2fbaa7da3cd5ce6ff497d32dbc9d95bbb753a42c48fc7f98abcde351b"
-    },
-    {
-      "bytes": 141,
+      "bytes": 264,
       "path": "research/07_chain_fundamentals_sector_dynamics/findings.md",
-      "sha256": "9bda6f23d88d5f7eea91828d817cdbb50b0c5d17c3588f42e8974bdf473b7aaf"
+      "sha256": "44e793393fdf9c45b2d481bdbf5bcd4b023c9c26fc09fbe90bfb3d77fe039f1b"
     },
     {
       "bytes": 164,
@@ -51,64 +41,44 @@
       "sha256": "c8641bc05eb2b389f44d9505126626967970f604652aa76471eea3c2f0e18873"
     },
     {
-      "bytes": 1592,
+      "bytes": 1326,
       "path": "research/07_chain_fundamentals_sector_dynamics/module.yml",
-      "sha256": "85f00bd21d7c91e40fb81c3e6f75727fcca90b982387e2ba32c3e797b83924db"
+      "sha256": "5fce3d807c7aa0c98a1871c05042c02c915b2ec91a9101073a0b17f2a730d685"
     },
     {
-      "bytes": 5752,
+      "bytes": 5047,
       "path": "research/07_chain_fundamentals_sector_dynamics/README.md",
-      "sha256": "f8a494e39b30a51782b2b4cfda89578cf1014458bc6329aefee8a10273cede75"
+      "sha256": "2e08401f89ebccba967cd4964fdde6b359dfbcff4ceb266d078018bbf5ceafae"
     },
     {
-      "bytes": 2121,
-      "path": "research/07_chain_fundamentals_sector_dynamics/tables/asset_identity_audit.csv",
-      "sha256": "d67e747b59db44720f7a258b46ab50dd7834697c2c2caeee339946a650372c93"
+      "bytes": 582,
+      "path": "research/07_chain_fundamentals_sector_dynamics/tables/chain_panel.csv",
+      "sha256": "245a6dc2da3ea2ee14f5afedef8ba6332a81c8b29a8ac0f4b39a108b9a2c9d1d"
     },
     {
-      "bytes": 176,
-      "path": "research/07_chain_fundamentals_sector_dynamics/tables/chain_activity_associations.csv",
-      "sha256": "fabcb6b2fe052e770bc0c5518c9b18fe58e95293b1b9740faa1c5c42ba87b3bf"
+      "bytes": 631,
+      "path": "research/07_chain_fundamentals_sector_dynamics/tables/chain_panel_coverage.csv",
+      "sha256": "ff43cc2716b57630dcaad90f4c1a8759bb7009f2809f41c079ef92ca4a61498f"
     },
     {
-      "bytes": 3912,
-      "path": "research/07_chain_fundamentals_sector_dynamics/tables/chain_fundamental_panel_summary.csv",
-      "sha256": "2fd30e115bd5b57101151d30d7caf264b81fd55b4d07d14645fc84dd4f80e39b"
-    },
-    {
-      "bytes": 1829,
+      "bytes": 2108,
       "path": "research/07_chain_fundamentals_sector_dynamics/tables/claims.csv",
-      "sha256": "43b4e1bc1c25f7827351b4d2f46424a50de6f3dd8c2b3ac16e31a2c2c44aa7a1"
+      "sha256": "48d657b48c59e24eb0618f2c2c6141b7d4367b5910ed6aa2eacb8302fe4c94dc"
     },
     {
-      "bytes": 12504,
+      "bytes": 14825,
       "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_concentration.csv",
-      "sha256": "f67e20689540f4b66cefe0c633328594fc33a7809446d799e4dc03dbfc4a34ab"
+      "sha256": "235555c7038f6040ad4cd66272f6acaa90f8382fabfaf2806b33e277567f5518"
     },
     {
-      "bytes": 1414893,
-      "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_market_structure_monthly.csv",
-      "sha256": "468f72537fcd2969fd5d6d9a4d8ec7a8f16b2e5367b0db50352d9b71ffc5a62a"
+      "bytes": 11195,
+      "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_concentration_decomposition.csv",
+      "sha256": "dee3e8a3eb65ff5dc0122fbf4cfece1a4ca7af59b0ad5188cd2ce39b226e0101"
     },
     {
-      "bytes": 13260,
-      "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_market_structure_summary.csv",
-      "sha256": "d8a192ce392c4cd6dfd797c929af5a33a50d7334e107928e20f6997f643313db"
-    },
-    {
-      "bytes": 751,
-      "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_period_comparison.csv",
-      "sha256": "716e0e70aa4ac8641435a5d3f9abb8afba53093e8a61988dc769e816a22de329"
-    },
-    {
-      "bytes": 1636,
-      "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_state_relationship_coefficients.csv",
-      "sha256": "79cf49e42844a661ed2b8046933c4445a5fec544e0750333bafed6dee3b28acf"
-    },
-    {
-      "bytes": 1375,
-      "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_turnover.csv",
-      "sha256": "fa02aa69e2457c014cee286c922da157d0e6524a2a6a9b6242b4446c561eb645"
+      "bytes": 4092,
+      "path": "research/07_chain_fundamentals_sector_dynamics/tables/pit_membership_transitions.csv",
+      "sha256": "e42513372d894ab5222125b77997cc6afecb3a105bbb7ad990d94bd6d33ee160"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",

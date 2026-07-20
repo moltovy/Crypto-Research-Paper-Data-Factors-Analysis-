@@ -19,7 +19,7 @@ market_trading_daily:
   description: US NYSE trading days. Use for joins that include equity/macro
     daily series (Tradingview, FRED) when the primary return object is on a
     trading-day calendar (e.g. CME futures).
-  frequency: "B"
+  frequency: "XNYS"
   ffill_limit: 0
 
 weekly:

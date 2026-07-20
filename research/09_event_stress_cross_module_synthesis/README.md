@@ -11,18 +11,12 @@ This module combines event-window stress diagnostics with the cross-module evide
 
 ## Data, Assets, and Sample
 
-| artifact                                         |   rows | sample                            | coverage rule                  |
-|:-------------------------------------------------|-------:|:----------------------------------|:-------------------------------|
-| tables/claim_inventory.csv                       |     12 | rows=12                           | module-specific matched sample |
-| tables/event_atlas.csv                           |     10 | 2022-05-09 to 2025-10-10, rows=10 | module-specific matched sample |
-| tables/event_inference.csv                       |     20 | rows=20                           | module-specific matched sample |
-| tables/event_response_matrix.csv                 |     20 | rows=20                           | module-specific matched sample |
-| tables/evidence_ledger.csv                       |     10 | rows=10                           | module-specific matched sample |
-| tables/evidence_map.csv                          |      9 | rows=9                            | module-specific matched sample |
-| tables/fdr_adjusted_inference.csv                |    186 | 2020-01-03 to 2026-04-12, n=186   | module-specific matched sample |
-| tables/local_window_correlation_distribution.csv |      4 | rows=4                            | module-specific matched sample |
-| tables/provider_data_disposition.csv             |      8 | 1947-01-01 to 2024-01-11, rows=8  | module-specific matched sample |
-| tables/robustness_summary.csv                    |      9 | rows=9                            | module-specific matched sample |
+| artifact                         |   rows | sample                                   | coverage rule                  |
+|:---------------------------------|-------:|:-----------------------------------------|:-------------------------------|
+| tables/event_registry.csv        |      8 | 2022-05-09 to 2024-08-05, result rows=8  | module-specific matched sample |
+| tables/event_response_matrix.csv |     48 | 2020-01-02 to 2026-04-14, result rows=48 | module-specific matched sample |
+| tables/evidence_ledger.csv       |      6 | result rows=6                            | module-specific matched sample |
+| tables/robustness_summary.csv    |      6 | result rows=6                            | module-specific matched sample |
 
 ## Methodologies and Calculations
 
@@ -39,23 +33,15 @@ $q$-values and evidence grades are synthesis diagnostics, not causal identificat
 
 ## Summary of Results
 
-| finding                                    | estimate                             | interval                                      | N/sample   | interpretation                                                                                | sensitivity                                              |
-|:-------------------------------------------|:-------------------------------------|:----------------------------------------------|:-----------|:----------------------------------------------------------------------------------------------|:---------------------------------------------------------|
-| Event and cross-module evidence discipline | median eligible placebo windows=2007 | empirical placebo windows and evidence ledger | rows=20    | Event outputs remain appendix/stress diagnostics; synthesis ranks claims by evidence quality. | event window, placebo eligibility, FDR, measurement risk |
+| finding                | estimate                          | interval                                                            | N/sample                                 | interpretation                               | sensitivity                                                            |
+|:-----------------------|:----------------------------------|:--------------------------------------------------------------------|:-----------------------------------------|:---------------------------------------------|:-----------------------------------------------------------------------|
+| Registered event atlas | 8 events and 48 asset-window rows | empirical non-event-window percentile and two-sided placebo p-value | 2020-01-02 to 2026-04-14, result rows=48 | Event responses remain appendix diagnostics. | +1/+5/+10 windows; event-day exclusion; non-overlapping placebo starts |
 
 ## Analytical Results and Visualizations
 
-![09 Evidence Grade Risk Map](figures/09_evidence_grade_risk_map.png)
+![09 Event Atlas Appendix](figures/09_event_atlas_appendix.png)
 
-Evidence-grade counts are crossed with measurement-risk flags to make weak/null findings visible.
-
-![Appendix Event Response Matrix](figures/appendix_event_response_matrix.png)
-
-Event responses are kept in the appendix/gallery role and compared with placebo windows.
-
-![Synthesis Claim Source Depth](figures/synthesis_claim_source_depth.png)
-
-Synthesis summarizes source depth and claim evidence without reducing everything to one score.
+The event atlas shows +1 through +10 cumulative log returns and empirical percentile ranks. It is intentionally outside the root README.
 
 ## Robustness and Sensitivity
 
@@ -79,16 +65,10 @@ uv run python scripts/check_research_surface.py --module 09_event_stress_cross_m
 
 ## Files and Code
 
-- [`claim_inventory.csv`](tables/claim_inventory.csv)
 - [`claims.csv`](tables/claims.csv)
-- [`event_atlas.csv`](tables/event_atlas.csv)
-- [`event_inference.csv`](tables/event_inference.csv)
+- [`event_registry.csv`](tables/event_registry.csv)
 - [`event_response_matrix.csv`](tables/event_response_matrix.csv)
 - [`evidence_ledger.csv`](tables/evidence_ledger.csv)
-- [`evidence_map.csv`](tables/evidence_map.csv)
-- [`fdr_adjusted_inference.csv`](tables/fdr_adjusted_inference.csv)
-- [`local_window_correlation_distribution.csv`](tables/local_window_correlation_distribution.csv)
-- [`provider_data_disposition.csv`](tables/provider_data_disposition.csv)
 - [`robustness_summary.csv`](tables/robustness_summary.csv)
 
 - [Methodology](methodology.md)

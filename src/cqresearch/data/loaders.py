@@ -213,8 +213,8 @@ def load_farside(asset: str) -> LoadResult:
     """Load Farside daily ETF flows for ``asset`` in {"btc", "eth"}.
 
     Numbers are USD millions. NaN values in business days are genuine 'no
-    report' and are left as-is (the calendar aligner treats them as 0 only on
-    weekends/holidays, per the `flow` semantics)."""
+    report' and are left as-is. Calendar alignment never converts them to
+    observed zero flows."""
 
     file = {
         "btc": "farside_btc_etf_flows__daily.csv",

@@ -1,39 +1,29 @@
 {
   "artifacts": [
     {
-      "bytes": 60640,
-      "path": "research/09_event_stress_cross_module_synthesis/figures/09_evidence_grade_risk_map.png",
-      "sha256": "61485e10337c6e230d0eca7e0e9e857e43460d901f1f934ab3770a52d80a40fe"
+      "bytes": 271,
+      "path": "research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.metadata.json",
+      "sha256": "1d5b72d43c02510c10284a638fb547cf88c9bdb9cdb038790bef2fe6d879e6e6"
     },
     {
-      "bytes": 42711,
-      "path": "research/09_event_stress_cross_module_synthesis/figures/09_evidence_grade_risk_map.svg",
-      "sha256": "0210a958626862e3d39a992b59b967fcedba905fb16468c51e098c5c3daa8b60"
+      "bytes": 123910,
+      "path": "research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.png",
+      "sha256": "51024a915a37d26c665df44e0533508eee431c3396d8324f7e9cee63c762adaf"
     },
     {
-      "bytes": 148353,
-      "path": "research/09_event_stress_cross_module_synthesis/figures/appendix_event_response_matrix.png",
-      "sha256": "996c860adadecf53b73c3a03a01f2957dbfd7973a61bd9efe07aa1c68c3e4a3d"
+      "bytes": 3492,
+      "path": "research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.source.csv",
+      "sha256": "f43d84bf5db74e001ea0928a3341ae23960b123e2d0f4df4d4efe3b6f2e3631c"
     },
     {
-      "bytes": 80682,
-      "path": "research/09_event_stress_cross_module_synthesis/figures/appendix_event_response_matrix.svg",
-      "sha256": "f4cdbddde9ebd8b361a4925c2a704d6ab48e1a96a1b7e3f4d9d6ddd38ce8b983"
+      "bytes": 70638,
+      "path": "research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.svg",
+      "sha256": "473025094d47d8a55bbc343f1babf21673257aa40b2c0c7b8b901f55f1311d20"
     },
     {
-      "bytes": 60640,
-      "path": "research/09_event_stress_cross_module_synthesis/figures/synthesis_claim_source_depth.png",
-      "sha256": "61485e10337c6e230d0eca7e0e9e857e43460d901f1f934ab3770a52d80a40fe"
-    },
-    {
-      "bytes": 42711,
-      "path": "research/09_event_stress_cross_module_synthesis/figures/synthesis_claim_source_depth.svg",
-      "sha256": "0210a958626862e3d39a992b59b967fcedba905fb16468c51e098c5c3daa8b60"
-    },
-    {
-      "bytes": 191,
+      "bytes": 119,
       "path": "research/09_event_stress_cross_module_synthesis/findings.md",
-      "sha256": "094932ee6920cf712689a266c2d6099e42422dcf67a56eb9bb11737ac5408d7f"
+      "sha256": "a8584b238985bbfbca7596fbf28f8aaef67551da1409bee238425467a5c492aa"
     },
     {
       "bytes": 148,
@@ -51,69 +41,39 @@
       "sha256": "0520781a06d86c870f6aa19a67cf2663761fd26f78e200d8a3d459df16debc4c"
     },
     {
-      "bytes": 1627,
+      "bytes": 1296,
       "path": "research/09_event_stress_cross_module_synthesis/module.yml",
-      "sha256": "6c1853dc8ec77d3ebb930a2f26ee57d4c685f0e4b8ce60845505767f729fa153"
+      "sha256": "3e3d9f2542c0f2c3db74dd20b398feec9d84403ce72e394d38b25890dba2fc48"
     },
     {
-      "bytes": 5809,
+      "bytes": 4254,
       "path": "research/09_event_stress_cross_module_synthesis/README.md",
-      "sha256": "c3374c36c1bbdfcb0a19ec99ec03d8371438a9ecfeef927e772111e5b078bab9"
+      "sha256": "b0b33c45c16f4b7e06c22a506be850c1feed0e7a873507acddda149c216c5117"
     },
     {
-      "bytes": 4650,
-      "path": "research/09_event_stress_cross_module_synthesis/tables/claim_inventory.csv",
-      "sha256": "d9d2da8ce5db8c61570fe6827d5fb6d82bfb4e713f61e2fc3f9ee882435d64d9"
-    },
-    {
-      "bytes": 1722,
+      "bytes": 1964,
       "path": "research/09_event_stress_cross_module_synthesis/tables/claims.csv",
-      "sha256": "6847a746e76d9ce404d643086efea39f0a0d7bef80e946e33ad643f3228a9a9f"
+      "sha256": "97dbb404847da78b58687e5cd221c74cb33b16248a77defad3e141d7a895c0ed"
     },
     {
-      "bytes": 1476,
-      "path": "research/09_event_stress_cross_module_synthesis/tables/event_atlas.csv",
-      "sha256": "854b53ddcf4c48ffa006f17b7be7576d51dca8d6bc9784afa4ddc83d54834e1d"
+      "bytes": 1809,
+      "path": "research/09_event_stress_cross_module_synthesis/tables/event_registry.csv",
+      "sha256": "f96b280e0b8a45f0ce20abba81d0e3f426e13ece568f4d1f8fc5813a1a482390"
     },
     {
-      "bytes": 4131,
-      "path": "research/09_event_stress_cross_module_synthesis/tables/event_inference.csv",
-      "sha256": "4fe52f80b4a64a6b336547fd1d0500e62f43470a82c41d64328cbc104f7736b5"
-    },
-    {
-      "bytes": 3980,
+      "bytes": 8032,
       "path": "research/09_event_stress_cross_module_synthesis/tables/event_response_matrix.csv",
-      "sha256": "e82cfcfb8c1784cf3c94553c76fa7829b4bfaf8cc41c8f45cf858459f1fc7aa4"
+      "sha256": "767e708bed9545a382073d0f9a797bcbb80db04ce4144e487415b59dc5760965"
     },
     {
-      "bytes": 14774,
+      "bytes": 10649,
       "path": "research/09_event_stress_cross_module_synthesis/tables/evidence_ledger.csv",
-      "sha256": "19ce20eb941ce6398c468f293ceac7634a954059378497221bcaec59752fb561"
+      "sha256": "62fbf0dfe864adaa737819f61bd9cb43f483c8e1612013bf31ee5b2aecfa1b52"
     },
     {
-      "bytes": 1180,
-      "path": "research/09_event_stress_cross_module_synthesis/tables/evidence_map.csv",
-      "sha256": "5588502751b7172f5a626260e9debd47b0e2eaa5c5fea1c0ea90d149cbbb20a1"
-    },
-    {
-      "bytes": 76164,
-      "path": "research/09_event_stress_cross_module_synthesis/tables/fdr_adjusted_inference.csv",
-      "sha256": "381b8436b117ae451812a41b17a63a15fb27e09afd354cfb721f1670c6904a82"
-    },
-    {
-      "bytes": 952,
-      "path": "research/09_event_stress_cross_module_synthesis/tables/local_window_correlation_distribution.csv",
-      "sha256": "a51bfd28da964ea5965ac34d158a0f376f42ca7a53728272a6d040fcb1e955a7"
-    },
-    {
-      "bytes": 1162,
-      "path": "research/09_event_stress_cross_module_synthesis/tables/provider_data_disposition.csv",
-      "sha256": "929b6cba48612a003c18b25ed2b873a2aa0a4270448df05774cfdc5418fc9a98"
-    },
-    {
-      "bytes": 699,
+      "bytes": 371,
       "path": "research/09_event_stress_cross_module_synthesis/tables/robustness_summary.csv",
-      "sha256": "1e01035a84ac310f2d617818adc8e574063206330859b9dde714b668cd8d7562"
+      "sha256": "7486119f375bd7821986f94ab0811610b74baa02132c10cbd132517fc2cec972"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",

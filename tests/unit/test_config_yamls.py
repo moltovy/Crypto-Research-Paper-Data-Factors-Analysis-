@@ -37,6 +37,16 @@ def test_events_yml_has_primary_breaks() -> None:
     assert "btc_spot_etf_launch" in ids
     assert "eth_spot_etf_launch" in ids
     assert "bitcoin_halving_2024" in ids
+    events = [*data["primary_breaks"], *data["secondary_candidates"]]
+    assert all(event["source_url"].startswith("https://") for event in events)
+    assert all(str(event["source_retrieved_at"]) == "2026-07-19" for event in events)
+
+
+def test_every_feature_has_a_declared_unit() -> None:
+    registry = _load(CONFIG_DIR / "feature_registry.yml")["features"]
+    units = _load(CONFIG_DIR / "feature_units.yml")["units"]
+    assert {item["feature_id"] for item in registry} == set(units)
+    assert all(str(unit).strip() for unit in units.values())
 
 
 def test_chain_taxonomy_blocks_summing_l1_and_l2() -> None:
@@ -51,7 +61,7 @@ def test_curation_snapshots_is_parsable() -> None:
     assert "validate" in data
 
 
-def test_research_modules_yml_declares_final_ten_modules() -> None:
+def test_research_modules_yml_declares_retained_modules() -> None:
     data = _load(CONFIG_DIR / "research_modules.yml")
     modules = data["modules"]
     assert [item["module_id"] for item in modules] == [
@@ -61,8 +71,6 @@ def test_research_modules_yml_declares_final_ten_modules() -> None:
         "03_derivatives_leverage_liquidations",
         "04_etf_institutional_flows",
         "05_stablecoin_defi_liquidity",
-        "06_onchain_valuation_holder_behavior",
         "07_chain_fundamentals_sector_dynamics",
-        "08_relative_asset_risk_factor_structure",
         "09_event_stress_cross_module_synthesis",
     ]

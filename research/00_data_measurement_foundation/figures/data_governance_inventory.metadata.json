@@ -1,0 +1,10 @@
+{
+  "plot_key": "data_governance_inventory",
+  "rows": 17,
+  "sample": "local raw-object inventory and canonical feature registry",
+  "source_tables": [
+    "tables/provider_inventory.csv",
+    "tables/feature_usage_matrix.csv"
+  ],
+  "units": "raw files and features"
+}

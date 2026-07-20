@@ -1,133 +1,118 @@
 figures:
-- figure_id: cross_asset_dependence_regimes
-  filename: research/01_cross_asset_dependence_regimes/figures/01_cross_asset_clustered_correlation.png
+- figure_id: common_factor_tail_dependence
+  filename: research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.png
+  root_order: 1
   status: public
-  research_question: How broad is realized crypto and macro dependence across matched assets?
-  source_tables: research/01_cross_asset_dependence_regimes/tables/pearson_correlation_matrix.csv; research/01_cross_asset_dependence_regimes/tables/pca_variance_share.csv
-  chart_type: clustered_correlation_heatmap
-  units: daily return/change correlations
-  caption: Common crypto dependence is broad on the matched selected-major panel.
-  caveat: Current-cohort selected-major daily data is survivorship-biased.
+  research_question: How broad are common variation and lower-tail co-exceedance within the fixed S2 crypto core?
+  source_tables: research/01_cross_asset_dependence_regimes/tables/common_factor_results.csv; research/01_cross_asset_dependence_regimes/tables/tail_dependence.csv
+  chart_type: leave_one_out_factor_and_tail_forest
+  units: variance share and excess joint probability
+  sample: S2 fixed stable core, 2021-01-02 through 2026-06-30, n=2006 matched returns
+  caption: Common variation is broad, and BTC lower-tail co-exceedance is above its independence benchmark for the shown pairs.
+  caveat: Fixed PIT-eligible membership supports within-sample dependence statements, not forecasts, causal transmission, or investability claims.
   svg_required: true
-  readme_section: selected-analytical-results
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: tradfi_exposure_shift
-  filename: research/02_macro_tradfi_integration/figures/02_tradfi_exposure_shift.png
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme
+- figure_id: dynamic_tradfi_integration
+  filename: research/02_macro_tradfi_integration/figures/02_dynamic_tradfi_integration.png
+  root_order: 2
   status: public
-  research_question: How did equity co-movement change across periods?
-  source_tables: research/02_macro_tradfi_integration/tables/block_delta_r2.csv; research/02_macro_tradfi_integration/tables/rolling_tradfi_exposures.csv
-  chart_type: coefficient_and_block_contribution
-  units: delta R-squared and rolling exposure summaries
-  caption: Later-sample equity co-movement is higher for BTC and ETH.
-  caveat: Period comparison, not ETF-effect identification.
+  research_question: How do conditional crypto-equity exposures vary over time and across a predeclared era split?
+  source_tables: research/02_macro_tradfi_integration/tables/dynamic_tradfi_exposures.csv; research/02_macro_tradfi_integration/tables/break_tests.csv
+  chart_type: rolling_exposure_and_interaction_forest
+  units: conditional QQQ beta
+  sample: XNYS-aligned BTC/ETH and TradFi observations, 2020-01-03 through 2026-04-14, n=1577
+  caption: Conditional QQQ exposure varies over time, while formal ETF-era interaction estimates are weak.
+  caveat: Contemporaneous period comparisons do not identify ETF effects or causal transmission.
   svg_required: true
-  readme_section: selected-analytical-results
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: leverage_tail_stress
-  filename: research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_stress.png
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme
+- figure_id: institutional_market_plumbing
+  filename: research/04_etf_institutional_flows/figures/04_institutional_market_plumbing.png
+  root_order: 3
   status: public
-  research_question: Where do lagged leverage states show up in tail stress?
-  source_tables: research/03_derivatives_leverage_liquidations/tables/leverage_tail_risk_summary.csv; research/03_derivatives_leverage_liquidations/tables/tail_risk_models.csv
-  chart_type: state_conditioned_tail_risk
-  units: tail-day rates and volatility
-  caption: Leverage states are stress diagnostics.
-  caveat: No liquidation initiation-cause claim.
+  research_question: How do ETF flow-intensity lag associations and regulated-futures positioning line up with market outcomes?
+  source_tables: research/04_etf_institutional_flows/tables/etf_distributed_lags.csv; research/04_etf_institutional_flows/tables/institutional_positioning_eras.csv
+  chart_type: simultaneous_lag_forest_and_positioning_eras
+  units: return coefficient per flow-intensity basis point and net share of open interest
+  sample: Actual BTC/ETH ETF report dates through 2026-04-10 and CFTC standard contracts through 2026-06-30
+  caption: ETF lag evidence is mostly weak under simultaneous bands; CFTC positioning provides separate weekly context.
+  caveat: Reporting-time uncertainty and simultaneity prevent a price-impact interpretation.
   svg_required: true
-  readme_section: selected-analytical-results
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: etf_lag_response
-  filename: research/04_etf_institutional_flows/figures/04_etf_lag_response.png
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme
+- figure_id: leverage_tail_connectedness
+  filename: research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_connectedness.png
+  root_order: 4
   status: public
-  research_question: How do ETF flow-return associations vary over lags 0-5?
-  source_tables: research/04_etf_institutional_flows/tables/etf_lag_response.csv; research/04_etf_institutional_flows/tables/etf_pre_inception_plot_audit.csv
-  chart_type: lag_response_with_bootstrap_interval
-  units: correlation and bootstrap interval
-  caption: ETF flow intensity is reported as a lag-response market-plumbing diagnostic.
-  caveat: Timing and simultaneity limit interpretation.
+  research_question: How do lagged leverage states coincide with conditional tail stress and cross-asset connectedness?
+  source_tables: research/03_derivatives_leverage_liquidations/tables/leverage_tail_model.csv; research/03_derivatives_leverage_liquidations/tables/connectedness.csv
+  chart_type: spline_marginal_association_and_generalized_fevd
+  units: conditional probability and connectedness percent
+  sample: BTC state model, 2020-02-01 through 2026-04-12; S2 connectedness from 2021
+  caption: Tail probabilities vary nonlinearly over observed leverage support, while stable-core connectedness changes through time.
+  caveat: These are stress-state associations, not forecasts, trading signals, or liquidation-cause estimates.
   svg_required: true
-  readme_section: selected-analytical-results
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: relative_asset_factor_structure
-  filename: research/08_relative_asset_risk_factor_structure/figures/08_common_idiosyncratic_risk_decomposition.png
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme
+- figure_id: pit_concentration_turnover
+  filename: research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.png
+  root_order: 5
   status: public
-  research_question: How much selected-major risk is common crypto factor versus idiosyncratic?
-  source_tables: research/08_relative_asset_risk_factor_structure/tables/relative_factor_decomposition.csv; research/08_relative_asset_risk_factor_structure/tables/downside_expected_shortfall.csv
-  chart_type: common_idiosyncratic_risk_decomposition
-  units: variance share
-  caption: Selected-major matched-window risk separates common and idiosyncratic components.
-  caveat: Current-cohort and short-history caveats limit historical interpretation.
+  research_question: How did point-in-time effective breadth and top-100 membership turnover change?
+  source_tables: research/07_chain_fundamentals_sector_dynamics/tables/pit_concentration.csv; research/07_chain_fundamentals_sector_dynamics/tables/pit_membership_transitions.csv
+  chart_type: effective_breadth_and_membership_turnover
+  units: entropy-implied asset count and monthly turnover rate
+  sample: Complete monthly PIT top-100 snapshots, January 2020 through May 2026
+  caption: Effective market breadth and constituent turnover changed materially across complete monthly snapshots.
+  caveat: Monthly PIT evidence supports market-structure statements only, not daily historical constituent performance.
   svg_required: true
-  readme_section: selected-analytical-results
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme
 - figure_id: data_governance_inventory
   filename: research/00_data_measurement_foundation/figures/data_governance_inventory.png
+  root_order: 90
   status: module
   research_question: Which local provider and feature dispositions govern public claims?
   source_tables: research/00_data_measurement_foundation/tables/provider_inventory.csv; research/00_data_measurement_foundation/tables/feature_usage_matrix.csv
   chart_type: governance_inventory_bar
   units: counts
+  sample: Local-only provider inventory frozen at 2026-06-30
   caption: Provider and feature dispositions define release and measurement boundaries.
   caveat: Release-risk labels are not legal permission.
   svg_required: true
-  readme_section: module
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: liquidity_state_correlations
-  filename: research/05_stablecoin_defi_liquidity/figures/liquidity_state_correlations.png
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme
+- figure_id: coverage_missingness_by_block
+  filename: research/00_data_measurement_foundation/figures/coverage_missingness_by_block.png
+  root_order: 89
   status: module
-  research_question: Which liquidity-state correlations are most valuation-sensitive?
-  source_tables: research/05_stablecoin_defi_liquidity/tables/liquidity_associations.csv; research/05_stablecoin_defi_liquidity/tables/valuation_contamination_audit.csv
-  chart_type: state_correlation_with_measurement_risk
-  units: weekly correlations
-  caption: Liquidity-state correlations are strongest where USD TVL has valuation content.
-  caveat: Endogenous state proxy, not liquidity-shock evidence.
+  research_question: How do valid daily observations and missingness differ across registered data blocks?
+  source_tables: research/00_data_measurement_foundation/tables/coverage_missingness.csv
+  chart_type: coverage_and_missingness_bar
+  units: observation counts and missing share
+  sample: Contract-valid source coverage frozen at 2026-06-30
+  caption: Coverage differs across source blocks because their valid starts and native calendars differ.
+  caveat: Missingness is evaluated against each source contract rather than a universal daily calendar.
   svg_required: true
-  readme_section: module
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: measurement_mvrv_mechanics
-  filename: research/06_onchain_valuation_holder_behavior/figures/measurement_mvrv_mechanics.png
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme
+- figure_id: liquidity_measurement_diagnostics
+  filename: research/05_stablecoin_defi_liquidity/figures/05_liquidity_measurement_diagnostics.png
+  root_order: 91
   status: appendix
-  research_question: How mechanical is same-day MVRV relative to BTC returns?
-  source_tables: research/06_onchain_valuation_holder_behavior/tables/mvrv_mechanical_link_audit.csv; research/06_onchain_valuation_holder_behavior/tables/mvrv_identity_points.csv
-  chart_type: measurement_decomposition
-  units: log returns and next-week state means
-  caption: MVRV same-day mechanics are a measurement warning.
-  caveat: Same-day MVRV is not an independent primary factor.
+  research_question: What remains after price-adjusting USD TVL growth, and how mechanical is same-day MVRV?
+  source_tables: research/05_stablecoin_defi_liquidity/tables/liquidity_state.csv; research/05_stablecoin_defi_liquidity/tables/measurement_mechanics.csv
+  chart_type: residual_state_and_measurement_warning
+  units: rolling z-score and correlation
+  sample: Daily BTC/ETH liquidity and measurement panel through 2026-04-14
+  caption: The liquidity residual is endogenous, and MVRV mechanics remain an appendix warning.
+  caveat: Raw USD TVL is valuation-sensitive and same-day MVRV is not an independent factor.
   svg_required: true
-  readme_section: appendix
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: chain_panel_coverage
-  filename: research/07_chain_fundamentals_sector_dynamics/figures/chain_panel_coverage.png
-  status: module
-  research_question: Which chains have enough metric-family coverage for descriptive panel work?
-  source_tables: research/07_chain_fundamentals_sector_dynamics/tables/chain_fundamental_panel_summary.csv
-  chart_type: coverage_readiness_bar
-  units: adequate metric families and median observations
-  caption: Chain-fundamental evidence is coverage-first.
-  caveat: Coverage does not establish a relationship claim.
-  svg_required: true
-  readme_section: module
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: appendix_event_response_matrix
-  filename: research/09_event_stress_cross_module_synthesis/figures/appendix_event_response_matrix.png
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme
+- figure_id: event_atlas_appendix
+  filename: research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.png
+  root_order: 92
   status: appendix
-  research_question: How do registered event windows compare across BTC and ETH?
-  source_tables: research/09_event_stress_cross_module_synthesis/tables/event_response_matrix.csv; research/09_event_stress_cross_module_synthesis/tables/event_inference.csv
-  chart_type: event_placebo_response
-  units: +1 to +10 event-window returns
-  caption: Event responses remain appendix sensitivity diagnostics.
-  caveat: No event-causal identification.
+  research_question: How do registered post-event windows vary across BTC and ETH?
+  source_tables: research/09_event_stress_cross_module_synthesis/tables/event_response_matrix.csv
+  chart_type: event_response_heatmap
+  units: cumulative log return
+  sample: Registered events within the valid 2020-2026 BTC/ETH panel
+  caption: Event responses are retained as appendix sensitivity evidence.
+  caveat: Event windows are not an identification design.
   svg_required: true
-  readme_section: appendix
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
-- figure_id: synthesis_claim_source_depth
-  filename: research/09_event_stress_cross_module_synthesis/figures/synthesis_claim_source_depth.png
-  status: module
-  research_question: How much claim and source-table evidence does each module contribute?
-  source_tables: research/09_event_stress_cross_module_synthesis/tables/evidence_ledger.csv; research/09_event_stress_cross_module_synthesis/tables/robustness_summary.csv; research/09_event_stress_cross_module_synthesis/tables/claim_inventory.csv
-  chart_type: grouped_evidence_depth_bar
-  units: claim and source-table counts
-  caption: Synthesis keeps claim counts and source depth visible.
-  caveat: Evidence depth is not a single quality score.
-  svg_required: true
-  readme_section: module
-  visual_qa_status: pass_local_png_full_and_readme_width_svg_xml
+  visual_qa_status: pass_2026-07-19_full_size_thumbnail_svg_readme

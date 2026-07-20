@@ -1,0 +1,2 @@
+analysis,status,reason,fallback
+corporate_exposure_eras,not_run,SEC EDGAR eligibility probe returned HTTP 403 for official anonymous endpoints,no corporate holdings or exposure-era claim

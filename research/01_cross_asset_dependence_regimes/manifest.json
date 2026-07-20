@@ -1,39 +1,29 @@
 {
   "artifacts": [
     {
-      "bytes": 85450,
-      "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_pca_loadings.png",
-      "sha256": "91d715444a0361b1ef93b005d3a11bfcfb8b40c6691169d6dc9105e3648dc02a"
+      "bytes": 335,
+      "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.metadata.json",
+      "sha256": "bcf98dc0a45626ed636c96139e9d01d9f866d93ce3e08a8e65eb1647f2e32a5a"
     },
     {
-      "bytes": 61740,
-      "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_pca_loadings.svg",
-      "sha256": "ccfb4227db70db9ae81fdd8e4ea799303dc62d44fb6c9bd053af9fa662f50bd9"
+      "bytes": 165637,
+      "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.png",
+      "sha256": "0204b9c39913750250b43e3863545a6a44e0cb981f21d4639fc05e6bfa859b4a"
     },
     {
-      "bytes": 117680,
-      "path": "research/01_cross_asset_dependence_regimes/figures/01_cross_asset_clustered_correlation.png",
-      "sha256": "46236392d9733e7aa2a842a39f26bfe8452569ff985a4c32b1fa970bea638876"
+      "bytes": 7325,
+      "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.source.csv",
+      "sha256": "0ef38c50bc7f2c3e795eaf152db345efd06e55a689d50e992449106f942fbb1e"
     },
     {
-      "bytes": 124320,
-      "path": "research/01_cross_asset_dependence_regimes/figures/01_cross_asset_clustered_correlation.svg",
-      "sha256": "d458e869c09313aca4645a2b806ebf6dfff5bc3a3d373ed7fb1086535ee7964c"
+      "bytes": 87800,
+      "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.svg",
+      "sha256": "c4bab2fc72eaea26c5d96574e7ee47b1de5a529008a7333cd03e12cccc05f26a"
     },
     {
-      "bytes": 74490,
-      "path": "research/01_cross_asset_dependence_regimes/figures/01_regime_correlation_difference.png",
-      "sha256": "d91dc8ebe91d6468bfdf7d5b0d47973706f2a6a77b97a81297d1460d9bf14bbc"
-    },
-    {
-      "bytes": 71002,
-      "path": "research/01_cross_asset_dependence_regimes/figures/01_regime_correlation_difference.svg",
-      "sha256": "928053513356181df016c39685270bbd4822edd66ee8de84ff20dd84620c9cef"
-    },
-    {
-      "bytes": 278,
+      "bytes": 148,
       "path": "research/01_cross_asset_dependence_regimes/findings.md",
-      "sha256": "32240274dd44fef2e6bed5a7f0320bb17bf049f78e372eac6a293a28c6cc67e2"
+      "sha256": "bead698b0a91c62a5d984d3c2da006ceac60cafacf416aaf0dcf4cc4e309de7f"
     },
     {
       "bytes": 164,
@@ -51,74 +41,44 @@
       "sha256": "3cbb04b585f03b79ada55c58bd646cfb9d81ba2fafd076896d5c2c1de1953b6d"
     },
     {
-      "bytes": 1727,
+      "bytes": 1342,
       "path": "research/01_cross_asset_dependence_regimes/module.yml",
-      "sha256": "e2f78e44a2a01e2f9bea5e3e19aa4a80c3341952f4305c8c3aa9ffe3cac0f204"
+      "sha256": "ef026bcc6df5d29e871bac23e14a1c04934c5a9a3294894e49041749b3aaa21f"
     },
     {
-      "bytes": 7218,
+      "bytes": 5173,
       "path": "research/01_cross_asset_dependence_regimes/README.md",
-      "sha256": "e163b1212edbf7f3ceb59a7632cb9e24f010c44d7477f1ddc7d3e7dc2bb87745"
+      "sha256": "54452febe752af9800b59d629755b18faa9878f42e3defccdaecff4782e46a25"
     },
     {
-      "bytes": 1588,
+      "bytes": 1219,
       "path": "research/01_cross_asset_dependence_regimes/tables/asset_return_coverage.csv",
-      "sha256": "37ceab2cac04bf6a5bd2ed41a7fe9965c1951fb3095529d4a12559637e6faec9"
+      "sha256": "b71b6234fe7e9ebe12826082896ab080fc488339ff8cbffc3bd4c278bdaa6126"
     },
     {
-      "bytes": 1747,
+      "bytes": 1944,
       "path": "research/01_cross_asset_dependence_regimes/tables/claims.csv",
-      "sha256": "f343ef8ea44679786e4a1d308a15e484b3f026896f7e3b04b8752c2516394ae7"
+      "sha256": "cb59d4e6430fecc3fb0c3294ec1e92b3a0aa7441698a4c97b4d5cb20ce2b1f92"
     },
     {
-      "bytes": 1970,
-      "path": "research/01_cross_asset_dependence_regimes/tables/lower_tail_coexceedance_matrix.csv",
-      "sha256": "fb0bde214270177db8850396003113a5befdfec9c09e0272a03112a7f6bae79d"
+      "bytes": 2318,
+      "path": "research/01_cross_asset_dependence_regimes/tables/common_factor_overview.csv",
+      "sha256": "054b78b1d0a4ef6b385f8e9aaab763786550d93bcb3a121c4e57478cdfbb2920"
     },
     {
-      "bytes": 1564,
-      "path": "research/01_cross_asset_dependence_regimes/tables/multi_asset_descriptive_stats.csv",
-      "sha256": "288228a34f9af627f6e7acd182633407917ae11ad3d6300a277d6f249477f027"
+      "bytes": 3985,
+      "path": "research/01_cross_asset_dependence_regimes/tables/common_factor_results.csv",
+      "sha256": "11c38585e6432733bcbae40f77c376ddcaa8aea3ed99f0dd83b5584873ec89b6"
     },
     {
-      "bytes": 1750,
-      "path": "research/01_cross_asset_dependence_regimes/tables/partial_correlation_btc_control.csv",
-      "sha256": "0820d159a2a1dad56a57b42ffed77a535daf54ba030219544d430a2293b4904c"
+      "bytes": 1838,
+      "path": "research/01_cross_asset_dependence_regimes/tables/relative_risk_diagnostics.csv",
+      "sha256": "0cfbcce179a41314570bd4e1d7b6c534fdabb0f926d04c74ebbfa4cd6982826a"
     },
     {
-      "bytes": 1954,
-      "path": "research/01_cross_asset_dependence_regimes/tables/pca_common_factor_loadings.csv",
-      "sha256": "3a18b7b7f6d3f18a34d8bc2f8ae80c16953f2674fd42f9e37db95a95eef2c5ee"
-    },
-    {
-      "bytes": 36951,
-      "path": "research/01_cross_asset_dependence_regimes/tables/pca_scores.csv",
-      "sha256": "22402d26b0b1ba42052e952673714f7b73f6e47c19bba6b1161d440e571e31be"
-    },
-    {
-      "bytes": 729,
-      "path": "research/01_cross_asset_dependence_regimes/tables/pca_variance_share.csv",
-      "sha256": "f7ff7b9e75a389edf6d26791802c088502f5d9b59697ee8dd5e01241e4182dc8"
-    },
-    {
-      "bytes": 5888,
-      "path": "research/01_cross_asset_dependence_regimes/tables/pearson_correlation_matrix.csv",
-      "sha256": "b8ee7dbe6c78e413f08896fa5eb9c9b7ca0db41ddd03022c603a64cb04b6af00"
-    },
-    {
-      "bytes": 1453,
-      "path": "research/01_cross_asset_dependence_regimes/tables/regime_correlation_difference.csv",
-      "sha256": "58f4474f35814c99f206af3c6872a0e8087d4e3105cd80c04750c6e622b08172"
-    },
-    {
-      "bytes": 942,
-      "path": "research/01_cross_asset_dependence_regimes/tables/rolling_dependence_summary.csv",
-      "sha256": "9f95171a92c7d4260d8a5795b76522b4061d42d912d3e03ab2bb32a6add6adf7"
-    },
-    {
-      "bytes": 5912,
-      "path": "research/01_cross_asset_dependence_regimes/tables/spearman_correlation_matrix.csv",
-      "sha256": "d9098a4ec38be142e1a437db402bc6a71847461fb45ccb06bec23a625ea4cd13"
+      "bytes": 84525,
+      "path": "research/01_cross_asset_dependence_regimes/tables/tail_dependence.csv",
+      "sha256": "6fb4ee87a3fd84b9e09ce4158d8471501ef6a4048ae606630bbd99ab54f331e3"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",

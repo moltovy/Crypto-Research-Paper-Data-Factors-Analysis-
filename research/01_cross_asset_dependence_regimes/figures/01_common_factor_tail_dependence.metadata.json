@@ -1,0 +1,9 @@
+{
+  "figure_id": "common_factor_tail_dependence",
+  "plot_key": "plot_key",
+  "png": "01_common_factor_tail_dependence.png",
+  "rows": 27,
+  "source_csv": "01_common_factor_tail_dependence.source.csv",
+  "source_tables": "tables/common_factor_results.csv; tables/tail_dependence.csv",
+  "svg": "01_common_factor_tail_dependence.svg"
+}

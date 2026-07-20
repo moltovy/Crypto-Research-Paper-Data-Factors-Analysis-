@@ -1,39 +1,29 @@
 {
   "artifacts": [
     {
-      "bytes": 78776,
-      "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_state_surface.png",
-      "sha256": "e0c5097242945f4479351e1e04e7382e08eeff7f31b4ecba691a0329fbd77802"
+      "bytes": 324,
+      "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_connectedness.metadata.json",
+      "sha256": "3ae8f63cac948179539abeb3bb4540461fb3b4bb414937bab9b7256b21bf57da"
     },
     {
-      "bytes": 51282,
-      "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_state_surface.svg",
-      "sha256": "358c6f6202a336f406036e2f228df66fd9cca0050f3b987f2dde3ceedc555dfa"
+      "bytes": 261530,
+      "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_connectedness.png",
+      "sha256": "a5c2511861d4c15d25153f5fc2d1a6a9d97812807c3983e67a2d5bd24ccc1c64"
     },
     {
-      "bytes": 148803,
-      "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_stress.png",
-      "sha256": "55fcf9b3b41608c7be5b445c83abd87fbcd7bd9b0af9a489f5eda441348d3965"
+      "bytes": 20599,
+      "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_connectedness.source.csv",
+      "sha256": "03d73dfe25248d3e7ad8fa874dbf63f86ff269f44aed97cd19203eaa62986b7c"
     },
     {
-      "bytes": 87713,
-      "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_stress.svg",
-      "sha256": "e7a63e903344e52213239167a14432ea744976a48740a28cc32fb2de885224fe"
+      "bytes": 71143,
+      "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_connectedness.svg",
+      "sha256": "dba897ad9772ab554e7046bcc5df5dcce44d7a557e75a7bc307dfc803afc5ba2"
     },
     {
-      "bytes": 87058,
-      "path": "research/03_derivatives_leverage_liquidations/figures/03_liquidation_event_placebo.png",
-      "sha256": "47d8c373a03f8c1cf6456cad290dfc15bfdff3d98ae38c1ecbe98e0f3837a045"
-    },
-    {
-      "bytes": 58683,
-      "path": "research/03_derivatives_leverage_liquidations/figures/03_liquidation_event_placebo.svg",
-      "sha256": "76009ae37ebe528f001010273218a793d2580e656c505e6e5cd8805d31fcf70d"
-    },
-    {
-      "bytes": 116,
+      "bytes": 321,
       "path": "research/03_derivatives_leverage_liquidations/findings.md",
-      "sha256": "8cbb24b41958fb13bbaa82b021869970b0987be9e9c09c9a9569848efc94111d"
+      "sha256": "8893d1bc10ebbd63af339598a990c7d7ee3e2897d073c6dbd7508136008f65f6"
     },
     {
       "bytes": 155,
@@ -51,44 +41,59 @@
       "sha256": "a9dc1af63cb6250c8be8b026b85f65573cf828e91123072e9e33a076f105a89d"
     },
     {
-      "bytes": 1402,
+      "bytes": 1334,
       "path": "research/03_derivatives_leverage_liquidations/module.yml",
-      "sha256": "347cfb1472a01842b138f24ed216ba90fe68a5a19f789b9b0b555ce5801777d2"
+      "sha256": "ff4687c7088c2887db132ab5f8c37fc99a1818871b21ffa6dcf366764e62a61f"
     },
     {
-      "bytes": 4444,
+      "bytes": 5690,
       "path": "research/03_derivatives_leverage_liquidations/README.md",
-      "sha256": "6b2e5e8d1dd1fe000fa8706f413d514428796223d0c3609c3ec9ab2fc833056c"
+      "sha256": "a7fe1efb079556d209b7857255e0a60c215943b5dc54e59fe17ed9d1162e6488"
     },
     {
-      "bytes": 1684,
+      "bytes": 1921,
       "path": "research/03_derivatives_leverage_liquidations/tables/claims.csv",
-      "sha256": "14243d420cf292f6b76a07b0b8a1b59ed5e9ce097e8eb28fbe63d185294000fc"
+      "sha256": "5be5badf7e32861e4f2bdcdc3018fc364bf74937cb047f167ae66df0c00139ba"
     },
     {
-      "bytes": 1498,
-      "path": "research/03_derivatives_leverage_liquidations/tables/leverage_feature_registry.csv",
-      "sha256": "5217e1513fa2cd528bf0ca1766707dcab1d20d0852e7dcc928ecd3b1e45b9e7c"
+      "bytes": 64946,
+      "path": "research/03_derivatives_leverage_liquidations/tables/connectedness.csv",
+      "sha256": "20e0e6fe3277c3c5bd603f7a0a822a261f5d255c42319ef33cad6bd909c1ab3a"
     },
     {
-      "bytes": 771,
-      "path": "research/03_derivatives_leverage_liquidations/tables/leverage_state_summary.csv",
-      "sha256": "39bcc24ffdf47f04e6501c2cdf781d33a3fe928ee4ec980f7f14ebbf2fc53701"
+      "bytes": 786,
+      "path": "research/03_derivatives_leverage_liquidations/tables/expected_shortfall.csv",
+      "sha256": "82b38cb360793564f98cd1e73ca4e68f9b0f79eb482790f4b7bf8e3a55d1e0fb"
     },
     {
-      "bytes": 1323,
-      "path": "research/03_derivatives_leverage_liquidations/tables/leverage_tail_risk_summary.csv",
-      "sha256": "e7b7274e4b43444c1e36a740eea0a5dadc3279cd680e073ff470234c86ff3f22"
+      "bytes": 474,
+      "path": "research/03_derivatives_leverage_liquidations/tables/leverage_tail_diagnostics.csv",
+      "sha256": "e14d67e17cad03bf06958828c1c730375ea266e1def90ba89e530ee02601f5b3"
     },
     {
-      "bytes": 4432,
-      "path": "research/03_derivatives_leverage_liquidations/tables/liquidation_event_responses.csv",
-      "sha256": "13c48761a91cbeea317e71441efabb217ff93ea3ad76bb038c969002801c5da7"
+      "bytes": 1176,
+      "path": "research/03_derivatives_leverage_liquidations/tables/leverage_tail_horizon_sensitivity.csv",
+      "sha256": "225d55ffd41af271207b673b20fecb9e5145e36dd482860488c7c1587e85ec45"
     },
     {
-      "bytes": 830,
-      "path": "research/03_derivatives_leverage_liquidations/tables/tail_risk_models.csv",
-      "sha256": "70030254844b48daff230bf416df740124f6aa842c046cee6afc0e1aebd522bd"
+      "bytes": 4914,
+      "path": "research/03_derivatives_leverage_liquidations/tables/leverage_tail_model.csv",
+      "sha256": "47e127e5ffa262036c78d2cfa11e7312fd703fef3b98f406ada7d40b3cbf2cbb"
+    },
+    {
+      "bytes": 1142,
+      "path": "research/03_derivatives_leverage_liquidations/tables/quantile_es.csv",
+      "sha256": "956ae62b05a9e87228c0f1e4b0f2f21e181cfbf059dcfd71c280d3d443c67b73"
+    },
+    {
+      "bytes": 819,
+      "path": "research/03_derivatives_leverage_liquidations/tables/quantile_regression.csv",
+      "sha256": "cae5f151f005fd355e4c8ae445bb6488d76211da822378b5901a473a4fba908e"
+    },
+    {
+      "bytes": 3524,
+      "path": "research/03_derivatives_leverage_liquidations/tables/systemic_tail_association.csv",
+      "sha256": "68eab78fb90b0db4e724b8c63566939be04cf59fe7c20d358b5bbacc521445e1"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",

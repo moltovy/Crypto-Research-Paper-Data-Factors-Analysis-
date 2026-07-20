@@ -32,26 +32,16 @@ canonical_surface: research/01_cross_asset_dependence_regimes
 tables:
 - asset_return_coverage.csv
 - claims.csv
-- lower_tail_coexceedance_matrix.csv
-- multi_asset_descriptive_stats.csv
-- partial_correlation_btc_control.csv
-- pca_common_factor_loadings.csv
-- pca_scores.csv
-- pca_variance_share.csv
-- pearson_correlation_matrix.csv
-- regime_correlation_difference.csv
-- rolling_dependence_summary.csv
-- spearman_correlation_matrix.csv
+- common_factor_overview.csv
+- common_factor_results.csv
+- relative_risk_diagnostics.csv
+- tail_dependence.csv
 figures:
-- 01_common_factor_pca_loadings.png
-- 01_cross_asset_clustered_correlation.png
-- 01_regime_correlation_difference.png
+- 01_common_factor_tail_dependence.png
 code:
 - src/cqresearch/research/analytical_modules.py
 tests:
 - tests/unit/test_feature_strength_outputs.py
 - tests/unit/test_visual_outputs.py
 root_readme_candidate_figures:
-- figures/01_common_factor_pca_loadings.png
-- figures/01_cross_asset_clustered_correlation.png
-- figures/01_regime_correlation_difference.png
+- figures/01_common_factor_tail_dependence.png

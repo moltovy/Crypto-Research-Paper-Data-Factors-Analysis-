@@ -31,26 +31,18 @@ sensitivity_dimensions:
 status: built
 canonical_surface: research/07_chain_fundamentals_sector_dynamics
 tables:
-- asset_identity_audit.csv
-- chain_activity_associations.csv
-- chain_fundamental_panel_summary.csv
+- chain_panel.csv
+- chain_panel_coverage.csv
 - claims.csv
 - pit_concentration.csv
-- pit_market_structure_monthly.csv
-- pit_market_structure_summary.csv
-- pit_period_comparison.csv
-- pit_state_relationship_coefficients.csv
-- pit_turnover.csv
+- pit_concentration_decomposition.csv
+- pit_membership_transitions.csv
 figures:
-- 07_chain_metric_coverage.png
-- 07_pit_state_coefficients.png
-- chain_panel_coverage.png
+- 07_pit_concentration_turnover.png
 code:
 - src/cqresearch/research/analytical_modules.py
 tests:
 - tests/unit/test_feature_strength_outputs.py
 - tests/unit/test_visual_outputs.py
 root_readme_candidate_figures:
-- figures/07_chain_metric_coverage.png
-- figures/07_pit_state_coefficients.png
-- figures/chain_panel_coverage.png
+- figures/07_pit_concentration_turnover.png

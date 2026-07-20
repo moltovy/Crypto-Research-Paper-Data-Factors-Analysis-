@@ -11,13 +11,16 @@ This module studies lagged leverage, funding, open-interest scaling, and liquida
 
 ## Data, Assets, and Sample
 
-| artifact                               |   rows | sample   | coverage rule                  |
-|:---------------------------------------|-------:|:---------|:-------------------------------|
-| tables/leverage_feature_registry.csv   |      7 | rows=7   | module-specific matched sample |
-| tables/leverage_state_summary.csv      |      5 | rows=5   | module-specific matched sample |
-| tables/leverage_tail_risk_summary.csv  |      5 | rows=5   | module-specific matched sample |
-| tables/liquidation_event_responses.csv |     12 | rows=12  | module-specific matched sample |
-| tables/tail_risk_models.csv            |      4 | rows=4   | module-specific matched sample |
+| artifact                                     |   rows | sample                               | coverage rule                  |
+|:---------------------------------------------|-------:|:-------------------------------------|:-------------------------------|
+| tables/connectedness.csv                     |    502 | 2021-06-30 to 2026-06-27, n=180-365  | module-specific matched sample |
+| tables/expected_shortfall.csv                |      5 | 2020-02-01 to 2026-04-12, n=452-453  | module-specific matched sample |
+| tables/leverage_tail_diagnostics.csv         |      1 | 2020-02-01 to 2026-04-12, n=2263     | module-specific matched sample |
+| tables/leverage_tail_horizon_sensitivity.csv |      5 | 2020-02-01 to 2026-04-05, n=90-91    | module-specific matched sample |
+| tables/leverage_tail_model.csv               |     19 | 2020-02-01 to 2026-04-12, n=2263     | module-specific matched sample |
+| tables/quantile_es.csv                       |      9 | 2020-02-01 to 2026-04-12, n=452-2263 | module-specific matched sample |
+| tables/quantile_regression.csv               |      4 | 2020-02-01 to 2026-04-12, n=2263     | module-specific matched sample |
+| tables/systemic_tail_association.csv         |     13 | 2021-01-02 to 2026-06-30, n=2006     | module-specific matched sample |
 
 ## Methodologies and Calculations
 
@@ -35,23 +38,16 @@ $\text{liq intensity}=\text{liquidations}/\text{lagged OI or market cap}$.
 
 ## Summary of Results
 
-| finding                    | estimate                        | interval                                  | N/sample   | interpretation                          | sensitivity                                                  |
-|:---------------------------|:--------------------------------|:------------------------------------------|:-----------|:----------------------------------------|:-------------------------------------------------------------|
-| Leverage-state tail stress | Q5 high bottom-5% day rate=7.7% | state-bin empirical rates and tail models | rows=5     | Leverage states are stress diagnostics. | state bins, lags, denominator scaling, event/placebo windows |
+| finding                               | estimate                                   | interval                                                          | N/sample                         | interpretation                                                                    | sensitivity                                                             |
+|:--------------------------------------|:-------------------------------------------|:------------------------------------------------------------------|:---------------------------------|:----------------------------------------------------------------------------------|:------------------------------------------------------------------------|
+| Lagged leverage state and tail stress | fitted tail probability range 3.2%-7.4%    | HAC spline-GLM confidence band                                    | 2020-02-01 to 2026-04-12, n=2263 | The fitted association is nonlinear and should not be read as a directional rule. | Quantile regression, state expected shortfall, FEVD window/horizon grid |
+| Stable-core volatility connectedness  | primary generalized-FEVD range 44.0%-67.1% | descriptive rolling estimate; row-sum diagnostics in source table | 2021-09-10 to 2026-06-19, n=252  | Absolute-return connectedness varies materially over time.                        | 180/252/365 windows and 5/10/20 horizons                                |
 
 ## Analytical Results and Visualizations
 
-![03 Leverage State Surface](figures/03_leverage_state_surface.png)
+![03 Leverage Tail Connectedness](figures/03_leverage_tail_connectedness.png)
 
-The state surface separates tail-day rates from realized-volatility medians across leverage bins.
-
-![03 Leverage Tail Stress](figures/03_leverage_tail_stress.png)
-
-The root candidate shows bottom-tail frequency and realized volatility by lagged leverage state.
-
-![03 Liquidation Event Placebo](figures/03_liquidation_event_placebo.png)
-
-Liquidation event bars summarize post-event windows; they are descriptive signatures, not causal evidence.
+The spline is restricted to the central observed leverage support. Connectedness uses a stable-core generalized FEVD and is a stress-transmission description, not a forecast.
 
 ## Robustness and Sensitivity
 
@@ -76,11 +72,14 @@ uv run python scripts/check_research_surface.py --module 03_derivatives_leverage
 ## Files and Code
 
 - [`claims.csv`](tables/claims.csv)
-- [`leverage_feature_registry.csv`](tables/leverage_feature_registry.csv)
-- [`leverage_state_summary.csv`](tables/leverage_state_summary.csv)
-- [`leverage_tail_risk_summary.csv`](tables/leverage_tail_risk_summary.csv)
-- [`liquidation_event_responses.csv`](tables/liquidation_event_responses.csv)
-- [`tail_risk_models.csv`](tables/tail_risk_models.csv)
+- [`connectedness.csv`](tables/connectedness.csv)
+- [`expected_shortfall.csv`](tables/expected_shortfall.csv)
+- [`leverage_tail_diagnostics.csv`](tables/leverage_tail_diagnostics.csv)
+- [`leverage_tail_horizon_sensitivity.csv`](tables/leverage_tail_horizon_sensitivity.csv)
+- [`leverage_tail_model.csv`](tables/leverage_tail_model.csv)
+- [`quantile_es.csv`](tables/quantile_es.csv)
+- [`quantile_regression.csv`](tables/quantile_regression.csv)
+- [`systemic_tail_association.csv`](tables/systemic_tail_association.csv)
 
 - [Methodology](methodology.md)
 - [Findings](findings.md)

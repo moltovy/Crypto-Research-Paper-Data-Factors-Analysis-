@@ -1,3 +1,3 @@
 # Findings
 
-- Equity block exposure changes across periods: BTC pre_btc_etf delta R2=0.0249; BTC btc_etf_era delta R2=0.0884; ETH pre_btc_etf delta R2=0.0193; ETH btc_etf_era delta R2=0.1076 (Period comparison of contemporaneous co-movement, not an ETF attribution design.)
+- Conditional QQQ exposure around the registered BTC ETF era: BTC 1.03 to 0.93 (change p=0.611); ETH 1.33 to 1.51 (change p=0.520) (Conditional equity co-movement changes are period comparisons.)

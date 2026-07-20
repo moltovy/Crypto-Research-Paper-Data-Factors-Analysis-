@@ -29,25 +29,21 @@ status: built
 canonical_surface: research/04_etf_institutional_flows
 tables:
 - claims.csv
-- etf_absorption_metrics.csv
-- etf_data_timing_audit.csv
-- etf_era_exposure_comparison.csv
-- etf_flow_associations.csv
-- etf_flow_shock_days.csv
-- etf_flow_shock_placebo.csv
-- etf_lag_response.csv
-- etf_market_plumbing_summary.csv
-- etf_pre_inception_plot_audit.csv
+- corporate_exposure_eras.csv
+- etf_cumulative_lags.csv
+- etf_distributed_lags.csv
+- etf_flow_concentration.csv
+- etf_nonlinear_sensitivity.csv
+- etf_timing_sensitivity.csv
+- institutional_positioning.csv
+- institutional_positioning_eras.csv
+- institutional_positioning_points.csv
 figures:
-- 04_etf_flow_shock_placebo.png
-- 04_etf_lag_response.png
-- 04_etf_timing_audit.png
+- 04_institutional_market_plumbing.png
 code:
 - src/cqresearch/research/analytical_modules.py
 tests:
 - tests/unit/test_feature_strength_outputs.py
 - tests/unit/test_visual_outputs.py
 root_readme_candidate_figures:
-- figures/04_etf_flow_shock_placebo.png
-- figures/04_etf_lag_response.png
-- figures/04_etf_timing_audit.png
+- figures/04_institutional_market_plumbing.png

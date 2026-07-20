@@ -1,0 +1,9 @@
+{
+  "figure_id": "leverage_tail_connectedness",
+  "plot_key": "plot_key",
+  "png": "03_leverage_tail_connectedness.png",
+  "rows": 103,
+  "source_csv": "03_leverage_tail_connectedness.source.csv",
+  "source_tables": "tables/leverage_tail_model.csv; tables/connectedness.csv",
+  "svg": "03_leverage_tail_connectedness.svg"
+}

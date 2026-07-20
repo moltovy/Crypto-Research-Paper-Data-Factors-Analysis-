@@ -1,0 +1,9 @@
+{
+  "plot_key": "coverage_missingness_by_block",
+  "rows": 8,
+  "sample": "processed panels available at the frozen acquisition cutoff",
+  "source_tables": [
+    "tables/coverage_missingness.csv"
+  ],
+  "units": "median non-missing observations"
+}

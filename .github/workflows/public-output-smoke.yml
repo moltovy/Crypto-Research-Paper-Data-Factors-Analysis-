@@ -24,7 +24,7 @@ jobs:
         run: uv sync --all-extras
 
       - name: Public surface guardrails
-        run: uv run python scripts/check_research_surface.py --module all
+        run: uv run python scripts/run_all.py --mode artifact
 
       - name: Upload canonical research surface
         uses: actions/upload-artifact@v4

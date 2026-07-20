@@ -11,4 +11,4 @@ This project is not affiliated with, endorsed by, or published on behalf of Cryp
 - CryptoQuant, Artemis, and TradingView exports may carry provider-specific or licensed redistribution restrictions. The public repository keeps those raw inputs local-only.
 - Local caches, raw exports, interim panels, and generated feature stores stay under ignored `data_local/`.
 
-Public users can run smoke validation against committed semantic outputs without provider data. A full local rebuild requires legally obtained provider inputs placed under `data_local/raw/`. See `outputs/report/provider_data_disposition.md` for provider-group disposition and release recommendations.
+Public users can run smoke validation against committed semantic outputs without provider data. A full local rebuild requires legally obtained provider inputs placed under `data_local/raw/`. See [`research/source_decisions.csv`](research/source_decisions.csv) for eligibility decisions and [`REFERENCES.md`](REFERENCES.md) for source attribution.

@@ -1,4 +1,4 @@
-"""Single source of truth for maintained public artifacts."""
+"""Single source of truth for maintained public analytical artifacts."""
 
 from __future__ import annotations
 
@@ -17,63 +17,61 @@ class PublicFigure:
 
 PUBLIC_FIGURES: tuple[PublicFigure, ...] = (
     PublicFigure(
-        figure_id="cross_asset_dependence_regimes",
-        filename="research/01_cross_asset_dependence_regimes/figures/01_cross_asset_clustered_correlation.png",
-        research_question="How broad is realized crypto and macro dependence across matched assets?",
-        source_tables="research/01_cross_asset_dependence_regimes/tables/pearson_correlation_matrix.csv; research/01_cross_asset_dependence_regimes/tables/pca_variance_share.csv",
-        caveat="Current-cohort selected-major daily data is survivorship-biased.",
-        readme_section="selected-analytical-results",
+        "common_factor_tail_dependence",
+        "research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.png",
+        "How broad are common variation and lower-tail co-exceedance?",
+        "research/01_cross_asset_dependence_regimes/tables/common_factor_results.csv; research/01_cross_asset_dependence_regimes/tables/tail_dependence.csv",
+        "Fixed S2 membership; descriptive dependence only.",
+        "selected-analytical-results",
     ),
     PublicFigure(
-        figure_id="tradfi_exposure_shift",
-        filename="research/02_macro_tradfi_integration/figures/02_tradfi_exposure_shift.png",
-        research_question="How did equity co-movement change across periods?",
-        source_tables="research/02_macro_tradfi_integration/tables/block_delta_r2.csv; research/02_macro_tradfi_integration/tables/rolling_tradfi_exposures.csv",
-        caveat="Period comparison, not ETF-effect identification.",
-        readme_section="selected-analytical-results",
+        "dynamic_tradfi_integration",
+        "research/02_macro_tradfi_integration/figures/02_dynamic_tradfi_integration.png",
+        "How do conditional TradFi exposures vary?",
+        "research/02_macro_tradfi_integration/tables/dynamic_tradfi_exposures.csv; research/02_macro_tradfi_integration/tables/break_tests.csv",
+        "Period comparison, not ETF-effect identification.",
+        "selected-analytical-results",
     ),
     PublicFigure(
-        figure_id="leverage_tail_stress",
-        filename="research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_stress.png",
-        research_question="Where do lagged leverage states show up in tail stress?",
-        source_tables="research/03_derivatives_leverage_liquidations/tables/leverage_tail_risk_summary.csv; research/03_derivatives_leverage_liquidations/tables/tail_risk_models.csv",
-        caveat="Stress-state diagnostics do not establish liquidation-caused returns.",
-        readme_section="selected-analytical-results",
+        "institutional_market_plumbing",
+        "research/04_etf_institutional_flows/figures/04_institutional_market_plumbing.png",
+        "How do ETF lag associations and CFTC positioning line up with markets?",
+        "research/04_etf_institutional_flows/tables/etf_distributed_lags.csv; research/04_etf_institutional_flows/tables/institutional_positioning_eras.csv",
+        "Timing and simultaneity prevent price-impact interpretation.",
+        "selected-analytical-results",
     ),
     PublicFigure(
-        figure_id="etf_lag_response",
-        filename="research/04_etf_institutional_flows/figures/04_etf_lag_response.png",
-        research_question="How do ETF flow-return associations vary over lags 0-5?",
-        source_tables="research/04_etf_institutional_flows/tables/etf_lag_response.csv; research/04_etf_institutional_flows/tables/etf_pre_inception_plot_audit.csv",
-        caveat="ETF flows are timing-sensitive market plumbing, not causal price impact.",
-        readme_section="selected-analytical-results",
+        "leverage_tail_connectedness",
+        "research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_connectedness.png",
+        "How do leverage states coincide with tail stress and connectedness?",
+        "research/03_derivatives_leverage_liquidations/tables/leverage_tail_model.csv; research/03_derivatives_leverage_liquidations/tables/connectedness.csv",
+        "Stress-state association, not forecast or trading signal.",
+        "selected-analytical-results",
     ),
     PublicFigure(
-        figure_id="relative_asset_factor_structure",
-        filename="research/08_relative_asset_risk_factor_structure/figures/08_common_idiosyncratic_risk_decomposition.png",
-        research_question="How much selected-major risk is common crypto factor versus idiosyncratic?",
-        source_tables="research/08_relative_asset_risk_factor_structure/tables/relative_factor_decomposition.csv; research/08_relative_asset_risk_factor_structure/tables/downside_expected_shortfall.csv",
-        caveat="Matched-window, current-cohort risk diagnostics are not investability claims.",
-        readme_section="selected-analytical-results",
+        "pit_concentration_turnover",
+        "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.png",
+        "How did PIT effective breadth and turnover change?",
+        "research/07_chain_fundamentals_sector_dynamics/tables/pit_concentration.csv; research/07_chain_fundamentals_sector_dynamics/tables/pit_membership_transitions.csv",
+        "Monthly structure only; no daily constituent-performance inference.",
+        "selected-analytical-results",
     ),
 )
 
 GALLERY_FIGURES: tuple[str, ...] = (
-    "research/06_onchain_valuation_holder_behavior/figures/measurement_mvrv_mechanics.png",
-    "research/09_event_stress_cross_module_synthesis/figures/appendix_event_response_matrix.png",
+    "research/05_stablecoin_defi_liquidity/figures/05_liquidity_measurement_diagnostics.png",
+    "research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.png",
 )
 
 PUBLIC_TABLES: frozenset[str] = frozenset(
     {
-        "research/00_data_measurement_foundation/tables/provider_inventory.csv",
-        "research/00_data_measurement_foundation/tables/feature_usage_matrix.csv",
-        "research/01_cross_asset_dependence_regimes/tables/pearson_correlation_matrix.csv",
-        "research/02_macro_tradfi_integration/tables/block_delta_r2.csv",
-        "research/03_derivatives_leverage_liquidations/tables/leverage_tail_risk_summary.csv",
-        "research/04_etf_institutional_flows/tables/etf_lag_response.csv",
-        "research/05_stablecoin_defi_liquidity/tables/valuation_contamination_audit.csv",
-        "research/06_onchain_valuation_holder_behavior/tables/mvrv_mechanical_link_audit.csv",
-        "research/08_relative_asset_risk_factor_structure/tables/relative_factor_decomposition.csv",
+        "research/01_cross_asset_dependence_regimes/tables/common_factor_results.csv",
+        "research/01_cross_asset_dependence_regimes/tables/tail_dependence.csv",
+        "research/02_macro_tradfi_integration/tables/dynamic_tradfi_exposures.csv",
+        "research/03_derivatives_leverage_liquidations/tables/leverage_tail_model.csv",
+        "research/04_etf_institutional_flows/tables/etf_distributed_lags.csv",
+        "research/05_stablecoin_defi_liquidity/tables/liquidity_state.csv",
+        "research/07_chain_fundamentals_sector_dynamics/tables/pit_concentration.csv",
         "research/09_event_stress_cross_module_synthesis/tables/evidence_ledger.csv",
     }
 )

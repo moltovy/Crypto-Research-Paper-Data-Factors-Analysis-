@@ -37,29 +37,16 @@ sensitivity_dimensions:
 status: built
 canonical_surface: research/02_macro_tradfi_integration
 tables:
-- block_delta_r2.csv
-- btc_ex_mvrv_feature_strength.csv
+- break_tests.csv
 - claims.csv
-- conventional_partial_r2.csv
-- eth_feature_strength.csv
-- exposure_regime_comparison.csv
-- fdr_adjusted_inference.csv
-- frequency_robustness.csv
-- local_window_correlation_distribution.csv
-- multicollinearity_diagnostics.csv
-- ridge_stability.csv
-- rolling_exposure_summary.csv
-- rolling_tradfi_exposures.csv
+- dynamic_tradfi_exposures.csv
+- tradfi_diagnostics.csv
 figures:
-- 02_macro_block_delta_heatmap.png
-- 02_rolling_tradfi_beta.png
-- 02_tradfi_exposure_shift.png
+- 02_dynamic_tradfi_integration.png
 code:
 - src/cqresearch/research/analytical_modules.py
 tests:
 - tests/unit/test_feature_strength_outputs.py
 - tests/unit/test_visual_outputs.py
 root_readme_candidate_figures:
-- figures/02_macro_block_delta_heatmap.png
-- figures/02_rolling_tradfi_beta.png
-- figures/02_tradfi_exposure_shift.png
+- figures/02_dynamic_tradfi_integration.png

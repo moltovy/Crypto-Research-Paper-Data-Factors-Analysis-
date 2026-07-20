@@ -1,0 +1,9 @@
+{
+  "figure_id": "event_atlas_appendix",
+  "plot_key": "plot_key",
+  "png": "09_event_atlas_appendix.png",
+  "rows": 16,
+  "source_csv": "09_event_atlas_appendix.source.csv",
+  "source_tables": "tables/event_response_matrix.csv",
+  "svg": "09_event_atlas_appendix.svg"
+}

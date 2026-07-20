@@ -11,17 +11,13 @@ This module combines chain-fundamental coverage with point-in-time sector/market
 
 ## Data, Assets, and Sample
 
-| artifact                                       |   rows | sample                              | coverage rule                              |
-|:-----------------------------------------------|-------:|:------------------------------------|:-------------------------------------------|
-| tables/asset_identity_audit.csv                |     16 | rows=16                             | module-specific matched sample             |
-| tables/chain_activity_associations.csv         |      1 | rows=1                              | module-specific matched sample             |
-| tables/chain_fundamental_panel_summary.csv     |     50 | 2015-07-30 to 2024-10-25, rows=50   | module-specific matched sample             |
-| tables/pit_concentration.csv                   |     78 | 2020-01-31 to 2026-06-16, rows=78   | monthly point-in-time state variables only |
-| tables/pit_market_structure_monthly.csv        |   7800 | 2020-01-31 to 2026-06-16, rows=7800 | monthly point-in-time state variables only |
-| tables/pit_market_structure_summary.csv        |     78 | 2020-01-31 to 2026-06-16, rows=78   | monthly point-in-time state variables only |
-| tables/pit_period_comparison.csv               |      5 | rows=5                              | monthly point-in-time state variables only |
-| tables/pit_state_relationship_coefficients.csv |      9 | rows=9                              | monthly point-in-time state variables only |
-| tables/pit_turnover.csv                        |     77 | rows=77                             | monthly point-in-time state variables only |
+| artifact                                   |   rows | sample                          | coverage rule                              |
+|:-------------------------------------------|-------:|:--------------------------------|:-------------------------------------------|
+| tables/chain_panel.csv                     |      2 | 2021-06-30 to 2026-04-30, n=236 | module-specific matched sample             |
+| tables/chain_panel_coverage.csv            |     12 | result rows=12                  | module-specific matched sample             |
+| tables/pit_concentration.csv               |     77 | result rows=77                  | monthly point-in-time state variables only |
+| tables/pit_concentration_decomposition.csv |     76 | result rows=76                  | monthly point-in-time state variables only |
+| tables/pit_membership_transitions.csv      |     76 | result rows=76                  | monthly point-in-time state variables only |
 
 ## Methodologies and Calculations
 
@@ -38,23 +34,15 @@ $z(y_t)=\alpha+\beta z(state_t)+u_t$ for monthly PIT state relationships.
 
 ## Summary of Results
 
-| finding                       | estimate                   | interval                   | N/sample                          | interpretation                                                     | sensitivity                                                    |
-|:------------------------------|:---------------------------|:---------------------------|:----------------------------------|:-------------------------------------------------------------------|:---------------------------------------------------------------|
-| Chain and sector/PIT coverage | 5 metrics across 13 chains | coverage-first panel audit | 2015-07-30 to 2024-10-25, rows=50 | Chain evidence is promoted only after mapping and coverage checks. | coverage threshold, chain mapping, monthly PIT state variables |
+| finding                                  | estimate                                                                                                                                    | interval                                                      | N/sample                           | interpretation                                                    | sensitivity                                                                   |
+|:-----------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------|:-----------------------------------|:------------------------------------------------------------------|:------------------------------------------------------------------------------|
+| Point-in-time concentration and turnover | Across complete monthly PIT snapshots, effective asset count changed from 5.1 to 7.6, while median one-month membership turnover was 14.8%. | descriptive monthly census within available top-100 snapshots | through 2026-05-31, result rows=77 | Composition and concentration changed materially over the sample. | HHI identity decomposition; entries, exits, survival; partial-month exclusion |
 
 ## Analytical Results and Visualizations
 
-![07 Chain Metric Coverage](figures/07_chain_metric_coverage.png)
+![07 Pit Concentration Turnover](figures/07_pit_concentration_turnover.png)
 
-Metric-family coverage is summarized by chain to show where panel claims remain thin.
-
-![07 Pit State Coefficients](figures/07_pit_state_coefficients.png)
-
-PIT concentration and turnover enter as state-model coefficients, not as raw headline HHI or rank-persistence lines.
-
-![Chain Panel Coverage](figures/chain_panel_coverage.png)
-
-Chain coverage is shown before interpretation; adequate coverage does not itself establish a relationship.
+Effective asset count is an entropy transformation; turnover uses entries plus exits relative to the membership union. June 2026 partial data is excluded.
 
 ## Robustness and Sensitivity
 
@@ -78,16 +66,12 @@ uv run python scripts/check_research_surface.py --module 07_chain_fundamentals_s
 
 ## Files and Code
 
-- [`asset_identity_audit.csv`](tables/asset_identity_audit.csv)
-- [`chain_activity_associations.csv`](tables/chain_activity_associations.csv)
-- [`chain_fundamental_panel_summary.csv`](tables/chain_fundamental_panel_summary.csv)
+- [`chain_panel.csv`](tables/chain_panel.csv)
+- [`chain_panel_coverage.csv`](tables/chain_panel_coverage.csv)
 - [`claims.csv`](tables/claims.csv)
 - [`pit_concentration.csv`](tables/pit_concentration.csv)
-- [`pit_market_structure_monthly.csv`](tables/pit_market_structure_monthly.csv)
-- [`pit_market_structure_summary.csv`](tables/pit_market_structure_summary.csv)
-- [`pit_period_comparison.csv`](tables/pit_period_comparison.csv)
-- [`pit_state_relationship_coefficients.csv`](tables/pit_state_relationship_coefficients.csv)
-- [`pit_turnover.csv`](tables/pit_turnover.csv)
+- [`pit_concentration_decomposition.csv`](tables/pit_concentration_decomposition.csv)
+- [`pit_membership_transitions.csv`](tables/pit_membership_transitions.csv)
 
 - [Methodology](methodology.md)
 - [Findings](findings.md)

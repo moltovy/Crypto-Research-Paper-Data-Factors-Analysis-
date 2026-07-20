@@ -1,3 +1,3 @@
 # Findings
 
-- Chain and sector/PIT coverage: 5 metrics across 13 chains (Chain evidence is promoted only after mapping and coverage checks.)
+- Point-in-time concentration and turnover: Across complete monthly PIT snapshots, effective asset count changed from 5.1 to 7.6, while median one-month membership turnover was 14.8%. (Composition and concentration changed materially over the sample.)

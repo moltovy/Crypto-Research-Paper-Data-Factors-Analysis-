@@ -1,93 +1,133 @@
 {
   "artifacts": [
     {
-      "bytes": 14696,
+      "bytes": 13625,
       "path": "README.md",
-      "sha256": "a414a785ee49154bf2703a414dcb576dc8ad1e4a60250737242360de8c05ce22"
+      "sha256": "2f3794cd635e62cf827823c19be58ba1453735cdb5d8bc5b5cd272e9ebe974c5"
     },
     {
-      "bytes": 22573,
-      "path": "research/figure_specs.csv",
-      "sha256": "32ca156fe7b95166611939cf400efcfdb23a66be1dce7a7b33926f8fb3fef0c0"
-    },
-    {
-      "bytes": 4269,
-      "path": "research/README.md",
-      "sha256": "44147d5212d6dbce587d672ecc6e0eeaf833a715f9edee88de35781af455d545"
-    },
-    {
-      "bytes": 5501,
-      "path": "research/root_figure_selection.csv",
-      "sha256": "684995f2aabde22e20b5ce44e7b848bd33c4276e8e6359b3ea357f1124d53e34"
-    },
-    {
-      "bytes": 4414,
+      "bytes": 5299,
       "path": "research/00_data_measurement_foundation/manifest.json",
-      "sha256": "db57148968e19fd221aab57de8ecd3e550ba6fcfec146d4c8904b47557895a7b"
+      "sha256": "558099fb1ba0dc85567aad2d440349450bbe4b25561a2d5167721a70854a2c77"
     },
     {
-      "bytes": 5194,
+      "bytes": 3458,
       "path": "research/01_cross_asset_dependence_regimes/manifest.json",
-      "sha256": "37512f8871f3247022de204a727a422f8f799019574159f7ea8db9862ccfe7d6"
+      "sha256": "ad5caee0bdb194e78502bc772d351336b68fbbe203bc8324c61691bb1025c15a"
     },
     {
-      "bytes": 5200,
+      "bytes": 2928,
       "path": "research/02_macro_tradfi_integration/manifest.json",
-      "sha256": "b6c44d64c1c8ef9aaed63c2189bf45a091213fd1b7c236ac8d0684cda9959463"
+      "sha256": "0e9ea9742fc7834720ed10d5ffae0b4516b37c660a3f7fde80d5e9052e33dc32"
     },
     {
-      "bytes": 3916,
+      "bytes": 4134,
       "path": "research/03_derivatives_leverage_liquidations/manifest.json",
-      "sha256": "425efcc15facc9e9aeb9656fe762e1b5476104f4522b80a4bb54b9b53b1c3d06"
+      "sha256": "c10c304d8791d999425faab8ce615a02373bf6ed0c863179ef4323bf72a90354"
     },
     {
-      "bytes": 4516,
+      "bytes": 4177,
       "path": "research/04_etf_institutional_flows/manifest.json",
-      "sha256": "0474ceffed10b1b6287da8758953c2df5290f27ca65fa5392974e80fe4245402"
+      "sha256": "bcbd5fc6dd2b3a50cedfb09942cc7aac9361b966f4e59b4b013a32123139ba75"
     },
     {
-      "bytes": 4014,
+      "bytes": 3190,
       "path": "research/05_stablecoin_defi_liquidity/manifest.json",
-      "sha256": "3b2c4d8756c7a29a60021cedad72863a73cf47e8a058c5ea7936b9af0ec65786"
+      "sha256": "4f9672534ccec5f65479cf234ba2081b6dbbe619f5e13ec5ff41792bb74baf81"
     },
     {
-      "bytes": 3713,
-      "path": "research/06_onchain_valuation_holder_behavior/manifest.json",
-      "sha256": "1f7aca2a3941806eea9885f06e1c2147fc4fa1e2b3d26de028fc1a24ee718f4d"
-    },
-    {
-      "bytes": 4801,
+      "bytes": 3515,
       "path": "research/07_chain_fundamentals_sector_dynamics/manifest.json",
-      "sha256": "55559f6d3361ae91e50715e205302db351aaa5dbc60d53198a08147d816ef3c7"
+      "sha256": "d680a6b7b503e17f8476ba7fb81eba7d3213d3fbc5f28fab92cbfc77c4db2c60"
     },
     {
-      "bytes": 4708,
-      "path": "research/08_relative_asset_risk_factor_structure/manifest.json",
-      "sha256": "95f8b901c16aa0b17abf7428ab3c15766542080a7df6addf706fb40caacb210a"
-    },
-    {
-      "bytes": 5017,
+      "bytes": 3276,
       "path": "research/09_event_stress_cross_module_synthesis/manifest.json",
-      "sha256": "e16891df3b203a8736af2d3459c2e8337d68701f9761c4a961ef599997b41f8f"
+      "sha256": "b9b0b942a02812a069e789be9c37200ab20f50226ce3c5fc3dbe5ca8efbc99f1"
+    },
+    {
+      "bytes": 4173,
+      "path": "research/README.md",
+      "sha256": "ae40fb4a52e4ad730dd3ef7e4c0d04c93b9a142726ad391c2ccd2b045a305aa8"
+    },
+    {
+      "bytes": 2389,
+      "path": "research/acceptance_ledger.csv",
+      "sha256": "a95afba688447b3ed479c244ab684733162d61a756056383abe7ade6b21d4ab3"
+    },
+    {
+      "bytes": 523,
+      "path": "research/build_provenance.json",
+      "sha256": "87fb741b98ad30cf73e635c34625e61120716e538ed4545c4c31df0fc8a2dd6b"
+    },
+    {
+      "bytes": 1291,
+      "path": "research/estimand_registry.csv",
+      "sha256": "c3ef2fe55ad3ffd32280067311e400f074c2b84c690d494351e5efa069081b92"
+    },
+    {
+      "bytes": 14239,
+      "path": "research/feature_registry.csv",
+      "sha256": "bd78bfc12250a2b4b250fda3dcbb3abffbff2c5f86e1ed8acbb8ef5b065d1122"
+    },
+    {
+      "bytes": 9699,
+      "path": "research/figure_specs.csv",
+      "sha256": "0a6644080dd87b93816ccace7c51a68fb825deae866425bfda8cd1aece4ebed4"
+    },
+    {
+      "bytes": 2485,
+      "path": "research/logical_series.csv",
+      "sha256": "950b30e91d90f548f31ed0e2b7d21330d2189450b6a5429aa974967e18de8624"
+    },
+    {
+      "bytes": 481276,
+      "path": "research/raw_objects.csv",
+      "sha256": "eb0b82f77bd7bfdb51ebaee9294a570676e0265c292ca092da59f59bc244a78c"
+    },
+    {
+      "bytes": 2189,
+      "path": "research/root_figure_selection.csv",
+      "sha256": "a80c5300bc68815621cb985fc0ff45d7bda0cf3d0b0d234cd67403ecea85a880"
+    },
+    {
+      "bytes": 1598,
+      "path": "research/sample_manifest.csv",
+      "sha256": "89d9a72fa88feb2e2e6e360a692c9ca909de4121f72cf31adfbdc6f73cb61ce2"
+    },
+    {
+      "bytes": 8627,
+      "path": "research/sample_membership.csv",
+      "sha256": "55387af8bf91da61aeac8dedcafe827039b4c69d890e315e2c1e3710c5829c4b"
+    },
+    {
+      "bytes": 1128,
+      "path": "research/source_contracts.csv",
+      "sha256": "d59862198a05ca93a33387ab83d01cc4f9473f65d843efe97e461dfdc061ad29"
+    },
+    {
+      "bytes": 5092,
+      "path": "research/source_decisions.csv",
+      "sha256": "0a07ef1b07825ce43c24fa6c81a8dfe9f428e91680c3defac70297f698c02b77"
     }
   ],
   "build_timestamp_utc": "not_recorded_for_deterministic_rebuilds",
   "canonical_surface": "research",
   "data_usage_status_counts": {
-    "diagnostic_only": 65,
-    "excluded_ambiguous_definition_or_unit": 105,
+    "diagnostic_only": 68,
+    "excluded_ambiguous_definition_or_unit": 129,
     "excluded_insufficient_coverage": 2,
     "primary_analysis": 25,
     "robustness_or_sensitivity": 2
   },
-  "figure_count": 29,
-  "module_count": 10,
+  "figure_count": 9,
+  "module_count": 8,
   "modules": [
     {
-      "artifact_count": 21,
+      "artifact_count": 25,
       "figure_count": 2,
       "manifest_path": "research/00_data_measurement_foundation/manifest.json",
-      "manifest_sha256": "db57148968e19fd221aab57de8ecd3e550ba6fcfec146d4c8904b47557895a7b",
+      "manifest_sha256": "558099fb1ba0dc85567aad2d440349450bbe4b25561a2d5167721a70854a2c77",
       "module_id": "00_data_measurement_foundation",
       "path": "research/00_data_measurement_foundation",
       "question": "What data, assets, units, timing, coverage, identity, and release-risk constraints govern later empirical claims?",
@@ -95,43 +135,43 @@
       "title": "Data and Measurement Foundation"
     },
     {
-      "artifact_count": 24,
-      "figure_count": 3,
+      "artifact_count": 16,
+      "figure_count": 1,
       "manifest_path": "research/01_cross_asset_dependence_regimes/manifest.json",
-      "manifest_sha256": "37512f8871f3247022de204a727a422f8f799019574159f7ea8db9862ccfe7d6",
+      "manifest_sha256": "ad5caee0bdb194e78502bc772d351336b68fbbe203bc8324c61691bb1025c15a",
       "module_id": "01_cross_asset_dependence_regimes",
       "path": "research/01_cross_asset_dependence_regimes",
       "question": "How do crypto and TradFi return dependence, common-factor share, lower-tail co-exceedance, and regimes vary across matched samples?",
-      "table_count": 12,
+      "table_count": 6,
       "title": "Cross-Asset Dependence and Regimes"
     },
     {
-      "artifact_count": 25,
-      "figure_count": 3,
+      "artifact_count": 14,
+      "figure_count": 1,
       "manifest_path": "research/02_macro_tradfi_integration/manifest.json",
-      "manifest_sha256": "b6c44d64c1c8ef9aaed63c2189bf45a091213fd1b7c236ac8d0684cda9959463",
+      "manifest_sha256": "0e9ea9742fc7834720ed10d5ffae0b4516b37c660a3f7fde80d5e9052e33dc32",
       "module_id": "02_macro_tradfi_integration",
       "path": "research/02_macro_tradfi_integration",
       "question": "How do crypto exposures to equities, volatility, rates, the dollar, gold, and credit vary across calendars and periods?",
-      "table_count": 13,
+      "table_count": 4,
       "title": "Macro and TradFi Integration"
     },
     {
-      "artifact_count": 18,
-      "figure_count": 3,
+      "artifact_count": 19,
+      "figure_count": 1,
       "manifest_path": "research/03_derivatives_leverage_liquidations/manifest.json",
-      "manifest_sha256": "425efcc15facc9e9aeb9656fe762e1b5476104f4522b80a4bb54b9b53b1c3d06",
+      "manifest_sha256": "c10c304d8791d999425faab8ce615a02373bf6ed0c863179ef4323bf72a90354",
       "module_id": "03_derivatives_leverage_liquidations",
       "path": "research/03_derivatives_leverage_liquidations",
       "question": "Where do leverage, funding, open-interest scaling, and liquidation stress appear in volatility and tail outcomes?",
-      "table_count": 6,
+      "table_count": 9,
       "title": "Derivatives, Leverage, and Liquidations"
     },
     {
-      "artifact_count": 22,
-      "figure_count": 3,
+      "artifact_count": 20,
+      "figure_count": 1,
       "manifest_path": "research/04_etf_institutional_flows/manifest.json",
-      "manifest_sha256": "0474ceffed10b1b6287da8758953c2df5290f27ca65fa5392974e80fe4245402",
+      "manifest_sha256": "bcbd5fc6dd2b3a50cedfb09942cc7aac9361b966f4e59b4b013a32123139ba75",
       "module_id": "04_etf_institutional_flows",
       "path": "research/04_etf_institutional_flows",
       "question": "How do ETF flow intensity, timing, lag response, and shock/placebo diagnostics line up with crypto outcomes?",
@@ -139,68 +179,46 @@
       "title": "ETF and Institutional Flows"
     },
     {
-      "artifact_count": 19,
-      "figure_count": 3,
+      "artifact_count": 15,
+      "figure_count": 1,
       "manifest_path": "research/05_stablecoin_defi_liquidity/manifest.json",
-      "manifest_sha256": "3b2c4d8756c7a29a60021cedad72863a73cf47e8a058c5ea7936b9af0ec65786",
+      "manifest_sha256": "4f9672534ccec5f65479cf234ba2081b6dbbe619f5e13ec5ff41792bb74baf81",
       "module_id": "05_stablecoin_defi_liquidity",
       "path": "research/05_stablecoin_defi_liquidity",
       "question": "What do stablecoin supply and DeFi TVL proxies say about liquidity-state associations after unit and valuation audits?",
-      "table_count": 7,
+      "table_count": 5,
       "title": "Stablecoin and DeFi Liquidity State"
     },
     {
-      "artifact_count": 17,
-      "figure_count": 3,
-      "manifest_path": "research/06_onchain_valuation_holder_behavior/manifest.json",
-      "manifest_sha256": "1f7aca2a3941806eea9885f06e1c2147fc4fa1e2b3d26de028fc1a24ee718f4d",
-      "module_id": "06_onchain_valuation_holder_behavior",
-      "path": "research/06_onchain_valuation_holder_behavior",
-      "question": "Which on-chain valuation and holder-state measures are diagnostics versus admissible lagged state variables?",
-      "table_count": 5,
-      "title": "On-Chain Valuation and Holder Behavior"
-    },
-    {
-      "artifact_count": 22,
-      "figure_count": 3,
+      "artifact_count": 16,
+      "figure_count": 1,
       "manifest_path": "research/07_chain_fundamentals_sector_dynamics/manifest.json",
-      "manifest_sha256": "55559f6d3361ae91e50715e205302db351aaa5dbc60d53198a08147d816ef3c7",
+      "manifest_sha256": "d680a6b7b503e17f8476ba7fb81eba7d3213d3fbc5f28fab92cbfc77c4db2c60",
       "module_id": "07_chain_fundamentals_sector_dynamics",
       "path": "research/07_chain_fundamentals_sector_dynamics",
       "question": "Which chain-level activity, sector, and point-in-time state measures have enough coverage and definition clarity for descriptive panel analysis?",
-      "table_count": 10,
+      "table_count": 6,
       "title": "Chain Fundamentals and Sector Dynamics"
     },
     {
-      "artifact_count": 21,
-      "figure_count": 3,
-      "manifest_path": "research/08_relative_asset_risk_factor_structure/manifest.json",
-      "manifest_sha256": "95f8b901c16aa0b17abf7428ab3c15766542080a7df6addf706fb40caacb210a",
-      "module_id": "08_relative_asset_risk_factor_structure",
-      "path": "research/08_relative_asset_risk_factor_structure",
-      "question": "How do selected crypto assets compare on matched-window risk, downside beta, expected shortfall, and common-versus-idiosyncratic factor structure?",
-      "table_count": 9,
-      "title": "Relative Asset Risk and Factor Structure"
-    },
-    {
-      "artifact_count": 23,
-      "figure_count": 3,
+      "artifact_count": 15,
+      "figure_count": 1,
       "manifest_path": "research/09_event_stress_cross_module_synthesis/manifest.json",
-      "manifest_sha256": "e16891df3b203a8736af2d3459c2e8337d68701f9761c4a961ef599997b41f8f",
+      "manifest_sha256": "b9b0b942a02812a069e789be9c37200ab20f50226ce3c5fc3dbe5ca8efbc99f1",
       "module_id": "09_event_stress_cross_module_synthesis",
       "path": "research/09_event_stress_cross_module_synthesis",
       "question": "Which event-window, stress-state, and cross-module findings remain strongest after comparing sample, method, uncertainty, measurement risk, and limitations?",
-      "table_count": 11,
+      "table_count": 5,
       "title": "Event Stress and Cross-Module Synthesis"
     }
   ],
   "public_figure_count": 5,
   "schema_version": 1,
   "selected_root_figures": [
-    "cross_asset_dependence_regimes",
-    "tradfi_exposure_shift",
-    "leverage_tail_stress",
-    "etf_lag_response",
-    "relative_asset_factor_structure"
+    "common_factor_tail_dependence",
+    "dynamic_tradfi_integration",
+    "institutional_market_plumbing",
+    "leverage_tail_connectedness",
+    "pit_concentration_turnover"
   ]
 }

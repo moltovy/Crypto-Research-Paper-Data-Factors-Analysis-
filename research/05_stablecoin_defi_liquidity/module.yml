@@ -27,22 +27,16 @@ status: built
 canonical_surface: research/05_stablecoin_defi_liquidity
 tables:
 - claims.csv
-- defi_activity_features.csv
-- liquidity_associations.csv
-- liquidity_regime_summary.csv
-- stablecoin_defi_liquidity_summary.csv
-- stablecoin_liquidity_features.csv
-- valuation_contamination_audit.csv
+- liquidity_state.csv
+- liquidity_state_coefficients.csv
+- liquidity_state_summary.csv
+- measurement_mechanics.csv
 figures:
-- 05_liquidity_state_regimes.png
-- 05_valuation_contamination_audit.png
-- liquidity_state_correlations.png
+- 05_liquidity_measurement_diagnostics.png
 code:
 - src/cqresearch/research/analytical_modules.py
 tests:
 - tests/unit/test_feature_strength_outputs.py
 - tests/unit/test_visual_outputs.py
 root_readme_candidate_figures:
-- figures/05_liquidity_state_regimes.png
-- figures/05_valuation_contamination_audit.png
-- figures/liquidity_state_correlations.png
+- figures/05_liquidity_measurement_diagnostics.png

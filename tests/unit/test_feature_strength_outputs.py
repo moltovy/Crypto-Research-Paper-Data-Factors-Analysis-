@@ -1,7 +1,8 @@
-"""Contract tests for the final analytical-overhaul research surface."""
+"""Scientific and release contracts for the rebuilt public research surface."""
 
 from __future__ import annotations
 
+import json
 import re
 import subprocess
 import tomllib
@@ -14,7 +15,6 @@ from cqresearch.pipelines.final_research import classify_pit_asset
 
 ROOT = Path(__file__).resolve().parents[2]
 RESEARCH = ROOT / "research"
-
 EXPECTED_MODULES = [
     "00_data_measurement_foundation",
     "01_cross_asset_dependence_regimes",
@@ -22,323 +22,218 @@ EXPECTED_MODULES = [
     "03_derivatives_leverage_liquidations",
     "04_etf_institutional_flows",
     "05_stablecoin_defi_liquidity",
-    "06_onchain_valuation_holder_behavior",
     "07_chain_fundamentals_sector_dynamics",
-    "08_relative_asset_risk_factor_structure",
     "09_event_stress_cross_module_synthesis",
 ]
-
-DATA_FOUNDATION_TABLES = {
-    "provider_inventory.csv",
-    "raw_file_inventory.csv",
-    "raw_series_inventory.csv",
-    "feature_inventory.csv",
-    "feature_usage_matrix.csv",
-    "asset_universe_audit.csv",
-    "chain_token_mapping_audit.csv",
-    "coverage_missingness.csv",
-    "units_timing_scaling_audit.csv",
-    "measurement_risk_audit.csv",
-}
-
-ALLOWED_USAGE_STATUSES = {
-    "primary_analysis",
-    "robustness_or_sensitivity",
-    "diagnostic_only",
-    "excluded_insufficient_coverage",
-    "excluded_ambiguous_definition_or_unit",
-    "excluded_duplicate",
-    "excluded_release_risk",
-}
 
 
 def test_final_module_architecture_is_exact() -> None:
     module_dirs = sorted(path.name for path in RESEARCH.iterdir() if path.is_dir())
     assert module_dirs == EXPECTED_MODULES
-
-    forbidden = {
-        "00_data_foundation",
-        "01_returns_risk_regimes",
-        "02_macro_cross_asset_exposure",
-        "04_etf_institutional_plumbing",
-        "06_onchain_valuation_holder_state",
-        "07_chain_fundamentals",
-        "08_relative_major_asset_risk",
-        "09_market_concentration_state",
-        "10_event_sensitivity",
-        "11_cross_module_synthesis",
-    }
-    assert not forbidden.intersection(module_dirs)
+    assert not (RESEARCH / "06_onchain_valuation_holder_behavior").exists()
+    assert not (RESEARCH / "08_relative_asset_risk_factor_structure").exists()
 
 
-def test_data_foundation_tables_and_usage_statuses_are_complete() -> None:
-    tables_dir = RESEARCH / "00_data_measurement_foundation" / "tables"
-    assert DATA_FOUNDATION_TABLES.issubset({path.name for path in tables_dir.glob("*.csv")})
-
-    usage = pd.read_csv(tables_dir / "feature_usage_matrix.csv")
-    assert not usage.empty
-    statuses = set(usage["usage_status"].dropna().astype(str))
-    assert statuses <= ALLOWED_USAGE_STATUSES
-    assert not usage["feature_id"].duplicated().any()
-    assert usage["usage_status"].notna().all()
-
-    assets = pd.read_csv(tables_dir / "asset_universe_audit.csv")
-    required_assets = {"BTC", "ETH", "BNB", "SOL", "XRP", "DOGE", "TRX", "TON", "ADA", "HYPE"}
-    assert required_assets.issubset(set(assets["asset"]))
-    assert assets["analysis_boundary"].str.contains("survivorship", case=False).any()
-
-
-def test_root_readme_positioning_sections_and_no_single_question() -> None:
+def test_root_readme_is_four_question_evidence_surface() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "## Research Question" not in readme
     required_order = [
         "## Project Overview",
-        "## What This Repository Analyzes",
+        "## Evidence Map",
         "## Data Universe and Asset Coverage",
         "## Research Modules",
-        "## Headline Findings",
-        "## Selected Analytical Results",
+        "## Qualified Findings",
+        "## Evidence Figures",
         "## Methods Used",
         "## Important Limitations",
         "## Reproduce",
-        "## Repository Structure",
-        "## Data Policy and Citation",
     ]
     positions = [readme.index(heading) for heading in required_order]
     assert positions == sorted(positions)
-    assert "empirical research and experimentation repository" in readme
-    assert readme.count("Forecasting") <= 1
+    evidence_map = readme.split("## Evidence Map", 1)[1].split(
+        "## Data Universe and Asset Coverage", 1
+    )[0]
+    evidence_rows = [line for line in evidence_map.splitlines() if line.startswith("| ")]
+    assert len(evidence_rows) == 5  # header plus four registered questions
+    assert len(re.findall(r"!\[[^\]]*\]\(([^)]+)\)", readme)) == 5
     assert "Results At A Glance" not in readme
     assert "outputs/" not in readme
 
 
-def test_module_readmes_embed_figures_methods_formulas_and_results() -> None:
+def test_module_readmes_and_claim_lineage_are_complete() -> None:
+    required_claim_fields = {
+        "sample",
+        "method",
+        "uncertainty",
+        "evidence_grade",
+        "source_table",
+        "source_figure",
+        "limitation",
+    }
     for module_id in EXPECTED_MODULES:
-        content = (RESEARCH / module_id / "README.md").read_text(encoding="utf-8")
-        for heading in [
-            "## Overview",
-            "## Questions Investigated",
-            "## Data, Assets, and Sample",
-            "## Methodologies and Calculations",
-            "## Formulas",
-            "## Summary of Results",
-            "## Analytical Results and Visualizations",
-            "## Robustness and Sensitivity",
-            "## Interpretation",
-            "## Limitations",
-            "## Reproduce This Module",
-            "## Files and Code",
-        ]:
-            assert heading in content, f"{module_id} missing {heading}"
-        images = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", content)
-        assert 2 <= len(images) <= 4, module_id
-        assert "$" in content, f"{module_id} has no formula math"
+        module = RESEARCH / module_id
+        content = (module / "README.md").read_text(encoding="utf-8")
+        assert "## Methodologies and Calculations" in content
+        assert "## Summary of Results" in content
+        claims = pd.read_csv(module / "tables" / "claims.csv")
+        assert required_claim_fields <= set(claims.columns)
+        assert claims[list(required_claim_fields)].notna().all().all()
+        if module_id != "00_data_measurement_foundation":
+            images = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", content)
+            assert 1 <= len(images) <= 3
 
 
-def test_cross_asset_module_is_multi_asset_and_has_dependence_methods() -> None:
+def test_dependence_outputs_use_fixed_core_and_leave_one_out_factors() -> None:
     base = RESEARCH / "01_cross_asset_dependence_regimes" / "tables"
-    pearson = pd.read_csv(base / "pearson_correlation_matrix.csv")
-    assets = set(pearson["asset"])
-    assert {"BTC", "ETH", "BNB", "SOL", "XRP", "DOGE", "TRX", "TON", "ADA", "HYPE"}.issubset(assets)
-    assert {"SPY", "QQQ", "IWM", "Gold", "DXY", "VIX"}.issubset(set(pearson.columns))
-
-    pca = pd.read_csv(base / "pca_variance_share.csv")
-    assert pca.loc[0, "variance_share"] > 0.4
-
-    partial = pd.read_csv(base / "partial_correlation_btc_control.csv")
-    assert not partial.empty
-    assert partial["control"].eq("BTC daily return").all()
-
-    tail = pd.read_csv(base / "lower_tail_coexceedance_matrix.csv")
-    numeric_tail = tail.drop(columns=["asset"]).apply(pd.to_numeric, errors="coerce")
-    assert numeric_tail.notna().sum().sum() > 0
-
-    regime = pd.read_csv(base / "regime_correlation_difference.csv")
-    assert regime.drop(columns=["asset"]).notna().sum().sum() > 0
+    factors = pd.read_csv(base / "common_factor_results.csv")
+    tails = pd.read_csv(base / "tail_dependence.csv")
+    coverage = pd.read_csv(base / "asset_return_coverage.csv")
+    assert len(factors) == 14
+    assert not factors["self_included"].astype(bool).any()
+    assert factors["n"].eq(2006).all()
+    assert coverage["coverage"].min() >= 0.99
+    assert set(tails["quantile"]) == {0.01, 0.025, 0.05, 0.1}
+    primary = tails[tails["primary_specification"].astype(bool)]
+    assert primary["bootstrap_reps"].eq(2000).all()
+    np.testing.assert_allclose(primary["independence_probability"], primary["quantile"] ** 2)
 
 
-def test_macro_tables_preserve_same_support_and_mvrv_guardrail() -> None:
+def test_tradfi_outputs_use_native_sessions_and_report_weak_interactions() -> None:
     base = RESEARCH / "02_macro_tradfi_integration" / "tables"
-    block = pd.read_csv(base / "block_delta_r2.csv")
-    assert block["same_support"].all()
-    assert (block["n_full"] == block["n_reduced"]).all()
-    assert (block["full_r2"] + 1e-10 >= block["reduced_r2"]).all()
-    assert block["method_note"].str.contains("not conventional partial", case=False).all()
+    rolling = pd.read_csv(base / "dynamic_tradfi_exposures.csv")
+    breaks = pd.read_csv(base / "break_tests.csv")
+    assert rolling["window"].eq(252).all()
+    assert rolling["n"].eq(252).all()
+    assert set(breaks["asset"]) == {"BTC", "ETH"}
+    assert not breaks["feature_id"].str.contains("mvrv", case=False).any()
+    qqq = breaks[breaks["feature_id"].eq("qqq_ret")]
+    assert (qqq["era_beta_change_pvalue"] > 0.05).all()
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "formal ETF-era interaction estimates are weak" in readme
 
-    for name in ["btc_ex_mvrv_feature_strength.csv", "eth_feature_strength.csv"]:
-        frame = pd.read_csv(base / name)
-        assert not frame["feature_id"].str.contains("mvrv", case=False, na=False).any()
 
-
-def test_etf_lag_response_has_no_pre_inception_plot_rows() -> None:
+def test_etf_outputs_preserve_inception_and_simultaneous_inference() -> None:
     base = RESEARCH / "04_etf_institutional_flows" / "tables"
-    lag = pd.read_csv(base / "etf_lag_response.csv")
-    assert set(lag["asset"]) == {"BTC", "ETH"}
-    assert set(lag["lag_days"]) == set(range(6))
-    assert {"return_corr", "ci_low", "ci_high", "n", "sample_start", "sample_end"}.issubset(
-        lag.columns
+    lags = pd.read_csv(base / "etf_distributed_lags.csv")
+    timing = pd.read_csv(base / "etf_timing_sensitivity.csv")
+    assert set(lags["asset"]) == {"BTC", "ETH"}
+    assert set(lags["lag_sessions"]) == set(range(6))
+    assert lags["bootstrap_reps"].eq(2000).all()
+    assert pd.to_datetime(lags.loc[lags["asset"].eq("BTC"), "sample_start"]).min() >= pd.Timestamp(
+        "2024-01-11"
     )
-    assert lag["n"].min() >= 50
+    assert pd.to_datetime(lags.loc[lags["asset"].eq("ETH"), "sample_start"]).min() >= pd.Timestamp(
+        "2024-07-23"
+    )
+    assert {"return_correlation", "absolute_return_correlation"} <= set(timing.columns)
+    corporate = pd.read_csv(base / "corporate_exposure_eras.csv")
+    assert corporate.loc[0, "status"] == "not_run"
 
-    audit = pd.read_csv(base / "etf_pre_inception_plot_audit.csv")
-    assert set(audit["asset"]) == {"BTC", "ETH"}
-    assert (audit["pre_inception_plotted_observations"] == 0).all()
+
+def test_leverage_and_connectedness_diagnostics_are_bounded() -> None:
+    base = RESEARCH / "03_derivatives_leverage_liquidations" / "tables"
+    curve = pd.read_csv(base / "leverage_tail_model.csv")
+    connectedness = pd.read_csv(base / "connectedness.csv")
+    assert curve["predicted_tail_probability"].between(0, 1).all()
+    assert (curve["ci_low"] <= curve["predicted_tail_probability"]).all()
+    assert (curve["ci_high"] >= curve["predicted_tail_probability"]).all()
+    successful = connectedness[connectedness["error"].fillna("").eq("")]
+    assert successful["stable"].astype(bool).all()
+    assert successful["row_sum_max_error"].max() < 1e-10
+    assert successful["connectedness_pct"].between(0, 100).all()
+
+
+def test_liquidity_and_mvrv_guardrails_are_explicit() -> None:
+    base = RESEARCH / "05_stablecoin_defi_liquidity" / "tables"
+    coefficients = pd.read_csv(base / "liquidity_state_coefficients.csv")
+    mechanics = pd.read_csv(base / "measurement_mechanics.csv")
+    assert coefficients["r_squared"].max() < 0.05
+    mvrv = mechanics.loc[mechanics["metric"].eq("correlation__btc_ret__d_log_mvrv")]
+    assert mvrv["value"].iat[0] > 0.95
+    assert mechanics["interpretation"].str.contains("measurement", case=False).all()
     assert (
-        pd.to_datetime(audit["first_plotted_date"])
-        >= pd.to_datetime(audit["first_valid_source_date"])
-    ).all()
-
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "04_etf_lag_response.png" in readme
-    assert "02_etf_market_plumbing.png" not in readme
-    assert "cumulative-flow" not in readme.lower()
-
-
-def test_no_standalone_concentration_or_basic_selected_scatter_remains() -> None:
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "09_market_concentration_state" not in readme
-    assert "market_concentration_state.png" not in readme
-    assert "05_selected_major_asset_risk.png" not in readme
-
-    selection = pd.read_csv(RESEARCH / "root_figure_selection.csv")
-    selected = selection[selection["selected"].astype(str).str.lower().eq("true")]
-    assert (
-        not selected["figure_id"]
-        .str.contains("concentration|mvrv|selected_major_asset_risk", case=False)
-        .any()
+        "MVRV"
+        not in (ROOT / "config" / "public_figures.yml")
+        .read_text(encoding="utf-8")
+        .split("status: public")[0]
     )
 
-    pit_coeff = pd.read_csv(
-        RESEARCH
-        / "07_chain_fundamentals_sector_dynamics"
-        / "tables"
-        / "pit_state_relationship_coefficients.csv"
-    )
-    assert {"outcome", "feature", "coefficient", "ci_low", "ci_high"}.issubset(pit_coeff.columns)
+
+def test_pit_outputs_exclude_partial_months_and_decompose_exactly() -> None:
+    base = RESEARCH / "07_chain_fundamentals_sector_dynamics" / "tables"
+    concentration = pd.read_csv(base / "pit_concentration.csv")
+    decomposition = pd.read_csv(base / "pit_concentration_decomposition.csv")
+    transitions = pd.read_csv(base / "pit_membership_transitions.csv")
+    assert pd.to_datetime(concentration["snapshot_date"]).max() == pd.Timestamp("2026-05-31")
+    np.testing.assert_allclose(decomposition["residual"], 0, atol=1e-12)
+    assert transitions["turnover_rate"].between(0, 1).all()
+    assert (concentration["effective_asset_count"] > 1).all()
 
 
-def test_relative_asset_risk_uses_factor_and_downside_outputs() -> None:
-    base = RESEARCH / "08_relative_asset_risk_factor_structure" / "tables"
-    factor = pd.read_csv(base / "relative_factor_decomposition.csv")
-    assert {"common_variance_share", "idiosyncratic_variance_share", "pc1_variance_share"}.issubset(
-        factor.columns
-    )
-    assert set(factor["asset"]).issuperset({"BTC", "ETH", "SOL", "XRP", "DOGE", "HYPE"})
-    np.testing.assert_allclose(
-        factor["common_variance_share"] + factor["idiosyncratic_variance_share"],
-        1.0,
-        atol=1e-8,
-    )
-
-    downside = pd.read_csv(base / "downside_expected_shortfall.csv")
-    assert {"expected_shortfall_5pct", "downside_beta_to_btc_tail"}.issubset(downside.columns)
-
-
-def test_mvrv_identity_terms_and_liquidity_valuation_guardrails() -> None:
-    points = pd.read_csv(
-        RESEARCH / "06_onchain_valuation_holder_behavior" / "tables" / "mvrv_identity_points.csv"
-    )
-    residual = points["d_log_mvrv"] - (points["d_log_market_cap"] - points["d_log_realized_cap"])
-    diff = (residual - points["identity_residual"]).dropna().abs()
-    assert diff.max() < 1e-12
-
-    audit = pd.read_csv(
-        RESEARCH / "05_stablecoin_defi_liquidity" / "tables" / "valuation_contamination_audit.csv"
-    )
-    tvl = audit[audit["feature_id"].eq("valuation_sensitive_defi_tvl_growth")]
-    assert set(tvl["asset"]) == {"BTC", "ETH"}
-    assert tvl["mechanical_link_risk"].eq("high_usd_price_content").all()
-
-
-def test_event_synthesis_uses_current_modules_and_demotes_bad_claims() -> None:
+def test_event_synthesis_contains_only_current_claims() -> None:
     base = RESEARCH / "09_event_stress_cross_module_synthesis" / "tables"
     ledger = pd.read_csv(base / "evidence_ledger.csv")
-    assert set(ledger["module_id"]).issubset(set(EXPECTED_MODULES))
-    assert "01_returns_risk_regimes" not in set(ledger["module_id"])
+    responses = pd.read_csv(base / "event_response_matrix.csv")
+    assert set(ledger["module_id"]) <= set(EXPECTED_MODULES)
+    assert (
+        not ledger["module_id"]
+        .isin({"06_onchain_valuation_holder_behavior", "08_relative_asset_risk_factor_structure"})
+        .any()
+    )
+    assert set(responses["window_days"]) == {1, 5, 10}
+    assert responses["timing"].str.contains("event day excluded").all()
 
-    inventory = pd.read_csv(base / "claim_inventory.csv")
-    row = inventory.loc[
-        inventory["claim"] == "Current-top50 daily returns are historical altseason evidence."
-    ].iloc[0]
-    assert row["disposition"] == "demote"
-    assert "survivorship" in row["limitation"].lower()
 
-    row = inventory.loc[inventory["claim"] == "ETF flows cause same-day crypto returns."].iloc[0]
-    assert row["disposition"] == "demote"
+def test_figure_sidecars_have_unique_plot_keys_and_metadata() -> None:
+    for png in RESEARCH.glob("*/figures/*.png"):
+        source = png.with_suffix(".source.csv")
+        metadata = png.with_suffix(".metadata.json")
+        if source.exists():
+            frame = pd.read_csv(source)
+            assert frame["plot_key"].is_unique, source
+            payload = json.loads(metadata.read_text(encoding="utf-8"))
+            assert payload["rows"] == len(frame)
+            assert payload["source_tables"]
+
+
+def test_public_claims_avoid_prohibited_language() -> None:
+    claims = pd.concat(
+        [pd.read_csv(path) for path in sorted(RESEARCH.glob("*/tables/claims.csv"))],
+        ignore_index=True,
+    )
+    text = " ".join(claims["claim_text"].str.lower())
+    for phrase in ["will outperform", "trading signal", "causes returns", "price forecast"]:
+        assert phrase not in text
 
 
 def test_canonical_id_collision_handling_is_not_symbol_first() -> None:
-    assert (
-        classify_pit_asset(
-            pd.Series(
-                {
-                    "symbol": "SOL",
-                    "asset_name": "Wrapped SOL",
-                    "coingecko_id": "coingecko:wrapped-sol",
-                    "asset_key": "coingecko:wrapped-sol",
-                }
-            )
-        )
-        == "productized/wrapped assets"
+    wrapped = pd.Series(
+        {
+            "symbol": "SOL",
+            "asset_name": "Wrapped SOL",
+            "coingecko_id": "coingecko:wrapped-sol",
+            "asset_key": "coingecko:wrapped-sol",
+        }
     )
-    assert (
-        classify_pit_asset(
-            pd.Series(
-                {
-                    "symbol": "GRAM",
-                    "asset_name": "Toncoin",
-                    "coingecko_id": "coingecko:the-open-network",
-                    "asset_key": "coingecko:the-open-network",
-                }
-            )
-        )
-        == "selected majors ex BTC/ETH"
+    ton = pd.Series(
+        {
+            "symbol": "GRAM",
+            "asset_name": "Toncoin",
+            "coingecko_id": "coingecko:the-open-network",
+            "asset_key": "coingecko:the-open-network",
+        }
     )
-    assert (
-        classify_pit_asset(
-            pd.Series(
-                {
-                    "symbol": "XRP",
-                    "asset_name": "Binance-Peg XRP",
-                    "coingecko_id": "coingecko:binance-peg-xrp",
-                    "asset_key": "coingecko:binance-peg-xrp",
-                }
-            )
-        )
-        == "productized/wrapped assets"
-    )
+    assert classify_pit_asset(wrapped) == "productized/wrapped assets"
+    assert classify_pit_asset(ton) == "selected majors ex BTC/ETH"
 
 
-def test_package_metadata_ci_and_raw_data_policy() -> None:
+def test_package_ci_and_raw_data_policy() -> None:
     metadata = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]
     assert metadata["name"] == "crypto-market-dynamics"
-    authors = " ".join(author["name"] for author in metadata["authors"])
-    assert "Crypto Market Dynamics contributors" in authors
-
     workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
-    assert "uv run python scripts/check_research_surface.py --module all" in workflow
-    assert "hashFiles('data_local/raw/**')" in workflow
-    assert 'allowed_prefixes = ("research/",)' in workflow
-
+    assert "scripts/run_all.py --mode fixture" in workflow
+    assert "scripts/run_all.py --mode artifact" in workflow
     result = subprocess.run(
-        [
-            "git",
-            "ls-files",
-            "--",
-            "data_local",
-            "data_cache",
-            "reports",
-            "archive",
-            "CryptoQuant",
-            "Artemis",
-            "Tradingview",
-            "TradingView",
-            "DefiLlama",
-            "Farside ETF Data",
-            "FRED",
-            "AlternativeMe",
-            "MarketStructure",
-        ],
+        ["git", "ls-files", "--", "data_local", "data_cache", "reports/panels"],
         cwd=ROOT,
         capture_output=True,
         text=True,

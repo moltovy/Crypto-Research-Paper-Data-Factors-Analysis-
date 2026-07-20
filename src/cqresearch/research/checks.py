@@ -74,6 +74,44 @@ BANNED_FIGURE_NAME_TERMS = {
     "composition",
     "stacked",
 }
+REQUIRED_ANALYTICAL_TABLES = {
+    "01_cross_asset_dependence_regimes": [
+        "common_factor_results.csv",
+        "tail_dependence.csv",
+    ],
+    "02_macro_tradfi_integration": [
+        "dynamic_tradfi_exposures.csv",
+        "break_tests.csv",
+        "tradfi_diagnostics.csv",
+    ],
+    "03_derivatives_leverage_liquidations": [
+        "leverage_tail_model.csv",
+        "leverage_tail_horizon_sensitivity.csv",
+        "quantile_es.csv",
+        "systemic_tail_association.csv",
+        "connectedness.csv",
+    ],
+    "04_etf_institutional_flows": [
+        "etf_distributed_lags.csv",
+        "etf_nonlinear_sensitivity.csv",
+        "etf_timing_sensitivity.csv",
+        "institutional_positioning.csv",
+    ],
+    "05_stablecoin_defi_liquidity": [
+        "liquidity_state.csv",
+        "measurement_mechanics.csv",
+    ],
+    "07_chain_fundamentals_sector_dynamics": [
+        "pit_concentration.csv",
+        "pit_membership_transitions.csv",
+        "pit_concentration_decomposition.csv",
+    ],
+    "09_event_stress_cross_module_synthesis": [
+        "event_registry.csv",
+        "event_response_matrix.csv",
+        "evidence_ledger.csv",
+    ],
+}
 
 
 def check_research_surface(module: str = "all", root: Path = PROJECT_ROOT) -> pd.DataFrame:
@@ -120,6 +158,11 @@ def _check_module(root: Path, module_id: str) -> list[dict[str, Any]]:
         rows.extend(_check_data_foundation(module_dir))
     if module_id == "04_etf_institutional_flows":
         rows.extend(_check_etf_timing(module_dir))
+    for table_name in REQUIRED_ANALYTICAL_TABLES.get(module_id, []):
+        path = module_dir / "tables" / table_name
+        rows.append(
+            _row(module_id, f"required_analytical_table_{table_name}", path.exists(), table_name)
+        )
     rows.extend(_check_manifest(root, module_dir, module_id))
     return rows
 
@@ -178,8 +221,8 @@ def _check_module_contract(module_dir: Path, module_id: str) -> list[dict[str, A
         rows.append(
             _row(
                 module_id,
-                "module_readme_embeds_two_to_four_figures",
-                2 <= len(images) <= 4,
+                "module_readme_embeds_one_to_three_figures",
+                1 <= len(images) <= 3,
                 f"figures={len(images)}",
             )
         )
@@ -300,6 +343,8 @@ def _check_root_surface(root: Path) -> list[dict[str, Any]]:
         rows.extend(_check_root_figure_selection(root_selection_path))
     if repo_readme_path.exists():
         rows.extend(_check_repo_readme(repo_readme_path))
+    rows.extend(_check_foundation_registries(root))
+    rows.extend(_check_reporting_surface(root))
     rows.extend(_check_release_hygiene(root))
     return rows
 
@@ -422,6 +467,35 @@ def _check_figure_specs(root: Path, figure_specs_path: Path) -> list[dict[str, A
                     relpath,
                 )
             )
+        for relpath in specs["figure_path"].dropna().astype(str):
+            figure = root / relpath
+            source = figure.with_suffix(".source.csv")
+            metadata = figure.with_suffix(".metadata.json")
+            rows.append(
+                _row(
+                    "research",
+                    f"figure_source_exists_{relpath}",
+                    source.exists(),
+                    source.relative_to(root).as_posix(),
+                )
+            )
+            rows.append(
+                _row(
+                    "research",
+                    f"figure_metadata_exists_{relpath}",
+                    metadata.exists(),
+                    metadata.relative_to(root).as_posix(),
+                )
+            )
+        visual_status = specs["visual_qa_status"].fillna("").astype(str)
+        rows.append(
+            _row(
+                "research",
+                "all_figures_have_manual_visual_qa",
+                bool(visual_status.str.startswith("pass").all()),
+                ",".join(sorted(set(visual_status))),
+            )
+        )
     return rows
 
 
@@ -444,13 +518,12 @@ def _check_release_hygiene(root: Path) -> list[dict[str, Any]]:
     if (root / ".git").exists():
         tracked_outputs = _git_ls_files(root, ["outputs"])
         tracked_raw = _git_ls_files(root, ["data_local"])
-        tracked_pack = _git_ls_files(
-            root,
-            [
-                "crypto_market_dynamics_empirical_rebuild_manager_pack",
-                "crypto_market_dynamics_final_analytical_overhaul_pack",
-            ],
-        )
+        tracked = _git_ls_files(root, [])
+        tracked_pack = [
+            path
+            for path in tracked
+            if any(term in path.lower() for term in ["manager_pack", "execution_pack", "worklog"])
+        ]
         rows.extend(
             [
                 _row(
@@ -473,15 +546,132 @@ def _check_release_hygiene(root: Path) -> list[dict[str, Any]]:
     return rows
 
 
+def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
+    research = root / "research"
+    required = [
+        "source_contracts.csv",
+        "raw_objects.csv",
+        "logical_series.csv",
+        "feature_registry.csv",
+        "sample_manifest.csv",
+        "sample_membership.csv",
+        "estimand_registry.csv",
+        "source_decisions.csv",
+        "acceptance_ledger.csv",
+    ]
+    rows = [
+        _row("research", f"registry_exists_{name}", (research / name).exists(), name)
+        for name in required
+    ]
+    if not all((research / name).exists() for name in required):
+        return rows
+    raw = pd.read_csv(research / "raw_objects.csv")
+    logical = pd.read_csv(research / "logical_series.csv")
+    features = pd.read_csv(research / "feature_registry.csv")
+    samples = pd.read_csv(research / "sample_manifest.csv")
+    estimands = pd.read_csv(research / "estimand_registry.csv")
+    decisions = pd.read_csv(research / "source_decisions.csv")
+    rows.extend(
+        [
+            _row(
+                "research",
+                "raw_objects_have_sha256",
+                bool(raw["sha256"].astype(str).str.fullmatch(r"[0-9a-f]{64}").all()),
+                f"objects={len(raw)}",
+            ),
+            _row(
+                "research",
+                "raw_object_paths_are_portable",
+                bool(raw["relpath"].astype(str).str.startswith("data_local/raw/").all()),
+                "portable data_local/raw paths",
+            ),
+            _row(
+                "research",
+                "logical_series_distinct_from_raw_objects",
+                len(logical) < len(raw) and logical["series_id"].is_unique,
+                f"raw_objects={len(raw)} logical_series={len(logical)}",
+            ),
+            _row(
+                "research",
+                "feature_contracts_have_units_and_dates",
+                bool(features[["unit", "first_valid_date", "last_valid_date"]].notna().all().all()),
+                f"features={len(features)}",
+            ),
+            _row(
+                "research",
+                "samples_s1_through_s5_present",
+                set(samples["sample_id"].astype(str)) == {"S1", "S2", "S3", "S4", "S5"},
+                "S1-S5",
+            ),
+            _row(
+                "research",
+                "estimands_cover_rq1_through_rq4",
+                set(estimands["research_question"].astype(str)) == {"RQ1", "RQ2", "RQ3", "RQ4"},
+                "RQ1-RQ4",
+            ),
+            _row(
+                "research",
+                "source_probes_resolved",
+                not decisions["gate_status"].astype(str).eq("pending_probe").any(),
+                decisions[["source_id", "gate_status"]].to_string(index=False),
+            ),
+        ]
+    )
+    return rows
+
+
+def _check_reporting_surface(root: Path) -> list[dict[str, Any]]:
+    required = [
+        root / "REFERENCES.md",
+        root / "reports" / "crypto_market_dynamics_research_report.md",
+        root / "reports" / "crypto_market_dynamics_research_report.html",
+        root / "reports" / "crypto_market_dynamics_research_report.pdf",
+        root / "reports" / "crypto_market_dynamics_reproducibility.executed.ipynb",
+        root / "research" / "build_provenance.json",
+    ]
+    rows = [
+        _row(
+            "research",
+            f"reporting_artifact_exists_{path.name}",
+            path.exists() and path.stat().st_size > 0,
+            path.relative_to(root).as_posix(),
+        )
+        for path in required
+    ]
+    public_text = [root / "README.md", root / "REFERENCES.md"]
+    public_text.extend((root / "research").rglob("*.md"))
+    public_text.extend((root / "research").rglob("*.csv"))
+    leaking: list[str] = []
+    private_markers = (
+        "c:\\dev\\projects",
+        "_codex_" + "execution_pack",
+        "work" + "log.md",
+        "run_" + "state.md",
+    )
+    for path in public_text:
+        text = path.read_text(encoding="utf-8", errors="ignore").lower()
+        if any(marker in text for marker in private_markers):
+            leaking.append(path.relative_to(root).as_posix())
+    rows.append(
+        _row(
+            "research",
+            "public_surface_has_no_private_paths",
+            not leaking,
+            ",".join(leaking) if leaking else "no private paths or execution-pack references",
+        )
+    )
+    return rows
+
+
 def _check_repo_readme(path: Path) -> list[dict[str, Any]]:
     text = path.read_text(encoding="utf-8")
     required = [
         "## Project Overview",
-        "## What This Repository Analyzes",
+        "## Evidence Map",
         "## Data Universe and Asset Coverage",
         "## Research Modules",
-        "## Headline Findings",
-        "## Selected Analytical Results",
+        "## Qualified Findings",
+        "## Evidence Figures",
         "## Methods Used",
         "## Important Limitations",
         "## Reproduce",
@@ -583,37 +773,41 @@ ROOT_FIGURE_SELECTION_COLUMNS = {
 
 
 def _check_etf_timing(module_dir: Path) -> list[dict[str, Any]]:
-    path = module_dir / "tables" / "etf_pre_inception_plot_audit.csv"
+    path = module_dir / "tables" / "etf_distributed_lags.csv"
     rows = [
         _row(
             module_dir.name,
-            "etf_timing_audit_exists",
+            "etf_distributed_lags_exists",
             path.exists(),
-            "tables/etf_pre_inception_plot_audit.csv",
+            "tables/etf_distributed_lags.csv",
         )
     ]
     if not path.exists():
         return rows
     frame = pd.read_csv(path)
     if frame.empty:
-        rows.append(_row(module_dir.name, "etf_timing_audit_nonempty", False, "no rows"))
+        rows.append(_row(module_dir.name, "etf_distributed_lags_nonempty", False, "no rows"))
         return rows
-    pre = pd.to_numeric(frame.get("pre_inception_plotted_observations", 1), errors="coerce")
-    first = pd.to_datetime(frame.get("first_valid_source_date"), errors="coerce")
-    plotted = pd.to_datetime(frame.get("first_plotted_date"), errors="coerce")
+    starts = pd.to_datetime(frame.get("sample_start"), errors="coerce")
+    valid_starts = frame["asset"].map(
+        {"BTC": pd.Timestamp("2024-01-11"), "ETH": pd.Timestamp("2024-07-23")}
+    )
+    lags = set(pd.to_numeric(frame.get("lag_sessions"), errors="coerce").dropna().astype(int))
     rows.extend(
         [
             _row(
                 module_dir.name,
-                "etf_no_pre_inception_plotted_rows",
-                bool((pre == 0).all()),
-                frame.to_string(index=False),
+                "etf_lags_zero_through_five",
+                lags == set(range(6)),
+                f"lags={sorted(lags)}",
             ),
             _row(
                 module_dir.name,
-                "etf_first_plotted_not_before_source",
-                bool((plotted >= first).all()),
-                frame.to_string(index=False),
+                "etf_samples_not_before_inception",
+                bool((starts >= valid_starts).all()),
+                frame[["asset", "sample_start", "sample_end", "n"]]
+                .drop_duplicates()
+                .to_string(index=False),
             ),
         ]
     )

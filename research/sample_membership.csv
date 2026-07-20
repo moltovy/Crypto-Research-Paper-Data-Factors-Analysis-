@@ -1,0 +1,73 @@
+sample_id,asset,included,reason,first_date,last_date,observations,expected_observations,coverage
+S1,BTC,True,BTC/ETH anchor,2020-01-02,2026-04-14,2295,2295,1
+S1,ETH,True,BTC/ETH anchor,2020-01-02,2026-04-14,2295,2295,1
+S2,AAVE,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,ADA,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,BCH,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,BNB,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,BTC,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,DOGE,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,DOT,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,ETH,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,LINK,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,LTC,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,SNX,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,UNI,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,XLM,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,XRP,True,"passes PIT, history, coverage, and identity rules",2021-01-01,2026-06-30,2007,2007,1
+S2,BSV,False,fails full-history or coverage rule,,,0,2007,0
+S2,EOS,False,fails full-history or coverage rule,,,0,2007,0
+S2,XMR,False,fails full-history or coverage rule,,,0,2007,0
+S3,ADA,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,AVAX,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,BCH,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,BNB,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,BSC-USD,True,broad unbalanced supplementary member; current-cohort source limitation applies,2024-02-05,2026-06-16,862,863,0.998841251448436
+S3,BTC,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,CBBTC,True,broad unbalanced supplementary member; current-cohort source limitation applies,2024-09-12,2026-06-16,642,643,0.998444790046656
+S3,CRO,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,DOGE,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,DOT,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,ETH,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,GRAM,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,HBAR,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,HYPE,True,broad unbalanced supplementary member; current-cohort source limitation applies,2024-11-29,2026-06-16,564,565,0.998230088495575
+S3,LEO,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,LINK,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,LTC,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,MNT,True,broad unbalanced supplementary member; current-cohort source limitation applies,2023-07-17,2026-06-16,1065,1066,0.99906191369606
+S3,NEAR,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,ONDO,True,broad unbalanced supplementary member; current-cohort source limitation applies,2024-01-18,2026-06-16,880,881,0.998864926220204
+S3,PAXG,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,SHIB,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,SOL,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,SUI,True,broad unbalanced supplementary member; current-cohort source limitation applies,2023-05-03,2026-06-16,1140,1141,0.999123575810692
+S3,SUSDS,True,broad unbalanced supplementary member; current-cohort source limitation applies,2024-12-13,2026-06-16,550,551,0.998185117967332
+S3,TAO,True,broad unbalanced supplementary member; current-cohort source limitation applies,2023-02-16,2026-06-16,1202,1217,0.987674609695974
+S3,TRX,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,UNI,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,USDT0,True,broad unbalanced supplementary member; current-cohort source limitation applies,2025-01-23,2026-06-16,509,510,0.998039215686275
+S3,WBT,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1250,1264,0.988924050632911
+S3,WLD,True,broad unbalanced supplementary member; current-cohort source limitation applies,2023-07-24,2026-06-16,1058,1059,0.999055712936733
+S3,XAUT,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,XLM,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,XMR,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,XRP,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,ZEC,True,broad unbalanced supplementary member; current-cohort source limitation applies,2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,ASTER,False,"fails PIT, history, coverage, or asset-type rule",2025-09-17,2026-06-16,273,273,1
+S3,AWETH,False,"fails PIT, history, coverage, or asset-type rule",2025-12-16,2026-06-16,183,183,1
+S3,CC,False,"fails PIT, history, coverage, or asset-type rule",2025-11-10,2026-06-16,219,219,1
+S3,FIGR_HELOC,False,"fails PIT, history, coverage, or asset-type rule",2025-08-27,2026-06-16,290,294,0.986394557823129
+S3,LAB,False,"fails PIT, history, coverage, or asset-type rule",2025-12-16,2026-06-16,183,183,1
+S3,M,False,"fails PIT, history, coverage, or asset-type rule",2025-07-03,2026-06-16,349,349,1
+S3,RAIN,False,"fails PIT, history, coverage, or asset-type rule",2025-09-11,2026-06-16,279,279,1
+S3,STETH,False,"fails PIT, history, coverage, or asset-type rule",2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,WBETH,False,"fails PIT, history, coverage, or asset-type rule",2023-05-02,2026-06-16,1141,1142,0.999124343257443
+S3,WBTC,False,"fails PIT, history, coverage, or asset-type rule",2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,WEETH,False,"fails PIT, history, coverage, or asset-type rule",2023-12-04,2026-06-16,894,926,0.965442764578834
+S3,WETH,False,"fails PIT, history, coverage, or asset-type rule",2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S3,WLFI,False,"fails PIT, history, coverage, or asset-type rule",2025-09-01,2026-06-16,289,289,1
+S3,WSTETH,False,"fails PIT, history, coverage, or asset-type rule",2022-12-31,2026-06-16,1263,1264,0.999208860759494
+S4,monthly_top100,True,complete monthly PIT snapshots,2020-01-31,2026-05-31,7700,7700,1
+S5,BTC ETF,True,actual reported ETF dates only,2024-01-11,2026-04-10,563,563,1
+S5,ETH ETF,True,actual reported ETF dates only,2024-07-23,2026-04-10,431,431,1

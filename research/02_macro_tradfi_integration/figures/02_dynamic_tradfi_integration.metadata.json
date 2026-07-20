@@ -1,0 +1,9 @@
+{
+  "figure_id": "dynamic_tradfi_integration",
+  "plot_key": "plot_key",
+  "png": "02_dynamic_tradfi_integration.png",
+  "rows": 534,
+  "source_csv": "02_dynamic_tradfi_integration.source.csv",
+  "source_tables": "tables/dynamic_tradfi_exposures.csv; tables/break_tests.csv",
+  "svg": "02_dynamic_tradfi_integration.svg"
+}
