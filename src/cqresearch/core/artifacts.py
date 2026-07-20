@@ -11,7 +11,20 @@ from typing import Any
 
 import pandas as pd
 
-TEXT_ARTIFACT_SUFFIXES = {".csv", ".json", ".md", ".svg", ".txt", ".yaml", ".yml"}
+TEXT_ARTIFACT_SUFFIXES = {
+    ".csv",
+    ".html",
+    ".ipynb",
+    ".json",
+    ".lock",
+    ".md",
+    ".py",
+    ".svg",
+    ".toml",
+    ".txt",
+    ".yaml",
+    ".yml",
+}
 
 
 def write_csv(path: Path, frame: pd.DataFrame) -> Path:
