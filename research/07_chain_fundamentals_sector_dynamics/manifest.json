@@ -1,9 +1,9 @@
 {
   "artifacts": [
     {
-      "bytes": 331,
+      "bytes": 1142,
       "path": "research/07_chain_fundamentals_sector_dynamics/figures/07_pit_concentration_turnover.metadata.json",
-      "sha256": "41d6dea682561a21a013bd5bc523e0cd02c7b188209ac9406a9e36e41ac8d30a"
+      "sha256": "f361c2c2dc2aac48afc107096eef03acf85ad6e2540e178a236f42a1ec182487"
     },
     {
       "bytes": 269026,
@@ -26,29 +26,29 @@
       "sha256": "44e793393fdf9c45b2d481bdbf5bcd4b023c9c26fc09fbe90bfb3d77fe039f1b"
     },
     {
-      "bytes": 164,
+      "bytes": 120,
       "path": "research/07_chain_fundamentals_sector_dynamics/interpretation.md",
-      "sha256": "841b1d42d8818b31696f9c254d5d5a9653c642e8d1acec36777b188eb8520bd3"
+      "sha256": "9dc832032f8fb0993d9ff1d9adcfb8c7f2d720113e7f7c6789a55fb86ad582be"
     },
     {
-      "bytes": 123,
+      "bytes": 183,
       "path": "research/07_chain_fundamentals_sector_dynamics/limitations.md",
-      "sha256": "1b0632bd788e4f7168c904840857d29113a58f5b98478145ea5d911015441f3d"
+      "sha256": "bfb3e511eff68a84cdd5d158e5b87dc3362ff7a5bb1ccf1c8c8d5734676b315f"
     },
     {
-      "bytes": 221,
+      "bytes": 437,
       "path": "research/07_chain_fundamentals_sector_dynamics/methodology.md",
-      "sha256": "c8641bc05eb2b389f44d9505126626967970f604652aa76471eea3c2f0e18873"
+      "sha256": "a66ceae2a3ebe8c5b09cbf3e5ddb7c79c16cdcc9c08e43cd75e59872bd57c2c3"
     },
     {
-      "bytes": 1326,
+      "bytes": 1421,
       "path": "research/07_chain_fundamentals_sector_dynamics/module.yml",
-      "sha256": "5fce3d807c7aa0c98a1871c05042c02c915b2ec91a9101073a0b17f2a730d685"
+      "sha256": "01e1765ae2fb27c6cb11ff22e01bf24a65a280cf5a320668abc0d2ecb4ca310e"
     },
     {
-      "bytes": 5047,
+      "bytes": 6342,
       "path": "research/07_chain_fundamentals_sector_dynamics/README.md",
-      "sha256": "2e08401f89ebccba967cd4964fdde6b359dfbcff4ceb266d078018bbf5ceafae"
+      "sha256": "12414f1093980e452981e03e5bae9e7293331d766b918849979f49504451e674"
     },
     {
       "bytes": 545,
@@ -61,9 +61,9 @@
       "sha256": "ff43cc2716b57630dcaad90f4c1a8759bb7009f2809f41c079ef92ca4a61498f"
     },
     {
-      "bytes": 2108,
+      "bytes": 2206,
       "path": "research/07_chain_fundamentals_sector_dynamics/tables/claims.csv",
-      "sha256": "48d657b48c59e24eb0618f2c2c6141b7d4367b5910ed6aa2eacb8302fe4c94dc"
+      "sha256": "91c71c4004d3434e030168cbd1256a351a2afedbcc9c6395235b7d7ef4c0f4c4"
     },
     {
       "bytes": 13435,

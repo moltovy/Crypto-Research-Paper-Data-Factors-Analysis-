@@ -1,3 +1,3 @@
 # Limitations
 
-Raw USD TVL can mechanically rise when deposited-asset prices rise. No exogenous liquidity-shock design is present.
+Raw USD TVL is valuation-sensitive, source revisions are possible, and residualization does not create an exogenous liquidity shock.

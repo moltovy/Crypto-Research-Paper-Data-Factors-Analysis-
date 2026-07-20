@@ -19,14 +19,14 @@ from cqresearch.core.artifacts import (
     write_text,
 )
 from cqresearch.data.contracts import logical_series_registry
+from cqresearch.data.inventory import PROVIDER_DISPLAY_NAMES, source_file_inventory
 from cqresearch.pipelines.final_research import (
-    PROVIDER_DISPLAY_NAMES,
     SELECTED_ASSETS,
     license_note,
     provider_data_disposition,
-    source_file_inventory,
 )
 from cqresearch.research.registry import ALLOWED_USAGE_STATUSES, module_by_id
+from cqresearch.viz.metadata import write_figure_metadata
 from cqresearch.viz.theme import PALETTE, TOKENS, add_figure_header, apply_theme, style_axis
 
 MODULE_ID = "00_data_measurement_foundation"
@@ -34,7 +34,7 @@ MODULE_ID = "00_data_measurement_foundation"
 REQUIRED_TABLES = [
     "provider_inventory.csv",
     "raw_file_inventory.csv",
-    "raw_series_inventory.csv",
+    "logical_series_inventory.csv",
     "feature_inventory.csv",
     "feature_usage_matrix.csv",
     "asset_universe_audit.csv",
@@ -58,7 +58,7 @@ def build_data_foundation(root: Path = PROJECT_ROOT) -> list[Path]:
 
     raw_files = _raw_file_inventory(root)
     providers = _provider_inventory(raw_files)
-    raw_series = _raw_series_inventory(root, providers)
+    logical_series = _logical_series_inventory(root, providers)
     feature_inventory = _feature_inventory(root)
     panel_inventory = _panel_inventory(root)
     usage = _feature_usage_matrix(feature_inventory, panel_inventory)
@@ -67,12 +67,14 @@ def build_data_foundation(root: Path = PROJECT_ROOT) -> list[Path]:
     assets = _asset_universe_audit(root)
     mapping = _chain_token_mapping_audit(root, assets)
     measurement = _measurement_risk_audit(providers, feature_inventory, usage, units, assets)
-    claims = _claims(providers, raw_series, feature_inventory, usage, measurement)
+    claims = _claims(providers, logical_series, feature_inventory, usage, measurement)
+
+    (tables_dir / "raw_series_inventory.csv").unlink(missing_ok=True)
 
     artifacts = [
         write_csv(tables_dir / "provider_inventory.csv", providers),
         write_csv(tables_dir / "raw_file_inventory.csv", raw_files),
-        write_csv(tables_dir / "raw_series_inventory.csv", raw_series),
+        write_csv(tables_dir / "logical_series_inventory.csv", logical_series),
         write_csv(tables_dir / "feature_inventory.csv", feature_inventory),
         write_csv(tables_dir / "feature_usage_matrix.csv", usage),
         write_csv(tables_dir / "asset_universe_audit.csv", assets),
@@ -93,7 +95,7 @@ def build_data_foundation(root: Path = PROJECT_ROOT) -> list[Path]:
             title=module.title,
             research_question=module.research_question,
             providers=providers,
-            raw_series=raw_series,
+            raw_series=logical_series,
             feature_inventory=feature_inventory,
             usage=usage,
             assets=assets,
@@ -142,7 +144,7 @@ def _raw_file_inventory(root: Path) -> pd.DataFrame:
         )
     frame = frame.copy()
     frame["provider"] = frame["source_group"].astype(str)
-    frame["raw_file_id"] = frame["relpath"].map(_slug)
+    frame["raw_file_id"] = frame["raw_object_id"]
     frame["read_status"] = frame.get("status", "indexed")
     disposition = provider_data_disposition(
         frame.groupby("source_group", dropna=False)
@@ -217,9 +219,9 @@ def _provider_inventory(raw_files: pd.DataFrame) -> pd.DataFrame:
     return merged[columns].sort_values("provider_id").reset_index(drop=True)
 
 
-def _raw_series_inventory(root: Path, providers: pd.DataFrame) -> pd.DataFrame:
+def _logical_series_inventory(root: Path, providers: pd.DataFrame) -> pd.DataFrame:
     columns = [
-        "raw_series_id",
+        "logical_series_id",
         "provider_id",
         "provider",
         "relpath",
@@ -237,7 +239,7 @@ def _raw_series_inventory(root: Path, providers: pd.DataFrame) -> pd.DataFrame:
     provider_ids = providers.set_index("provider")["provider_id"].to_dict()
     frame = pd.DataFrame(
         {
-            "raw_series_id": logical["series_id"],
+            "logical_series_id": logical["series_id"],
             "provider": logical["provider"],
             "relpath": "contract:config/data_contracts.yml",
             "rows": "",
@@ -701,18 +703,11 @@ def _write_figures(
     artifacts.extend(
         [
             write_csv(governance_path.with_suffix(".source.csv"), governance_source),
-            write_json(
-                governance_path.with_suffix(".metadata.json"),
-                {
-                    "plot_key": "data_governance_inventory",
-                    "rows": len(governance_source),
-                    "source_tables": [
-                        "tables/provider_inventory.csv",
-                        "tables/feature_usage_matrix.csv",
-                    ],
-                    "sample": "local raw-object inventory and canonical feature registry",
-                    "units": "raw files and features",
-                },
+            write_figure_metadata(
+                governance_path,
+                governance_source,
+                "data_governance_inventory",
+                ["tables/provider_inventory.csv", "tables/feature_usage_matrix.csv"],
             ),
         ]
     )
@@ -729,6 +724,7 @@ def _write_figures(
         plot = (
             coverage.groupby("research_block", dropna=False)["observations"]
             .median()
+            .loc[lambda values: values.gt(0)]
             .sort_values(ascending=False)
             .head(12)
         )
@@ -757,6 +753,7 @@ def _write_figures(
     coverage_source = (
         coverage.groupby("research_block", dropna=False)["observations"]
         .median()
+        .loc[lambda values: values.gt(0)]
         .rename("median_non_missing_observations")
         .reset_index()
     )
@@ -766,15 +763,11 @@ def _write_figures(
     artifacts.extend(
         [
             write_csv(coverage_path.with_suffix(".source.csv"), coverage_source),
-            write_json(
-                coverage_path.with_suffix(".metadata.json"),
-                {
-                    "plot_key": "coverage_missingness_by_block",
-                    "rows": len(coverage_source),
-                    "source_tables": ["tables/coverage_missingness.csv"],
-                    "sample": "processed panels available at the frozen acquisition cutoff",
-                    "units": "median non-missing observations",
-                },
+            write_figure_metadata(
+                coverage_path,
+                coverage_source,
+                "coverage_missingness_by_block",
+                ["tables/coverage_missingness.csv"],
             ),
         ]
     )
@@ -829,7 +822,7 @@ def _write_docs(
             {
                 "method": "File inventory",
                 "calculation": "scan raw objects using declared source-family dates and enumerate logical-series contracts",
-                "output": "raw_file_inventory.csv; raw_series_inventory.csv",
+                "output": "raw_file_inventory.csv; logical_series_inventory.csv",
             },
             {
                 "method": "Usage disposition",
@@ -940,7 +933,10 @@ uv run python scripts/check_research_surface.py --module {MODULE_ID}
 - [Findings](findings.md)
 - [Interpretation](interpretation.md)
 - [Limitations](limitations.md)
-- Code: `src/cqresearch/research/data_foundation.py`
+- [Code: `data_foundation.py`](../../src/cqresearch/research/data_foundation.py)
+- [Code: `inventory.py`](../../src/cqresearch/data/inventory.py)
+- [Code: `registries.py`](../../src/cqresearch/research/registries.py)
+- [Test: `test_semantic_registries.py`](../../tests/unit/test_semantic_registries.py)
 """
     docs = [
         write_text(module_dir / "README.md", readme),
@@ -1015,8 +1011,15 @@ Data availability is not the same as claim strength. This module defines the all
                         "data_governance_inventory.png",
                         "coverage_missingness_by_block.png",
                     ],
-                    "code": ["src/cqresearch/research/data_foundation.py"],
-                    "tests": ["tests/unit/test_feature_strength_outputs.py"],
+                    "code": [
+                        "src/cqresearch/research/data_foundation.py",
+                        "src/cqresearch/data/inventory.py",
+                        "src/cqresearch/research/registries.py",
+                    ],
+                    "tests": [
+                        "tests/unit/test_semantic_registries.py",
+                        "tests/unit/test_feature_strength_outputs.py",
+                    ],
                     "root_readme_candidate_figures": [],
                 },
                 sort_keys=False,
@@ -1034,16 +1037,17 @@ def _claims(
     measurement: pd.DataFrame,
 ) -> pd.DataFrame:
     primary = int(usage["usage_status"].eq("primary_analysis").sum())
+    raw_objects = int(pd.to_numeric(providers["file_count"], errors="coerce").sum())
     return pd.DataFrame(
         [
             _claim(
                 "data_measurement_inventory_01",
-                f"The local inventory distinguishes raw objects from {len(raw_series)} contracted logical series across {len(providers)} provider groups and {len(feature_inventory)} registered features.",
+                f"The local inventory distinguishes {raw_objects:,} raw objects from {len(raw_series)} contracted logical series across {len(providers)} provider groups and {len(feature_inventory)} registered features.",
                 "Files currently present under data_local/raw plus config/feature_registry.yml.",
                 "Filesystem inventory, feature-registry parse, and processed-panel coverage audit.",
                 "License status is release-risk classification, not legal permission.",
                 "A for local inventory; B for release-risk classification.",
-                "tables/provider_inventory.csv; tables/raw_file_inventory.csv; tables/feature_inventory.csv",
+                "tables/provider_inventory.csv; tables/raw_file_inventory.csv; tables/logical_series_inventory.csv; tables/feature_inventory.csv",
                 "figures/data_governance_inventory.png",
                 "Provider files remain local and untracked.",
             ),

@@ -99,7 +99,7 @@ The primary uncertainty procedures are HAC covariance and deterministic moving-b
 | ETF distributed lag | `y[t] = alpha + sum(k=0..5) beta[k] * flow_bps[t-k] + error[t]` | Timing-sensitive association; flow uses lagged market capitalization. |
 | Leverage tail model | `logit Pr(r[t+1] <= Q[0.05]) = spline(leverage[t-1]) + spline(volatility[t-1])` | Conditional association, not a prediction rule. |
 | Generalized FEVD connectedness | Off-diagonal generalized forecast-error variance shares divided by total shares | Descriptive stress connectedness; variable-order sensitivity is reported. |
-| PIT structure | `HHI[t] = sum(i) share[i,t]^2`; effective count `= 1 / HHI[t]`; turnover `= 0.5 * sum(i) abs(share[i,t] - share[i,t-1])` | Monthly composition only; no daily constituent-return inference. |
+| PIT structure | `HHI[t] = sum(i) share[i,t]^2`; entropy breadth `= exp(-sum(i) share[i,t] * log(share[i,t]))`; turnover `= (entries + exits) / size(union of adjacent memberships)` | Monthly composition only; no daily constituent-return inference. |
 | Liquidity residual | Residual from HAC regression of log USD TVL growth on BTC, ETH, and TOTAL3 returns | Endogenous state proxy, not an exogenous liquidity shock. |
 | MVRV identity | `d log MVRV = d log market cap - d log realized cap + residual` | Measurement-mechanics diagnostic excluded from primary return models. |
 
@@ -155,8 +155,10 @@ body { font-family: Arial, sans-serif; color: #1f2430; line-height: 1.38; max-wi
 h1 { font-size: 28px; margin-bottom: 8px; }
 h2 { font-size: 19px; margin-top: 28px; page-break-after: avoid; }
 p, li, td, th { font-size: 10.5pt; }
-img { width: 100%; max-height: 5.8in; object-fit: contain; page-break-inside: avoid; }
+img { display: block; width: 100%; max-height: 5.8in; object-fit: contain; page-break-inside: avoid; }
+p:has(> img) { margin: 0 0 12px; page-break-inside: avoid; }
 table { border-collapse: collapse; width: 100%; }
+tr { break-inside: avoid; page-break-inside: avoid; }
 th, td { border-bottom: 1px solid #d7dbe7; padding: 6px; text-align: left; }
 code { font-family: Consolas, monospace; font-size: 9pt; }
 pre { background: #f5f6f8; padding: 10px; white-space: pre-wrap; page-break-inside: avoid; }

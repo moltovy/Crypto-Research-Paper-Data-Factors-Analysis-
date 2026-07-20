@@ -15,6 +15,7 @@ from config.paths import PROJECT_ROOT
 from cqresearch.core.artifacts import sha256_file
 from cqresearch.research.data_foundation import REQUIRED_TABLES as DATA_FOUNDATION_TABLES
 from cqresearch.research.registry import ALLOWED_USAGE_STATUSES, MODULES, module_by_id
+from cqresearch.viz.metadata import FIGURE_METADATA_FIELDS
 
 REQUIRED_MODULE_FILES = [
     "README.md",
@@ -487,6 +488,33 @@ def _check_figure_specs(root: Path, figure_specs_path: Path) -> list[dict[str, A
                     metadata.relative_to(root).as_posix(),
                 )
             )
+            if metadata.exists():
+                payload = json.loads(metadata.read_text(encoding="utf-8"))
+                missing_metadata = FIGURE_METADATA_FIELDS - set(payload)
+                empty_metadata = [
+                    key
+                    for key in FIGURE_METADATA_FIELDS
+                    if key in payload
+                    and key != "rows"
+                    and (payload[key] is None or str(payload[key]).strip() in {"", "[]"})
+                ]
+                rows.append(
+                    _row(
+                        "research",
+                        f"figure_metadata_schema_{relpath}",
+                        not missing_metadata and not empty_metadata,
+                        f"missing={sorted(missing_metadata)} empty={sorted(empty_metadata)}",
+                    )
+                )
+                rows.append(
+                    _row(
+                        "research",
+                        f"figure_metadata_plot_keys_{relpath}",
+                        payload.get("plot_key_column") == "plot_key"
+                        and payload.get("plot_keys_unique") is True,
+                        "plot_key must be explicit and unique",
+                    )
+                )
         visual_status = specs["visual_qa_status"].fillna("").astype(str)
         rows.append(
             _row(
@@ -524,6 +552,7 @@ def _check_release_hygiene(root: Path) -> list[dict[str, Any]]:
             for path in tracked
             if any(term in path.lower() for term in ["manager_pack", "execution_pack", "worklog"])
         ]
+        leaking_text_files = _tracked_text_path_leaks(root, tracked)
         rows.extend(
             [
                 _row(
@@ -541,9 +570,33 @@ def _check_release_hygiene(root: Path) -> list[dict[str, Any]]:
                     not tracked_pack,
                     ",".join(tracked_pack[:5]),
                 ),
+                _row(
+                    "research",
+                    "tracked_text_has_no_private_paths",
+                    not leaking_text_files,
+                    ",".join(leaking_text_files[:5])
+                    if leaking_text_files
+                    else "no private paths in tracked Markdown/YAML/JSON/CSV",
+                ),
             ]
         )
     return rows
+
+
+def _tracked_text_path_leaks(root: Path, tracked: list[str]) -> list[str]:
+    extensions = {".md", ".yml", ".yaml", ".json", ".csv"}
+    private_path = re.compile(r"(?i)[a-z]:[/\\](?:users|dev[/\\]projects)[/\\]")
+    private_terms = ("codex_execution_pack", "manager_pack", "worklog.md", "run_state.md")
+    leaking = []
+    for relpath in tracked:
+        path = root / relpath
+        if path.suffix.lower() not in extensions or not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        lowered = text.lower()
+        if private_path.search(text) or any(term in lowered for term in private_terms):
+            leaking.append(relpath)
+    return leaking
 
 
 def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
@@ -551,6 +604,7 @@ def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
     required = [
         "source_contracts.csv",
         "raw_objects.csv",
+        "physical_columns.csv",
         "logical_series.csv",
         "feature_registry.csv",
         "sample_manifest.csv",
@@ -558,6 +612,7 @@ def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
         "estimand_registry.csv",
         "source_decisions.csv",
         "acceptance_ledger.csv",
+        "claim_registry.csv",
     ]
     rows = [
         _row("research", f"registry_exists_{name}", (research / name).exists(), name)
@@ -566,12 +621,15 @@ def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
     if not all((research / name).exists() for name in required):
         return rows
     raw = pd.read_csv(research / "raw_objects.csv")
+    physical = pd.read_csv(research / "physical_columns.csv")
     logical = pd.read_csv(research / "logical_series.csv")
     features = pd.read_csv(research / "feature_registry.csv")
     samples = pd.read_csv(research / "sample_manifest.csv")
     estimands = pd.read_csv(research / "estimand_registry.csv")
     decisions = pd.read_csv(research / "source_decisions.csv")
     acceptance = pd.read_csv(research / "acceptance_ledger.csv")
+    claims = pd.read_csv(research / "claim_registry.csv")
+    membership = pd.read_csv(research / "sample_membership.csv")
     mandatory = acceptance["mandatory"].astype(str).str.lower().eq("true")
     mandatory_incomplete = acceptance.loc[
         mandatory & ~acceptance["status"].astype(str).eq("pass"), "criterion_id"
@@ -586,8 +644,21 @@ def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
             _row(
                 "research",
                 "raw_objects_have_sha256",
-                bool(raw["sha256"].astype(str).str.fullmatch(r"[0-9a-f]{64}").all()),
+                bool(
+                    raw["sha256"].astype(str).str.fullmatch(r"[0-9a-f]{64}").all()
+                    and raw["raw_object_id"].is_unique
+                ),
                 f"objects={len(raw)}",
+            ),
+            _row(
+                "research",
+                "physical_columns_link_to_raw_objects",
+                bool(
+                    physical["physical_column_id"].is_unique
+                    and physical["raw_object_id"].isin(raw["raw_object_id"]).all()
+                    and physical["column_name"].fillna("").astype(str).str.strip().ne("").all()
+                ),
+                f"physical_columns={len(physical)}",
             ),
             _row(
                 "research",
@@ -604,7 +675,23 @@ def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
             _row(
                 "research",
                 "feature_contracts_have_units_and_dates",
-                bool(features[["unit", "first_valid_date", "last_valid_date"]].notna().all().all()),
+                bool(
+                    features[
+                        [
+                            "unit",
+                            "first_valid_date",
+                            "last_valid_date",
+                            "availability_rule",
+                            "timezone",
+                            "native_calendar",
+                            "sample_eligibility",
+                            "evidence_class",
+                        ]
+                    ]
+                    .notna()
+                    .all()
+                    .all()
+                ),
                 f"features={len(features)}",
             ),
             _row(
@@ -616,8 +703,65 @@ def _check_foundation_registries(root: Path) -> list[dict[str, Any]]:
             _row(
                 "research",
                 "estimands_cover_rq1_through_rq4",
-                set(estimands["research_question"].astype(str)) == {"RQ1", "RQ2", "RQ3", "RQ4"},
+                set(estimands["research_question"].astype(str)) == {"RQ1", "RQ2", "RQ3", "RQ4"}
+                and estimands[
+                    [
+                        "question",
+                        "inputs",
+                        "estimand",
+                        "primary_specification",
+                        "assumptions",
+                        "diagnostics",
+                        "robustness",
+                        "decision_rule",
+                        "tables",
+                        "figures",
+                        "claim_boundary",
+                    ]
+                ]
+                .notna()
+                .all()
+                .all(),
                 "RQ1-RQ4",
+            ),
+            _row(
+                "research",
+                "sample_manifest_has_auditable_dimensions",
+                bool(
+                    {
+                        "constituents",
+                        "membership_rows",
+                        "time_periods",
+                        "observations_total",
+                    }.issubset(samples.columns)
+                    and int(samples.loc[samples["sample_id"].eq("S4"), "membership_rows"].iloc[0])
+                    == 7700
+                    and int(samples.loc[samples["sample_id"].eq("S4"), "time_periods"].iloc[0])
+                    == 77
+                ),
+                "S4 requires 77 complete top-100 snapshots and 7,700 asset-months",
+            ),
+            _row(
+                "research",
+                "broad_sample_excludes_taxonomy_leakage",
+                not membership.loc[
+                    membership["sample_id"].eq("S3")
+                    & membership["included"].astype(str).str.lower().eq("true"),
+                    "asset",
+                ]
+                .isin({"CBBTC", "PAXG", "XAUT", "SUSDS", "USDT0", "BSC-USD"})
+                .any(),
+                "S3 stable-like, wrapped, yield-token, and tokenized-commodity exclusions",
+            ),
+            _row(
+                "research",
+                "claim_registry_has_complete_lineage",
+                bool(
+                    claims["claim_id"].is_unique
+                    and REQUIRED_CLAIM_COLUMNS.issubset(claims.columns)
+                    and claims[list(REQUIRED_CLAIM_COLUMNS)].notna().all().all()
+                ),
+                f"claims={len(claims)}",
             ),
             _row(
                 "research",

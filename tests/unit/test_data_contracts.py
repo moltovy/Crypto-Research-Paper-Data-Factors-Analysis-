@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def test_every_local_source_family_has_an_explicit_contract() -> None:
     contracts = load_source_contracts(ROOT)
-    local = {path.name for path in (ROOT / "data_local" / "raw").iterdir() if path.is_dir()}
+    local = {path.name for path in resolve_raw_data_root(ROOT).iterdir() if path.is_dir()}
     assert local <= set(contracts)
 
 
@@ -46,6 +46,13 @@ def test_result_sample_uses_estimation_n_not_result_rows() -> None:
         }
     )
     assert result_sample_summary(table) == "2020-01-01 to 2024-12-31, n=875-900"
+
+
+def test_result_sample_fails_closed_without_analytical_n() -> None:
+    table = pd.DataFrame({"sample_start": ["2020-01-01"] * 48, "sample_end": ["2024-12-31"] * 48})
+    summary = result_sample_summary(table)
+    assert "analytical sample metadata unavailable" in summary
+    assert "result rows" not in summary
 
 
 def test_plot_keys_must_be_unique() -> None:

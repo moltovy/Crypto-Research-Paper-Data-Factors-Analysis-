@@ -1,9 +1,22 @@
 {
+  "data_cutoff": "2026-06-30",
+  "date_range": "2020-01-02 through 2026-04-14",
   "figure_id": "liquidity_measurement_diagnostics",
-  "plot_key": "plot_key",
+  "limitation": "Raw USD TVL is valuation-sensitive and same-day MVRV is not an independent factor.",
+  "method": "HAC residualization of USD TVL growth plus same-day MVRV identity diagnostic",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
   "png": "05_liquidity_measurement_diagnostics.png",
+  "research_question": "What remains after price-adjusting USD TVL growth, and how mechanical is same-day MVRV?",
   "rows": 2299,
+  "sample": "Daily BTC/ETH liquidity and measurement panel through 2026-04-14",
   "source_csv": "05_liquidity_measurement_diagnostics.source.csv",
-  "source_tables": "tables/liquidity_state.csv; tables/measurement_mechanics.csv",
-  "svg": "05_liquidity_measurement_diagnostics.svg"
+  "source_tables": [
+    "tables/liquidity_state.csv",
+    "tables/measurement_mechanics.csv"
+  ],
+  "svg": "05_liquidity_measurement_diagnostics.svg",
+  "uncertainty": "HAC coefficient intervals; MVRV panel is a descriptive measurement-mechanics diagnostic",
+  "units": "rolling z-score and correlation",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
 }

@@ -3,37 +3,33 @@ title: Macro and TradFi Integration
 research_question: How do crypto exposures to equities, volatility, rates, the dollar,
   gold, and credit vary across calendars and periods?
 research_questions:
-- How do equity, volatility, dollar, rates, and gold blocks contribute to contemporaneous
-  crypto exposure models?
-- Are later-sample exposure differences robust to frequency, multicollinearity, FDR,
-  and ridge sensitivity?
+- How do 252-session multivariate HAC crypto-equity exposures vary through time?
+- Do predeclared era interactions support a discrete change after accounting for uncertainty
+  and multiple tests?
 outcomes:
-- HAC exposure
-- delta R-squared
-- rolling beta
-- stability diagnostics
+- BTC return
+- ETH return
+- rolling conditional beta
+- era interaction
 features:
-- SPY
 - QQQ
+- SPY
 - IWM
-- VIX
 - DXY
-- gold
-- nominal and real rates
+- GLD
+- VIX
+- Treasury yields
 frequencies:
-- daily
-- weekly
+- XNYS-aligned session
 methods:
-- HAC OLS
-- Same-support block R-squared
-- Stability diagnostics
+- Calendar construction
+- Dynamic exposure
+- Break evidence
 sensitivity_dimensions:
-- frequency
-- period split
-- HAC bandwidth
-- FDR
-- VIF
-- ridge
+- window support
+- era boundary
+- control set
+- HAC lag
 status: built
 canonical_surface: research/02_macro_tradfi_integration
 tables:
@@ -44,9 +40,11 @@ tables:
 figures:
 - 02_dynamic_tradfi_integration.png
 code:
-- src/cqresearch/research/analytical_modules.py
+- src/cqresearch/research/evidence_modules.py
+- src/cqresearch/modeling/dependence.py
+- src/cqresearch/data/calendars.py
 tests:
-- tests/unit/test_feature_strength_outputs.py
-- tests/unit/test_visual_outputs.py
+- tests/unit/test_dependence_models.py
+- tests/unit/test_calendars.py
 root_readme_candidate_figures:
 - figures/02_dynamic_tradfi_integration.png

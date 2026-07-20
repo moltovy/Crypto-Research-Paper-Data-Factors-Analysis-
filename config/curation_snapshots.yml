@@ -26,7 +26,6 @@ clean_new_defi:
     - 2026-04-14
 
 # Step 07 — validate (backup directory)
-# Previously: `C:/Dev/Projects/CryptoQuant_Data_backup_2026-04-16`
 # If absent, step 07 should run in fail-soft mode and WARN rather than ERROR.
 validate:
   backup_dir: null   # set to an absolute path to enable backup diff

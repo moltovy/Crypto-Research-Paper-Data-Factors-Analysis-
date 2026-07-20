@@ -1,9 +1,9 @@
 {
   "artifacts": [
     {
-      "bytes": 349,
+      "bytes": 1236,
       "path": "research/04_etf_institutional_flows/figures/04_institutional_market_plumbing.metadata.json",
-      "sha256": "622b4b5ce07671bebac4b3144a6e830953b89ab46142bf28b7656ea2a9c2ad35"
+      "sha256": "2a2c7b905ddace4ee8ad4dfac9577044655593e98310634f1cd27a414d66d459"
     },
     {
       "bytes": 171653,
@@ -26,29 +26,29 @@
       "sha256": "2ab01ac79b603b66b0291d2914f8c01395239b03074d031ba82e60c5390d79ac"
     },
     {
-      "bytes": 129,
+      "bytes": 137,
       "path": "research/04_etf_institutional_flows/interpretation.md",
-      "sha256": "be03eda98d336c61d54e348754a1964b4d3833fdfada8ffc75d8b9d154726fc5"
+      "sha256": "e77b6473cd6311562d3bca28b4e341d4c38707b7e059ea7696c91cf67c29efa8"
     },
     {
-      "bytes": 125,
+      "bytes": 156,
       "path": "research/04_etf_institutional_flows/limitations.md",
-      "sha256": "6471aae791eb3ea36e78f79e581c9fc2954879af6c319dff9d25ffb31c35c53b"
+      "sha256": "6175a0baa9d9f687c6e9ddebd3e94a88d5bd453d33fbc8a3fccaeb6ad24d477f"
     },
     {
-      "bytes": 272,
+      "bytes": 475,
       "path": "research/04_etf_institutional_flows/methodology.md",
-      "sha256": "24dbcc476f5a16ad5203603ddddce74874fc75e9a63cc7ac3d94bb5c7c1fff4c"
+      "sha256": "77798a7b572c6f7bc7384bbb824c3a4537589db572d2b3271429fda65f027e47"
     },
     {
-      "bytes": 1355,
+      "bytes": 1541,
       "path": "research/04_etf_institutional_flows/module.yml",
-      "sha256": "7b57714dd068fc366d56eb377afc1d36a6881eb98249159265832dd8ea84dd78"
+      "sha256": "2d2abcb519fbc649135b85bbb590c3e229df4af2795b638999fb7ad9aaaba012"
     },
     {
-      "bytes": 6017,
+      "bytes": 7340,
       "path": "research/04_etf_institutional_flows/README.md",
-      "sha256": "fe7dc55923af91f355b539fe0b0c05aae88faec95f84f2adaf92611073ac6e0d"
+      "sha256": "6cae0a3e24d500b22f56d676e3a9e38094d2603288326fac30c6f9ec6837db3a"
     },
     {
       "bytes": 2252,

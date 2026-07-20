@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from cqresearch.core.artifacts import write_csv, write_json
+from cqresearch.core.artifacts import write_csv
 from cqresearch.data.contracts import result_sample_summary
 from cqresearch.modeling.dependence import (
     dynamic_tradfi_exposures,
@@ -40,6 +40,7 @@ from cqresearch.modeling.market_structure import (
 )
 from cqresearch.pipelines.final_research import load_events
 from cqresearch.research.samples import stable_core_returns
+from cqresearch.viz.metadata import write_figure_metadata
 from cqresearch.viz.theme import PALETTE, TOKENS, add_figure_header, apply_theme, style_axis
 
 SEED = 20260713
@@ -70,11 +71,12 @@ def build_dependence(root: Path, module_dir: Path) -> EvidenceBuild:
     )
     q5 = tails[tails["quantile"].eq(0.05) & tails["primary_specification"]]
     median_excess = float(q5["excess_probability"].median())
+    median_common = float(common["common_variance_share"].median())
     sample = result_sample_summary(common)
     claim_text = (
-        f"Within S2, full-system PC1 accounts for {full_pc1:.1%} of standardized return "
-        f"variation, while median 5% lower-tail co-exceedance is {median_excess:.1%} above "
-        "the independence benchmark."
+        f"Within S2, the median leave-one-out common-variance share is {median_common:.1%}, "
+        f"while median 5% lower-tail co-exceedance is {median_excess:.1%} above the "
+        "independence benchmark."
     )
     return EvidenceBuild(
         tables={
@@ -88,7 +90,7 @@ def build_dependence(root: Path, module_dir: Path) -> EvidenceBuild:
         key_results=[
             _result(
                 "Common variation and lower-tail dependence",
-                f"PC1={full_pc1:.1%}; median q=5% excess={median_excess:.1%}",
+                f"median leave-one-out R-squared={median_common:.1%}; median q=5% excess={median_excess:.1%}",
                 "HAC factor-beta intervals and 2,000-replication moving-block tail intervals",
                 sample,
                 "Dependence is broad but heterogeneous across assets.",
@@ -375,7 +377,12 @@ def build_market_structure(root: Path, module_dir: Path) -> EvidenceBuild:
     first = concentration.iloc[0]
     last = concentration.iloc[-1]
     median_turnover = float(transitions["turnover_rate"].median())
-    sample = result_sample_summary(concentration.rename(columns={"snapshot_date": "sample_end"}))
+    snapshot_count = int(concentration["snapshot_date"].nunique())
+    asset_months = int(snapshot_count * 100)
+    sample = (
+        "January 2020 to May 2026; "
+        f"{snapshot_count} complete monthly snapshots; {asset_months:,} top-100 asset-months"
+    )
     claim_text = (
         f"Across complete monthly PIT snapshots, effective asset count changed from "
         f"{first.effective_asset_count:.1f} to {last.effective_asset_count:.1f}, while median "
@@ -430,6 +437,13 @@ def build_synthesis(root: Path, module_dir: Path) -> EvidenceBuild:
         responses,
         module_dir / "figures" / "09_event_atlas_appendix.png",
     )
+    event_sample = (
+        f"{events['event_id'].nunique()} events x 2 assets x 3 horizons = "
+        f"{len(responses)} event-asset-horizon estimates; BTC/ETH return support "
+        f"{responses['sample_start'].min()} to {responses['sample_end'].max()}; "
+        f"placebo windows {int(responses['placebo_windows'].min())}-"
+        f"{int(responses['placebo_windows'].max())}"
+    )
     return EvidenceBuild(
         tables={
             "event_registry.csv": events,
@@ -443,7 +457,7 @@ def build_synthesis(root: Path, module_dir: Path) -> EvidenceBuild:
                 "Registered event atlas",
                 f"{events['event_id'].nunique()} events and {len(responses)} asset-window rows",
                 "empirical non-event-window percentile and two-sided placebo p-value",
-                result_sample_summary(responses),
+                event_sample,
                 "Event responses remain appendix diagnostics.",
                 "+1/+5/+10 windows; event-day exclusion; non-overlapping placebo starts",
             )
@@ -455,7 +469,7 @@ def build_synthesis(root: Path, module_dir: Path) -> EvidenceBuild:
                 "Registered event-window responses vary substantially across events and assets and remain appendix sensitivity evidence rather than causal estimates.",
                 "tables/event_response_matrix.csv; tables/evidence_ledger.csv",
                 "figures/09_event_atlas_appendix.png",
-                result_sample_summary(responses),
+                event_sample,
                 "Fixed post-event windows with empirical non-event-window comparison and cross-module claim ledger.",
                 "Event windows are not an identification design; overlapping market developments and event selection constrain interpretation.",
             )
@@ -1141,20 +1155,8 @@ def _save_figure(
         svg_temporary.unlink(missing_ok=True)
         plt.close(fig)
     source_path = path.with_suffix(".source.csv")
-    metadata_path = path.with_suffix(".metadata.json")
     write_csv(source_path, source)
-    write_json(
-        metadata_path,
-        {
-            "figure_id": figure_id,
-            "png": path.name,
-            "svg": svg.name,
-            "source_csv": source_path.name,
-            "source_tables": source_tables,
-            "plot_key": "plot_key",
-            "rows": len(source),
-        },
-    )
+    write_figure_metadata(path, source, figure_id, source_tables)
     return path
 
 

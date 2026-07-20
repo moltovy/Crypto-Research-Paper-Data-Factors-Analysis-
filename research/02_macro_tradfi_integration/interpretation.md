@@ -1,3 +1,3 @@
 # Interpretation
 
-Macro/TradFi integration is contemporaneous co-movement evidence, not macro causality or ETF-effect identification.
+Conditional equity exposure varies over time, while formal period differences are reported as weak when adjusted evidence does not reject the null.

@@ -1,10 +1,22 @@
 {
-  "plot_key": "data_governance_inventory",
+  "data_cutoff": "2026-06-30",
+  "date_range": "Inventory frozen at the 2026-06-30 acquisition cutoff",
+  "figure_id": "data_governance_inventory",
+  "limitation": "Release-risk labels are not legal permission.",
+  "method": "Deterministic raw-object and registered-feature inventory counts",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
+  "png": "data_governance_inventory.png",
+  "research_question": "Which local provider and feature dispositions govern public claims?",
   "rows": 17,
-  "sample": "local raw-object inventory and canonical feature registry",
+  "sample": "Local-only provider inventory frozen at 2026-06-30",
+  "source_csv": "data_governance_inventory.source.csv",
   "source_tables": [
     "tables/provider_inventory.csv",
     "tables/feature_usage_matrix.csv"
   ],
-  "units": "raw files and features"
+  "svg": "data_governance_inventory.svg",
+  "uncertainty": "Census of available local objects and registry rows; no sampling interval applies",
+  "units": "counts",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
 }

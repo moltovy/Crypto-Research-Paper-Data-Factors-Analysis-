@@ -1,4 +1,4 @@
-raw_series_id,provider_id,provider,relpath,rows,columns,start_date,end_date,read_status,release_disposition,series_granularity
+logical_series_id,provider_id,provider,relpath,rows,columns,start_date,end_date,read_status,release_disposition,series_granularity
 binance_stable_core_spot,binance,Binance Vision,contract:config/data_contracts.yml,,daily OHLCV for the fixed PIT-eligible symbol allowlist,2021-01-01,,contract_declared,derived-only until provider-specific rights review,daily
 cftc_crypto_financial_futures,cftc_traders_in_financial_futures,CFTC Traders in Financial Futures,contract:config/data_contracts.yml,,contract-level open interest and trader-category positions,2017-12-19,,contract_declared,derived-only until provider-specific rights review,weekly
 btc_spot_close,cryptoquant,CryptoQuant,contract:config/data_contracts.yml,,close,2010-07-18,,contract_declared,derived-only until provider-specific rights review,daily

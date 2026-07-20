@@ -29,10 +29,10 @@ from cqresearch.core.artifacts import write_csv as write_csv_atomic
 from cqresearch.core.artifacts import write_parquet, write_text
 from cqresearch.data.calendars import business_day_mask
 from cqresearch.data.contracts import (
-    load_source_contracts,
     native_log_return,
     resolve_raw_data_root,
 )
+from cqresearch.data.inventory import source_file_inventory
 from cqresearch.data.panel_builder import build_master_panel as build_source_master_panel
 from cqresearch.data.panel_builder import write_panel as write_source_panel
 from cqresearch.reporting.public_surface import PUBLIC_FIGURES
@@ -287,17 +287,7 @@ LOCAL_PROVIDER_DIRS = {
     "alternativeme": "alternativeme",
     "market_structure": "market_structure",
     "binance": "binance",
-}
-PROVIDER_DISPLAY_NAMES = {
-    "cryptoquant": "CryptoQuant",
-    "artemis": "Artemis",
-    "tradingview": "Tradingview",
-    "defillama": "DefiLlama",
-    "farside": "Farside ETF Data",
-    "fred": "FRED",
-    "alternativeme": "AlternativeMe",
-    "market_structure": "MarketStructure",
-    "binance": "Binance Vision",
+    "cftc": "cftc",
 }
 
 
@@ -542,75 +532,6 @@ def clean_label(value: str) -> str:
     return labels.get(value, value.replace("_", " ").title())
 
 
-def source_file_inventory(root: Path = PROJECT_ROOT) -> pd.DataFrame:
-    rows: list[dict[str, Any]] = []
-    columns = [
-        "relpath",
-        "source_group",
-        "size_bytes",
-        "sha256",
-        "suffix",
-        "rows",
-        "columns",
-        "start_date",
-        "end_date",
-        "lineage_observed_at",
-        "lineage_note",
-        "status",
-    ]
-    raw_root = raw_data_root(root)
-    contracts = load_source_contracts(root)
-    if not raw_root.exists():
-        return pd.DataFrame(columns=columns)
-    for path in sorted(raw_root.rglob("*")):
-        if not path.is_file():
-            continue
-        data_rel = path.relative_to(raw_root).as_posix()
-        if data_rel in {"MASTER_DATA.csv", "MASTER_DATA.md", "MASTER_DATA.txt"}:
-            continue
-        source_group_raw = path.relative_to(raw_root).parts[0]
-        source_group = PROVIDER_DISPLAY_NAMES.get(source_group_raw.lower(), source_group_raw)
-        # Keep public lineage portable when CMD_DATA_ROOT points outside the checkout.
-        rel = f"data_local/raw/{data_rel}"
-        with path.open("rb") as handle:
-            digest = hashlib.file_digest(handle, "sha256").hexdigest()
-        row: dict[str, Any] = {
-            "relpath": rel,
-            "source_group": source_group,
-            "size_bytes": path.stat().st_size,
-            "sha256": digest,
-            "suffix": path.suffix.lower(),
-            "rows": "",
-            "columns": "",
-            "start_date": "",
-            "end_date": "",
-            "lineage_observed_at": "2026-07-19",
-            "lineage_note": (
-                "first repository inventory observation; provider retrieval time is "
-                "available only where a source manifest records it"
-            ),
-            "status": "indexed",
-        }
-        if path.suffix.lower() == ".csv":
-            try:
-                frame = pd.read_csv(path, low_memory=False)
-                row["rows"] = int(len(frame))
-                row["columns"] = int(len(frame.columns))
-                contract = contracts.get(source_group_raw.lower())
-                observation_field = contract.observation_field(frame.columns) if contract else None
-                if observation_field:
-                    dates = pd.to_datetime(frame[observation_field], errors="coerce").dropna()
-                    if not dates.empty:
-                        row["start_date"] = dates.min().date().isoformat()
-                        row["end_date"] = dates.max().date().isoformat()
-                elif contract:
-                    row["status"] = "indexed:no_declared_observation_column"
-            except Exception as exc:
-                row["status"] = f"read_error:{type(exc).__name__}"
-        rows.append(row)
-    return pd.DataFrame(rows, columns=columns)
-
-
 def build_data_inventory(root: Path = PROJECT_ROOT) -> pd.DataFrame:
     p = paths(root)
     ensure_output_dirs(p)
@@ -697,6 +618,10 @@ def provider_data_disposition(coverage: pd.DataFrame) -> pd.DataFrame:
             "derived-only recommended",
             "Curated local data assembled from public/optional sources; prefer derived summaries.",
         ),
+        "CFTC": (
+            "public/re-distributable",
+            "Official public regulatory archive; cite the CFTC and preserve release semantics.",
+        ),
     }
     rows = []
     for _, row in coverage.iterrows():
@@ -731,6 +656,7 @@ def license_note(source_group: str) -> str:
         "Tradingview": "Chart/export data; redistribution rights may be restricted.",
         "AlternativeMe": "Public Fear and Greed index data; cite provider.",
         "MarketStructure": "Curated local summaries from public/optional sources.",
+        "CFTC": "Official public regulatory archive; cite the CFTC.",
     }
     return notes.get(source_group, "Repository-local metadata or generated inventory.")
 

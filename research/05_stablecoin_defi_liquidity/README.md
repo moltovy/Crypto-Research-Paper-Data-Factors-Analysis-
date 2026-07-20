@@ -2,34 +2,35 @@
 
 ## Overview
 
-This module treats stablecoin supply, DeFi TVL, and related balances as endogenous liquidity-state proxies with explicit valuation-contamination checks.
+This module constructs an endogenous liquidity-state diagnostic after price-adjusting USD TVL growth and retains same-day MVRV only as a measurement-mechanics appendix.
 
 ## Questions Investigated
 
-- Which stablecoin/DeFi state variables have usable weekly coverage?
-- How much raw USD TVL behavior is plausibly valuation-sensitive?
+- What remains in USD TVL growth after contemporaneous crypto-market return controls?
+- How mechanically does same-day MVRV inherit BTC price variation?
 
 ## Data, Assets, and Sample
 
-| artifact                                |   rows | sample                                     | coverage rule                  |
-|:----------------------------------------|-------:|:-------------------------------------------|:-------------------------------|
-| tables/liquidity_state.csv              |   2295 | 2020-01-02 to 2026-04-14, result rows=2295 | module-specific matched sample |
-| tables/liquidity_state_coefficients.csv |      4 | 2020-01-02 to 2026-04-14, n=2295           | module-specific matched sample |
-| tables/liquidity_state_summary.csv      |      3 | 2020-01-02 to 2026-04-14, n=2116-2295      | module-specific matched sample |
-| tables/measurement_mechanics.csv        |      5 | 2020-01-02 to 2026-04-13, n=2291-2294      | module-specific matched sample |
+| artifact                                |   result_rows | analytical_sample                                        | coverage rule                  |
+|:----------------------------------------|--------------:|:---------------------------------------------------------|:-------------------------------|
+| tables/liquidity_state.csv              |          2295 | 2,295 daily state observations; 2020-01-02 to 2026-04-14 | module-specific matched sample |
+| tables/liquidity_state_coefficients.csv |             4 | 2020-01-02 to 2026-04-14, n=2295                         | module-specific matched sample |
+| tables/liquidity_state_summary.csv      |             3 | 2020-01-02 to 2026-04-14, n=2116-2295                    | module-specific matched sample |
+| tables/measurement_mechanics.csv        |             5 | 2020-01-02 to 2026-04-13, n=2291-2294                    | module-specific matched sample |
 
 ## Methodologies and Calculations
 
-| method                  | calculation                                                           |
-|:------------------------|:----------------------------------------------------------------------|
-| Weekly state analysis   | Sunday-ended weekly growth and lagged state variables are summarized. |
-| Valuation contamination | raw USD TVL growth is screened against BTC/ETH returns.               |
+| method             | calculation                                                                                                                   |
+|:-------------------|:------------------------------------------------------------------------------------------------------------------------------|
+| Liquidity residual | regress daily USD TVL growth on BTC, ETH, and broad-market controls with HAC covariance, then standardize the residual state. |
+| Stablecoin state   | report supply growth as an endogenous balance-sheet proxy with source-coverage guards.                                        |
+| MVRV mechanics     | compare log-MVRV changes with BTC return and audit the market-cap/realized-cap identity residual.                             |
 
 ## Formulas
 
-$\Delta \log X_t = \log X_t - \log X_{t-1}$.
+$\Delta\log(TVL_t)=\alpha+\beta'R_t+u_t$; the liquidity state is a rolling z-score of $u_t$.
 
-$\operatorname{corr}(r_t, \Delta \log TVL_t)$ is a price-content screen, not a liquidity shock.
+$MVRV_t=MCap_t/RealizedCap_t$.
 
 ## Summary of Results
 
@@ -46,15 +47,15 @@ The liquidity residual is standardized only after contemporaneous market-return 
 
 ## Robustness and Sensitivity
 
-Sensitivity dimensions are: raw versus lagged, TVL price content, weekly calendar, state bins. Tables report matched samples, frequencies, and timing conventions where available.
+Sensitivity dimensions are: market controls, HAC lag, z-score window, identity residual. Tables report matched samples, frequencies, and timing conventions where available.
 
 ## Interpretation
 
-Stablecoin/DeFi variables are balance-sheet state proxies. Weak or valuation-sensitive results are reported as weak and not forced into the root README.
+The residual state is still endogenous and co-moves with market conditions. MVRV is a price-linked valuation diagnostic, not an independent factor.
 
 ## Limitations
 
-Raw USD TVL can mechanically rise when deposited-asset prices rise. No exogenous liquidity-shock design is present.
+Raw USD TVL is valuation-sensitive, source revisions are possible, and residualization does not create an exogenous liquidity shock.
 
 ## Reproduce This Module
 
@@ -76,4 +77,6 @@ uv run python scripts/check_research_surface.py --module 05_stablecoin_defi_liqu
 - [Findings](findings.md)
 - [Interpretation](interpretation.md)
 - [Limitations](limitations.md)
-- Code: `src/cqresearch/research/analytical_modules.py`
+- [Code: `evidence_modules.py`](../../src/cqresearch/research/evidence_modules.py)
+- [Code: `market_structure.py`](../../src/cqresearch/modeling/market_structure.py)
+- [Test: `test_market_structure_models.py`](../../tests/unit/test_market_structure_models.py)

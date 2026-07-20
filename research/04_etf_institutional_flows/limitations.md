@@ -1,3 +1,3 @@
 # Limitations
 
-Issuer flow timing, non-reporting days, holidays, and launch-date differences require asset-specific samples.
+Reported dates do not resolve intraday availability, issuer archives are incomplete, and ETF samples begin at instrument-specific inception.

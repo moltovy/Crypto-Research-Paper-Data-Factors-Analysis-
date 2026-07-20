@@ -1,3 +1,3 @@
 # Limitations
 
-Liquidation timestamps, denominator price content, and same-day simultaneity constrain interpretation.
+Leverage measures are endogenous and USD-valued fields can contain price content. Tail samples are small, and rolling VAR windows require stability and row-sum diagnostics.

@@ -1,7 +1,7 @@
 # Methodology
 
-State bins: leverage metrics are lagged before quintile/state assignment.
+Tail-state model: fit a spline logistic model using lagged OI-to-market-cap, funding, liquidation, and volatility states.
 
-Tail diagnostics: bottom-tail rates and logit-style tail summaries are reported by state.
+Tail severity: estimate 5% and 10% quantile associations, expected shortfall, CoVaR, delta-CoVaR, and MES.
 
-Event/placebo: liquidation windows exclude same-day initiation signatures.
+Connectedness: estimate rolling generalized FEVD on S2 using 252 observations, BIC lag at most five, and horizon 10.

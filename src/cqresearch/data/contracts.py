@@ -108,7 +108,7 @@ def native_log_return(
 
 
 def result_sample_summary(frame: pd.DataFrame) -> str:
-    """Describe the observation sample represented by a result table."""
+    """Describe an analytical sample without treating result rows as observations."""
 
     if frame.empty:
         return "no rows"
@@ -124,7 +124,7 @@ def result_sample_summary(frame: pd.DataFrame) -> str:
         n_min, n_max = int(n_values.min()), int(n_values.max())
         parts.append(f"n={n_min}" if n_min == n_max else f"n={n_min}-{n_max}")
     else:
-        parts.append(f"result rows={len(frame)}")
+        parts.append("analytical sample metadata unavailable")
     return ", ".join(parts)
 
 

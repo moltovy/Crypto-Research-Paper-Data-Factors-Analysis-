@@ -1,7 +1,9 @@
 # Methodology
 
-Lag response: ETF net flows are scaled by lagged market cap and shifted over lags 0-5.
+Flow scaling: divide reported BTC/ETH net flow by lagged market capitalization on actual report dates.
 
-Moving-block bootstrap: deterministic block resampling produces correlation intervals.
+Distributed lags: estimate HAC return, absolute-return, and volatility associations for lags 0 through 5.
 
-Timing audit: first plotted dates must equal or follow first valid source dates.
+Simultaneous inference: use a 2,000-replication moving-block max-t bootstrap and timing-shift sensitivity.
+
+Institutional context: report issuer concentration where available and standard-contract CFTC positioning without combining micro contracts.

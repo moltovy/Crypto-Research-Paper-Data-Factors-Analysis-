@@ -2,40 +2,43 @@
 
 ## Overview
 
-This module replaces the old cumulative-flow root figure with ETF lag-response, source-timing, and flow-shock/placebo diagnostics.
+This module evaluates ETF flow-intensity lag associations and regulated-futures positioning over actual reporting lives without pre-inception or holiday zero fills.
 
 ## Questions Investigated
 
-- How do BTC and ETH ETF flow-intensity associations vary over lags 0-5?
-- Do plotted ETF series begin only at valid source observations?
+- Which lag-0 through lag-5 ETF flow-intensity coefficients remain supported under simultaneous uncertainty?
+- How concentrated and persistent are reported flows, and how does CFTC positioning provide separate weekly context?
 
 ## Data, Assets, and Sample
 
-| artifact                                    |   rows | sample                                  | coverage rule                                    |
-|:--------------------------------------------|-------:|:----------------------------------------|:-------------------------------------------------|
-| tables/corporate_exposure_eras.csv          |      1 | result rows=1                           | module-specific matched sample                   |
-| tables/etf_cumulative_lags.csv              |      4 | 2024-01-22 to 2026-04-10, n=426-557     | ETF source rows only; no pre-inception zero fill |
-| tables/etf_distributed_lags.csv             |     24 | 2024-01-22 to 2026-04-10, n=426-557     | ETF source rows only; no pre-inception zero fill |
-| tables/etf_flow_concentration.csv           |      2 | 2024-01-11 to 2026-04-10, result rows=2 | ETF source rows only; no pre-inception zero fill |
-| tables/etf_nonlinear_sensitivity.csv        |      6 | 2024-01-12 to 2026-04-10, n=431-562     | ETF source rows only; no pre-inception zero fill |
-| tables/etf_timing_sensitivity.csv           |      4 | 2024-01-12 to 2026-04-10, n=430-562     | ETF source rows only; no pre-inception zero fill |
-| tables/institutional_positioning.csv        |      6 | 2020-01-14 to 2026-04-14, n=262-327     | module-specific matched sample                   |
-| tables/institutional_positioning_eras.csv   |     12 | 2018-04-10 to 2026-06-30, n=102-301     | module-specific matched sample                   |
-| tables/institutional_positioning_points.csv |    704 | result rows=704                         | module-specific matched sample                   |
+| artifact                                    |   result_rows | analytical_sample                                                          | coverage rule                                    |
+|:--------------------------------------------|--------------:|:---------------------------------------------------------------------------|:-------------------------------------------------|
+| tables/corporate_exposure_eras.csv          |             1 | source eligibility gate failed; no analytical sample or exposure-era claim | module-specific matched sample                   |
+| tables/etf_cumulative_lags.csv              |             4 | 2024-01-22 to 2026-04-10, n=426-557                                        | ETF source rows only; no pre-inception zero fill |
+| tables/etf_distributed_lags.csv             |            24 | 2024-01-22 to 2026-04-10, n=426-557                                        | ETF source rows only; no pre-inception zero fill |
+| tables/etf_flow_concentration.csv           |             2 | BTC/ETH actual report dates, n=431-563 by asset; 2024-01-11 to 2026-04-10  | ETF source rows only; no pre-inception zero fill |
+| tables/etf_nonlinear_sensitivity.csv        |             6 | 2024-01-12 to 2026-04-10, n=431-562                                        | ETF source rows only; no pre-inception zero fill |
+| tables/etf_timing_sensitivity.csv           |             4 | 2024-01-12 to 2026-04-10, n=430-562                                        | ETF source rows only; no pre-inception zero fill |
+| tables/institutional_positioning.csv        |             6 | 2020-01-14 to 2026-04-14, n=262-327                                        | module-specific matched sample                   |
+| tables/institutional_positioning_eras.csv   |            12 | 2018-04-10 to 2026-06-30, n=102-301                                        | module-specific matched sample                   |
+| tables/institutional_positioning_points.csv |           704 | 704 weekly CFTC contract-report observations; 2018-04-10 to 2026-06-30     | module-specific matched sample                   |
 
 ## Methodologies and Calculations
 
-| method                 | calculation                                                              |
-|:-----------------------|:-------------------------------------------------------------------------|
-| Lag response           | ETF net flows are scaled by lagged market cap and shifted over lags 0-5. |
-| Moving-block bootstrap | deterministic block resampling produces correlation intervals.           |
-| Timing audit           | first plotted dates must equal or follow first valid source dates.       |
+| method                 | calculation                                                                                                           |
+|:-----------------------|:----------------------------------------------------------------------------------------------------------------------|
+| Flow scaling           | divide reported BTC/ETH net flow by lagged market capitalization on actual report dates.                              |
+| Distributed lags       | estimate HAC return, absolute-return, and volatility associations for lags 0 through 5.                               |
+| Simultaneous inference | use a 2,000-replication moving-block max-t bootstrap and timing-shift sensitivity.                                    |
+| Institutional context  | report issuer concentration where available and standard-contract CFTC positioning without combining micro contracts. |
 
 ## Formulas
 
-$f_t=\text{ETF net flow}_t/\text{market cap}_{t-1}$.
+$FI_t=Flow_t/MCap_{t-1}$.
 
-$\rho_l=\operatorname{corr}(r_t, f_{t-l})$ for lags $l=0,\dots,5$.
+$y_t=\alpha+\sum_{k=0}^{5}\beta_k FI_{t-k}+\Gamma'Z_t+u_t$.
+
+$HHI_t=\sum_i (Flow_{i,t}/\sum_j |Flow_{j,t}|)^2$.
 
 ## Summary of Results
 
@@ -51,15 +54,15 @@ ETF lag coefficients use simultaneous bands and no pre-inception or holiday zero
 
 ## Robustness and Sensitivity
 
-Sensitivity dimensions are: lags 0-5, BTC/ETH separate starts, block-bootstrap interval, shock threshold. Tables report matched samples, frequencies, and timing conventions where available.
+Sensitivity dimensions are: lag, timing shift, flow sign, volatility state, contract scope. Tables report matched samples, frequencies, and timing conventions where available.
 
 ## Interpretation
 
-ETF flows are market-plumbing associations with timing and simultaneity concerns, not causal return estimates.
+Supported coefficients are timing-sensitive market-plumbing associations. Simultaneity prevents price-impact language.
 
 ## Limitations
 
-Issuer flow timing, non-reporting days, holidays, and launch-date differences require asset-specific samples.
+Reported dates do not resolve intraday availability, issuer archives are incomplete, and ETF samples begin at instrument-specific inception.
 
 ## Reproduce This Module
 
@@ -86,4 +89,8 @@ uv run python scripts/check_research_surface.py --module 04_etf_institutional_fl
 - [Findings](findings.md)
 - [Interpretation](interpretation.md)
 - [Limitations](limitations.md)
-- Code: `src/cqresearch/research/analytical_modules.py`
+- [Code: `evidence_modules.py`](../../src/cqresearch/research/evidence_modules.py)
+- [Code: `etf_plumbing.py`](../../src/cqresearch/modeling/etf_plumbing.py)
+- [Test: `test_etf_models.py`](../../tests/unit/test_etf_models.py)
+- [Test: `test_etf_semantics.py`](../../tests/unit/test_etf_semantics.py)
+- [Test: `test_cftc_positioning.py`](../../tests/unit/test_cftc_positioning.py)

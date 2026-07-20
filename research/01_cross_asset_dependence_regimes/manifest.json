@@ -1,9 +1,9 @@
 {
   "artifacts": [
     {
-      "bytes": 335,
+      "bytes": 1182,
       "path": "research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.metadata.json",
-      "sha256": "bcf98dc0a45626ed636c96139e9d01d9f866d93ce3e08a8e65eb1647f2e32a5a"
+      "sha256": "76a38debab81675688e0ce2d8ff353f9fbb1c18f8e55bf2ed8750ff7620c7c30"
     },
     {
       "bytes": 165637,
@@ -21,34 +21,34 @@
       "sha256": "c4bab2fc72eaea26c5d96574e7ee47b1de5a529008a7333cd03e12cccc05f26a"
     },
     {
-      "bytes": 148,
+      "bytes": 175,
       "path": "research/01_cross_asset_dependence_regimes/findings.md",
-      "sha256": "bead698b0a91c62a5d984d3c2da006ceac60cafacf416aaf0dcf4cc4e309de7f"
+      "sha256": "1404704117f8d97ec97def85cae4c4973b8a14843a9175372e8be3a5343615b3"
     },
     {
-      "bytes": 164,
+      "bytes": 211,
       "path": "research/01_cross_asset_dependence_regimes/interpretation.md",
-      "sha256": "e2d435d7991776424d9b8d84b93be73a8bbfa8417f4c9573f945bf9696b0f2e1"
+      "sha256": "ab0742cbb24b6fe9ee8440ccd96f9d386cd00062b5eb0f166d8e8fa62b94a725"
     },
     {
-      "bytes": 203,
+      "bytes": 211,
       "path": "research/01_cross_asset_dependence_regimes/limitations.md",
-      "sha256": "125ddfdc5cd83252f7a26eff975b14bf70b4621c488f85efab31b736ff2595f0"
+      "sha256": "64d8c256844d0928a96aad1d21b8adbee9e18c6b381a92cfe0d1f39aaa597477"
     },
     {
-      "bytes": 326,
+      "bytes": 516,
       "path": "research/01_cross_asset_dependence_regimes/methodology.md",
-      "sha256": "3cbb04b585f03b79ada55c58bd646cfb9d81ba2fafd076896d5c2c1de1953b6d"
+      "sha256": "083fa2310b6aeed942eaa47c357dcaedb6e249880bbb73b66272d79547c72366"
     },
     {
-      "bytes": 1342,
+      "bytes": 1365,
       "path": "research/01_cross_asset_dependence_regimes/module.yml",
-      "sha256": "ef026bcc6df5d29e871bac23e14a1c04934c5a9a3294894e49041749b3aaa21f"
+      "sha256": "2d71f57d32f55980d94c5af13c26ff993480dc92eca96d006026e3eec1b3672e"
     },
     {
-      "bytes": 5173,
+      "bytes": 6048,
       "path": "research/01_cross_asset_dependence_regimes/README.md",
-      "sha256": "54452febe752af9800b59d629755b18faa9878f42e3defccdaecff4782e46a25"
+      "sha256": "9760c603219299337c6748b9ea2e4905cbb51f123ac6a8337e3cb8ae2092e58d"
     },
     {
       "bytes": 1177,
@@ -56,9 +56,9 @@
       "sha256": "0871f7db1859a3c0d9ef16253f176037d150bf84fc96374e9e627d143b204271"
     },
     {
-      "bytes": 1944,
+      "bytes": 1896,
       "path": "research/01_cross_asset_dependence_regimes/tables/claims.csv",
-      "sha256": "cb59d4e6430fecc3fb0c3294ec1e92b3a0aa7441698a4c97b4d5cb20ce2b1f92"
+      "sha256": "7519fd0dd618fe6bc307e4ba52ae6066040d11bf95cf299d5d709d97f392255e"
     },
     {
       "bytes": 2238,

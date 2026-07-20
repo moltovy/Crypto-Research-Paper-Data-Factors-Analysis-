@@ -2,7 +2,6 @@ risk_id,risk_type,severity,subject,evidence,required_handling
 release_alternativeme,release_risk,high,AlternativeMe,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
 release_artemis,release_risk,high,Artemis,uncertain/restricted,publish derived semantic artifacts only unless rights are separately verified
 release_binance,release_risk,high,Binance Vision,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
-release_cftc,release_risk,high,cftc,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
 release_cryptoquant,release_risk,high,CryptoQuant,uncertain/restricted,publish derived semantic artifacts only unless rights are separately verified
 release_defillama,release_risk,high,DefiLlama,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified
 release_farside,release_risk,high,Farside ETF Data,derived-only recommended,publish derived semantic artifacts only unless rights are separately verified

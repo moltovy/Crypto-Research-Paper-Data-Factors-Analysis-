@@ -22,6 +22,7 @@ source_families:
     timezone: UTC
   cftc:
     observation_column: report_date
+    alternate_observation_columns: [Report_Date_as_YYYY-MM-DD, As_of_Date_In_Form_YYMMDD]
     availability_rule: Tuesday positions; Friday availability proxy retained separately
     native_calendar: weekly_report
     timezone: America/New_York

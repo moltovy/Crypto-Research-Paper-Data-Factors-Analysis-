@@ -1,7 +1,7 @@
 # Methodology
 
-HAC OLS: synchronized daily and weekly panels estimate contemporaneous exposure models.
+Calendar construction: compute TradFi returns on native sessions, preserve exchange holidays as missing, then join to crypto dates.
 
-Same-support block R-squared: full and reduced models use identical complete-case rows.
+Dynamic exposure: estimate 252-session multivariate HAC models with at least 126 matched sessions.
 
-Stability diagnostics: VIF, condition number, ridge paths, FDR q-values, and rolling beta are reported.
+Break evidence: estimate formal era interactions and structural-break diagnostics on same-support samples.

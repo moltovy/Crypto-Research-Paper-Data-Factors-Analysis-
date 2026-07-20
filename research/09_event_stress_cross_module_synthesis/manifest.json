@@ -1,9 +1,9 @@
 {
   "artifacts": [
     {
-      "bytes": 271,
+      "bytes": 1006,
       "path": "research/09_event_stress_cross_module_synthesis/figures/09_event_atlas_appendix.metadata.json",
-      "sha256": "1d5b72d43c02510c10284a638fb547cf88c9bdb9cdb038790bef2fe6d879e6e6"
+      "sha256": "0cfe26a56afef0d0d09b3a92577802abdb17a299bf7963381cf784f07980c2df"
     },
     {
       "bytes": 123910,
@@ -26,34 +26,34 @@
       "sha256": "a8584b238985bbfbca7596fbf28f8aaef67551da1409bee238425467a5c492aa"
     },
     {
-      "bytes": 148,
+      "bytes": 171,
       "path": "research/09_event_stress_cross_module_synthesis/interpretation.md",
-      "sha256": "c397ff0bcf533d76a0f19303b755fbb290db89bdaaa56411a6ec1d2be2ddd9d6"
+      "sha256": "a3c5391380eb53e282bb1dccc93ce673e9f224b490cdd33e6d694dbcee5e9239"
     },
     {
-      "bytes": 110,
+      "bytes": 163,
       "path": "research/09_event_stress_cross_module_synthesis/limitations.md",
-      "sha256": "b3a493472670159c40262e629251df3297c0a9f890b263c2867d6ed045633574"
+      "sha256": "da138b728413dc294a25b750d11a6f88df2177ecbe23c94867fca04af6a624ca"
     },
     {
-      "bytes": 211,
+      "bytes": 252,
       "path": "research/09_event_stress_cross_module_synthesis/methodology.md",
-      "sha256": "0520781a06d86c870f6aa19a67cf2663761fd26f78e200d8a3d459df16debc4c"
+      "sha256": "9cd7cb0543a5aa080e96b831cd3335c793e4617200969a0cdb79b1ab17e54360"
     },
     {
-      "bytes": 1296,
+      "bytes": 1270,
       "path": "research/09_event_stress_cross_module_synthesis/module.yml",
-      "sha256": "3e3d9f2542c0f2c3db74dd20b398feec9d84403ce72e394d38b25890dba2fc48"
+      "sha256": "711c0b0a02a47e3a1a56a5a7866d941ba1b37cd4d166bb183d22019f9ec4bff3"
     },
     {
-      "bytes": 4254,
+      "bytes": 5164,
       "path": "research/09_event_stress_cross_module_synthesis/README.md",
-      "sha256": "b0b33c45c16f4b7e06c22a506be850c1feed0e7a873507acddda149c216c5117"
+      "sha256": "cbfeabffc72efc4d12ef4ffb2361e094e3e30513611c5a9108264447492e4d02"
     },
     {
-      "bytes": 1964,
+      "bytes": 2164,
       "path": "research/09_event_stress_cross_module_synthesis/tables/claims.csv",
-      "sha256": "97dbb404847da78b58687e5cd221c74cb33b16248a77defad3e141d7a895c0ed"
+      "sha256": "fdcdcc6ddf2170584fb18f1e2bac465c91792d0d90a857220bbf7076c6116e9a"
     },
     {
       "bytes": 1809,
@@ -66,9 +66,9 @@
       "sha256": "8911d5efa69d7cd337f60849513547363d4747888b0cbcf088da40c6db90822e"
     },
     {
-      "bytes": 10649,
+      "bytes": 10699,
       "path": "research/09_event_stress_cross_module_synthesis/tables/evidence_ledger.csv",
-      "sha256": "62fbf0dfe864adaa737819f61bd9cb43f483c8e1612013bf31ee5b2aecfa1b52"
+      "sha256": "a0359fb8344b8b2798b8e3d68bff2dfa7de4dd34d8fd64cfd92523f0de2188dd"
     },
     {
       "bytes": 371,

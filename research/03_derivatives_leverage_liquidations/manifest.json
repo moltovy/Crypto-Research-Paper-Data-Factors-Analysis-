@@ -1,9 +1,9 @@
 {
   "artifacts": [
     {
-      "bytes": 324,
+      "bytes": 1167,
       "path": "research/03_derivatives_leverage_liquidations/figures/03_leverage_tail_connectedness.metadata.json",
-      "sha256": "3ae8f63cac948179539abeb3bb4540461fb3b4bb414937bab9b7256b21bf57da"
+      "sha256": "23463a4fc9b509bc5889171eaf35c418005968c6e381a8cb0e29cbd6f7ec6039"
     },
     {
       "bytes": 262218,
@@ -26,29 +26,29 @@
       "sha256": "8893d1bc10ebbd63af339598a990c7d7ee3e2897d073c6dbd7508136008f65f6"
     },
     {
-      "bytes": 155,
+      "bytes": 144,
       "path": "research/03_derivatives_leverage_liquidations/interpretation.md",
-      "sha256": "b64684f9be72fdd9eb495f09cb211731e6b61429dbe5d2473818de7f9c467de1"
+      "sha256": "b9330f9d18b4644543202f038fa780f242149b5039efee5aaff724c59c2c9454"
     },
     {
-      "bytes": 118,
+      "bytes": 188,
       "path": "research/03_derivatives_leverage_liquidations/limitations.md",
-      "sha256": "8f047c2b99a5c85897420f9b71d82f6b386eaf5188a216c6646f11872bcbe53d"
+      "sha256": "2edb3d42a11b3b668887d25a872645100d36e89a564d38be1642670a25bb76e6"
     },
     {
-      "bytes": 256,
+      "bytes": 363,
       "path": "research/03_derivatives_leverage_liquidations/methodology.md",
-      "sha256": "a9dc1af63cb6250c8be8b026b85f65573cf828e91123072e9e33a076f105a89d"
+      "sha256": "4c50dfbdb613a1501a1f57b186143d1a2f2dff9039b72dbad4d390d69f104418"
     },
     {
-      "bytes": 1334,
+      "bytes": 1463,
       "path": "research/03_derivatives_leverage_liquidations/module.yml",
-      "sha256": "ff4687c7088c2887db132ab5f8c37fc99a1818871b21ffa6dcf366764e62a61f"
+      "sha256": "b9dd2b6a2829ef8af9622ecd169fcb80f54ae16bd8f24010556ca42b968f0166"
     },
     {
-      "bytes": 5690,
+      "bytes": 6338,
       "path": "research/03_derivatives_leverage_liquidations/README.md",
-      "sha256": "a7fe1efb079556d209b7857255e0a60c215943b5dc54e59fe17ed9d1162e6488"
+      "sha256": "768afc81d6b58f082571b65903c8ab8196c2cf2e1b01906a0ec679d68ef582ed"
     },
     {
       "bytes": 1921,

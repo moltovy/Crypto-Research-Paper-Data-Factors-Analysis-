@@ -1,49 +1,49 @@
 {
   "artifacts": [
     {
-      "bytes": 13625,
+      "bytes": 13663,
       "path": "README.md",
-      "sha256": "2f3794cd635e62cf827823c19be58ba1453735cdb5d8bc5b5cd272e9ebe974c5"
+      "sha256": "f563c759c84b98fe2893473ed76ac067b5e4928666226605b81c58d3a3557379"
     },
     {
-      "bytes": 5299,
+      "bytes": 5304,
       "path": "research/00_data_measurement_foundation/manifest.json",
-      "sha256": "a863652548ce6c48f88ce1821a2b70e2e7e722c36b29e37d42ca431e608f30e7"
+      "sha256": "f7e80d65ee1fb9f6adb4e121211c92770caa49323d1b225d6324e0fa1a29fd7b"
     },
     {
-      "bytes": 3458,
+      "bytes": 3459,
       "path": "research/01_cross_asset_dependence_regimes/manifest.json",
-      "sha256": "9e892e8a5b20054bb7b5d046733dc1b367bad1e293e0a787a891f3ee0a184d50"
+      "sha256": "a441a388b98776ff897acfdc360673b92b2b7086b35ee8bb804a67767b18e9eb"
     },
     {
-      "bytes": 2928,
+      "bytes": 2929,
       "path": "research/02_macro_tradfi_integration/manifest.json",
-      "sha256": "c0ffb6d61b8a0002cbc550e33b3bb9fb5dc3aada00b6721c0f28afbae21a8fae"
+      "sha256": "f02dc5f3bcb9cfc696e92658db33df6251be05f939dd9a9d642c0e52071cdfb2"
     },
     {
-      "bytes": 4134,
+      "bytes": 4135,
       "path": "research/03_derivatives_leverage_liquidations/manifest.json",
-      "sha256": "e817c3194fd22d4a7e509d2f4e79665cf015454ec36242020d28677976a6e67d"
+      "sha256": "9754869790dfd8ad42847db4a7160803b6086301ec63df08ae0b97afa3b633a9"
     },
     {
-      "bytes": 4177,
+      "bytes": 4178,
       "path": "research/04_etf_institutional_flows/manifest.json",
-      "sha256": "1182dc1e33a326d58e2139fb9ccac80758e12820441d40467506c4ccd69a0185"
+      "sha256": "afb371e8afd94565ba51bd5eb7ca96783e7905c0b7f59e64bd62724f866372d7"
     },
     {
-      "bytes": 3189,
+      "bytes": 3190,
       "path": "research/05_stablecoin_defi_liquidity/manifest.json",
-      "sha256": "28897b3de50e6c5e49e3f83c8592f5c9c0b310013016ffa9d7c7245ec9acd472"
+      "sha256": "20dfae81f603a9abb9ec4894b275ce5cf2b64708cc9461a4bd3867f08ad3d7e9"
     },
     {
-      "bytes": 3514,
+      "bytes": 3515,
       "path": "research/07_chain_fundamentals_sector_dynamics/manifest.json",
-      "sha256": "9c006be4a329901bec6c7fb6c63f3563f57a326bfb7684fb8b8ce88a20483cdf"
+      "sha256": "ba572e75777403e9a2ba3392e9ea015766b5aa1be370fe648518e05466d9cbbf"
     },
     {
-      "bytes": 3276,
+      "bytes": 3277,
       "path": "research/09_event_stress_cross_module_synthesis/manifest.json",
-      "sha256": "c1fb6e657a77389eee52ae199a9f37e9b0f65a6015cb5f57a876191d2dfbeaea"
+      "sha256": "82569593f9fa0f399b6da9646ad85cb2ec2e27d6668025cdf0295145166a4cec"
     },
     {
       "bytes": 4173,
@@ -51,29 +51,34 @@
       "sha256": "ae40fb4a52e4ad730dd3ef7e4c0d04c93b9a142726ad391c2ccd2b045a305aa8"
     },
     {
-      "bytes": 12241,
+      "bytes": 13265,
       "path": "research/acceptance_ledger.csv",
-      "sha256": "3d6cf394f04464282e89dfdc2a04aa8feb7045ce9ceac05a4108384802d3f62b"
+      "sha256": "fd5da0e1fff4f744e07d65896cf6310c06c90c686a8bd18bdda6a0e9e81c3298"
     },
     {
       "bytes": 523,
       "path": "research/build_provenance.json",
-      "sha256": "5b747ea992f92125c9b7ab9d0ee5101e747eb9c74d2318042efaa833af4cbd95"
+      "sha256": "41eab9df5bb3db9dd84c3975eb04110b8b33a0493b90cb1837d442e67427b3e1"
     },
     {
-      "bytes": 1291,
+      "bytes": 16912,
+      "path": "research/claim_registry.csv",
+      "sha256": "1b21631f2c19c3e333ab59f50a142ad6d779428e6800ff904401e8b7aad4c780"
+    },
+    {
+      "bytes": 5204,
       "path": "research/estimand_registry.csv",
-      "sha256": "c3ef2fe55ad3ffd32280067311e400f074c2b84c690d494351e5efa069081b92"
+      "sha256": "170f5ccc625650c7bb0782b81ccf1769d9442adbf0d44344133276346df5bf62"
     },
     {
-      "bytes": 14239,
+      "bytes": 20058,
       "path": "research/feature_registry.csv",
-      "sha256": "bd78bfc12250a2b4b250fda3dcbb3abffbff2c5f86e1ed8acbb8ef5b065d1122"
+      "sha256": "08b0ead31671dcc02fe20a2bb5b3528f2a9a88cf90a9964623045130eecff631"
     },
     {
-      "bytes": 9699,
+      "bytes": 10052,
       "path": "research/figure_specs.csv",
-      "sha256": "0a6644080dd87b93816ccace7c51a68fb825deae866425bfda8cd1aece4ebed4"
+      "sha256": "5fd09df71f93dd53e68e0b4e4e7053ba3ee9b775f6f2bd893874c826866cc69a"
     },
     {
       "bytes": 2485,
@@ -81,9 +86,14 @@
       "sha256": "950b30e91d90f548f31ed0e2b7d21330d2189450b6a5429aa974967e18de8624"
     },
     {
-      "bytes": 481276,
+      "bytes": 2982707,
+      "path": "research/physical_columns.csv",
+      "sha256": "c2d7367356e852592092d409029b722f5d087ad9bc82a31677d080c6f245d006"
+    },
+    {
+      "bytes": 550429,
       "path": "research/raw_objects.csv",
-      "sha256": "eb0b82f77bd7bfdb51ebaee9294a570676e0265c292ca092da59f59bc244a78c"
+      "sha256": "aaf994e267429489b606cfee6d8341b90a8cd00650f0ccbcf090d331e7ae33ef"
     },
     {
       "bytes": 2189,
@@ -91,19 +101,19 @@
       "sha256": "a80c5300bc68815621cb985fc0ff45d7bda0cf3d0b0d234cd67403ecea85a880"
     },
     {
-      "bytes": 1598,
+      "bytes": 1694,
       "path": "research/sample_manifest.csv",
-      "sha256": "89d9a72fa88feb2e2e6e360a692c9ca909de4121f72cf31adfbdc6f73cb61ce2"
+      "sha256": "4a89ec9355a721bfad24129ef458de6a5c4d5f8afab479f26ec874ce2c26f0c0"
     },
     {
-      "bytes": 8498,
+      "bytes": 720915,
       "path": "research/sample_membership.csv",
-      "sha256": "37eeb7eaf4c326f55cf9b779325c634ab8eb117bfeefd4df050f58c2f3e48deb"
+      "sha256": "238908a0efe0fa905afa76e8a0738ee14f0426955d8a27746696771113c17582"
     },
     {
-      "bytes": 1128,
+      "bytes": 1179,
       "path": "research/source_contracts.csv",
-      "sha256": "d59862198a05ca93a33387ab83d01cc4f9473f65d843efe97e461dfdc061ad29"
+      "sha256": "c8a4ed8487206cfe3bf2dd29ad75a9456a6033853cf6169edeb0c1122a279e98"
     },
     {
       "bytes": 5092,
@@ -127,7 +137,7 @@
       "artifact_count": 25,
       "figure_count": 2,
       "manifest_path": "research/00_data_measurement_foundation/manifest.json",
-      "manifest_sha256": "a863652548ce6c48f88ce1821a2b70e2e7e722c36b29e37d42ca431e608f30e7",
+      "manifest_sha256": "f7e80d65ee1fb9f6adb4e121211c92770caa49323d1b225d6324e0fa1a29fd7b",
       "module_id": "00_data_measurement_foundation",
       "path": "research/00_data_measurement_foundation",
       "question": "What data, assets, units, timing, coverage, identity, and release-risk constraints govern later empirical claims?",
@@ -138,7 +148,7 @@
       "artifact_count": 16,
       "figure_count": 1,
       "manifest_path": "research/01_cross_asset_dependence_regimes/manifest.json",
-      "manifest_sha256": "9e892e8a5b20054bb7b5d046733dc1b367bad1e293e0a787a891f3ee0a184d50",
+      "manifest_sha256": "a441a388b98776ff897acfdc360673b92b2b7086b35ee8bb804a67767b18e9eb",
       "module_id": "01_cross_asset_dependence_regimes",
       "path": "research/01_cross_asset_dependence_regimes",
       "question": "How do crypto and TradFi return dependence, common-factor share, lower-tail co-exceedance, and regimes vary across matched samples?",
@@ -149,7 +159,7 @@
       "artifact_count": 14,
       "figure_count": 1,
       "manifest_path": "research/02_macro_tradfi_integration/manifest.json",
-      "manifest_sha256": "c0ffb6d61b8a0002cbc550e33b3bb9fb5dc3aada00b6721c0f28afbae21a8fae",
+      "manifest_sha256": "f02dc5f3bcb9cfc696e92658db33df6251be05f939dd9a9d642c0e52071cdfb2",
       "module_id": "02_macro_tradfi_integration",
       "path": "research/02_macro_tradfi_integration",
       "question": "How do crypto exposures to equities, volatility, rates, the dollar, gold, and credit vary across calendars and periods?",
@@ -160,7 +170,7 @@
       "artifact_count": 19,
       "figure_count": 1,
       "manifest_path": "research/03_derivatives_leverage_liquidations/manifest.json",
-      "manifest_sha256": "e817c3194fd22d4a7e509d2f4e79665cf015454ec36242020d28677976a6e67d",
+      "manifest_sha256": "9754869790dfd8ad42847db4a7160803b6086301ec63df08ae0b97afa3b633a9",
       "module_id": "03_derivatives_leverage_liquidations",
       "path": "research/03_derivatives_leverage_liquidations",
       "question": "Where do leverage, funding, open-interest scaling, and liquidation stress appear in volatility and tail outcomes?",
@@ -171,7 +181,7 @@
       "artifact_count": 20,
       "figure_count": 1,
       "manifest_path": "research/04_etf_institutional_flows/manifest.json",
-      "manifest_sha256": "1182dc1e33a326d58e2139fb9ccac80758e12820441d40467506c4ccd69a0185",
+      "manifest_sha256": "afb371e8afd94565ba51bd5eb7ca96783e7905c0b7f59e64bd62724f866372d7",
       "module_id": "04_etf_institutional_flows",
       "path": "research/04_etf_institutional_flows",
       "question": "How do ETF flow intensity, timing, lag response, and shock/placebo diagnostics line up with crypto outcomes?",
@@ -182,7 +192,7 @@
       "artifact_count": 15,
       "figure_count": 1,
       "manifest_path": "research/05_stablecoin_defi_liquidity/manifest.json",
-      "manifest_sha256": "28897b3de50e6c5e49e3f83c8592f5c9c0b310013016ffa9d7c7245ec9acd472",
+      "manifest_sha256": "20dfae81f603a9abb9ec4894b275ce5cf2b64708cc9461a4bd3867f08ad3d7e9",
       "module_id": "05_stablecoin_defi_liquidity",
       "path": "research/05_stablecoin_defi_liquidity",
       "question": "What do stablecoin supply and DeFi TVL proxies say about liquidity-state associations after unit and valuation audits?",
@@ -193,7 +203,7 @@
       "artifact_count": 16,
       "figure_count": 1,
       "manifest_path": "research/07_chain_fundamentals_sector_dynamics/manifest.json",
-      "manifest_sha256": "9c006be4a329901bec6c7fb6c63f3563f57a326bfb7684fb8b8ce88a20483cdf",
+      "manifest_sha256": "ba572e75777403e9a2ba3392e9ea015766b5aa1be370fe648518e05466d9cbbf",
       "module_id": "07_chain_fundamentals_sector_dynamics",
       "path": "research/07_chain_fundamentals_sector_dynamics",
       "question": "Which chain-level activity, sector, and point-in-time state measures have enough coverage and definition clarity for descriptive panel analysis?",
@@ -204,7 +214,7 @@
       "artifact_count": 15,
       "figure_count": 1,
       "manifest_path": "research/09_event_stress_cross_module_synthesis/manifest.json",
-      "manifest_sha256": "c1fb6e657a77389eee52ae199a9f37e9b0f65a6015cb5f57a876191d2dfbeaea",
+      "manifest_sha256": "82569593f9fa0f399b6da9646ad85cb2ec2e27d6668025cdf0295145166a4cec",
       "module_id": "09_event_stress_cross_module_synthesis",
       "path": "research/09_event_stress_cross_module_synthesis",
       "question": "Which event-window, stress-state, and cross-module findings remain strongest after comparing sample, method, uncertainty, measurement risk, and limitations?",

@@ -2,34 +2,34 @@
 
 ## Overview
 
-This module estimates BTC/ETH co-movement with equities, volatility, rates, the dollar, gold, and credit using synchronized calendars and same-support comparisons.
+This module measures time-varying conditional BTC/ETH exposure to contract-valid TradFi returns and changes after computing each instrument's return on its native calendar.
 
 ## Questions Investigated
 
-- How do equity, volatility, dollar, rates, and gold blocks contribute to contemporaneous crypto exposure models?
-- Are later-sample exposure differences robust to frequency, multicollinearity, FDR, and ridge sensitivity?
+- How do 252-session multivariate HAC crypto-equity exposures vary through time?
+- Do predeclared era interactions support a discrete change after accounting for uncertainty and multiple tests?
 
 ## Data, Assets, and Sample
 
-| artifact                            |   rows | sample                           | coverage rule                  |
-|:------------------------------------|-------:|:---------------------------------|:-------------------------------|
-| tables/break_tests.csv              |     10 | 2020-01-03 to 2026-04-14, n=1577 | module-specific matched sample |
-| tables/dynamic_tradfi_exposures.csv |   2660 | 2020-01-03 to 2026-04-14, n=252  | module-specific matched sample |
-| tables/tradfi_diagnostics.csv       |      2 | n=1577                           | module-specific matched sample |
+| artifact                            |   result_rows | analytical_sample                | coverage rule                  |
+|:------------------------------------|--------------:|:---------------------------------|:-------------------------------|
+| tables/break_tests.csv              |            10 | 2020-01-03 to 2026-04-14, n=1577 | module-specific matched sample |
+| tables/dynamic_tradfi_exposures.csv |          2660 | 2020-01-03 to 2026-04-14, n=252  | module-specific matched sample |
+| tables/tradfi_diagnostics.csv       |             2 | n=1577                           | module-specific matched sample |
 
 ## Methodologies and Calculations
 
-| method                       | calculation                                                                      |
-|:-----------------------------|:---------------------------------------------------------------------------------|
-| HAC OLS                      | synchronized daily and weekly panels estimate contemporaneous exposure models.   |
-| Same-support block R-squared | full and reduced models use identical complete-case rows.                        |
-| Stability diagnostics        | VIF, condition number, ridge paths, FDR q-values, and rolling beta are reported. |
+| method                | calculation                                                                                                  |
+|:----------------------|:-------------------------------------------------------------------------------------------------------------|
+| Calendar construction | compute TradFi returns on native sessions, preserve exchange holidays as missing, then join to crypto dates. |
+| Dynamic exposure      | estimate 252-session multivariate HAC models with at least 126 matched sessions.                             |
+| Break evidence        | estimate formal era interactions and structural-break diagnostics on same-support samples.                   |
 
 ## Formulas
 
-$\Delta R^2_b = R^2_{full} - R^2_{reduced(-b)}$ on the same support.
+$r_{crypto,t}=\alpha+\beta'X_t+u_t$ with HAC covariance.
 
-$R^2_{partial}=(SSE_{reduced}-SSE_{full})/SSE_{reduced}$.
+$r_t=\alpha+\beta X_t+\gamma D_t+\delta(X_tD_t)+u_t$; $\delta$ is the predeclared era interaction.
 
 ## Summary of Results
 
@@ -45,15 +45,15 @@ Rolling QQQ coefficients condition on VIX, DXY, real-yield changes, and gold; th
 
 ## Robustness and Sensitivity
 
-Sensitivity dimensions are: frequency, period split, HAC bandwidth, FDR, VIF, ridge. Tables report matched samples, frequencies, and timing conventions where available.
+Sensitivity dimensions are: window support, era boundary, control set, HAC lag. Tables report matched samples, frequencies, and timing conventions where available.
 
 ## Interpretation
 
-Macro/TradFi integration is contemporaneous co-movement evidence, not macro causality or ETF-effect identification.
+Conditional equity exposure varies over time, while formal period differences are reported as weak when adjusted evidence does not reject the null.
 
 ## Limitations
 
-Business-date alignment, period splits, and rolling windows are descriptive. Same-day models cannot establish lead-lag direction.
+Close-to-close alignment is contemporaneous and cannot identify transmission. Latest-vintage macro data and finite rolling windows add timing and revision risk.
 
 ## Reproduce This Module
 
@@ -74,4 +74,8 @@ uv run python scripts/check_research_surface.py --module 02_macro_tradfi_integra
 - [Findings](findings.md)
 - [Interpretation](interpretation.md)
 - [Limitations](limitations.md)
-- Code: `src/cqresearch/research/analytical_modules.py`
+- [Code: `evidence_modules.py`](../../src/cqresearch/research/evidence_modules.py)
+- [Code: `dependence.py`](../../src/cqresearch/modeling/dependence.py)
+- [Code: `calendars.py`](../../src/cqresearch/data/calendars.py)
+- [Test: `test_dependence_models.py`](../../tests/unit/test_dependence_models.py)
+- [Test: `test_calendars.py`](../../tests/unit/test_calendars.py)

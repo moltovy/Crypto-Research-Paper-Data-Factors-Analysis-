@@ -1,9 +1,9 @@
 {
   "artifacts": [
     {
-      "bytes": 323,
+      "bytes": 1092,
       "path": "research/02_macro_tradfi_integration/figures/02_dynamic_tradfi_integration.metadata.json",
-      "sha256": "6bff3f30cd4314689ee267611f163fff565b804abe131de14ce1d9073d342819"
+      "sha256": "2867add36fbcb91db96e491a8709111e667bb5e7c623ea47075c75011a375c19"
     },
     {
       "bytes": 212408,
@@ -26,29 +26,29 @@
       "sha256": "d50712de02481cd9c57a5c4611b3f32e195c164d3eef974dbb424184ea6200a7"
     },
     {
-      "bytes": 134,
+      "bytes": 166,
       "path": "research/02_macro_tradfi_integration/interpretation.md",
-      "sha256": "d481e0e4e99a7866f45d87106c6f5d59bb81c60633265fc0480b1b753220ef6f"
+      "sha256": "2a11485dc33652e7fd88b1dec76aeff5f6231adde330ffc7cc3bf1b7eb15c6ae"
     },
     {
-      "bytes": 145,
+      "bytes": 176,
       "path": "research/02_macro_tradfi_integration/limitations.md",
-      "sha256": "c2a66d808ccd0d606c9f12e257ce38f9dd1cbf073ef10eeaf3a3a4c58ab8727b"
+      "sha256": "d089275c44faadc9022501616690ef7962e45dc77ab63b02e4a0332f946ecb8f"
     },
     {
-      "bytes": 297,
+      "bytes": 355,
       "path": "research/02_macro_tradfi_integration/methodology.md",
-      "sha256": "43f480949f3d52e553796b4c789a77b5d99d383bdb1ff5c9194b905e89c253ae"
+      "sha256": "7f4928c1ba6fb1e73aed58cae84315c0c3cf6665c50bd52d3cda5794f99aa762"
     },
     {
-      "bytes": 1235,
+      "bytes": 1251,
       "path": "research/02_macro_tradfi_integration/module.yml",
-      "sha256": "f651e0844244049487907aff70616a85c165dc269ed3e134c943f4aa5ff912cd"
+      "sha256": "25e7cf9a66ce72d3957bb32b66af6c011108e97fd98aed8ec6d2e290896b9f66"
     },
     {
-      "bytes": 4406,
+      "bytes": 4925,
       "path": "research/02_macro_tradfi_integration/README.md",
-      "sha256": "a7fd2b8459cae1fc8bc81bac6122085b84b0aa6faa38afc35732ef11ab8c31b9"
+      "sha256": "356297db18f0ed7fd42c0f6a1b4b653d42e9e68a5a25b8e85ff42f1b7cbf74e5"
     },
     {
       "bytes": 2294,

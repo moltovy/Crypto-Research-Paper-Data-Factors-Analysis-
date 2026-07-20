@@ -1,9 +1,21 @@
 {
+  "data_cutoff": "2026-06-30",
+  "date_range": "Event dates 2022-05-09 through 2024-08-05 with return support through 2026-04-14",
   "figure_id": "event_atlas_appendix",
-  "plot_key": "plot_key",
+  "limitation": "Event windows are not an identification design.",
+  "method": "Registered fixed post-event windows compared with non-overlapping empirical placebo windows",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
   "png": "09_event_atlas_appendix.png",
+  "research_question": "How do registered post-event windows vary across BTC and ETH?",
   "rows": 16,
+  "sample": "Registered events within the valid 2020-2026 BTC/ETH panel",
   "source_csv": "09_event_atlas_appendix.source.csv",
-  "source_tables": "tables/event_response_matrix.csv",
-  "svg": "09_event_atlas_appendix.svg"
+  "source_tables": [
+    "tables/event_response_matrix.csv"
+  ],
+  "svg": "09_event_atlas_appendix.svg",
+  "uncertainty": "Empirical placebo percentiles and two-sided placebo p-values; not an identification design",
+  "units": "cumulative log return",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
 }

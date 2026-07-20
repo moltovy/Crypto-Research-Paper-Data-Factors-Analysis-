@@ -3,28 +3,33 @@ title: ETF and Institutional Flows
 research_question: How do ETF flow intensity, timing, lag response, and shock/placebo
   diagnostics line up with crypto outcomes?
 research_questions:
-- How do BTC and ETH ETF flow-intensity associations vary over lags 0-5?
-- Do plotted ETF series begin only at valid source observations?
+- Which lag-0 through lag-5 ETF flow-intensity coefficients remain supported under
+  simultaneous uncertainty?
+- How concentrated and persistent are reported flows, and how does CFTC positioning
+  provide separate weekly context?
 outcomes:
-- lag-response correlation
-- flow-shock placebo
-- timing audit
+- return
+- absolute return
+- realized volatility
+- positioning share
 features:
-- BTC ETF flow
-- ETH ETF flow
-- lagged market cap
-- BTC/ETH returns
+- ETF flow intensity
+- issuer composition
+- CFTC positioning
 frequencies:
-- ETF trading daily
+- reported ETF session
+- weekly CFTC
 methods:
-- Lag response
-- Moving-block bootstrap
-- Timing audit
+- Flow scaling
+- Distributed lags
+- Simultaneous inference
+- Institutional context
 sensitivity_dimensions:
-- lags 0-5
-- BTC/ETH separate starts
-- block-bootstrap interval
-- shock threshold
+- lag
+- timing shift
+- flow sign
+- volatility state
+- contract scope
 status: built
 canonical_surface: research/04_etf_institutional_flows
 tables:
@@ -41,9 +46,11 @@ tables:
 figures:
 - 04_institutional_market_plumbing.png
 code:
-- src/cqresearch/research/analytical_modules.py
+- src/cqresearch/research/evidence_modules.py
+- src/cqresearch/modeling/etf_plumbing.py
 tests:
-- tests/unit/test_feature_strength_outputs.py
-- tests/unit/test_visual_outputs.py
+- tests/unit/test_etf_models.py
+- tests/unit/test_etf_semantics.py
+- tests/unit/test_cftc_positioning.py
 root_readme_candidate_figures:
 - figures/04_institutional_market_plumbing.png

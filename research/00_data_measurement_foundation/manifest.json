@@ -1,29 +1,29 @@
 {
   "artifacts": [
     {
-      "bytes": 248,
+      "bytes": 1031,
       "path": "research/00_data_measurement_foundation/figures/coverage_missingness_by_block.metadata.json",
-      "sha256": "a857662995c740e1455f6986f07a75560f5ed855bdf6fdc214f3adb59cf58dcc"
+      "sha256": "8b95f79a41eadbdb51c17fb19b3ae31578552fab9d682ee36852fa0dc4108569"
     },
     {
-      "bytes": 99110,
+      "bytes": 93418,
       "path": "research/00_data_measurement_foundation/figures/coverage_missingness_by_block.png",
-      "sha256": "94111e2f3c4f1102f2384a0cb61ffd044887e063a71ccf53611c1fb8393701cb"
+      "sha256": "c735cf2b246a296951c56208abe6360197410963fc4357618fe1d03dba3809a6"
     },
     {
-      "bytes": 352,
+      "bytes": 306,
       "path": "research/00_data_measurement_foundation/figures/coverage_missingness_by_block.source.csv",
-      "sha256": "ace3f32ac0c6e8ad366188ee8c3fa558b62f0474f56e487ee0a74c9c739e07a3"
+      "sha256": "8fd6fd83d09ada8e67ebdb1e166be8f50e45b09b619381e1235f4afb91c28f36"
     },
     {
-      "bytes": 57697,
+      "bytes": 54520,
       "path": "research/00_data_measurement_foundation/figures/coverage_missingness_by_block.svg",
-      "sha256": "26261a3a074d7f0da98d05e9dce0a8501a74c1440e0994c511dfef5d336bef7c"
+      "sha256": "150392cd06c8ec270dc6225dc8e6bd813d143713ff8cc3443e49fc5b0af89a69"
     },
     {
-      "bytes": 271,
+      "bytes": 971,
       "path": "research/00_data_measurement_foundation/figures/data_governance_inventory.metadata.json",
-      "sha256": "693332d245bd160cd2251c20f4dff6c2ce09704424ae4017271a11c269e84d46"
+      "sha256": "0fa92ba46287acb9ab8ce5f0cf62cea9894b930497fac950b443776d2221197a"
     },
     {
       "bytes": 140914,
@@ -33,7 +33,7 @@
     {
       "bytes": 1461,
       "path": "research/00_data_measurement_foundation/figures/data_governance_inventory.source.csv",
-      "sha256": "2f137928d05c5841f0c1b61faf3f044658eacb4f2b4faab255143fdf79bdddc4"
+      "sha256": "ce12f35756258350599d95d295588d207f6b49c8d25ea348925da07a23b52a56"
     },
     {
       "bytes": 83985,
@@ -43,7 +43,7 @@
     {
       "bytes": 545,
       "path": "research/00_data_measurement_foundation/findings.md",
-      "sha256": "dfcb5693141c5944c4d75bba17aaf709395d78ba8c1f6dc9e3768647076b9f6a"
+      "sha256": "e4235be066f5bc1bf5feec4f3edc106eaa7acc2d4a66821e0e0b539197d00c98"
     },
     {
       "bytes": 197,
@@ -61,14 +61,14 @@
       "sha256": "239e0f068ee2a0a20ff023f8f18b7660cfea1ffdc1638c2283d4d476464cfba1"
     },
     {
-      "bytes": 1334,
+      "bytes": 1454,
       "path": "research/00_data_measurement_foundation/module.yml",
-      "sha256": "be206792e89845da19d5adf042922f2487e4547c3467e134afbb164746b0c137"
+      "sha256": "0e6a05878625e88b8cc3d8f0f545674bed7e2620240307453895984a75bed004"
     },
     {
-      "bytes": 6408,
+      "bytes": 6686,
       "path": "research/00_data_measurement_foundation/README.md",
-      "sha256": "a9c64af51b3e39793471e681fe767e9e396b841007b034c43bb59aa5e2caec01"
+      "sha256": "5a820d5ebdfcca1beb06c8ae758f251eaf55dab5b8048593d8ddb52e4a653b16"
     },
     {
       "bytes": 2426,
@@ -81,9 +81,9 @@
       "sha256": "076ced6ea1e9e0196a4ee9c4f2bc14f79a30f828654459b8b056893107ea48a1"
     },
     {
-      "bytes": 3178,
+      "bytes": 3279,
       "path": "research/00_data_measurement_foundation/tables/claims.csv",
-      "sha256": "06f16d2ab7553b021e3c9daab2d0155f5eb88238f785b2df745ff6ab9ca3a98b"
+      "sha256": "4bfc95eab94732dff0c0b15396dc4a7e2a5059ac6986ca204a0718aa82ef01db"
     },
     {
       "bytes": 124835,
@@ -101,24 +101,24 @@
       "sha256": "189cefd24543c4f9ecbc801137fd1a35053fe8a80835598212562ea6e224350b"
     },
     {
-      "bytes": 32232,
+      "bytes": 2384,
+      "path": "research/00_data_measurement_foundation/tables/logical_series_inventory.csv",
+      "sha256": "289d7818c5642cf19da29f272fbdb1f109c087e4ab893ecb8cf8987ddc1877fc"
+    },
+    {
+      "bytes": 32093,
       "path": "research/00_data_measurement_foundation/tables/measurement_risk_audit.csv",
-      "sha256": "c3b6c21ea204a56123d520c6d036e90f9b5a4f74a565bf15c01596cba89b4b60"
+      "sha256": "1054c8f373aa3d8b2030292aca579246f5b8e01f539a447a7834a26fdae15a22"
     },
     {
-      "bytes": 2244,
+      "bytes": 2282,
       "path": "research/00_data_measurement_foundation/tables/provider_inventory.csv",
-      "sha256": "9ca98c9655c80c608d08ab58c5cf23075e496cf4076137d719694a4a8969d7d2"
+      "sha256": "716dc6838bf11045efccdc78d9dfb984c48ad4f52d93390f85dfdd14fc4ab0ea"
     },
     {
-      "bytes": 343001,
+      "bytes": 293415,
       "path": "research/00_data_measurement_foundation/tables/raw_file_inventory.csv",
-      "sha256": "db0c402f5ee87345577b6f98412e96913ffe5c73cc3d27dbf3cf9a4c8705a806"
-    },
-    {
-      "bytes": 2380,
-      "path": "research/00_data_measurement_foundation/tables/raw_series_inventory.csv",
-      "sha256": "09f669ff4f47a551fbffe99d218ed6e63919ee8a646b57e83c90438c69439964"
+      "sha256": "93600df916f8444b8f09f1e90387268a36f3eff4ed9c3203384d025ddec52190"
     },
     {
       "bytes": 64660,

@@ -26,3 +26,12 @@ def test_report_pdf_is_nonempty_and_multipage() -> None:
     document = fitz.open(path)
     assert document.page_count >= 7
     assert all(len(page.get_text().strip()) > 100 for page in document)
+
+
+def test_report_market_structure_formula_matches_implemented_estimands() -> None:
+    text = (ROOT / "reports" / "crypto_market_dynamics_research_report.md").read_text(
+        encoding="utf-8"
+    )
+    assert "entropy breadth `= exp(" in text
+    assert "turnover `= (entries + exits) / size(union of adjacent memberships)`" in text
+    assert "effective count `= 1 / HHI" not in text

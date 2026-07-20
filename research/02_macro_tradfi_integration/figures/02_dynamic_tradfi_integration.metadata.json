@@ -1,9 +1,22 @@
 {
+  "data_cutoff": "2026-06-30",
+  "date_range": "2020-01-03 through 2026-04-14",
   "figure_id": "dynamic_tradfi_integration",
-  "plot_key": "plot_key",
+  "limitation": "Contemporaneous period comparisons do not identify ETF effects or causal transmission.",
+  "method": "252-session multivariate HAC exposure with 126-session minimum and formal era interactions",
+  "plot_key_column": "plot_key",
+  "plot_keys_unique": true,
   "png": "02_dynamic_tradfi_integration.png",
+  "research_question": "How do conditional crypto-equity exposures vary over time and across a predeclared era split?",
   "rows": 534,
+  "sample": "XNYS-aligned BTC/ETH and TradFi observations, 2020-01-03 through 2026-04-14, n=1577",
   "source_csv": "02_dynamic_tradfi_integration.source.csv",
-  "source_tables": "tables/dynamic_tradfi_exposures.csv; tables/break_tests.csv",
-  "svg": "02_dynamic_tradfi_integration.svg"
+  "source_tables": [
+    "tables/dynamic_tradfi_exposures.csv",
+    "tables/break_tests.csv"
+  ],
+  "svg": "02_dynamic_tradfi_integration.svg",
+  "uncertainty": "HAC confidence intervals and multiplicity-adjusted formal interaction tests",
+  "units": "conditional QQQ beta",
+  "visual_qa_status": "pass_2026-07-20_full_size_thumbnail_svg_readme_pdf"
 }

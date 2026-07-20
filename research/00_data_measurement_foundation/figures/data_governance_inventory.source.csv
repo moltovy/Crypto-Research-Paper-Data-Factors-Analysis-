@@ -6,7 +6,7 @@ Artemis,49,provider_inventory,raw files,provider_inventory__Artemis
 Tradingview,47,provider_inventory,raw files,provider_inventory__Tradingview
 FRED,23,provider_inventory,raw files,provider_inventory__FRED
 MarketStructure,15,provider_inventory,raw files,provider_inventory__MarketStructure
-cftc,10,provider_inventory,raw files,provider_inventory__cftc
+CFTC,10,provider_inventory,raw files,provider_inventory__CFTC
 Farside ETF Data,5,provider_inventory,raw files,provider_inventory__Farside ETF Data
 AlternativeMe,2,provider_inventory,raw files,provider_inventory__AlternativeMe
 diagnostic_only,68,usage_disposition,features,usage_disposition__diagnostic_only

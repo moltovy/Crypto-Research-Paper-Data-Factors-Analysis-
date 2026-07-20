@@ -3,30 +3,29 @@ title: Cross-Asset Dependence and Regimes
 research_question: How do crypto and TradFi return dependence, common-factor share,
   lower-tail co-exceedance, and regimes vary across matched samples?
 research_questions:
-- How broad is common-factor crypto dependence across the selected-major universe?
-- How do Pearson, Spearman, partial, lower-tail, rolling, and regime-difference dependence
-  diagnostics compare?
+- How much of each S2 asset's matched return variation is shared with a leave-one-out
+  crypto factor?
+- How far does lower-tail co-exceedance depart from its independence benchmark across
+  predeclared thresholds?
 outcomes:
-- correlation
+- common variance share
 - tail co-exceedance
-- PCA common-factor share
-- rolling dependence
+- expected shortfall
 features:
-- selected-major returns
-- SPY/QQQ/IWM
-- DXY/gold/VIX/rates
+- S2 matched returns
+- leave-one-out PC1
+- BTC tail indicator
 frequencies:
-- daily
+- crypto daily
 methods:
-- Correlation matrices
-- PCA/common factor
+- Leave-one-out PCA
 - Tail dependence
+- Moving-block inference
+- Relative-risk diagnostics
 sensitivity_dimensions:
-- Pearson/Spearman
-- BTC-control partial correlations
-- regime split
 - tail threshold
-- rolling window
+- block length
+- factor composition
 status: built
 canonical_surface: research/01_cross_asset_dependence_regimes
 tables:
@@ -39,9 +38,10 @@ tables:
 figures:
 - 01_common_factor_tail_dependence.png
 code:
-- src/cqresearch/research/analytical_modules.py
+- src/cqresearch/research/evidence_modules.py
+- src/cqresearch/modeling/dependence.py
+- src/cqresearch/research/samples.py
 tests:
-- tests/unit/test_feature_strength_outputs.py
-- tests/unit/test_visual_outputs.py
+- tests/unit/test_dependence_models.py
 root_readme_candidate_figures:
 - figures/01_common_factor_tail_dependence.png

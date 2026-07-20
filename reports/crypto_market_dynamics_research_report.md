@@ -22,7 +22,7 @@ The primary uncertainty procedures are HAC covariance and deterministic moving-b
 | ETF distributed lag | `y[t] = alpha + sum(k=0..5) beta[k] * flow_bps[t-k] + error[t]` | Timing-sensitive association; flow uses lagged market capitalization. |
 | Leverage tail model | `logit Pr(r[t+1] <= Q[0.05]) = spline(leverage[t-1]) + spline(volatility[t-1])` | Conditional association, not a prediction rule. |
 | Generalized FEVD connectedness | Off-diagonal generalized forecast-error variance shares divided by total shares | Descriptive stress connectedness; variable-order sensitivity is reported. |
-| PIT structure | `HHI[t] = sum(i) share[i,t]^2`; effective count `= 1 / HHI[t]`; turnover `= 0.5 * sum(i) abs(share[i,t] - share[i,t-1])` | Monthly composition only; no daily constituent-return inference. |
+| PIT structure | `HHI[t] = sum(i) share[i,t]^2`; entropy breadth `= exp(-sum(i) share[i,t] * log(share[i,t]))`; turnover `= (entries + exits) / size(union of adjacent memberships)` | Monthly composition only; no daily constituent-return inference. |
 | Liquidity residual | Residual from HAC regression of log USD TVL growth on BTC, ETH, and TOTAL3 returns | Endogenous state proxy, not an exogenous liquidity shock. |
 | MVRV identity | `d log MVRV = d log market cap - d log realized cap + residual` | Measurement-mechanics diagnostic excluded from primary return models. |
 
@@ -30,7 +30,7 @@ The primary uncertainty procedures are HAC covariance and deterministic moving-b
 
 ![Cross-Asset Dependence and Regimes](../research/01_cross_asset_dependence_regimes/figures/01_common_factor_tail_dependence.png)
 
-**Result.** Within S2, full-system PC1 accounts for 66.0% of standardized return variation, while median 5% lower-tail co-exceedance is 2.8% above the independence benchmark.
+**Result.** Within S2, the median leave-one-out common-variance share is 61.0%, while median 5% lower-tail co-exceedance is 2.8% above the independence benchmark.
 
 **Sample.** 2021-01-02 to 2026-06-30, n=2006
 
@@ -88,7 +88,7 @@ The primary uncertainty procedures are HAC covariance and deterministic moving-b
 
 **Result.** Across complete monthly PIT snapshots, effective asset count changed from 5.1 to 7.6, while median one-month membership turnover was 14.8%.
 
-**Sample.** through 2026-05-31, result rows=77
+**Sample.** January 2020 to May 2026; 77 complete monthly snapshots; 7,700 top-100 asset-months
 
 **Method and uncertainty.** Monthly point-in-time concentration, entropy, effective count, membership transition, and exact HHI decomposition. Intervals, diagnostics, and sensitivity specifications are reported in the linked source tables.
 
@@ -116,7 +116,7 @@ The primary uncertainty procedures are HAC covariance and deterministic moving-b
 
 **Result.** Registered event-window responses vary substantially across events and assets and remain appendix sensitivity evidence rather than causal estimates.
 
-**Sample.** 2020-01-02 to 2026-04-14, result rows=48
+**Sample.** 8 events x 2 assets x 3 horizons = 48 event-asset-horizon estimates; BTC/ETH return support 2020-01-02 to 2026-04-14; placebo windows 212-2270
 
 **Method and uncertainty.** Fixed post-event windows with empirical non-event-window comparison and cross-module claim ledger. Intervals, diagnostics, and sensitivity specifications are reported in the linked source tables.
 

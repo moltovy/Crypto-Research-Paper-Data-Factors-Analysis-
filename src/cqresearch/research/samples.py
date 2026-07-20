@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import pandas as pd
+import yaml
 
 from cqresearch.core.artifacts import write_csv
 from cqresearch.data.contracts import DATA_CUTOFF, resolve_raw_data_root, sample_registry
@@ -38,7 +39,12 @@ def build_sample_registries(root: Path) -> list[Path]:
                 **definition._asdict(),
                 "actual_start": selected["first_date"].min() if not selected.empty else "",
                 "actual_end": selected["last_date"].max() if not selected.empty else "",
-                "constituents": int(len(selected)),
+                "constituents": int(selected["asset"].nunique()),
+                "membership_rows": int(len(selected)),
+                "time_periods": int(selected["period"].replace("", pd.NA).nunique()),
+                "observations_total": int(selected["observations"].sum())
+                if not selected.empty
+                else 0,
                 "observations_min": int(selected["observations"].min())
                 if not selected.empty
                 else 0,
@@ -106,6 +112,7 @@ def _sample_membership(root: Path) -> pd.DataFrame:
                 "observations",
                 "expected_observations",
                 "coverage",
+                "period",
             ]
         )
     return frame.sort_values(["sample_id", "included", "asset"], ascending=[True, False, True])
@@ -116,7 +123,8 @@ def _s2_membership(root: Path, binance: pd.DataFrame) -> pd.DataFrame:
     anchor = pit[pit["snapshot_date"].eq(pd.Timestamp("2021-01-31"))].nsmallest(
         20, "rank_full_market"
     )
-    candidates = anchor[~anchor["symbol"].isin(STABLE_SYMBOLS | WRAPPED_SYMBOLS)].copy()
+    excluded_symbols = _excluded_asset_symbols(root)
+    candidates = anchor[~anchor["symbol"].isin(excluded_symbols)].copy()
     rows = []
     expected = len(pd.date_range("2021-01-01", DATA_CUTOFF, freq="D"))
     available = set(binance["symbol"].astype(str))
@@ -151,6 +159,7 @@ def _s3_membership(root: Path) -> list[dict[str, object]]:
         return []
     frame = pd.read_csv(path, parse_dates=["date"])
     pit_symbols = set(_pit(root)["symbol"].dropna().astype(str))
+    excluded_symbols = _excluded_asset_symbols(root)
     rows = []
     for asset, group in frame.groupby("symbol"):
         valid = group.dropna(subset=["date", "close_usd"]).sort_values("date")
@@ -160,9 +169,18 @@ def _s3_membership(root: Path) -> list[dict[str, object]]:
             else 0
         )
         coverage = len(valid) / expected if expected else 0.0
-        excluded_type = asset in STABLE_SYMBOLS | WRAPPED_SYMBOLS
+        excluded_type = asset in excluded_symbols
+        identity_resolved = (
+            "coingecko_id" in valid
+            and valid["coingecko_id"].notna().all()
+            and valid["coingecko_id"].astype(str).nunique() == 1
+        )
         included = (
-            asset in pit_symbols and len(valid) >= 365 and coverage >= 0.90 and not excluded_type
+            asset in pit_symbols
+            and len(valid) >= 365
+            and coverage >= 0.90
+            and not excluded_type
+            and identity_resolved
         )
         reason = (
             "broad unbalanced supplementary member; current-cohort source limitation applies"
@@ -182,8 +200,21 @@ def _s4_membership(root: Path) -> list[dict[str, object]]:
         & ~pit.get("is_partial_month", pd.Series(False, index=pit.index)).fillna(False)
         & pit["rank_full_market"].le(100)
     ]
-    values = primary.set_index("snapshot_date")["market_cap_usd"]
-    return [_row("S4", "monthly_top100", values, True, "complete monthly PIT snapshots")]
+    rows = []
+    for item in primary.sort_values(["snapshot_date", "rank_full_market"]).itertuples(index=False):
+        date = pd.Timestamp(item.snapshot_date)
+        values = pd.Series([item.market_cap_usd], index=pd.DatetimeIndex([date]))
+        rows.append(
+            _row(
+                "S4",
+                str(item.symbol),
+                values,
+                True,
+                "complete monthly PIT top-100 asset-month",
+                period=date.date().isoformat(),
+            )
+        )
+    return rows
 
 
 def _s5_membership(root: Path) -> list[dict[str, object]]:
@@ -222,6 +253,7 @@ def _row(
     included: bool,
     reason: str,
     expected: int | None = None,
+    period: str = "",
 ) -> dict[str, object]:
     valid = values.dropna()
     expected_count = expected if expected is not None else len(valid)
@@ -235,4 +267,30 @@ def _row(
         "observations": int(len(valid)),
         "expected_observations": int(expected_count),
         "coverage": float(len(valid) / expected_count) if expected_count else 0.0,
+        "period": period,
     }
+
+
+def _excluded_asset_symbols(root: Path) -> set[str]:
+    """Load stable-like, wrapped, and productized exclusions from canonical taxonomies."""
+
+    excluded = set(STABLE_SYMBOLS | WRAPPED_SYMBOLS)
+    taxonomy = yaml.safe_load((root / "config" / "asset_taxonomy.yml").read_text(encoding="utf-8"))
+    excluded.update(taxonomy.get("stable_like", []))
+    excluded.update(taxonomy.get("productized_wrapped", []))
+    overrides = yaml.safe_load(
+        (root / "config" / "asset_classification_overrides.yml").read_text(encoding="utf-8")
+    )
+    for key in [
+        "stablecoins",
+        "synthetic_stables",
+        "stable_yield_tokens",
+        "bridged_stables",
+        "wrapped_assets",
+        "tokenized_commodities",
+        "tokenized_rwa",
+        "lst_restaking",
+        "bridged_duplicates",
+    ]:
+        excluded.update(overrides.get(key, []))
+    return {str(symbol).upper() for symbol in excluded}

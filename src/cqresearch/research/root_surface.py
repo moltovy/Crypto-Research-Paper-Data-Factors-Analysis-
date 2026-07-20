@@ -44,12 +44,14 @@ def build_root_research_surface(root: Path = PROJECT_ROOT) -> list[Path]:
     figure_specs = _figure_specs(root)
     selection = _root_figure_selection(figure_specs)
     usage_counts = _usage_counts(root)
+    claims = _claim_registry(root)
 
     research_readme = _research_index(module_rows, figure_specs, usage_counts)
     root_readme = _root_readme(root, module_rows, figure_specs, selection, usage_counts)
     artifacts: list[Path] = [
         write_csv(research_dir / "figure_specs.csv", figure_specs),
         write_csv(research_dir / "root_figure_selection.csv", selection),
+        write_csv(research_dir / "claim_registry.csv", claims),
         write_text(research_dir / "README.md", research_readme),
         write_text(root / "README.md", root_readme),
     ]
@@ -57,6 +59,41 @@ def build_root_research_surface(root: Path = PROJECT_ROOT) -> list[Path]:
         _write_root_manifest(root, module_rows, figure_specs, selection, usage_counts, artifacts)
     )
     return artifacts
+
+
+def _claim_registry(root: Path) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    for module in MODULES:
+        path = root / "research" / module.module_id / "tables" / "claims.csv"
+        if not path.exists():
+            continue
+        claims = pd.read_csv(path)
+        for row in claims.to_dict("records"):
+            row["module_id"] = module.module_id
+            row["source_table"] = _root_relative_claim_paths(
+                module.module_id, row.get("source_table", "")
+            )
+            row["source_figure"] = _root_relative_claim_paths(
+                module.module_id, row.get("source_figure", "")
+            )
+            rows.append(row)
+    frame = pd.DataFrame(rows)
+    if frame.empty:
+        return frame
+    if frame["claim_id"].duplicated().any():
+        duplicates = frame.loc[frame["claim_id"].duplicated(False), "claim_id"].tolist()
+        raise ValueError(f"duplicate public claim IDs: {duplicates}")
+    return frame.sort_values(["module_id", "claim_id"]).reset_index(drop=True)
+
+
+def _root_relative_claim_paths(module_id: str, value: Any) -> str:
+    paths = []
+    for item in str(value).replace(",", ";").split(";"):
+        item = item.strip()
+        if not item or item.lower() == "nan":
+            continue
+        paths.append(item if item.startswith("research/") else f"research/{module_id}/{item}")
+    return "; ".join(paths)
 
 
 def _module_rows(root: Path) -> pd.DataFrame:
@@ -111,7 +148,7 @@ def _figure_specs(root: Path) -> pd.DataFrame:
                 "x": registered.get("x", "see source table"),
                 "y": registered.get("y", "see source table"),
                 "interval": registered.get(
-                    "interval", "shown where source model reports uncertainty"
+                    "uncertainty", "shown where source model reports uncertainty"
                 ),
                 "sample": registered.get("sample", "see source table"),
                 "figure_path": relpath,
@@ -311,6 +348,7 @@ def _root_readme(
     status_list = ", ".join(
         f"{_usage_status_label(key)}: {value}" for key, value in sorted(usage_counts.items())
     )
+    ontology = _ontology_counts(root)
     return f"""# Crypto Market Dynamics
 
 ## Project Overview
@@ -330,7 +368,7 @@ The evidence is descriptive and associational. It does not forecast prices, prop
 
 ## Data Universe and Asset Coverage
 
-The [data-foundation module](research/00_data_measurement_foundation/README.md) inventories raw objects separately from logical series and records feature semantics, identity, timing, units, source eligibility, and release risk. Current data-usage counts are {status_list or "available in the data-foundation module"}.
+The [data-foundation module](research/00_data_measurement_foundation/README.md) indexes {ontology["raw_objects"]:,} local raw objects, {ontology["physical_columns"]:,} object-column records, {ontology["logical_series"]} contracted logical series, and {ontology["features"]} engineered features as distinct ontology layers. Raw file counts are never presented as series counts. Feature dispositions are: {status_list or "available in the data-foundation module"}.
 
 S2 fixes PIT-eligible, identity-resolved assets using the January 2021 top-20 snapshot and requires at least 95% daily coverage. S4 uses monthly top-100 point-in-time snapshots only. S5 begins each institutional series at its actual reporting inception.
 
@@ -387,6 +425,21 @@ Raw/provider data stays local under `data_local/` and outside Git. Public tables
 
 This repository is independent research and is not affiliated with any data provider. See [`REFERENCES.md`](REFERENCES.md) for source and method attribution. Cite the commit, module, table, figure, sample definition, uncertainty statement, and limitation when referencing a result.
 """
+
+
+def _ontology_counts(root: Path) -> dict[str, int]:
+    research = root / "research"
+
+    def count(name: str) -> int:
+        path = research / name
+        return len(pd.read_csv(path)) if path.exists() else 0
+
+    return {
+        "raw_objects": count("raw_objects.csv"),
+        "physical_columns": count("physical_columns.csv"),
+        "logical_series": count("logical_series.csv"),
+        "features": count("feature_registry.csv"),
+    }
 
 
 def _research_index(
