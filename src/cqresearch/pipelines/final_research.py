@@ -10,7 +10,6 @@ from __future__ import annotations
 import hashlib
 import json
 import math
-import os
 import re
 import shutil
 from collections.abc import Callable
@@ -29,7 +28,11 @@ from config.paths import DATA_LOCAL_PROCESSED_DIR, PROJECT_ROOT
 from cqresearch.core.artifacts import write_csv as write_csv_atomic
 from cqresearch.core.artifacts import write_parquet, write_text
 from cqresearch.data.calendars import business_day_mask
-from cqresearch.data.contracts import load_source_contracts, native_log_return
+from cqresearch.data.contracts import (
+    load_source_contracts,
+    native_log_return,
+    resolve_raw_data_root,
+)
 from cqresearch.data.panel_builder import build_master_panel as build_source_master_panel
 from cqresearch.data.panel_builder import write_panel as write_source_panel
 from cqresearch.reporting.public_surface import PUBLIC_FIGURES
@@ -328,10 +331,7 @@ def paths(root: Path = PROJECT_ROOT) -> BuildPaths:
 
 
 def raw_data_root(root: Path = PROJECT_ROOT) -> Path:
-    external = os.environ.get("CMD_DATA_ROOT")
-    return (
-        Path(external).expanduser().resolve() / "raw" if external else root / "data_local" / "raw"
-    )
+    return resolve_raw_data_root(root)
 
 
 def local_metadata_root(root: Path = PROJECT_ROOT) -> Path:

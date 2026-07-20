@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 
 from cqresearch.core.artifacts import write_csv
-from cqresearch.data.contracts import DATA_CUTOFF, sample_registry
+from cqresearch.data.contracts import DATA_CUTOFF, resolve_raw_data_root, sample_registry
 
 STABLE_SYMBOLS = {
     "USDT",
@@ -142,9 +142,7 @@ def _s2_membership(root: Path, binance: pd.DataFrame) -> pd.DataFrame:
 
 def _s3_membership(root: Path) -> list[dict[str, object]]:
     path = (
-        root
-        / "data_local"
-        / "raw"
+        resolve_raw_data_root(root)
         / "market_structure"
         / "DefiLlama"
         / "crypto_constituents_daily_ohlcv_top50_current_2020_2026.csv"
@@ -207,9 +205,7 @@ def _pit(root: Path) -> pd.DataFrame:
         frame = pd.read_parquet(path).reset_index(drop=True)
     else:
         path = (
-            root
-            / "data_local"
-            / "raw"
+            resolve_raw_data_root(root)
             / "market_structure"
             / "DefiLlama"
             / "crypto_universe_monthly_2020_2026.csv"

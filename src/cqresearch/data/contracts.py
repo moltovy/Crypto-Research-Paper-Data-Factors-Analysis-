@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -10,6 +11,15 @@ import pandas as pd
 import yaml
 
 DATA_CUTOFF = pd.Timestamp("2026-06-30")
+
+
+def resolve_raw_data_root(root: Path) -> Path:
+    """Return the configured provider-data root without writing to it."""
+
+    external = os.environ.get("CMD_DATA_ROOT")
+    return (
+        Path(external).expanduser().resolve() / "raw" if external else root / "data_local" / "raw"
+    )
 
 
 @dataclass(frozen=True)

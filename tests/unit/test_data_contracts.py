@@ -12,6 +12,7 @@ from cqresearch.data.contracts import (
     load_sample_definitions,
     load_source_contracts,
     native_log_return,
+    resolve_raw_data_root,
     result_sample_summary,
 )
 
@@ -57,3 +58,9 @@ def test_samples_s1_through_s5_are_locked() -> None:
     definitions = load_sample_definitions(ROOT)
     assert [definition.sample_id for definition in definitions] == ["S1", "S2", "S3", "S4", "S5"]
     assert "HYPE" in definitions[1].exclusion_rule
+
+
+def test_external_raw_root_override(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    external = tmp_path / "provider-data"
+    monkeypatch.setenv("CMD_DATA_ROOT", str(external))
+    assert resolve_raw_data_root(ROOT) == external.resolve() / "raw"

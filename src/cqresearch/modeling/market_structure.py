@@ -10,7 +10,7 @@ import pandas as pd
 import statsmodels.api as sm
 from linearmodels.panel import PanelOLS
 
-from cqresearch.data.contracts import DATA_CUTOFF
+from cqresearch.data.contracts import DATA_CUTOFF, resolve_raw_data_root
 
 
 def pit_market_structure(pit: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -184,7 +184,7 @@ def mvrv_measurement_mechanics(daily: pd.DataFrame) -> pd.DataFrame:
 def chain_panel_model(root: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Estimate a monthly four-chain FE association if the preregistered gate passes."""
 
-    source = root / "data_local" / "raw" / "artemis"
+    source = resolve_raw_data_root(root) / "artemis"
     chain_names = ["Ethereum", "Solana", "Avalanche C-Chain", "Near"]
     metrics = {
         "market_cap": ("Chains - Market Cap.csv", "last"),
