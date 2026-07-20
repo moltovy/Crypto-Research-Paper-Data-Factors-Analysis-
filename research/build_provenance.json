@@ -2,7 +2,7 @@
   "daily_rows": 2373,
   "data_cutoff": "2026-06-30",
   "executed_notebook": "reports/crypto_market_dynamics_reproducibility.executed.ipynb",
-  "fingerprint": "ce824554d20b62b8634a50440373dbed7f8552d5c2cdf5152c88d911e179051f",
+  "fingerprint": "aecab28f382706c7f97da3ae444c79c9b18c7a79f5e8c6d108bb38e37f2048a3",
   "mode": "local",
   "monthly_rows": 15600,
   "report_artifacts": 11,

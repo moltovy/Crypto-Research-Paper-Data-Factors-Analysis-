@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 def test_executed_notebook_has_outputs_and_no_errors() -> None:
     path = ROOT / "reports" / "crypto_market_dynamics_reproducibility.executed.ipynb"
     assert path.exists()
+    assert b"\r\n" not in path.read_bytes()
     notebook = nbformat.read(path, as_version=4)
     code_cells = [cell for cell in notebook.cells if cell.cell_type == "code"]
     assert all(cell.execution_count is not None for cell in code_cells)

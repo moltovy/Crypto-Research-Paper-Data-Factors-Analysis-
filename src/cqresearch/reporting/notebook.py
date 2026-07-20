@@ -23,7 +23,8 @@ def execute_reproducibility_notebook(root: Path) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(".ipynb.tmp")
     try:
-        nbformat.write(executed, temporary)
+        payload = nbformat.writes(executed).rstrip() + "\n"
+        temporary.write_text(payload, encoding="utf-8", newline="\n")
         temporary.replace(output)
     except Exception:
         temporary.unlink(missing_ok=True)
