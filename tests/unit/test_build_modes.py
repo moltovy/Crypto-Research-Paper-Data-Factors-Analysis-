@@ -29,4 +29,7 @@ def test_build_fingerprint_ignores_text_checkout_line_endings(tmp_path: Path) ->
     first = build_fingerprint(tmp_path)
     for path in paths:
         path.write_bytes(b"first\r\nsecond\r\n")
+    bytecode = tmp_path / "src" / "cqresearch" / "__pycache__" / "module.pyc"
+    bytecode.parent.mkdir(parents=True)
+    bytecode.write_bytes(b"machine-specific bytecode")
     assert build_fingerprint(tmp_path) == first

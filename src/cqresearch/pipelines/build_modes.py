@@ -124,7 +124,13 @@ def build_fingerprint(root: Path) -> str:
         digest.update(path.relative_to(raw_root).as_posix().encode())
         digest.update(sha256_file(path).encode())
     for base in [root / "config", root / "src" / "cqresearch", root / "scripts"]:
-        for path in sorted(item for item in base.rglob("*") if item.is_file()):
+        for path in sorted(
+            item
+            for item in base.rglob("*")
+            if item.is_file()
+            and "__pycache__" not in item.parts
+            and item.suffix.lower() not in {".pyc", ".pyo"}
+        ):
             digest.update(path.relative_to(root).as_posix().encode())
             digest.update(sha256_file(path).encode())
     for path in [root / "pyproject.toml", root / "uv.lock"]:
